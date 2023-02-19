@@ -222,12 +222,6 @@
       enable = true;
       home = "/home/transmission";
     };
-    # vm configration Refered from ../invar/configuration.nix
-    # onBoot ignore
-    virtualisation.libvirtd = {
-      enable = true;
-      onBoot = "ignore";
-    };
     btrbk.instances.snapshot = {
       onCalendar = "*:00,30";
       settings = {
@@ -242,6 +236,13 @@
         };
       };
     };
+  };
+
+  # vm configration Refered from ../invar/configuration.nix
+  # onBoot ignore
+  virtualisation.libvirtd = {
+    enable = true;
+    onBoot = "ignore";
   };
 
   nix = {

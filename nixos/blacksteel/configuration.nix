@@ -216,7 +216,7 @@
       enableNotifications = true;
     };
     # transmission configration Refered from ../invar/configuration.nix
-    services.transmission = {
+    transmission = {
       enable = true;
       home = "/home/transmission";
     };

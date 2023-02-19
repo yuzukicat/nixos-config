@@ -226,7 +226,7 @@
       enable = true;
       onBoot = "ignore";
     };
-    users.groups."transmission".members = [ config.users.users.nixos.name ];
+    users.groups."transmission".members = [ config.users.users.oxa.name ];
     btrbk.instances.snapshot = {
       onCalendar = "*:00,30";
       settings = {

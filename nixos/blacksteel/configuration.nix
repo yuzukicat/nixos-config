@@ -1,11 +1,12 @@
 # Forked from github.com/oxalica/nixos-config
 # For the purpose of testing, to install nixos on clevo nh55vr workstation.
-{ lib, config, pkgs, inputs, my, ... }:
+{ lib, config, pkgs, modulesPath, inputs, my, ... }:
 
 {
   imports = [
     ./vm.nix
 
+    (modulesPath + "/installer/cd-dvd/installation-cd-graphical-plasma5.nix")
     ../modules/console-env.nix
     ../modules/device-fix.nix
     ../modules/kde-desktop

@@ -1,3 +1,5 @@
+# Forked from github.com/oxalica/nixos-config
+# For the purpose of testing, to install nixos on clevo nh55vr workstation.
 { lib, config, pkgs, inputs, my, ... }:
 
 {
@@ -11,20 +13,32 @@
     ../modules/nix-registry.nix
   ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.blacksteel);
 
+  # Install a proprietary or unfree package
+  nixpkgs.config.allowUnfree = true;
+
   nixpkgs.config.allowUnfreePredicate = drv:
     lib.elem (lib.getName drv) [
       "steam"
       "steam-original"
       "steam-run"
     ];
+  
+  # To make it work on clevo nh55vr rtx-3070max-q
+  services.xserver.videoDrivers = [ "nvidia" ];
+  
+  # Use QT Scaling
+  services.xserver.desktopManager.plasma5.useQtScaling = true;
+
 
   # Boot.
 
   boot = {
     initrd = {
       systemd.enable = true;
-      availableKernelModules = [ "xhci_pci" "nvme" "rtsx_pci_sdmmc" ];
-      kernelModules = [ ];
+
+      availableKernelModules = [ "xhci_pci" "ahci" "usbhid" ];
+      kernelModules = [ "amd_pstate" "nvme" ];
+
       luks.devices."luksroot" = {
         device = "/dev/disk/by-uuid/8e445c05-75cc-45c7-bebd-46a73cf50a74";
         allowDiscards = true;
@@ -39,7 +53,7 @@
     # https://lore.kernel.org/linux-btrfs/CABXGCsNzVxo4iq-tJSGm_kO1UggHXgq6CdcHDL=z5FL4njYXSQ@mail.gmail.com
     kernelPackages = pkgs.linuxPackages_6_1;
 
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
 
     # For hibernate-resume.
@@ -57,15 +71,17 @@
         consoleMode = "max"; # Don't clip boot menu.
       };
       efi.canTouchEfiVariables = true;
-      timeout = 1;
+      timeout = lib.mkForce 1;
     };
 
     kernel.sysctl = {
+      # Refer to vm.nix
       "kernel.sysrq" = "1";
       "net.ipv4.tcp_congestion_control" = "bbr";
     };
   };
 
+  # Questions.
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/fbfe849d-2d2f-415f-88d3-65ded870e46b";
@@ -87,37 +103,44 @@
 
   powerManagement.cpuFreqGovernor = "schedutil";
   hardware = {
-    cpu.intel.updateMicrocode = true;
+    # AMD Microcode
+    cpu.amd.updateMicrocode = true;
     video.hidpi.enable = true;
     bluetooth.enable = true;
     logitech.wireless.enable = true;
+    logitech.wireless.enableGraphical = true; # Solaar.
     enableRedistributableFirmware = true; # Required for WIFI.
-    opengl.extraPackages = with pkgs; [ intel-media-driver ]; # vaapi
+    # To-do: GPU acceleration
+    # opengl.extraPackages = with pkgs; [ intel-media-driver ]; # vaapi
   };
   console = {
     font = "${pkgs.terminus_font}/share/consolefonts/ter-v28n.psf.gz";
     useXkbConfig = true;
   };
+  # Network configration Refered from ../invar/configuration.nix
   networking = {
     hostName = "blacksteel";
+    search = [ "lan." ];
+    useNetworkd = true;
+    useDHCP = lib.mkForce true; # PCIE device changes would cause name changes.
+    wireless = {
+      enable = true;
+      userControlled.enable = true;
+    };
     firewall.logRefusedConnections = false;
   };
-
-  time.timeZone = "Asia/Shanghai";
-
-  # KDE pulls in pipewire via xdg-desktop-portal anyways.
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    alsa.enable = true;
+  systemd.network.wait-online = {
+    anyInterface = true;
+    timeout = 15;
   };
-  security.rtkit.enable = true; # pipewire expects this.
-  sound.enable = false; # pipewire expects this.
+
+  # Time Zone
+  time.timeZone = "Asia/Tokyo";
 
   # Users.
 
   sops.secrets.passwd.neededForUsers = true;
-  programs.zsh.enable = true;
+  programs.zsh.enable = true; # As shell.
   users = {
     mutableUsers = false;
     users."oxa" = {
@@ -135,14 +158,50 @@
 
   # Services.
 
+  # Moved to services code block
+  # KDE pulls in pipewire via xdg-desktop-portal anyways.
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+    alsa.enable = true;
+  };
+  security.rtkit.enable = true; # Better installed with pipewire.
+  sound.enable = false; # pipewire expects this.
+  # Might be necessary to solve the conflict with kde-plasma5 audio
+  hardware.pulseaudio.enable = lib.mkForce false;
+
+  # Service configration Refered from ../invar/configuration.nix
+  services.xserver.xkbOptions = "ctrl:swapcaps";
+
+  services.logind.extraConfig = ''
+    HandlePowerKey=suspend
+  '';
+
   services = {
     openssh = {
       enable = true;
-      settings = {
-        KbdInteractiveAuthentication = false;
-        PasswordAuthentication = false;
-        PermitRootLogin = "no";
-      };
+      # SSH configration Refered from ../invar/configuration.nix
+      passwordAuthentication = false;
+      kbdInteractiveAuthentication = false;
+      permitRootLogin = "yes";
+      hostKeys = [
+        {
+          type = "rsa";
+          path = "/var/ssh/ssh_host_rsa_key";
+          bits = 4096;
+        }
+        {
+          type = "ed25519";
+          path = "/var/ssh/ssh_host_ed25519_key";
+          rounds = 100;
+        }
+      ];
+      # settings = {
+      #   KbdInteractiveAuthentication = false;
+      #   PasswordAuthentication = false;
+      #   # Warning: Unsafe
+      #   PermitRootLogin = "yes";
+      # };
     };
     fstrim = {
       enable = true;
@@ -151,8 +210,23 @@
     timesyncd.enable = true;
     earlyoom = {
       enable = true;
+      # earlyoom configration Refered from ../invar/configuration.nix
+      freeMemThreshold = 5;
+      freeSwapThreshold = 10;
       enableNotifications = true;
     };
+    # transmission configration Refered from ../invar/configuration.nix
+    services.transmission = {
+      enable = true;
+      home = "/home/transmission";
+    };
+    # vm configration Refered from ../invar/configuration.nix
+    # onBoot ignore
+    virtualisation.libvirtd = {
+      enable = true;
+      onBoot = "ignore";
+    };
+    users.groups."transmission".members = [ config.users.users.nixos.name ];
     btrbk.instances.snapshot = {
       onCalendar = "*:00,30";
       settings = {
@@ -177,6 +251,10 @@
       environment = [ "SSH_AUTH_SOCK" ];
 
       experimental-features = [
+        # Might be required in ISO
+        "nix-command"
+        "flakes"
+        "repl-flake"
         "auto-allocate-uids"
         "cgroups"
       ];
@@ -184,17 +262,17 @@
       use-cgroups = true;
     };
 
-    buildMachines = [
-      {
-        hostName = "aluminum.lan.hexade.ca";
-        maxJobs = 24;
-        protocol = "ssh-ng";
-        sshUser = "oxa";
-        sshKey = "/etc/ssh/ssh_host_ed25519_key";
-        system = "x86_64-linux";
-        supportedFeatures = [ "kvm" "big-parallel" "nixos-test" "benchmark" ];
-      }
-    ];
+    # buildMachines = [
+    #   {
+    #     hostName = "aluminum.lan.hexade.ca";
+    #     maxJobs = 24;
+    #     protocol = "ssh-ng";
+    #     sshUser = "oxa";
+    #     sshKey = "/etc/ssh/ssh_host_ed25519_key";
+    #     system = "x86_64-linux";
+    #     supportedFeatures = [ "kvm" "big-parallel" "nixos-test" "benchmark" ];
+    #   }
+    # ];
   };
 
   # Global ssh settings. Also for remote builders.
@@ -210,6 +288,9 @@
   };
 
   programs.adb.enable = true;
+  # adbusers usergroup Refered from ../invar/configuration.nix
+  # Question: Can it fix the bus error info on boot??
+  users.groups."adbusers".members = [ config.users.users.nixos.name ];
 
   programs.steam = {
     enable = true;
@@ -221,8 +302,21 @@
     enable = true;
     package = pkgs.wireshark-qt;
   };
+  
+  # environment.etc Refered from ../invar/configuration.nix
+  environment.etc = {
+    "machine-id".source = "/var/machine-id";
+    "ssh/ssh_host_rsa_key".source = "/var/ssh/ssh_host_rsa_key";
+    "ssh/ssh_host_rsa_key.pub".source = "/var/ssh/ssh_host_rsa_key.pub";
+    "ssh/ssh_host_ed25519_key".source = "/var/ssh/ssh_host_ed25519_key";
+    "ssh/ssh_host_ed25519_key.pub".source = "/var/ssh/ssh_host_ed25519_key.pub";
+  };
 
   environment.systemPackages = with pkgs; [
+    # systemPackages Refered from ../invar/configuration.nix && ../minimal-image
+    neofetch
+    radeontop
+    solaar # Logitech devices control.
     ltunify
     virt-manager
   ];

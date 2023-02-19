@@ -11,6 +11,7 @@
     ../modules/kde-desktop
     ../modules/nix-common.nix
     ../modules/nix-registry.nix
+    ../modules/nix-binary-cache-mirror.nix
   ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.blacksteel);
 
   # Install a proprietary or unfree package

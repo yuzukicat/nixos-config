@@ -194,7 +194,6 @@
         "nixpkgs-unmatched": "nixpkgs-unmatched",
         "nocargo": "nocargo",
         "rust-overlay": "rust-overlay",
-        "secrets": "secrets",
         "sops-nix": "sops-nix"
       }
     },
@@ -219,21 +218,6 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "type": "github"
-      }
-    },
-    "secrets": {
-      "locked": {
-        "lastModified": 1664486084,
-        "narHash": "sha256-TcNvIoGfQv3R2L9aAUVpmXt+vVQonLCURf5veJIIZqw=",
-        "ref": "refs/heads/master",
-        "rev": "182355f80c50578d249062bf5b59f693f64c83db",
-        "revCount": 20,
-        "type": "git",
-        "url": "file:///home/oxa/storage/repo/nixos-config-secrets"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:///home/oxa/storage/repo/nixos-config-secrets"
       }
     },
     "sops-nix": {

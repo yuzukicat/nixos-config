@@ -40,7 +40,7 @@
     };
 
     # Optional.
-    secrets.url = "/home/oxa/storage/repo/nixos-config-secrets";
+    # secrets.url = "/home/oxa/storage/repo/nixos-config-secrets";
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }@inputs: let
@@ -160,7 +160,9 @@
         ];
       };
 
-      minimal-image = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs-stable { };
+      minimal-image = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs {
+        extraModules = with nixosModules; [ home-manager sops plsama-5-27 ];
+      };
     };
 
     images = {

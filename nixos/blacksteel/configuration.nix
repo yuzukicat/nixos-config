@@ -265,6 +265,10 @@
         "auto-allocate-uids"
         "cgroups"
       ];
+      extra-experimental-features = [
+        "auto-allocate-uids"
+        "cgroups"
+      ];
       auto-allocate-uids = true;
       use-cgroups = true;
     };

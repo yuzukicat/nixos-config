@@ -147,12 +147,11 @@
       isNormalUser = true;
       shell = pkgs.zsh;
       passwordFile = config.sops.secrets.passwd.path;
-      # uid = 1000;
+      uid = 1000;
       group = config.users.groups.oxa.name;
       extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" ];
     };
-    # groups."oxa".gid = 1000;
-    groups."oxa" = {};
+    groups."oxa".gid = 1000;
   };
   home-manager.users."oxa" =
     import ../../home/blacksteel.nix;
@@ -249,27 +248,29 @@
   nix = {
     package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
 
-    # # To fix Error: experimental NIX feature 'nix-command' is disabled
-    # extraOptions = ''
-    #   experimental-features = auto-allocate-uids
-    # '';
+    # To fix Error: experimental NIX feature 'nix-command' is disabled
+    extraOptions = ''
+      experimental-features = auto-allocate-uids
+    '';
+
+    experimental-features = [
+      # Might be required in ISO
+      "nix-command"
+      "flakes"
+      "repl-flake"
+      "auto-allocate-uids"
+      "cgroups"
+    ];
+    extra-experimental-features = [
+      "auto-allocate-uids"
+      "cgroups"
+    ];
+    auto-allocate-uids = true;
+    use-cgroups = true;
 
     settings = {
       default-flake = "flake:nixpkgs";
       environment = [ "SSH_AUTH_SOCK" ];
-
-      experimental-features = [
-        # Might be required in ISO
-        "nix-command"
-        "flakes"
-        "repl-flake"
-      ];
-      # extra-experimental-features = [
-      #   "auto-allocate-uids"
-      #   "cgroups"
-      # ];
-      # auto-allocate-uids = true;
-      # use-cgroups = true;
     };
 
     # buildMachines = [

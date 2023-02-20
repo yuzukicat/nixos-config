@@ -251,25 +251,23 @@
     # To fix Error: experimental NIX feature 'nix-command' is disabled
     extraOptions = ''
       experimental-features = auto-allocate-uids
+      auto-allocate-uids = true
     '';
-
-    experimental-features = [
-      # Might be required in ISO
-      "nix-command"
-      "flakes"
-      "repl-flake"
-      "auto-allocate-uids"
-      "cgroups"
-    ];
-    extra-experimental-features = [
-      "auto-allocate-uids"
-      "cgroups"
-    ];
-
 
     settings = {
       default-flake = "flake:nixpkgs";
       environment = [ "SSH_AUTH_SOCK" ];
+
+      experimental-features = [
+        # Might be required in ISO
+        "nix-command"
+        "flakes"
+        "repl-flake"
+      ];
+      extra-experimental-features = [
+        "auto-allocate-uids"
+        "cgroups"
+      ];
       auto-allocate-uids = true;
       use-cgroups = true;
     };

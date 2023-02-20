@@ -248,6 +248,11 @@
   nix = {
     package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
 
+    # To fix Error: experimental NIX feature 'nix-command' is disabled
+    extraOptions = ''
+      experimental-features = auto-allocate-uids
+    '';
+
     settings = {
       default-flake = "flake:nixpkgs";
       environment = [ "SSH_AUTH_SOCK" ];

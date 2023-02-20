@@ -292,7 +292,7 @@
   programs.adb.enable = true;
   # adbusers usergroup Refered from ../invar/configuration.nix
   # Question: Can it fix the bus error info on boot??
-  users.groups."adbusers".members = [ config.users.users.nixos.name ];
+  users.groups."adbusers".members = [ config.users.users.oxa.name ];
 
   programs.steam = {
     enable = true;

@@ -265,12 +265,13 @@
       "auto-allocate-uids"
       "cgroups"
     ];
-    auto-allocate-uids = true;
-    use-cgroups = true;
+
 
     settings = {
       default-flake = "flake:nixpkgs";
       environment = [ "SSH_AUTH_SOCK" ];
+      auto-allocate-uids = true;
+      use-cgroups = true;
     };
 
     # buildMachines = [

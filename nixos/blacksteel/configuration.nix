@@ -147,7 +147,7 @@
       isNormalUser = true;
       shell = pkgs.zsh;
       passwordFile = config.sops.secrets.passwd.path;
-      # uid = 1000;
+      uid = 1000;
       group = config.users.groups.oxa.name;
       extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" ];
     };
@@ -257,12 +257,10 @@
         "nix-command"
         "flakes"
         "repl-flake"
-      ];
-      extra-experimental-features = [
-        # "auto-allocate-uids"
+        "auto-allocate-uids"
         "cgroups"
       ];
-      # auto-allocate-uids = true;
+      auto-allocate-uids = true;
       use-cgroups = true;
     };
 

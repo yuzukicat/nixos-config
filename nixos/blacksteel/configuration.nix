@@ -259,10 +259,10 @@
         "repl-flake"
       ];
       extra-experimental-features = [
-        "auto-allocate-uids"
+        # "auto-allocate-uids"
         "cgroups"
       ];
-      # auto-allocate-uids = true;
+      auto-allocate-uids = true;
       use-cgroups = true;
     };
 

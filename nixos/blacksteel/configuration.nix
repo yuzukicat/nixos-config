@@ -263,8 +263,13 @@
         "nix-command"
         "flakes"
         "repl-flake"
+        "auto-allocate-uids"
+        "cgroups"
       ];
       extra-experimental-features = [
+        "nix-command"
+        "flakes"
+        "repl-flake"
         "auto-allocate-uids"
         "cgroups"
       ];

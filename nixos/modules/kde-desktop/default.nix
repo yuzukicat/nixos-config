@@ -36,9 +36,9 @@
 
   security.pam.services.sddm.enableKwallet = true;
 
-  networking.networkmanager = {
-    enable = true;
-    wifi.macAddress = "random";
-    ethernet.macAddress = "random";
-  };
+  # networking.networkmanager = {
+  #   enable = true;
+  #   wifi.macAddress = "random";
+  #   ethernet.macAddress = "random";
+  # };
 }

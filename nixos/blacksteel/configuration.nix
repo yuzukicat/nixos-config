@@ -249,10 +249,10 @@
     package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
 
     # To fix Error: experimental NIX feature 'nix-command' is disabled
-    extraOptions = ''
-      experimental-features = auto-allocate-uids
-      auto-allocate-uids = true
-    '';
+    # extraOptions = ''
+    #   experimental-features = auto-allocate-uids
+    #   auto-allocate-uids = true
+    # '';
 
     settings = {
       default-flake = "flake:nixpkgs";

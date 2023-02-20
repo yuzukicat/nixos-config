@@ -262,7 +262,7 @@
         # "auto-allocate-uids"
         "cgroups"
       ];
-      auto-allocate-uids = true;
+      # auto-allocate-uids = true;
       use-cgroups = true;
     };
 

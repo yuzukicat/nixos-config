@@ -22,7 +22,7 @@
     # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/installer/cd-dvd/iso-image.nix
     # [Segmentation fault when building ISO image with nixFlakes](https://github.com/NixOS/nix/issues/4246)
     # GC_DONT_GC=1 nix build ...
-    isoImage.includeSystemBuildDependencies = true;
+    includeSystemBuildDependencies = true;
   };
 
   nixpkgs.config.allowUnfree = true;

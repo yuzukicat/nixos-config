@@ -17,6 +17,12 @@
     volumeID = "NIXOXA";
     # Worse compression but way faster.
     squashfsCompression = "zstd -Xcompression-level 6";
+    # Set this option to include all the needed sources etc in the image. It significantly increases image size. Use that when you want to be able to keep all the sources needed to build your
+    # system or when you are going to install the system on a computer with slow or non-existent network connection.
+    # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/installer/cd-dvd/iso-image.nix
+    # [Segmentation fault when building ISO image with nixFlakes](https://github.com/NixOS/nix/issues/4246)
+    # GC_DONT_GC=1 nix build ...
+    isoImage.includeSystemBuildDependencies = true;
   };
 
   nixpkgs.config.allowUnfree = true;

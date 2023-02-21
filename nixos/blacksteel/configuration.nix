@@ -59,11 +59,11 @@
     # For hibernate-resume.
     # `sudo btrfs inspect-internal map-swapfile /var/swap/resume --resume-offset`
     # => 38868224
-    resumeDevice = "/dev/disk/by-uuid/fbfe849d-2d2f-415f-88d3-65ded870e46b";
-    kernelParams = [
-      "resume_offset=38868224"
-      "intel_pstate=passive"
-    ];
+    # resumeDevice = "/dev/disk/by-uuid/fbfe849d-2d2f-415f-88d3-65ded870e46b";
+    # kernelParams = [
+    #   "resume_offset=38868224"
+    #   "intel_pstate=passive"
+    # ];
 
     loader = {
       systemd-boot = {
@@ -96,7 +96,10 @@
   };
 
   swapDevices = [
-    { device = "/var/swap/resume"; }
+    {
+      device = "/var/swapfile";
+      size = 32 * 1024; # 16G
+    }
   ];
 
   # Hardware.
@@ -160,6 +163,17 @@
 
   # Services.
 
+  # AMD Ryzen 5950x
+  systemd.services.nix-daemon.serviceConfig = {
+    CPUQuota = "3000%";
+    CPUWeight = 50;
+
+    MemoryMax = "26G";
+    MemoryHigh = "24G";
+    MemorySwapMax = "32G";
+    IOWeight = 50;
+  };
+
   # Moved to services code block
   # KDE pulls in pipewire via xdg-desktop-portal anyways.
   services.pipewire = {
@@ -205,11 +219,13 @@
       #   PermitRootLogin = "yes";
       # };
     };
+    # If you have a ssd, don't forget to enable fstrim
     fstrim = {
       enable = true;
       interval = "Wed,Sat 02:00";
     };
     timesyncd.enable = true;
+    # Avoid Linux locking up in low memory situations using earlyoom
     earlyoom = {
       enable = true;
       # earlyoom configration Refered from ../invar/configuration.nix
@@ -263,13 +279,8 @@
         "nix-command"
         "flakes"
         "repl-flake"
-        "auto-allocate-uids"
-        "cgroups"
       ];
       extra-experimental-features = [
-        "nix-command"
-        "flakes"
-        "repl-flake"
         "auto-allocate-uids"
         "cgroups"
       ];

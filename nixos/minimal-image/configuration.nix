@@ -26,9 +26,6 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.makeDiskImage = {
-    additionalSpace = "4096M";
-  };
 
   nixpkgs.config.allowUnfreePredicate = drv:
     lib.elem (lib.getName drv) [

@@ -10,6 +10,7 @@
     ../modules/nix-common.nix
     ../modules/nix-registry.nix
     ../modules/nix-binary-cache-mirror.nix
+    ../modules/make-disk-image.nix
   ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.blacksteel);
 
   isoImage = {

@@ -10,7 +10,6 @@
     ../modules/nix-common.nix
     ../modules/nix-registry.nix
     ../modules/nix-binary-cache-mirror.nix
-    ../modules/make-disk-image.nix
   ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.blacksteel);
 
   isoImage = {
@@ -27,6 +26,9 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.makeDiskImage = {
+    additionalSpace = "4096M";
+  };
 
   nixpkgs.config.allowUnfreePredicate = drv:
     lib.elem (lib.getName drv) [

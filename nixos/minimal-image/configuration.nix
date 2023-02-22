@@ -143,7 +143,7 @@
     extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" ];
   };
   users.groups."nixos".gid = 1000;
-  home-manager.users."nixos" = import ../../home/blacksteel.nix;
+  # home-manager.users."nixos" = import ../../home/blacksteel.nix;
 
   # Services.
 

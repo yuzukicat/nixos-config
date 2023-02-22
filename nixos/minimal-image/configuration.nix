@@ -2,8 +2,6 @@
 
 {
   imports = [
-    ../blacksteel/vm.nix
-
     (modulesPath + "/installer/cd-dvd/installation-cd-graphical-plasma5.nix")
     ../modules/console-env.nix
     ../modules/kde-desktop
@@ -62,12 +60,6 @@
       "net.ipv4.tcp_congestion_control" = "bbr";
     };
 
-    resumeDevice = "/dev/disk/by-uuid/fbfe849d-2d2f-415f-88d3-65ded870e46b";
-    kernelParams = [
-      "resume_offset=38868224"
-      # "intel_pstate=passive"
-    ];
-
     loader = {
       systemd-boot.enable = true;
       systemd-boot.consoleMode = "max"; # Don't clip boot menu.
@@ -75,8 +67,6 @@
       timeout = lib.mkForce 1;
     };
 
-    # # For dev.
-    # binfmt.emulatedSystems = [ "riscv64-linux" ];
   };
 
   fileSystems = {
@@ -91,10 +81,6 @@
       fsType = "vfat";
     };
   };
-
-  swapDevices = [
-    { device = "/var/swap/resume"; }
-  ];
 
   # Hardware.
 
@@ -140,10 +126,10 @@
     # passwordFile = config.sops.secrets.passwd.path;
     uid = 1000;
     group = config.users.groups.nixos.name;
-    extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" ];
+    extraGroups = [ "wheel" "kvm" "adbusers" ];
   };
   users.groups."nixos".gid = 1000;
-  home-manager.users."nixos" = import ../../home/blacksteel.nix;
+  # home-manager.users."nixos" = import ../../home/blacksteel.nix;
 
   # Services.
 
@@ -195,20 +181,9 @@
     enableNotifications = true;
   };
 
-  services.transmission = {
-    enable = true;
-    home = "/home/transmission";
-  };
-  users.groups."transmission".members = [ config.users.users.nixos.name ];
-
   systemd.packages = [ my.pkgs.keystat ];
   # Workaround: https://github.com/NixOS/nixpkgs/issues/81138
   systemd.services.keystat.wantedBy = [ "multi-user.target" ];
-
-  virtualisation.libvirtd = {
-    enable = true;
-    onBoot = "ignore";
-  };
 
   nix = {
     package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
@@ -250,11 +225,6 @@
     dedicatedServer.openFirewall = true;
   };
 
-  programs.wireshark = {
-    enable = true;
-    package = pkgs.wireshark-qt;
-  };
-
   environment.etc = {
     "machine-id".source = "/var/machine-id";
     "ssh/ssh_host_rsa_key".source = "/var/ssh/ssh_host_rsa_key";
@@ -265,7 +235,7 @@
 
   environment.systemPackages = with pkgs; [
     neofetch
-    radeontop
+    # radeontop
     solaar # Logitech devices control.
     ltunify
     virt-manager

@@ -39,11 +39,11 @@
       availableKernelModules = [ "xhci_pci" "ahci" "usbhid" ];
       kernelModules = [ "amd_pstate" "nvme" ];
 
-      # luks.devices."luksroot" = {
-      #   device = "/";
-      #   allowDiscards = true;
-      #   crypttabExtraOpts = [ "fido2-device=auto" ];
-      # };
+      luks.devices."luksroot" = {
+        device = "/";
+        allowDiscards = true;
+        crypttabExtraOpts = [ "fido2-device=auto" ];
+      };
     };
 
     # For MGLRU in Linux 6.1

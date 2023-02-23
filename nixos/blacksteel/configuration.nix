@@ -82,18 +82,18 @@
   };
 
   # Questions.
-  fileSystems = {
-    "/" = {
-      device = "/mnt";
-      fsType = "btrfs";
-      options = [ "relatime" "compress=zstd:1" "subvol=@" ];
-    };
+  # fileSystems = {
+  #   "/" = {
+  #     device = "/mnt";
+  #     fsType = "btrfs";
+  #     options = [ "relatime" "compress=zstd:1" "subvol=@" ];
+  #   };
 
-    "/boot" = {
-      device = "/mnt/boot";
-      fsType = "vfat";
-    };
-  };
+  #   "/boot" = {
+  #     device = "/mnt/boot";
+  #     fsType = "vfat";
+  #   };
+  # };
 
   swapDevices = [
     {

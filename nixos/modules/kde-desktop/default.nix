@@ -23,7 +23,7 @@
 
     displayManager = {
       sddm.enable = true;
-      # defaultSession = "plasmawayland";
+      defaultSession = "plasmawayland";
     };
 
     desktopManager.plasma5 = {

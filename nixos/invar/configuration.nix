@@ -111,14 +111,14 @@
 
   # Users.
 
-  sops.secrets.passwd.neededForUsers = true;
+  sops.secrets.passwd.neededForUsers = false;
   programs.zsh.enable = true; # As shell.
-  users.mutableUsers = false;
+  users.mutableUsers = true;
 
   users.users."oxa" = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    passwordFile = config.sops.secrets.passwd.path;
+    # passwordFile = config.sops.secrets.passwd.path;
     uid = 1000;
     group = config.users.groups.oxa.name;
     extraGroups = [ "wheel" "libvirtd" ];

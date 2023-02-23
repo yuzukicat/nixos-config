@@ -13,6 +13,8 @@
     ../modules/nix-registry.nix
   ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.blacksteel);
 
+
+  sops.age.sshKeyPaths = lib.mkForce [ "/var/ssh/ssh_host_ed25519_key" ];
   # Install a proprietary or unfree package
   nixpkgs.config.allowUnfree = true;
 

@@ -82,18 +82,20 @@
   };
 
   # Questions.
-  # fileSystems = {
-  #   "/" = {
-  #     device = "/mnt";
-  #     fsType = "btrfs";
-  #     options = [ "relatime" "compress=zstd:1" "subvol=@" ];
-  #   };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/7219f4b1-a9d1-42a4-bfc9-386fa919d44b";
+      fsType = "btrfs";
+      # zstd:1  W: ~510MiB/s
+      # zstd:3  W: ~330MiB/s
+      options = [ "relatime" "compress=zstd:1" "subvol=@" ];
+    };
 
-  #   "/boot" = {
-  #     device = "/mnt/boot";
-  #     fsType = "vfat";
-  #   };
-  # };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/0CEB-39A8";
+      fsType = "vfat";
+    };
+  };
 
   swapDevices = [
     {

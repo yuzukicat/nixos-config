@@ -129,7 +129,7 @@
     extraGroups = [ "wheel" "kvm" "adbusers" ];
   };
   users.groups."nixos".gid = 1000;
-  # home-manager.users."nixos" = import ../../home/blacksteel.nix;
+  home-manager.users."nixos" = import ../../home/blacksteel.nix;
 
   # Services.
 
@@ -243,7 +243,7 @@
 
   # Expend the disk size
   system.build.image = import <nixpkgs/nixos/lib/make-disk-image.nix> {
-    diskSize = "29075M";
+    diskSize = 1024 * 64;
     installBootLoader = true;
     partitionTableType = "efi";
     inherit config lib pkgs;

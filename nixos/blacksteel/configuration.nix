@@ -39,11 +39,11 @@
       availableKernelModules = [ "xhci_pci" "ahci" "usbhid" ];
       kernelModules = [ "amd_pstate" "nvme" ];
 
-      luks.devices."luksroot" = {
-        device = "/dev/disk/by-uuid/8e445c05-75cc-45c7-bebd-46a73cf50a74";
-        allowDiscards = true;
-        crypttabExtraOpts = [ "fido2-device=auto" ];
-      };
+      # luks.devices."luksroot" = {
+      #   device = "/";
+      #   allowDiscards = true;
+      #   crypttabExtraOpts = [ "fido2-device=auto" ];
+      # };
     };
 
     # For MGLRU in Linux 6.1
@@ -84,13 +84,13 @@
   # Questions.
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/fbfe849d-2d2f-415f-88d3-65ded870e46b";
+      device = "/mnt";
       fsType = "btrfs";
       options = [ "relatime" "compress=zstd:1" "subvol=@" ];
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/9C91-4441";
+      device = "/mnt/boot";
       fsType = "vfat";
     };
   };
@@ -142,14 +142,14 @@
 
   # Users.
 
-  sops.secrets.passwd.neededForUsers = true;
+  # sops.secrets.passwd.neededForUsers = true;
   programs.zsh.enable = true; # As shell.
   users = {
     mutableUsers = false;
     users."oxa" = {
       isNormalUser = true;
       shell = pkgs.zsh;
-      passwordFile = config.sops.secrets.passwd.path;
+      # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
       group = config.users.groups.oxa.name;
       extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" ];
@@ -304,14 +304,14 @@
   # Global ssh settings. Also for remote builders.
   programs.ssh = {
     knownHosts = my.ssh.knownHosts;
-    extraConfig = ''
-      Include ${config.sops.secrets.ssh-hosts.path}
-    '';
+    # extraConfig = ''
+    #   Include ${config.sops.secrets.ssh-hosts.path}
+    # '';
   };
-  sops.secrets.ssh-hosts = {
-    sopsFile = ../../secrets/ssh.yaml;
-    mode = "0444";
-  };
+  # sops.secrets.ssh-hosts = {
+  #   sopsFile = ../../secrets/ssh.yaml;
+  #   mode = "0444";
+  # };
 
   programs.adb.enable = true;
   # adbusers usergroup Refered from ../invar/configuration.nix
@@ -332,10 +332,10 @@
   # environment.etc Refered from ../invar/configuration.nix
   environment.etc = {
     "machine-id".source = "/var/machine-id";
-    "ssh/ssh_host_rsa_key".source = "/var/ssh/ssh_host_rsa_key";
-    "ssh/ssh_host_rsa_key.pub".source = "/var/ssh/ssh_host_rsa_key.pub";
-    "ssh/ssh_host_ed25519_key".source = "/var/ssh/ssh_host_ed25519_key";
-    "ssh/ssh_host_ed25519_key.pub".source = "/var/ssh/ssh_host_ed25519_key.pub";
+    # "ssh/ssh_host_rsa_key".source = "/var/ssh/ssh_host_rsa_key";
+    # "ssh/ssh_host_rsa_key.pub".source = "/var/ssh/ssh_host_rsa_key.pub";
+    # "ssh/ssh_host_ed25519_key".source = "/var/ssh/ssh_host_ed25519_key";
+    # "ssh/ssh_host_ed25519_key.pub".source = "/var/ssh/ssh_host_ed25519_key.pub";
   };
 
   environment.systemPackages = with pkgs; [

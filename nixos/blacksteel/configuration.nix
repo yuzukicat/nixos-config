@@ -40,7 +40,7 @@
       kernelModules = [ "amd_pstate" "nvme" ];
 
       luks.devices."luksroot" = {
-        device = "/";
+        device = "/mnt";
         allowDiscards = true;
         crypttabExtraOpts = [ "fido2-device=auto" ];
       };

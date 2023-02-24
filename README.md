@@ -47,6 +47,8 @@ The correct command should be: e.g.
 nixos-install --root /mnt --flake .#example --option extra-experimental-features auto-allocate-uids --option extra-experimental-features cgroups
 ```
 
+
+https://github.com/NixOS/nixpkgs/issues/157989
 ```
 tmp="$(mktemp -d /mnt/tmp.XXXXXXXXXX)"
 export TMPDIR="${tmp#/mnt}"

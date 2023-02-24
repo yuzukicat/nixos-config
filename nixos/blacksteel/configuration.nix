@@ -85,7 +85,7 @@
   # Questions.
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-label/root";
+      device = "/mnt";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
@@ -93,12 +93,12 @@
     };
 
     "/boot" = {
-      device = "/dev/disk/by-label/EFIBOOT";
+      device = "/mnt/boot";
       fsType = "vfat";
     };
 
     "/home" = {
-      device = "/dev/disk/by-label/home";
+      device = "/mnt/home";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s

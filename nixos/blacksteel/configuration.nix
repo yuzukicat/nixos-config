@@ -33,10 +33,19 @@
   # Boot.
 
   boot = {
+    # disable initrd
     initrd = {
       systemd.enable = true;
-      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-    };
+
+    #   availableKernelModules = [ "xhci_pci" "ahci" "usbhid" ];
+    #   kernelModules = [ "amd_pstate" "nvme" ];
+
+    #   luks.devices."invar-luks" = {
+    #     device = "/dev/disk/by-uuid/aa50ce23-65c4-4b9a-8484-641a06a9d08c";
+    #     allowDiscards = true;
+    #     crypttabExtraOpts = [ "fido2-device=auto" ];
+    #   };
+    # };
 
     # For MGLRU in Linux 6.1
     # https://github.com/NixOS/nixpkgs/pull/205269
@@ -76,7 +85,7 @@
   # Questions.
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/69e884b0-1762-436d-8d8d-50424b080d3d";
+      device = "/dev/disk/by-uuid/14ddd969-99e9-4b5a-999c-99741a47344b";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
@@ -84,12 +93,12 @@
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/B3AC-266F";
+      device = "/dev/disk/by-uuid/E72C-637C";
       fsType = "vfat";
     };
 
     "/home" = {
-      device = "/dev/disk/by-uuid/f63ec996-5a17-41d1-88fb-c30907281c6b";
+      device = "/dev/disk/by-uuid/7fd51483-4c26-4462-9dc9-a3bfbb60751d";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s

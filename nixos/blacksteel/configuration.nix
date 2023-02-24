@@ -161,14 +161,17 @@
     users."oxa" = {
       isNormalUser = true;
       shell = pkgs.zsh;
-      password = "oxa";
+      # Allow the graphical user to login without password
+      initialHashedPassword = "";
+      # password = "oxa";
       # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
       group = config.users.groups.oxa.name;
-      extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" ];
+      extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" "video"];
     };
     groups."oxa".gid = 1000;
-    allowNoPasswordLogin = true;
+    # Allow the user to log in as root without a password.
+    users.root.initialHashedPassword = "";
   };
   home-manager.users."oxa" =
     import ../../home/blacksteel.nix;

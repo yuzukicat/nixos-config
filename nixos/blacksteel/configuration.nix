@@ -131,7 +131,7 @@
 
   # Users.
 
-  sops.secrets.passwd.neededForUsers = true;
+  # sops.secrets.passwd.neededForUsers = true;
   programs.zsh.enable = true; # As shell.
   users = {
     mutableUsers = false;

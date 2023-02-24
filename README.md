@@ -46,3 +46,9 @@ The correct command should be: e.g.
 ```
 nixos-install --root /mnt --flake .#example --option extra-experimental-features auto-allocate-uids --option extra-experimental-features cgroups
 ```
+
+```
+tmp="$(mktemp -d /mnt/tmp.XXXXXXXXXX)"
+export TMPDIR="${tmp#/mnt}"
+echo "${TMPDIR}" # /tmp.torvrvFbQ5
+```

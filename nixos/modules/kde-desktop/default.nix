@@ -23,8 +23,7 @@
 
     displayManager = {
       sddm.enable = true;
-      defaultSession = "plasmawayland";
-      autoLogin.user = "oxa";
+      # defaultSession = "plasmawayland";
     };
 
     desktopManager.plasma5 = {

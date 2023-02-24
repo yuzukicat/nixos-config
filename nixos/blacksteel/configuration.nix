@@ -152,6 +152,7 @@
       extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" ];
     };
     groups."oxa".gid = 1000;
+    allowNoPasswordLogin = true;
   };
   home-manager.users."oxa" =
     import ../../home/blacksteel.nix;

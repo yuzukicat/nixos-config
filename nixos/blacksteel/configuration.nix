@@ -33,18 +33,10 @@
   # Boot.
 
   boot = {
-    # initrd = {
-    #   systemd.enable = true;
-
-    #   availableKernelModules = [ "xhci_pci" "ahci" "usbhid" ];
-    #   kernelModules = [ "amd_pstate" "nvme" ];
-
-    #   luks.devices."luksroot" = {
-    #     device = "/mnt";
-    #     allowDiscards = true;
-    #     crypttabExtraOpts = [ "fido2-device=auto" ];
-    #   };
-    # };
+    initrd = {
+      # systemd.enable = true;
+      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+    };
 
     # For MGLRU in Linux 6.1
     # https://github.com/NixOS/nixpkgs/pull/205269
@@ -85,24 +77,19 @@
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/root";
-      fsType = "ext4";
+      fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
       # options = [ "relatime" "compress=zstd:1" "subvol=@" ];
     };
 
     "/boot" = {
-      device = "/dev/disk/by-label/EFIBOOT";
+      device = "/dev/disk/by-uuid/C7F3-3CFA";
       fsType = "vfat";
     };
   };
 
-  swapDevices = [
-    {
-      device = "/var/swapfile";
-      size = 32 * 1024; # 16G
-    }
-  ];
+  swapDevices = [ ];
 
   # Hardware.
 

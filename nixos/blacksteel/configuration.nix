@@ -84,7 +84,7 @@
   # Questions.
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/7219f4b1-a9d1-42a4-bfc9-386fa919d44b";
+      device = "/dev/nvme0n1p2";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
@@ -92,7 +92,7 @@
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/0CEB-39A8";
+      device = "/dev/nvme0n1p1";
       fsType = "vfat";
     };
   };

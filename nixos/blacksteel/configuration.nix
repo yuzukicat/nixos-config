@@ -157,7 +157,7 @@
   # sops.secrets.passwd.neededForUsers = true;
   programs.zsh.enable = true; # As shell.
   users = {
-    mutableUsers = false;
+    mutableUsers = true;
     users."oxa" = {
       isNormalUser = true;
       shell = pkgs.zsh;

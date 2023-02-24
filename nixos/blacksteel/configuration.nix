@@ -82,36 +82,37 @@
     };
   };
 
+  # Use nixos-generate-config --root /mnt then copy and paste
   # Questions.
   fileSystems = {
     "/" = {
-      device = "/mnt";
+      device = "/dev/disk/by-uuid/";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
-      options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
+      # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
     };
 
     "/boot" = {
-      device = "/mnt/boot";
+      device = "/dev/disk/by-uuid/";
       fsType = "vfat";
     };
 
     "/home" = {
-      device = "/mnt/home";
+      device = "/dev/disk/by-uuid/";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
-      options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
+      # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
     };
   };
 
-  swapDevices = [
-    {
-      device = "/var/swapfile";
-      size = 32 * 1024; # 32G
-    }
-  ];
+  # swapDevices = [
+  #   {
+  #     device = "/var/swapfile";
+  #     size = 32 * 1024; # 32G
+  #   }
+  # ];
 
   # Hardware.
 
@@ -160,6 +161,7 @@
     users."oxa" = {
       isNormalUser = true;
       shell = pkgs.zsh;
+      passwd = "oxa";
       # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
       group = config.users.groups.oxa.name;

@@ -86,7 +86,7 @@
   # Questions.
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/";
+      device = "/dev/disk/by-uuid/c131f445-f461-4b92-8ae8-7b47b920849b";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
@@ -94,12 +94,12 @@
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/";
+      device = "/dev/disk/by-uuid/B453-45A3";
       fsType = "vfat";
     };
 
     "/home" = {
-      device = "/dev/disk/by-uuid/";
+      device = "/dev/disk/by-uuid/a5727f63-a105-4749-9ef2-44fbdad6f783";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
@@ -157,10 +157,11 @@
   # sops.secrets.passwd.neededForUsers = true;
   programs.zsh.enable = true; # As shell.
   users = {
-    mutableUsers = true;
+    mutableUsers = false;
     users."oxa" = {
       isNormalUser = true;
       shell = pkgs.zsh;
+      password = "oxa";
       # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
       group = config.users.groups.oxa.name;

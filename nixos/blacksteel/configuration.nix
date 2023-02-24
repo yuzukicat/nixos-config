@@ -84,15 +84,15 @@
   # Questions.
   fileSystems = {
     "/" = {
-      device = "/dev/nvme0n1p2";
-      fsType = "btrfs";
+      device = "/dev/disk/by-label/root";
+      fsType = "ext4";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
-      options = [ "relatime" "compress=zstd:1" "subvol=@" ];
+      # options = [ "relatime" "compress=zstd:1" "subvol=@" ];
     };
 
     "/boot" = {
-      device = "/dev/nvme0n1p1";
+      device = "/dev/disk/by-label/EFIBOOT";
       fsType = "vfat";
     };
   };

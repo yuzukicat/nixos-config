@@ -34,7 +34,7 @@
 
   boot = {
     initrd = {
-      # systemd.enable = true;
+      systemd.enable = true;
       availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
     };
 
@@ -75,16 +75,16 @@
 
   # Questions.
   fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/uuid";
+    "/mnt-root" = {
+      device = "/dev/disk/by-uuid/24d1c4cb-c559-98de-3148b12af22c";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
-      options = [ "relatime" "compress=zstd:1" "subvol=@" ];
+      options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/C7F3-3CFA";
+      device = "/dev/disk/by-uuid/A98B-C105";
       fsType = "vfat";
     };
   };

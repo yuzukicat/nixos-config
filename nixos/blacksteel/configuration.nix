@@ -161,7 +161,6 @@
     users."oxa" = {
       isNormalUser = true;
       shell = pkgs.zsh;
-      passwd = "oxa";
       # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
       group = config.users.groups.oxa.name;

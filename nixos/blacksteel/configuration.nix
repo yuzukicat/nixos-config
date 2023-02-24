@@ -34,8 +34,8 @@
 
   boot = {
     # disable initrd
-    initrd = {
-      systemd.enable = true;
+    # initrd = {
+    #   systemd.enable = true;
 
     #   availableKernelModules = [ "xhci_pci" "ahci" "usbhid" ];
     #   kernelModules = [ "amd_pstate" "nvme" ];

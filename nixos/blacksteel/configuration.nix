@@ -146,7 +146,7 @@
     users."oxa" = {
       isNormalUser = true;
       shell = pkgs.zsh;
-      passwordFile = config.sops.secrets.passwd.path;
+      # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
       group = config.users.groups.oxa.name;
       extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" ];

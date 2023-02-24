@@ -80,7 +80,7 @@
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
-      # options = [ "relatime" "compress=zstd:1" "subvol=@" ];
+      options = [ "relatime" "compress=zstd:1" "subvol=@" ];
     };
 
     "/boot" = {

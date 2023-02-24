@@ -44,5 +44,5 @@ GC_DONT_GC=1 nix build ...
 The correct command should be: e.g.   
 
 ```
-nixos-install --flake .#example --option extra-experimental-features auto-allocate-uids --option extra-experimental-features cgroups
+nixos-install --root /mnt --flake .#example --option extra-experimental-features auto-allocate-uids --option extra-experimental-features cgroups
 ```

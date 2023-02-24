@@ -34,18 +34,18 @@
 
   boot = {
     # disable initrd
-    # initrd = {
+    initrd = {
     #   systemd.enable = true;
 
-    #   availableKernelModules = [ "xhci_pci" "ahci" "usbhid" ];
-    #   kernelModules = [ "amd_pstate" "nvme" ];
+      availableKernelModules = [ "xhci_pci" "ahci" "usbhid" ];
+      kernelModules = [ "amd_pstate" "nvme" ];
 
     #   luks.devices."invar-luks" = {
     #     device = "/dev/disk/by-uuid/aa50ce23-65c4-4b9a-8484-641a06a9d08c";
     #     allowDiscards = true;
     #     crypttabExtraOpts = [ "fido2-device=auto" ];
     #   };
-    # };
+    };
 
     # For MGLRU in Linux 6.1
     # https://github.com/NixOS/nixpkgs/pull/205269

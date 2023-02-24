@@ -87,6 +87,14 @@
       device = "/dev/disk/by-uuid/A98B-C105";
       fsType = "vfat";
     };
+
+    "/home" = {
+      device = "/dev/disk/by-uuid/24d1c4cb-c559-98de-3148b12af22c";
+      fsType = "btrfs";
+      # zstd:1  W: ~510MiB/s
+      # zstd:3  W: ~330MiB/s
+      options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
+    };
   };
 
   swapDevices = [ ];

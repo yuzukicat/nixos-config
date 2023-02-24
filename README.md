@@ -47,10 +47,12 @@ The correct command should be: e.g.
 nixos-install --root /mnt --flake .#blacksteel --option extra-experimental-features auto-allocate-uids --option extra-experimental-features cgroups
 ```
 
+## Error: System falls in to emergency mode due initrd-switch-root.service entered failed state (when you initially install NixOS from liveCD USB and boot)   
 
-https://github.com/NixOS/nixpkgs/issues/157989
 ```
-tmp="$(mktemp -d /mnt/tmp.XXXXXXXXXX)"
-export TMPDIR="${tmp#/mnt}"
-echo "${TMPDIR}" # /tmp.torvrvFbQ5
+export TMPDIR=/tmp
 ```
+
+Before nixos-install   
+
+[Nix | Issue #4246](https://github.com/NixOS/nixpkgs/issues/157989)   

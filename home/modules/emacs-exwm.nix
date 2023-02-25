@@ -134,13 +134,13 @@ rec {
   };
 
   # add the 2nd relevant xsession
-  home.file.".xsessions/exwm-plasma.xsession" = {
-    executable = true;
-    # text = builtins.replaceStrings
-    #   [ xsession.windowManager.command ]
-    #   [ "env KDEWM=${pkgs.writeShellScript "exwm-plasma-integration" "${emacsPackageWithPkgs}/bin/emacsclient -c -e '(exwm-init)'"} startplasma-x11" ]
-    #   (config.home.file.${xsession.scriptPath}.text);
-  };
+  # home.file.".xsessions/exwm-plasma.xsession" = {
+  #   executable = true;
+  #   text = builtins.replaceStrings
+  #     [ xsession.windowManager.command ]
+  #     [ "env KDEWM=${pkgs.writeShellScript "exwm-plasma-integration" "${emacsPackageWithPkgs}/bin/emacsclient -c -e '(exwm-init)'"} startplasma-x11" ]
+  #     (config.home.file.${xsession.scriptPath}.text);
+  # };
 
   home.sessionVariables = exwmSessionVariables // {
     _JAVA_AWT_WM_NONREPARENTING = "1";

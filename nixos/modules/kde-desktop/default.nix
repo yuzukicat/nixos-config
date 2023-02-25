@@ -26,7 +26,7 @@
       # defaultSession = "plasmawayland";
       autoLogin = {
         enable = true;
-        user = "oxa";
+        user = "yuzuki";
       };
     };
 
@@ -51,12 +51,12 @@
     # Comes from documentation.nix when xserver and nixos.enable are true.
     # manualDesktopFile = "/run/current-system/sw/share/applications/nixos-manual.desktop";
 
-    homeDir = "/home/oxa/";
+    homeDir = "/home/yuzuki/";
     desktopDir = homeDir + "Desktop/";
 
   in ''
     mkdir -p ${desktopDir}
-    chown oxa ${homeDir} ${desktopDir}
+    chown yuzuki ${homeDir} ${desktopDir}
 
     ln -sfT ${pkgs.gparted}/share/applications/gparted.desktop ${desktopDir + "gparted.desktop"}
     ln -sfT ${pkgs.konsole}/share/applications/org.kde.konsole.desktop ${desktopDir + "org.kde.konsole.desktop"}

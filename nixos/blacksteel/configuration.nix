@@ -1,4 +1,4 @@
-# Forked from github.com/oxalica/nixos-config
+# Forked from github.com/yuzukilica/nixos-config
 # For the purpose of testing, to install nixos on clevo nh55vr workstation.
 { lib, config, pkgs, inputs, my, ... }:
 
@@ -157,25 +157,25 @@
   programs.zsh.enable = true; # As shell.
   users = {
     mutableUsers = false;
-    users."oxa" = {
+    users."yuzuki" = {
       isNormalUser = true;
       shell = pkgs.zsh;
       # Allow the graphical user to login without password
       initialHashedPassword = "";
-      # password = "oxa";
+      # password = "yuzuki";
       # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
-      group = config.users.groups.oxa.name;
+      group = config.users.groups.yuzuki.name;
       extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" "video"];
     };
-    groups."oxa".gid = 1000;
+    groups."yuzuki".gid = 1000;
     # Allow the user to log in as root without a password.
     users.root.initialHashedPassword = "";
   };
-  home-manager.users."oxa" =
+  home-manager.users."yuzuki" =
     import ../../home/blacksteel.nix;
   # Transmission user group
-  users.groups."transmission".members = [ config.users.users.oxa.name ];
+  users.groups."transmission".members = [ config.users.users.yuzuki.name ];
 
   # Services.
 
@@ -263,8 +263,8 @@
         snapshot_preserve_min = "6h";
         volume."/" = {
           snapshot_dir = ".snapshots";
-          subvolume."home/oxa".snapshot_preserve = "48h 7d";
-          subvolume."home/oxa/storage".snapshot_preserve = "48h 7d 4w";
+          subvolume."home/yuzuki".snapshot_preserve = "48h 7d";
+          subvolume."home/yuzuki/storage".snapshot_preserve = "48h 7d 4w";
         };
       };
     };
@@ -309,7 +309,7 @@
     #     hostName = "aluminum.lan.hexade.ca";
     #     maxJobs = 24;
     #     protocol = "ssh-ng";
-    #     sshUser = "oxa";
+    #     sshUser = "yuzuki";
     #     sshKey = "/etc/ssh/ssh_host_ed25519_key";
     #     system = "x86_64-linux";
     #     supportedFeatures = [ "kvm" "big-parallel" "nixos-test" "benchmark" ];
@@ -332,7 +332,7 @@
   programs.adb.enable = true;
   # adbusers usergroup Refered from ../invar/configuration.nix
   # Question: Can it fix the bus error info on boot??
-  users.groups."adbusers".members = [ config.users.users.oxa.name ];
+  users.groups."adbusers".members = [ config.users.users.yuzuki.name ];
 
   programs.steam = {
     enable = true;

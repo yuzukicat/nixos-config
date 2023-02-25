@@ -16,9 +16,10 @@
   # Install a proprietary or unfree package
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.config.permitInsecurePackages = [
-    qtwebkit-5.212.0
-  ];
+  nixpkgs.config.permitInsecurePackages = drv:
+    lib.elem (lib.getName drv) [
+      "qtwebkit-5.212.0-alpha4"
+    ];
 
   nixpkgs.config.allowUnfreePredicate = drv:
     lib.elem (lib.getName drv) [

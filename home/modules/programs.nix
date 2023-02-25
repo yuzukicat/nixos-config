@@ -38,7 +38,7 @@ in {
     hyfetch
 
     # internet:
-    aria2 element-desktop thunderbird vlc /*syncplay*/
+    aria2 element-desktop vlc /*syncplay*/
 
     # work:
     scribus gimp xournalpp krita calibre gwenview

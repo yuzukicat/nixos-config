@@ -14,7 +14,6 @@
     partition-manager.enable = true;
     kdeconnect.enable = true;
     dconf.enable = true;
-    home-manager.enable = true;
   };
 
   nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;

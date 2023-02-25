@@ -21,6 +21,9 @@
     libarchive zstd # Compression.
 
     my.pkgs.nixos-rebuild-shortcut
+
+    emacs wget home-manager
+    htop iotop iftop
   ];
 
   programs.less = {

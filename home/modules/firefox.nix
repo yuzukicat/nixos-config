@@ -43,10 +43,7 @@
         "browser.display.use_system_colors" = true;
 
         # Let our font-config choose final fonts.
-        "font.language.group" = "zh-CN";
-        "font.name.monospace.zh-CN" = "monospace";
-        "font.name.sans-serif.zh-CN" = "sans-serif";
-        "font.name.serif.zh-CN" = "serif";
+        # "font.language.group" = "zh-CN";
 
         # Hardware video decoding support.
         # See: https://wiki.archlinux.org/index.php/Firefox#Hardware_video_acceleration
@@ -62,6 +59,31 @@
 
         # Site isolation.
         "fission.autostart" = true;
+
+        # Configuration from https://github.com/sauricat/flakes.git/home/firefox.nix
+        "browser.startup.page" = 3; # Always resume the previous browser session.
+
+        "font.cjk_pref_fallback_order" = "ja,zh-cn,zh-hk,zh-tw";
+        
+        "font.name.monospace.zh-CN" = "Sarasa Mono SC";
+        "font.name.serif.zh-CN" = "Source Han Serif SC";
+        "font.name.sans-serif.zh-CN" = "Source Han Sans SC";
+        "font.name.cursive.zh-CN" = "AR PL UKai CN";
+
+        "font.name.monospace.zh-HK" = "Sarasa Mono HC";
+        "font.name.serif.zh-HK" = "Source Han Serif HC";
+        "font.name.sans-serif.zh-HK" = "Source Han Sans HC";
+        "font.name.cursive.zh-HK" = "AR PL UKai HK";
+
+        "font.name.monospace.zh-TW" = "Sarasa Mono TC";
+        "font.name.serif.zh-TW" = "Source Han Serif TC";
+        "font.name.sans-serif.zh-TW" = "Source Han Sans TC";
+        "font.name.cursive.zh-TW" = "AR PL UKai TW";
+
+        "font.name.monospace.ja" = "Sarasa Mono J";
+        "font.name.serif.ja" = "Source Han Serif";
+        "font.name.sans-serif.ja" = "Source Han Sans";
+        # "font.name.cursive.ja" = "";
       };
 
       # Hide tab

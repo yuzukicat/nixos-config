@@ -21,8 +21,12 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
+      # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
+      "application/pdf" = "org.kde.okular.desktop";
+      "image/*" = "org.kde.gwenview.desktop";
+      "video/*" = "vlc.desktop";
+      #
       "application/xhtml+xml" = "firefox.desktop";
-      "image/*" = "feh.desktop";
       "text/*" = "nvim.desktop";
       "text/html" = "firefox.desktop";
       "text/xml" = "firefox.desktop";

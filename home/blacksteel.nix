@@ -5,14 +5,17 @@
 
   imports = [
     ./modules/wayland-dpi.nix
+    ./modules/xdgify.nix
 
     ./modules/alacritty.nix
     ./modules/direnv.nix
     ./modules/firefox.nix
     ./modules/git.nix
     ./modules/gpg.nix
+    ./modules/helix
     ./modules/lf.nix
     ./modules/mail.nix
+    ./modules/mime-apps.nix
     ./modules/nvim
     ./modules/programs.nix
     ./modules/rime-fcitx.nix

@@ -7,12 +7,14 @@
     filelight
     plasma-browser-integration
     bismuth
+    kdeconnect-kde
   ];
 
   programs = {
     partition-manager.enable = true;
     kdeconnect.enable = true;
     dconf.enable = true;
+    home-manager.enable = true;
   };
 
   nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
@@ -52,11 +54,12 @@
     # manualDesktopFile = "/run/current-system/sw/share/applications/nixos-manual.desktop";
 
     homeDir = "/home/yuzuki/";
-    transmissionDir = "/home/transmission/";
+    transmissionDir = homeDir + "transmission/";
     desktopDir = homeDir + "Desktop/";
     storageDir = homeDir + "storage/";
 
   in ''
+    mkdir -p ${transmissionDir}
     mkdir -p ${desktopDir}
     mkdir -p ${storageDir}
     chown yuzuki ${homeDir} ${desktopDir} ${storageDir} ${transmissionDir}

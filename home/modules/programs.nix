@@ -20,7 +20,7 @@ in {
     sops # Sops
 
     # GUI
-    kolourpaint libreoffice mpv okular # Files
+    kolourpaint libreoffice okular # Files
     electrum electron-cash monero-gui # Cryptocurrency
     (prismlauncher.override { jdks = [ openjdk ]; }) /* steam <- enabled system-wide */ # Games
     tdesktop my.pkgs.nheko-fix # Messaging
@@ -31,6 +31,22 @@ in {
     gcc ghc myPython # Compiler & interpreters
     gdb # Debugger
     sqlite-interactive # sqlite
+
+    # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
+    # system:
+    trash-cli bc
+    hyfetch
+
+    # internet:
+    aria2 element-desktop thunderbird vlc /*syncplay*/
+
+    # work:
+    scribus gimp xournalpp krita calibre gwenview
+    pdftag ocrmypdf poppler_utils
+    goldendict zotero
+
+    # non-oss:
+    zoom-us obsidian
   ];
 
   programs.feh.enable = true;

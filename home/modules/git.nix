@@ -2,8 +2,6 @@
 {
   programs.git = {
     enable = true;
-    user.name = "yuzukicat";
-    user.email = "yuzuki.cat@kamisu66.com";
 
     ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*"]; # vim swap file & emacs
 

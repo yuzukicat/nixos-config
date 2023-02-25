@@ -1,5 +1,9 @@
 # To-dos:
 
+## You can use my ISO mirror (with system build dependencies included), burn the ISO mirror into an USB sticker, then install NixOS from LiveCD USB.
+
+[ISO Mirror]()
+
 # Suggestions when you want to build NixOS livecd ISO image on non-Nixos Linux distribuction, e.g. Arch Linux, using Nix Flake   
 
 1. Enable experimental-features.   

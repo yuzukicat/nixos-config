@@ -182,6 +182,6 @@ rec {
   # override mapping.nix
   home.file.".emacs.d/yuzuki/yuzuki-exwm.el".source = pkgs.writeText "yuzuki-exwm.el"
     (builtins.replaceStrings (lib.singleton " map);MARK")
-      (lib.singleton (exwmExtraKeymap.${host} or "" + " map);MARK"))
+      # (lib.singleton (exwmExtraKeymap.${host} or "" + " map);MARK"))
       (builtins.readFile ./emacs/yuzuki/yuzuki-exwm.el));
 }

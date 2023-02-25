@@ -138,7 +138,7 @@
     useNetworkd = true;
     useDHCP = lib.mkForce true; # PCIE device changes would cause name changes.
     wireless = {
-      enable = true;
+      enable = false;
       userControlled.enable = true;
     };
     firewall.logRefusedConnections = false;

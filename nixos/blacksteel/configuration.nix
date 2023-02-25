@@ -118,13 +118,12 @@
 
   powerManagement.cpuFreqGovernor = "schedutil";
   hardware = {
-    # AMD Microcode
-    cpu.amd.updateMicrocode = true;
+    enableRedistributableFirmware = true;
     video.hidpi.enable = true;
+    cpu.amd.updateMicrocode = true;
     bluetooth.enable = true;
     logitech.wireless.enable = true;
     logitech.wireless.enableGraphical = true; # Solaar.
-    enableRedistributableFirmware = true; # Required for WIFI.
     # To-do: GPU acceleration
     # opengl.extraPackages = with pkgs; [ intel-media-driver ]; # vaapi
   };

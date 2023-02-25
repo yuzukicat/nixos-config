@@ -23,7 +23,7 @@
     ./modules/task.nix
     ./modules/tmux.nix
     ./modules/user-dirs.nix
-    # ./modules/mapping.nix
+    ./modules/mapping.nix
     ./modules/emacs-exwm.nix
     ./modules/tex.nix
   ];

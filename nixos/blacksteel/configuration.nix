@@ -17,7 +17,7 @@
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.config.permitInsecurePackages = [
-    qtwebkit-5.212.0-alpha4
+    qtwebkit-5.212.0*
   ];
 
   nixpkgs.config.allowUnfreePredicate = drv:

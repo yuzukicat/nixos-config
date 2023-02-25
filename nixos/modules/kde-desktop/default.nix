@@ -27,7 +27,7 @@
       # defaultSession = "plasmawayland";
       autoLogin = {
         enable = true;
-        user = "yuzuki";
+        user = "nixos";
       };
     };
 
@@ -47,23 +47,23 @@
     ethernet.macAddress = "random";
   };
   
-  system.activationScripts.installerDesktop = let
+  # system.activationScripts.installerDesktop = let
 
-    # Comes from documentation.nix when xserver and nixos.enable are true.
-    # manualDesktopFile = "/run/current-system/sw/share/applications/nixos-manual.desktop";
+  #   # Comes from documentation.nix when xserver and nixos.enable are true.
+  #   # manualDesktopFile = "/run/current-system/sw/share/applications/nixos-manual.desktop";
 
-    homeDir = "/home/yuzuki/";
-    transmissionDir = homeDir + "transmission/";
-    desktopDir = homeDir + "Desktop/";
-    storageDir = homeDir + "storage/";
+  #   homeDir = "/home/yuzuki/";
+  #   transmissionDir = homeDir + "transmission/";
+  #   desktopDir = homeDir + "Desktop/";
+  #   storageDir = homeDir + "storage/";
 
-  in ''
-    mkdir -p ${transmissionDir}
-    mkdir -p ${desktopDir}
-    mkdir -p ${storageDir}
-    chown yuzuki ${homeDir} ${desktopDir} ${storageDir} ${transmissionDir}
+  # in ''
+  #   mkdir -p ${transmissionDir}
+  #   mkdir -p ${desktopDir}
+  #   mkdir -p ${storageDir}
+  #   chown yuzuki ${homeDir} ${desktopDir} ${storageDir} ${transmissionDir}
 
-    ln -sfT ${pkgs.gparted}/share/applications/gparted.desktop ${desktopDir + "gparted.desktop"}
-    ln -sfT ${pkgs.konsole}/share/applications/org.kde.konsole.desktop ${desktopDir + "org.kde.konsole.desktop"}
-  '';
+  #   ln -sfT ${pkgs.gparted}/share/applications/gparted.desktop ${desktopDir + "gparted.desktop"}
+  #   ln -sfT ${pkgs.konsole}/share/applications/org.kde.konsole.desktop ${desktopDir + "org.kde.konsole.desktop"}
+  # '';
 }

@@ -16,7 +16,7 @@
   # Install a proprietary or unfree package
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.config.permitInsecurePackages = [
+  nixpkgs.config.permittedInsecurePackages = [
       "qtwebkit-5.212.0-alpha4"
     ];
 

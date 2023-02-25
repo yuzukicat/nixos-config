@@ -44,7 +44,7 @@ GC_DONT_GC=1 nix build ...
 The correct command should be: e.g.   
 
 ```
-nixos-install --root /mnt --flake .#blacksteel --option extra-experimental-features auto-allocate-uids --option extra-experimental-features cgroups
+nixos-install --impure --root /mnt --flake .#blacksteel --option extra-experimental-features auto-allocate-uids --option extra-experimental-features cgroups
 ```
 
 ## Error: System falls in to emergency mode due initrd-switch-root.service entered failed state (when you initially install NixOS from liveCD USB and boot)   

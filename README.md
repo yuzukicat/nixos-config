@@ -51,6 +51,7 @@ nixos-install --impure --root /mnt --flake .#blacksteel --option extra-experimen
 
 ```
 export TMPDIR=/tmp
+export NIXPKGS_ALLOW_INSECURE=1
 ```
 
 Before nixos-install   

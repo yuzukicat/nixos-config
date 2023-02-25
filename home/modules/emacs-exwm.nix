@@ -70,7 +70,7 @@ let
     lua53Packages.digestif
   ];
   exwmSessionVariables = {
-    EDITOR = "emacsclient";
+    # EDITOR = "emacsclient";
     XMODIFIERS = "@im=ibus";
     LC_CTYPE = "ja_JP.UTF-8";
     GTK_IM_MODULE = "ibus";

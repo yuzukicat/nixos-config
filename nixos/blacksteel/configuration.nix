@@ -4,7 +4,7 @@
 
 {
   imports = [
-    ./vm.nix
+    # ./vm.nix
 
     ../modules/console-env.nix
     ../modules/device-fix.nix
@@ -273,10 +273,10 @@
 
   # vm configration Refered from ../invar/configuration.nix
   # onBoot ignore
-  virtualisation.libvirtd = {
-    enable = true;
-    onBoot = "ignore";
-  };
+  # virtualisation.libvirtd = {
+  #   enable = true;
+  #   onBoot = "ignore";
+  # };
 
   nix = {
     package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
@@ -358,7 +358,7 @@
   environment.systemPackages = with pkgs; [
     # systemPackages Refered from ../invar/configuration.nix && ../minimal-image
     neofetch
-    radeontop
+    # radeontop
     solaar # Logitech devices control.
     ltunify
     virt-manager

@@ -170,7 +170,7 @@
       # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
       group = config.users.groups.yuzuki.name;
-      extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" "video"];
+      extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" "video" ];
     };
     groups."yuzuki".gid = 1000;
     # Allow the user to log in as root without a password.
@@ -273,6 +273,10 @@
       };
     };
   };
+
+  systemd.packages = [ my.pkgs.keystat ];
+  # Workaround: https://github.com/NixOS/nixpkgs/issues/81138
+  systemd.services.keystat.wantedBy = [ "multi-user.target" ];
 
   # vm configration Refered from ../invar/configuration.nix
   # onBoot ignore

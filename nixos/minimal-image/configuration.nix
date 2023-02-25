@@ -25,6 +25,10 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.config.permittedInsecurePackages = with pkgs; [
+      "qtwebkit-5.212.0-alpha4"
+    ];
+
   nixpkgs.config.allowUnfreePredicate = drv:
     lib.elem (lib.getName drv) [
       "steam"
@@ -126,7 +130,7 @@
     # passwordFile = config.sops.secrets.passwd.path;
     uid = 1000;
     group = config.users.groups.nixos.name;
-    extraGroups = [ "wheel" "kvm" "adbusers" ];
+    extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" "video" ];
   };
   users.groups."nixos".gid = 1000;
   home-manager.users."nixos" = import ../../home/blacksteel.nix;
@@ -160,18 +164,18 @@
     passwordAuthentication = false;
     kbdInteractiveAuthentication = false;
     permitRootLogin = "yes";
-    hostKeys = [
-      {
-        type = "rsa";
-        path = "/var/ssh/ssh_host_rsa_key";
-        bits = 4096;
-      }
-      {
-        type = "ed25519";
-        path = "/var/ssh/ssh_host_ed25519_key";
-        rounds = 100;
-      }
-    ];
+    # hostKeys = [
+    #   {
+    #     type = "rsa";
+    #     path = "/var/ssh/ssh_host_rsa_key";
+    #     bits = 4096;
+    #   }
+    #   {
+    #     type = "ed25519";
+    #     path = "/var/ssh/ssh_host_ed25519_key";
+    #     rounds = 100;
+    #   }
+    # ];
   };
 
   services.earlyoom = {
@@ -193,9 +197,12 @@
       environment = [ "SSH_AUTH_SOCK" ];
 
       experimental-features = [
+        # Might be required in ISO
         "nix-command"
         "flakes"
         "repl-flake"
+      ];
+      extra-experimental-features = [
         "auto-allocate-uids"
         "cgroups"
       ];
@@ -207,14 +214,14 @@
   # Global ssh settings. Also for remote builders.
   programs.ssh = {
     knownHosts = my.ssh.knownHosts;
-    extraConfig = ''
-      Include ${config.sops.secrets.ssh-hosts.path}
-    '';
+    # extraConfig = ''
+    #   Include ${config.sops.secrets.ssh-hosts.path}
+    # '';
   };
-  sops.secrets.ssh-hosts = {
-    sopsFile = ../../secrets/ssh.yaml;
-    mode = "0444";
-  };
+  # sops.secrets.ssh-hosts = {
+  #   sopsFile = ../../secrets/ssh.yaml;
+  #   mode = "0444";
+  # };
 
   programs.adb.enable = true;
   users.groups."adbusers".members = [ config.users.users.nixos.name ];
@@ -225,12 +232,17 @@
     dedicatedServer.openFirewall = true;
   };
 
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark-qt;
+  };
+
   environment.etc = {
     "machine-id".source = "/var/machine-id";
-    "ssh/ssh_host_rsa_key".source = "/var/ssh/ssh_host_rsa_key";
-    "ssh/ssh_host_rsa_key.pub".source = "/var/ssh/ssh_host_rsa_key.pub";
-    "ssh/ssh_host_ed25519_key".source = "/var/ssh/ssh_host_ed25519_key";
-    "ssh/ssh_host_ed25519_key.pub".source = "/var/ssh/ssh_host_ed25519_key.pub";
+    # "ssh/ssh_host_rsa_key".source = "/var/ssh/ssh_host_rsa_key";
+    # "ssh/ssh_host_rsa_key.pub".source = "/var/ssh/ssh_host_rsa_key.pub";
+    # "ssh/ssh_host_ed25519_key".source = "/var/ssh/ssh_host_ed25519_key";
+    # "ssh/ssh_host_ed25519_key.pub".source = "/var/ssh/ssh_host_ed25519_key.pub";
   };
 
   environment.systemPackages = with pkgs; [

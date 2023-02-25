@@ -23,7 +23,21 @@
     ./modules/task.nix
     ./modules/tmux.nix
     ./modules/user-dirs.nix
+    ./modules/mapping.nix
+    ./modules/emacs-exwm.nix
   ];
+
+  wayland.dpi = 120;
+
+  xdg.enable = true;
+
+  programs.zsh.loginExtra = ''
+    if [[ -z $DISPLAY && "$(tty)" = /dev/tty1 ]] && type sway >/dev/null; then
+      exec systemd-cat --identifier=sway sway
+    fi
+  '';
+
+  home.sessionVariables.GTK_USE_PORTAL = 1;
 
   programs.alacritty.settings.font.size = lib.mkForce 10;
 
@@ -32,12 +46,27 @@
     link = path: config.lib.file.mkOutOfStoreSymlink "${home}/${path}";
     linkPersonal = path: link "storage/personal/${path}";
   in {
+    ".local/share/osu".source = linkPersonal "game/osu-lazer";
     ".local/share/fcitx5/rime/sync".source = linkPersonal "rime-sync";
     ".local/share/password-store".source = linkPersonal "password-store";
     ".local/share/task".source = linkPersonal "taskwarrior";
+    ".ssh".source = linkPersonal "ssh";
   };
 
-  xdg.enable = true;
+  programs.gpg.homedir = "${config.home.homeDirectory}/storage/personal/gnupg";
+
+  systemd.user.services."rime-sync" = {
+    Unit.Description = "Export rime dictionary";
+    # https://github.com/fcitx/fcitx5-rime/issues/28#issuecomment-828484970
+    Service.ExecStart = ''${pkgs.qt5.qttools.bin}/bin/qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.SetConfig "fcitx://config/addon/rime/sync" ""'';
+  };
+  systemd.user.timers."rime-sync" = {
+    Timer = {
+      OnCalendar = "*-*-* 03:00:00";
+      Persistent = true;
+    };
+    Install.WantedBy = [ "timers.target" ];
+  };
 
   home.stateVersion = "22.11";
 }

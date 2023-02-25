@@ -2,8 +2,10 @@
 {
   programs.git = {
     enable = true;
+    user.name = "yuzukicat";
+    user.email = "yuzuki.cat@kamisu66.com";
 
-    ignores = [ "*~" "*.swp" ]; # vim swap file
+    ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*"]; # vim swap file & emacs
 
     aliases = {
       br = "branch";
@@ -21,8 +23,8 @@
 
     extraConfig = {
       # User & signing.
-      user.name = "oxalica";
-      user.email = "oxalicc@pm.me";
+      user.name = "yuzukicat";
+      user.email = "yuzuki.cat@kamisu66.com";
       user.signingKey = my.gpg.fingerprint;
       tag.gpgSign = true;
 

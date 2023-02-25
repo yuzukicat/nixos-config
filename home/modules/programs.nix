@@ -8,6 +8,7 @@ let
     pyyaml
     requests
     toml
+    epc
   ]);
 
 in {
@@ -31,6 +32,8 @@ in {
     gcc ghc myPython # Compiler & interpreters
     gdb # Debugger
     sqlite-interactive # sqlite
+    cabal-install gnumake yarn binutils ruby_3_1 xclip
+    bash-completion cling racket rustc cargo elixir github-cli
 
     # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
     # system:

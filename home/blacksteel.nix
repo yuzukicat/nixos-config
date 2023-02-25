@@ -5,7 +5,6 @@
 
   imports = [
     ./modules/wayland-dpi.nix
-    ./modules/xdgify.nix
 
     ./modules/alacritty.nix
     ./modules/direnv.nix

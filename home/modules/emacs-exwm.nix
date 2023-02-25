@@ -146,9 +146,9 @@ rec {
     _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
-  home.packages = lib.singleton emacsPackageWithPkgs
-                  ++ lspPackages
-                  ++ [ pkgs.zoxide pkgs.fzf ];
+  # home.packages = lib.singleton emacsPackageWithPkgs
+  #                 ++ lspPackages
+  #                 ++ [ pkgs.zoxide pkgs.fzf ];
 
   gtk = rec {
     enable = true;

@@ -179,7 +179,7 @@
   home-manager.users."yuzuki" =
     import ../../home/blacksteel.nix;
   # Transmission user group
-  users.groups."transmission".members = [ config.users.users.yuzuki.name ];
+  # users.groups."transmission".members = [ config.users.users.yuzuki.name ];
 
   # Services.
 
@@ -254,10 +254,10 @@
       enableNotifications = true;
     };
     # transmission configration Refered from ../invar/configuration.nix
-    transmission = {
-      enable = true;
-      home = "/home/transmission";
-    };
+    # transmission = {
+    #   enable = true;
+    #   home = "/home/transmission";
+    # };
     btrbk.instances.snapshot = {
       onCalendar = "*:00,30";
       settings = {

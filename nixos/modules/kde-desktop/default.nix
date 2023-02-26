@@ -53,7 +53,7 @@
     # manualDesktopFile = "/run/current-system/sw/share/applications/nixos-manual.desktop";
 
     homeDir = "/home/yuzuki/";
-    transmissionDir = homeDir + "transmission/";
+    # transmissionDir = homeDir + "transmission/";
     desktopDir = homeDir + "Desktop/";
     storageDir = homeDir + "storage/";
 
@@ -61,7 +61,7 @@
     mkdir -p ${transmissionDir}
     mkdir -p ${desktopDir}
     mkdir -p ${storageDir}
-    chown yuzuki ${homeDir} ${desktopDir} ${storageDir} ${transmissionDir}
+    chown yuzuki ${homeDir} ${desktopDir} ${storageDir}
 
     ln -sfT ${pkgs.gparted}/share/applications/gparted.desktop ${desktopDir + "gparted.desktop"}
     ln -sfT ${pkgs.konsole}/share/applications/org.kde.konsole.desktop ${desktopDir + "org.kde.konsole.desktop"}

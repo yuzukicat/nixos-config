@@ -37,7 +37,7 @@
     ];
 
   services.xserver.desktopManager.plasma5.useQtScaling = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
+  # services.xserver.videoDrivers = [ "nvidia" ];
 
   # Boot.
 

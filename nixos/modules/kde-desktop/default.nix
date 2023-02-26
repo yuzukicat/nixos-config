@@ -7,7 +7,6 @@
     filelight
     plasma-browser-integration
     bismuth
-    kdeconnect-kde
   ];
 
   programs = {

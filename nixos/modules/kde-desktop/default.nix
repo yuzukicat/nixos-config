@@ -7,6 +7,7 @@
     filelight
     plasma-browser-integration
     bismuth
+    kdeconnect-kde
   ];
 
   programs = {
@@ -23,7 +24,7 @@
 
     displayManager = {
       sddm.enable = true;
-      defaultSession = "plasmawayland";
+      # defaultSession = "plasmawayland";
       autoLogin = {
         enable = true;
         user = "yuzuki";

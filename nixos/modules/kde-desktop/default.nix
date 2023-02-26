@@ -58,7 +58,6 @@
     storageDir = homeDir + "storage/";
 
   in ''
-    mkdir -p ${transmissionDir}
     mkdir -p ${desktopDir}
     mkdir -p ${storageDir}
     chown yuzuki ${homeDir} ${desktopDir} ${storageDir}

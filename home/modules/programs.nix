@@ -33,7 +33,7 @@ in {
     gdb # Debugger
     sqlite-interactive # sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip
-    bash-completion cling racket rustc cargo elixir github-cli
+    bash-completion cling rackets elixir github-cli
 
     # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
     # system:

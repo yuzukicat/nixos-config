@@ -160,7 +160,7 @@
   # sops.secrets.passwd.neededForUsers = true;
   programs.zsh.enable = true; # As shell.
   users = {
-    mutableUsers = false;
+    mutableUsers = true;
     users."yuzuki" = {
       isNormalUser = true;
       shell = pkgs.zsh;

@@ -18,6 +18,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     nocargo = {
       url = "github:oxalica/nocargo";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,6 +37,30 @@
       url = "github:dramforever/nix-dram";
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    tree-sitter-nix-oxa = {
+      url = "github:oxalica/tree-sitter-nix";
+      flake = false;
+    };
+
+    epkgs-ligature = {
+      url = "github:mickeynp/ligature.el";
+      flake = false;
+    };
+    epkgs-toggle-one-window = {
+      url = "github:manateelazycat/toggle-one-window";
+      flake = false;
+    };
+    epkgs-exwm-ns = {
+      url = "github:timor/exwm-ns";
+      flake = false;
+    };
+
+    lsp-nil = {
+      url = "github:oxalica/nil";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
     };
 
     meta-sifive = {

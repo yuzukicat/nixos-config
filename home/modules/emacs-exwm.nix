@@ -1,4 +1,4 @@
-{ inputs, pkgs, config, lib, host, ... }:
+{ inputs, pkgs, config, lib, name, ... }:
 let
   emacsPackage = pkgs.emacsGitNativeComp;
   # emacsPackageWithPkgs =
@@ -180,8 +180,8 @@ rec {
   } // cursorTheme;
 
   # override mapping.nix
-  # home.file.".emacs.d/yuzuki/yuzuki-exwm.el".source = pkgs.writeText "yuzuki-exwm.el"
-  #   (builtins.replaceStrings (lib.singleton " map);MARK")
-  #     (lib.singleton (exwmExtraKeymap.${host} or "" + " map);MARK"))
-  #     (builtins.readFile ./emacs/yuzuki/yuzuki-exwm.el));
+  home.file.".emacs.d/yuzuki/yuzuki-exwm.el".source = pkgs.writeText "yuzuki-exwm.el"
+    (builtins.replaceStrings (lib.singleton " map);MARK")
+      (lib.singleton (exwmExtraKeymap.${name} or "" + " map);MARK"))
+      (builtins.readFile ./emacs/yuzuki/yuzuki-exwm.el));
 }

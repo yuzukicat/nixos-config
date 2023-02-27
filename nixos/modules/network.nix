@@ -27,13 +27,14 @@
     firewall = {
       logRefusedConnections = false;
       checkReversePath = "loose";
-    }
+    };
 
     # Work Station
     interfaces = {
       enp4s0.useDHCP = lib.mkDefault true;
       wlp5s0.useDHCP = lib.mkDefault true;
     };
+
     # 5950x
   };
 

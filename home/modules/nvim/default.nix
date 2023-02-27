@@ -30,10 +30,6 @@ let
     coc-rust-analyzer
     coc-sumneko-lua
     coc-tsserver
-    go_1_18
-    gopls
-    overriden-neovim
-    tmux
   ];
 
   cocSettings = {
@@ -122,6 +118,13 @@ in
       enable = true;
       settings = cocSettings;
     };
+
+    nativeBuildInputs = [
+      go_1_18
+      gopls
+      overriden-neovim
+      tmux
+    ];
   };
 
   home.sessionVariables.EDITOR = "nvim";

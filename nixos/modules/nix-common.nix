@@ -8,6 +8,9 @@
     ];
 
   nix = {
+
+    package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
+
     gc = {
       automatic = true;
       dates = "Wed,Sat 01:00";
@@ -15,6 +18,8 @@
     };
 
     settings = {
+      default-flake = "flake:nixpkgs";
+      environment = [ "SSH_AUTH_SOCK" ];
       experimental-features = [
         "nix-command"
         "flakes"

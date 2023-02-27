@@ -55,7 +55,6 @@
   xdg.portal.enable = true;
 
   # Configure keymap in X11.
-  services.xserver.layout = "us";
   services.xserver.xkbVariant = "altgr-intl"; # included xkbOption "eurosign:5"
   services.xserver.xkbOptions = "caps:none"; # xkeyboard-config(7)
 

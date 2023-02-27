@@ -10,7 +10,7 @@
     gwenview
     okular
     spectacle
-    nordic-kde
+    nordic
     kdeconnect-kde
   ];
 

@@ -24,8 +24,7 @@
 
     displayManager = {
       sddm.enable = true;
-      defaultSession = "none+exwm";
-      # defaultSession = "plasmawayland";
+      defaultSession = "plasmawayland";
       autoLogin = {
         enable = true;
         user = "yuzuki";
@@ -37,18 +36,6 @@
       runUsingSystemd = true;
 
       kdeglobals.KDE.SingleClick = false;
-    };
-
-    windowManager.session = lib.singleton {
-      name = "exwm";
-      start = pkgs.writeShellScript "start-exwm" ''
-        if [[ -f $HOME/.xsessions/exwm.xsession ]]
-        then
-          exec ${pkgs.runtimeShell} -c $HOME/.xsessions/exwm.xsession
-        else
-          exit 1
-        fi
-      '';
     };
   };
 

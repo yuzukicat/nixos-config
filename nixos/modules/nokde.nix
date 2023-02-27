@@ -5,7 +5,12 @@
   environment.systemPackages = with pkgs; [
     ark
     filelight
+    gwenview
+    kitty
+    okular
+    spectacle
     firefox
+    # bibata-cursors
     plasma-browser-integration
     plasma5Packages.bismuth
   ];
@@ -21,6 +26,9 @@
   services.xserver = {
     enable = true;
     layout = "us";
+    # Configure keymap in X11.
+    # xkbVariant = "altgr-intl"; # included xkbOption "eurosign:5"
+    # xkbOptions = "caps:none"; # xkeyboard-config(7)
 
     displayManager = {
       sddm.enable = true;
@@ -29,31 +37,29 @@
       #   enable = true;
       #   user = "yuzuki";
       # };
+      
+      # theme = pkgs.sddm-sugar-candy + "/share/sddm/themes/sugar-candy";
+      # settings.Theme.CursorTheme = "Bibata-Modern-Ice";
+
+      # Use QT Scaling?
+      plasma5.useQtScaling = true;
     };
 
     desktopManager.plasma5 = {
       enable = true;
       runUsingSystemd = true;
-
       kdeglobals.KDE.SingleClick = false;
     };
+
+    # To make it work on clevo nh55vr rtx-3070max-q
+    videoDrivers = [ "nvidia" ];
   };
 
   xdg.portal.enable = true;
 
-  # Configure keymap in X11.
-  # services.xserver.xkbVariant = "altgr-intl"; # included xkbOption "eurosign:5"
-  # services.xserver.xkbOptions = "caps:none"; # xkeyboard-config(7)
-
   services.autorandr.enable = true;
 
   security.pam.services.sddm.enableKwallet = true;
-
-  networking.networkmanager = {
-    enable = true;
-    wifi.macAddress = "random";
-    ethernet.macAddress = "random";
-  };
   
   system.activationScripts.installerDesktop = let
 

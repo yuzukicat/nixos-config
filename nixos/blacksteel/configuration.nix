@@ -11,37 +11,21 @@
     ../modules/kde-desktop
     ../modules/nix-common.nix
     ../modules/nix-registry.nix
+    ../modules/nokde.nix
+    ../modules/internationalisation.nix
+    ../modules/network.nix
+    ../modules/bluetooth.nix
+    ../modules/cups.nix
+    ../modules/steam.nix
   ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.blacksteel);
 
-  # Install a proprietary or unfree package
-  nixpkgs.config.allowUnfree = true;
-
-  nixpkgs.config.permittedInsecurePackages = with pkgs; [
-      "qtwebkit-5.212.0-alpha4"
-    ];
-
-  nixpkgs.config.allowUnfreePredicate = drv:
-    lib.elem (lib.getName drv) [
-      "steam"
-      "steam-original"
-      "steam-run"
-    ];
-  
-  # To make it work on clevo nh55vr rtx-3070max-q
-  services.xserver.videoDrivers = [ "nvidia" ];
-  
-  # Use QT Scaling
-  services.xserver.desktopManager.plasma5.useQtScaling = true;
-
-
   # Boot.
-
   boot = {
     # disable initrd
     initrd = {
-    #   systemd.enable = true;
+      # systemd.enable = true;
 
-      availableKernelModules = [ "xhci_pci" "ahci" "usbhid" ];
+      availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "sd_mod" "sdhci_pci"];
       kernelModules = [ "amd_pstate" "nvme" ];
 
     #   luks.devices."invar-luks" = {
@@ -88,6 +72,9 @@
 
   # Use nixos-generate-config --root /mnt then copy and paste
   # Questions.
+  # Work Station
+
+  # 5950x PC
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/cd16103a-da56-459e-ae5e-4d2e7041e973";
@@ -125,31 +112,10 @@
     enableRedistributableFirmware = true;
     video.hidpi.enable = true;
     cpu.amd.updateMicrocode = true;
-    bluetooth.enable = true;
     logitech.wireless.enable = true;
     logitech.wireless.enableGraphical = true; # Solaar.
     # To-do: GPU acceleration
     # opengl.extraPackages = with pkgs; [ intel-media-driver ]; # vaapi
-  };
-  console = {
-    font = lib.mkOverride 900 "Lat2-Terminus16";
-    useXkbConfig = true;
-  };
-  # Network configration Refered from ../invar/configuration.nix
-  networking = {
-    hostName = "blacksteel";
-    search = [ "lan." ];
-    useNetworkd = true;
-    useDHCP = lib.mkForce true; # PCIE device changes would cause name changes.
-    wireless = {
-      enable = false;
-      userControlled.enable = true;
-    };
-    firewall.logRefusedConnections = false;
-  };
-  systemd.network.wait-online = {
-    anyInterface = true;
-    timeout = 15;
   };
 
   # Time Zone
@@ -183,9 +149,9 @@
 
   # Services.
 
-  # AMD Ryzen 5950x
+  # AMD Ryzen 5800x
   systemd.services.nix-daemon.serviceConfig = {
-    CPUQuota = "3000%";
+    CPUQuota = "1500%";
     CPUWeight = 50;
 
     MemoryMax = "26G";
@@ -208,39 +174,12 @@
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
   hardware.pulseaudio.extraConfig = "load-module module-switch-on-connect";
 
-  # Service configration Refered from ../invar/configuration.nix
-  services.xserver.xkbOptions = "ctrl:swapcaps";
-
   services.logind.extraConfig = ''
     HandlePowerKey=suspend
   '';
 
   services = {
-    openssh = {
-      enable = true;
-      # SSH configration Refered from ../invar/configuration.nix
-      passwordAuthentication = false;
-      kbdInteractiveAuthentication = false;
-      permitRootLogin = "yes";
-      # hostKeys = [
-      #   {
-      #     type = "rsa";
-      #     path = "/var/ssh/ssh_host_rsa_key";
-      #     bits = 4096;
-      #   }
-      #   {
-      #     type = "ed25519";
-      #     path = "/var/ssh/ssh_host_ed25519_key";
-      #     rounds = 100;
-      #   }
-      # ];
-      # settings = {
-      #   KbdInteractiveAuthentication = false;
-      #   PasswordAuthentication = false;
-      #   # Warning: Unsafe
-      #   PermitRootLogin = "yes";
-      # };
-    };
+
     # If you have a ssd, don't forget to enable fstrim
     fstrim = {
       enable = true;
@@ -287,46 +226,6 @@
   #   onBoot = "ignore";
   # };
 
-  nix = {
-    package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
-
-    # To fix Error: experimental NIX feature 'nix-command' is disabled
-    # extraOptions = ''
-    #   experimental-features = auto-allocate-uids
-    #   auto-allocate-uids = true
-    # '';
-
-    settings = {
-      default-flake = "flake:nixpkgs";
-      environment = [ "SSH_AUTH_SOCK" ];
-
-      experimental-features = [
-        # Might be required in ISO
-        "nix-command"
-        "flakes"
-        "repl-flake"
-      ];
-      extra-experimental-features = [
-        "auto-allocate-uids"
-        "cgroups"
-      ];
-      auto-allocate-uids = true;
-      use-cgroups = true;
-    };
-
-    # buildMachines = [
-    #   {
-    #     hostName = "aluminum.lan.hexade.ca";
-    #     maxJobs = 24;
-    #     protocol = "ssh-ng";
-    #     sshUser = "yuzuki";
-    #     sshKey = "/etc/ssh/ssh_host_ed25519_key";
-    #     system = "x86_64-linux";
-    #     supportedFeatures = [ "kvm" "big-parallel" "nixos-test" "benchmark" ];
-    #   }
-    # ];
-  };
-
   # Global ssh settings. Also for remote builders.
   programs.ssh = {
     knownHosts = my.ssh.knownHosts;
@@ -343,12 +242,6 @@
   # adbusers usergroup Refered from ../invar/configuration.nix
   # Question: Can it fix the bus error info on boot??
   users.groups."adbusers".members = [ config.users.users.yuzuki.name ];
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
 
   programs.wireshark = {
     enable = true;

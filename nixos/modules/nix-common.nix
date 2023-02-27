@@ -1,5 +1,12 @@
-{ pkgs, inputs, ... }:
+{ pkgs, config, inputs, ... }:
 {
+  # Install a proprietary or unfree package
+  nixpkgs.config.allowUnfree = true;
+  #
+  nixpkgs.config.permittedInsecurePackages = with pkgs; [
+      "qtwebkit-5.212.0-alpha4"
+    ];
+
   nix = {
     gc = {
       automatic = true;
@@ -8,6 +15,11 @@
     };
 
     settings = {
+      package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
+
+      default-flake = "flake:nixpkgs";
+      environment = [ "SSH_AUTH_SOCK" ];
+
       experimental-features = [
         "nix-command"
         "flakes"
@@ -19,6 +31,9 @@
         "auto-allocate-uids"
         "cgroups"
       ];
+
+      auto-allocate-uids = true;
+      use-cgroups = true;
 
       # FIXME: https://github.com/NixOS/nix/commit/a642b1030188f7538ef6243cd7fd1404419a6933
       flake-registry = builtins.toFile "empty-registry.json"
@@ -43,5 +58,17 @@
     nixPath = [
       "nixpkgs=${inputs.nixpkgs}"
     ];
+
+    # buildMachines = [
+    #   {
+    #     hostName = "aluminum.lan.hexade.ca";
+    #     maxJobs = 24;
+    #     protocol = "ssh-ng";
+    #     sshUser = "yuzuki";
+    #     sshKey = "/etc/ssh/ssh_host_ed25519_key";
+    #     system = "x86_64-linux";
+    #     supportedFeatures = [ "kvm" "big-parallel" "nixos-test" "benchmark" ];
+    #   }
+    # ];
   };
 }

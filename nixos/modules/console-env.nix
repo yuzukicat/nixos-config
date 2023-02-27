@@ -61,8 +61,4 @@
 
   programs.vim.defaultEditor = true;
 
-  services.kmscon = {
-    enable = true;
-    extraConfig = "font-size=20";
-  };
 }

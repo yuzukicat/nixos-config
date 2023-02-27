@@ -1,25 +1,5 @@
 { lib, pkgs, my, ... }:
 {
-  i18n = {
-    supportedLocales = [ "all" ]; # Override console-env.
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_CTYPE = "ja_JP.UTF-8";
-    };
-    inputMethod = {
-      # enabled = "fcitx5";
-      # fcitx5.addons = with pkgs; [ fcitx5-rime ];
-      # fcitx5.enableRimeData = true;
-      enabled = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [
-        typing-booster
-        anthy
-        rime
-        uniemoji
-      ];
-    };
-  };
-
   environment.systemPackages = [ my.pkgs.rime_latex ];
 
   # Ref: https://catcat.cc/post/2021-03-07/
@@ -29,11 +9,11 @@
 
     fonts = with pkgs; [
       noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
       noto-fonts-emoji
       fira-code
       fira-code-symbols
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
       twemoji-color-font
       font-awesome
       hanazono
@@ -54,13 +34,13 @@
       enable = true;
 
       defaultFonts = rec {
-        monospace = [ "Iosevka Fixed" "Noto Sans CJK SC" "Font Awesome 6 Free" "Twemoji" ];
+        monospace = [ "Iosevka Fixed" "Noto Sans CJK SC" "Font Awesome 6 Free" "Twemoji" "Sarasa Mono SC"];
         # Prefer CJK-SC-style quotation marks.
         # We cannot select different styles for it based on languages since our locale is en_US.UTF-8.
         # See: https://catcat.cc/post/2021-03-07/#remark42__comment-37ccca1d-cbc6-4c48-a224-18007987cf16
-        sansSerif = [ "Noto Sans CJK SC" "Noto Sans" "Twemoji" ];
-        serif = [ "Noto Serif CJK SC" "Noto Serif" "Twemoji" ];
-        emoji = [ "Twemoji" ];
+        sansSerif = [ "Noto Sans CJK SC" "Noto Sans" "Twemoji" "Source Han Sans SC"];
+        serif = [ "Noto Serif CJK SC" "Noto Serif" "Twemoji" "Source Han Serif SC"];
+        emoji = [ "Twemoji" "Noto Emoji"];
       };
 
       localConf = ''

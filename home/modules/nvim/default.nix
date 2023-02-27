@@ -118,18 +118,15 @@ in
       enable = true;
       settings = cocSettings;
     };
-
-    nativeBuildInputs = [
-      go_1_18
-      gopls
-      overriden-neovim
-      tmux
-    ];
   };
 
   home.sessionVariables.EDITOR = "nvim";
 
   home.packages = with pkgs; [
     nil
+    go_1_18
+    gopls
+    overriden-neovim
+    tmux
   ];
 }

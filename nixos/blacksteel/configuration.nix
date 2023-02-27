@@ -8,7 +8,6 @@
 
     ../modules/console-env.nix
     ../modules/device-fix.nix
-    ../modules/kde-desktop
     ../modules/nix-common.nix
     ../modules/nix-registry.nix
     ../modules/nokde.nix

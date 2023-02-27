@@ -40,15 +40,14 @@
 
       # theme = pkgs.sddm-sugar-candy + "/share/sddm/themes/sugar-candy";
       # settings.Theme.CursorTheme = "Bibata-Modern-Ice";
-
-      # Use QT Scaling?
-      plasma5.useQtScaling = true;
     };
 
     desktopManager.plasma5 = {
       enable = true;
       runUsingSystemd = true;
       kdeglobals.KDE.SingleClick = false;
+      # Use QT Scaling?
+      useQtScaling = true;
     };
 
     # To make it work on clevo nh55vr rtx-3070max-q

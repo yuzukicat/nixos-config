@@ -7,9 +7,16 @@
       LC_CTYPE = "ja_JP.UTF-8";
     };
     inputMethod = {
-      enabled = "fcitx5";
-      fcitx5.addons = with pkgs; [ fcitx5-rime fcitx5-anthy ];
-      fcitx5.enableRimeData = true;
+      # enabled = "fcitx5";
+      # fcitx5.addons = with pkgs; [ fcitx5-rime ];
+      # fcitx5.enableRimeData = true;
+      enabled = "ibus";
+      ibus.engines = with pkgs.ibus-engines; [
+        typing-booster
+        anthy
+        rime
+        uniemoji
+      ];
     };
   };
 

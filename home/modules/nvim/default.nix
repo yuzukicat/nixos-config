@@ -7,6 +7,12 @@ let
   vimrc' = builtins.replaceStrings
     ["@fcitx5-remote@"]
     ["${lib.getBin pkgs.fcitx5}/bin/fcitx5-remote"]
+    [''
+      lua << EOF
+      ${lspVimrcConfig}
+      EOF
+      ${extraConfig};
+    '']
     vimrc;
 
   plugins =
@@ -67,13 +73,6 @@ let
   lspVimrcConfig = builtins.readFile ./base-neovim-config.lua;
 
   extraConfig = builtins.readFile ./extra-neovim-config.vim;
-
-  vimrc = ''
-    lua << EOF
-    ${lspVimrcConfig}
-    EOF
-    ${extraConfig};
-  '';
 
   # bat.vim syntax highlighting:
   bat-vim = pkgs.vimUtils.buildVimPlugin {

@@ -6,7 +6,7 @@
   imports = [
     ./modules/wayland-dpi.nix
 
-    ./modules/alacritty
+    ./modules/alacritty.nix
     ./modules/direnv.nix
     ./modules/firefox.nix
     ./modules/git.nix

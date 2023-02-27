@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-  imports = [ ../l10n.nix ];
+  imports = [ ./l10n.nix ];
 
   environment.systemPackages = with pkgs; [
     ark
@@ -37,7 +37,7 @@
       #   enable = true;
       #   user = "yuzuki";
       # };
-      
+
       # theme = pkgs.sddm-sugar-candy + "/share/sddm/themes/sugar-candy";
       # settings.Theme.CursorTheme = "Bibata-Modern-Ice";
 

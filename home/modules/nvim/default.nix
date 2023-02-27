@@ -7,12 +7,12 @@ let
   vimrc' = builtins.replaceStrings
     ["@fcitx5-remote@"]
     ["${lib.getBin pkgs.fcitx5}/bin/fcitx5-remote"]
-    [''
+    ["''
       lua << EOF
       ${lspVimrcConfig}
       EOF
       ${extraConfig};
-    '']
+    ''"]
     vimrc;
   
   lspVimrcConfig = builtins.readFile ./base-neovim-config.lua;

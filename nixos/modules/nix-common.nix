@@ -15,11 +15,6 @@
     };
 
     settings = {
-      package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
-
-      default-flake = "flake:nixpkgs";
-      environment = [ "SSH_AUTH_SOCK" ];
-
       experimental-features = [
         "nix-command"
         "flakes"

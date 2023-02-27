@@ -14,6 +14,10 @@ let
       ${extraConfig};
     '']
     vimrc;
+  
+  lspVimrcConfig = builtins.readFile ./base-neovim-config.lua;
+
+  extraConfig = builtins.readFile ./extra-neovim-config.vim;
 
   plugins =
     map (x: vimPlugins.${lib.elemAt x 0})
@@ -26,6 +30,10 @@ let
     coc-rust-analyzer
     coc-sumneko-lua
     coc-tsserver
+    go_1_18
+    gopls
+    overriden-neovim
+    tmux
   ];
 
   cocSettings = {
@@ -70,9 +78,7 @@ let
     };
   };
 
-  lspVimrcConfig = builtins.readFile ./base-neovim-config.lua;
 
-  extraConfig = builtins.readFile ./extra-neovim-config.vim;
 
   # bat.vim syntax highlighting:
   bat-vim = pkgs.vimUtils.buildVimPlugin {
@@ -122,12 +128,5 @@ in
 
   home.packages = with pkgs; [
     nil
-  ];
-
-  nativeBuildInputs = [
-    go_1_18
-    gopls
-    overriden-neovim
-    tmux
   ];
 }

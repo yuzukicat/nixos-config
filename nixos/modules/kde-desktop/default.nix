@@ -10,7 +10,7 @@
     gwenview
     okular
     spectacle
-    nordic-plasma-theme
+    nordic-theme
     kdeconnect-kde
   ];
 

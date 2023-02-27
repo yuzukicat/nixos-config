@@ -22,7 +22,7 @@
   
   console = {
     font = lib.mkOverride 900 "Lat2-Terminus16";
-    keyMap= "us";
+    # keyMap= "us";
     useXkbConfig = true;
   };
 

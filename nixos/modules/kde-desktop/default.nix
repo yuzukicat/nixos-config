@@ -8,10 +8,9 @@
     plasma-browser-integration
     bismuth
     gwenview
-    kitty
     okular
     spectacle
-    bibata-cursors
+    nordic-kde
     kdeconnect-kde
   ];
 

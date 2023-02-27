@@ -29,7 +29,6 @@
   };
   # Some defaults, override "basics.nix"
   programs.gnupg.agent.pinentryFlavor = lib.mkOverride 900 "qt";
-  programs.command-not-found.enable   = lib.mkOverride 900 true;
   services.flatpak.enable             = lib.mkOverride 900 true;
   environment.variables = let
     common = [

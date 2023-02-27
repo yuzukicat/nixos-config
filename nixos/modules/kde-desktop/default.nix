@@ -25,10 +25,10 @@
     displayManager = {
       sddm.enable = true;
       # defaultSession = "plasmawayland";
-      autoLogin = {
-        enable = true;
-        user = "yuzuki";
-      };
+      # autoLogin = {
+      #   enable = true;
+      #   user = "yuzuki";
+      # };
     };
 
     desktopManager.plasma5 = {

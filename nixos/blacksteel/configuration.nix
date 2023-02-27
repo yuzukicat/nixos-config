@@ -269,16 +269,13 @@
   };
 
   nix = {
-    gc = {
-      automatic = true;
-      dates = "Wed,Sat 01:00";
-      options = "--delete-older-than 8d";
-    };
+
     settings = {
       package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
 
       default-flake = "flake:nixpkgs";
       environment = [ "SSH_AUTH_SOCK" ];
+    };
   };
   
   # environment.etc Refered from ../invar/configuration.nix

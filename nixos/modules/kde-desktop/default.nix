@@ -2,12 +2,12 @@
 {
   imports = [ ../l10n.nix ];
 
-  environment.systemPackages = with pkgs.plasma5Packages; [
+  environment.systemPackages = with pkgs; [
     ark
     filelight
+    firefox
     plasma-browser-integration
-    bismuth
-    kdeconnect-kde
+    plasma5Packages.bismuth
   ];
 
   programs = {
@@ -24,6 +24,7 @@
 
     displayManager = {
       sddm.enable = true;
+      defaultSession = "none+exwm";
       # defaultSession = "plasmawayland";
       autoLogin = {
         enable = true;
@@ -37,7 +38,28 @@
 
       kdeglobals.KDE.SingleClick = false;
     };
+
+    windowManager.session = lib.singleton {
+      name = "exwm";
+      start = pkgs.writeShellScript "start-exwm" ''
+        if [[ -f $HOME/.xsessions/exwm.xsession ]]
+        then
+          exec ${pkgs.runtimeShell} -c $HOME/.xsessions/exwm.xsession
+        else
+          exit 1
+        fi
+      '';
+    };
   };
+
+  xdg.portal.enable = true;
+
+  # Configure keymap in X11.
+  services.xserver.layout = "us";
+  services.xserver.xkbVariant = "altgr-intl"; # included xkbOption "eurosign:5"
+  services.xserver.xkbOptions = "caps:none"; # xkeyboard-config(7)
+
+  services.autorandr.enable = true;
 
   security.pam.services.sddm.enableKwallet = true;
 

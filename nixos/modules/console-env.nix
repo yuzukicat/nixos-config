@@ -1,10 +1,7 @@
 { lib, pkgs, my, ... }:
 {
   # Reduce the closure size.
-  i18n.supportedLocales = lib.mkDefault [ "en_US.UTF-8/UTF-8" ];
-  i18n.defaultLocale = lib.mkDefault "en_US.UTF-8";
-
-  fonts.fontconfig.enable = lib.mkDefault false;
+  # fonts.fontconfig.enable = lib.mkDefault false;
 
   # Default:
   # - nano # Already have vim.
@@ -30,6 +27,10 @@
     enable = true;
     lessopen = null;
   };
+  # Some defaults, override "basics.nix"
+  programs.gnupg.agent.pinentryFlavor = lib.mkOverride 900 "qt";
+  programs.command-not-found.enable   = lib.mkOverride 900 true;
+  services.flatpak.enable             = lib.mkOverride 900 true;
   environment.variables = let
     common = [
       "--RAW-CONTROL-CHARS" # Only allow colors.
@@ -60,4 +61,9 @@
   programs.command-not-found.enable = false;
 
   programs.vim.defaultEditor = true;
+
+  services.kmscon = {
+    enable = true;
+    extraConfig = "font-size=20";
+  };
 }

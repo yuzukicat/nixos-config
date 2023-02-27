@@ -3,10 +3,20 @@
   i18n = {
     supportedLocales = [ "all" ]; # Override console-env.
     defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_CTYPE = "ja_JP.UTF-8";
+    };
     inputMethod = {
-      enabled = "fcitx5";
-      fcitx5.addons = with pkgs; [ fcitx5-rime ];
-      fcitx5.enableRimeData = true;
+      # enabled = "fcitx5";
+      # fcitx5.addons = with pkgs; [ fcitx5-rime ];
+      # fcitx5.enableRimeData = true;
+      enabled = "ibus";
+      ibus.engines = with pkgs.ibus-engines; [
+        typing-booster
+        anthy
+        rime
+        uniemoji
+      ];
     };
   };
 
@@ -14,7 +24,7 @@
 
   # Ref: https://catcat.cc/post/2021-03-07/
   fonts = {
-    enableDefaultFonts = false;
+    enableDefaultFonts = true;
     fontDir.enable = true;
 
     fonts = with pkgs; [
@@ -22,9 +32,20 @@
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       noto-fonts-emoji
+      fira-code
+      fira-code-symbols
       twemoji-color-font
       font-awesome
       hanazono
+
+      # CJKV
+      noto-fonts-cjk
+      hanazono
+      source-han-sans source-han-serif source-han-mono
+      wqy_microhei wqy_zenhei
+      sarasa-gothic
+      arphic-ukai arphic-uming
+      unfonts-core
       # Use bin to save build time (~11min).
       (iosevka-bin.override { variant = "sgr-iosevka-fixed"; })
     ];

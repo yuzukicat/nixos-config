@@ -15,6 +15,11 @@
         "ca-derivations"
       ];
 
+      extra-experimental-features = [
+        "auto-allocate-uids"
+        "cgroups"
+      ];
+
       # FIXME: https://github.com/NixOS/nix/commit/a642b1030188f7538ef6243cd7fd1404419a6933
       flake-registry = builtins.toFile "empty-registry.json"
         (builtins.toJSON { flakes = []; version = 2; });

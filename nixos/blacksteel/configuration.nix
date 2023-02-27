@@ -132,7 +132,7 @@
     # opengl.extraPackages = with pkgs; [ intel-media-driver ]; # vaapi
   };
   console = {
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-v28n.psf.gz";
+    font = lib.mkOverride 900 "Lat2-Terminus16";
     useXkbConfig = true;
   };
   # Network configration Refered from ../invar/configuration.nix
@@ -205,6 +205,8 @@
   sound.enable = false; # pipewire expects this.
   # Might be necessary to solve the conflict with kde-plasma5 audio
   hardware.pulseaudio.enable = lib.mkForce false;
+  hardware.pulseaudio.package = pkgs.pulseaudioFull;
+  hardware.pulseaudio.extraConfig = "load-module module-switch-on-connect";
 
   # Service configration Refered from ../invar/configuration.nix
   services.xserver.xkbOptions = "ctrl:swapcaps";

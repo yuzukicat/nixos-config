@@ -7,10 +7,6 @@
     filelight
     plasma-browser-integration
     bismuth
-    gwenview
-    okular
-    spectacle
-    nordic-colors
     kdeconnect-kde
   ];
 

@@ -23,7 +23,7 @@
     my.pkgs.nixos-rebuild-shortcut
 
     emacs wget home-manager
-    htop iotop iftop
+    htop iotop iftop gwenview kitty okular spectacle nordic-kde-theme
   ];
 
   programs.less = {

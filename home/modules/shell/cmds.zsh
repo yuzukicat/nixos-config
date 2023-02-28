@@ -21,7 +21,7 @@ alias o="xdg-open"
 
 # List tree.
 lt() {
-    exa -T --classify $@ | eval $PAGER
+    exa -T --classify --color=always $@ | eval $PAGER
 }
 
 # Clipboard input/output.

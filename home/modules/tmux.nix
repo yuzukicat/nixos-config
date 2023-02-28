@@ -32,7 +32,13 @@
       set -sa terminal-overrides '*:Smol=\E[53m'
       # Styled underlines.
       set -sa terminal-overrides '*:Smulx=\E[4::%p1%dm'
-      
+      # Underline colors.
+      set -sa terminal-overrides '*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
+
+      # Colors
+      set -g status-style fg=green
+      set -g window-status-current-style reverse
+
       # Custom window title.
       set -g automatic-rename on
       set -g automatic-rename-format '#{b:pane_current_path}#{?#{!=:#{pane_current_command},zsh},:#{pane_current_command},}'

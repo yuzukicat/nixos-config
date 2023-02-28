@@ -7,6 +7,7 @@
     FZF_DEFAULT_COMMAND = "${lib.getBin pkgs.fd}/bin/fd --type=f --hidden --exclude=.git";
     FZF_DEFAULT_OPTS = lib.concatStringsSep " " [
       "--layout=reverse" # Top-first.
+      "--color=light"
       "--info=inline"
       "--exact" # Substring matching by default, `'`-quote for subsequence matching.
       "--bind=alt-p:toggle-preview,alt-a:select-all"
@@ -67,6 +68,7 @@
       plugins = [
         "git"
         "aws"
+        "colorize"
         "docker"
         "docker-compose"
         "dotenv"
@@ -91,6 +93,7 @@
         "urltools"
         "zsh-interactive-cd"
       ];
+      theme = "passion";
     };
 
     # Ref: https://blog.quarticcat.com/zh/posts/how-do-i-make-my-zsh-smooth-as-fuck/
@@ -101,6 +104,7 @@
       setopt interactive_comments
       setopt multios
       setopt noextended_glob # Breaks flake path reference nixpkgs#foo.
+      export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:'
       TIMEFMT=$'%J  %uU user %uS system %uE/%*E elapsed %PCPU (%Xavgtext+%Davgdata %Mmaxresident)k\n%Iinputs+%Ooutputs (%Fmajor+%Rminor)pagefaults %Wswaps'
 
       source ${pkgs.git}/share/git/contrib/completion/git-prompt.sh
@@ -108,7 +112,7 @@
       source ${./cmds.zsh}
       source ${./key-bindings.zsh}
       source ${./completion.zsh}
-      source ${./passion.zsh-theme}
+      source ${./passion.zsh-theme}/share/oh-my-zsh/custom/themes/passion.zsh-theme
 
       ZSH_AUTOSUGGEST_MANUAL_REBIND=1
       ZSH_AUTOSUGGEST_HISTORY_IGNORE=$'*\n*'
@@ -124,7 +128,7 @@
   home.packages = with pkgs; [
     nix-zsh-completions # Prefer nix's builtin completion.
     fzf bat # WARN: They are used by fzf.vim!
-    fzf-zsh
+    my.pkgs.colors fzf-zsh
     awscli2 docker emacs
     nmap postgresql screen
   ];

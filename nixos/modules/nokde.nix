@@ -10,6 +10,7 @@
     okular
     spectacle
     firefox
+    nordic
     plasma-browser-integration
     plasma5Packages.bismuth
   ];
@@ -31,19 +32,14 @@
 
     displayManager = {
       sddm.enable = true;
-      defaultSession = "plasmawayland";
+      # defaultSession = "plasmawayland";
       # autoLogin = {
       #   enable = true;
       #   user = "yuzuki";
       # };
 
       # https://github.com/MarianArlt/kde-plasma-chili/issues/1
-      sddm.theme = "${(pkgs.fetchFromGitHub {
-        owner = "EliverLara";
-        repo = "Nordic";
-        rev = "smmh0hszpzqrsv96qg0wc5sbwkghv3sx";
-        sha256 = "0y44h8s8kjfb8i24v43vddzijncw95mn2yy8xf6qlvk0shwaxs3c";
-      })}";
+      sddm.theme = pkgs.nordic;
     };
 
     desktopManager.plasma5 = {

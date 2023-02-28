@@ -12,7 +12,12 @@
     shell = "\${pkgs.zsh}/bin/zsh";
     terminal = "tmux-256color"; # Fix wierd behaviors for dim colors.
     plugins = with pkgs; [
-      tmuxPlugins.tpm
+      {
+        extraConfig = ''
+          set -g @plugin 'tmux-plugins/tpm'
+          set -g @plugin 'tmux-plugins/tmux-sensible'
+        '';
+      }
     ];
 
     # tmux

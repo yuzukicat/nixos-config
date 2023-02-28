@@ -93,7 +93,6 @@
         "urltools"
         "zsh-interactive-cd"
       ];
-      theme = "passion";
       custom = "${./passion.zsh-theme}";
     };
 

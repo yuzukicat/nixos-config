@@ -39,8 +39,8 @@
       # };
 
       theme = pkgs.nordic + "/share/sddm/themes/nordic";
-      settings.Theme.CursorTheme = "Nordic-cursors";
-      settings.Theme.IconsTheme = pkgs.zafiro-icons + "/share/sddm/icons/zafiro-icons";
+      # settings.Theme.CursorTheme = "Nordic-cursors";
+      # settings.Theme.IconsTheme = pkgs.zafiro-icons + "/share/sddm/icons/zafiro-icons";
     };
 
     desktopManager.plasma5 = {

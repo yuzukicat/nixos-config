@@ -67,7 +67,6 @@
       plugins = [
         "git"
         "aws"
-        "colorize"
         "docker"
         "docker-compose"
         "dotenv"

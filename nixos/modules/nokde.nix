@@ -10,7 +10,7 @@
     okular
     spectacle
     firefox
-    # bibata-cursors
+    nordic-cursors
     plasma-browser-integration
     plasma5Packages.bismuth
   ];
@@ -38,8 +38,9 @@
       #   user = "yuzuki";
       # };
 
-      # theme = pkgs.sddm-sugar-candy + "/share/sddm/themes/sugar-candy";
-      # settings.Theme.CursorTheme = "Bibata-Modern-Ice";
+      theme = pkgs.nordic + "/share/sddm/themes/nordic";
+      settings.Theme.CursorTheme = "Nordic-cursors";
+      settings.Theme.IconsTheme = pkgs.zafiro-icons + "/share/sddm/icons/zafiro-icons";
     };
 
     desktopManager.plasma5 = {

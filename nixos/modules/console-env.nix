@@ -59,4 +59,6 @@
   # Don't stuck for searching missing commands.
   programs.command-not-found.enable = false;
 
+  programs.nano.defaultEditor = true;
+
 }

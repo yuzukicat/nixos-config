@@ -23,7 +23,6 @@
     ./modules/tmux.nix
     ./modules/user-dirs.nix
     ./modules/helix
-    ./modules/rime
     ./modules/shell
   ];
 

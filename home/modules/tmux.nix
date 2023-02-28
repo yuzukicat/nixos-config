@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  environment.systemPackages = [
+    pkgs.tmuxPlugins.nord
+  ];
   programs.tmux = {
     enable = true;
     baseIndex = 0;
@@ -13,12 +16,11 @@
     terminal = "tmux-256color"; # Fix wierd behaviors for dim colors.
     plugins = with pkgs; [
       {
-        extraConfig = ''
-          set -g @plugin 'tmux-plugins/tpm'
-          set -g @plugin 'tmux-plugins/tmux-sensible'
-        '';
+        plugin = tmuxPlugins.nord;
+        extraConfig = "";
       }
     ];
+    sensibleOnTop = true;
 
     # tmux
     extraConfig = ''

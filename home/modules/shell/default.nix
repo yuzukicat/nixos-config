@@ -1,5 +1,5 @@
 { lib, pkgs, config, my, ... }:
-{  
+{
   home.sessionVariables = {
     # Rust and python outputs.
     PATH = "$HOME/.local/bin\${PATH:+:}$PATH";
@@ -34,6 +34,8 @@
       nixpkgs = "${config.home.homeDirectory}/repo/fork/nixpkgs";
     };
 
+    defaultKeymap = "emacs";
+
     # Disable /etc/{zshrc,zprofile} that contains the "sane-default" setup.
     # See `/etc/zshrc` for more info.
     envExtra = ''
@@ -43,6 +45,7 @@
     enableAutosuggestions = true;
     enableCompletion = false; # We do it ourselves.
     enableVteIntegration = true;
+    enableSyntaxHighlighting = true;
 
     history = {
       ignoreDups = true;
@@ -58,6 +61,39 @@
         "sudo *rm*"
         "task *(append|add|delete|perge|done|modify)*"
       ];
+    };
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "aws"
+        "colorize"
+        "docker"
+        "docker-compose"
+        "dotenv"
+        "emacs"
+        "emoji"
+        "emoji-clock"
+        "encode64"
+        "git-prompt"
+        "golang"
+        "history"
+        "iterm2"
+        "ng"
+        "nmap"
+        "npm"
+        "pip"
+        "python"
+        "pyenv"
+        "postgres"
+        "rust"
+        "systemadmin"
+        "torrent"
+        "urltools"
+        "zsh-interactive-cd"
+      ];
+      theme = "passion";
     };
 
     # Ref: https://blog.quarticcat.com/zh/posts/how-do-i-make-my-zsh-smooth-as-fuck/

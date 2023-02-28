@@ -69,6 +69,8 @@
     };
   };
 
+  systemd.packages = [ my.pkgs.keystat ];
+
   # Use nixos-generate-config --root /mnt then copy and paste
   # Questions.
   # Work Station
@@ -126,7 +128,6 @@
   # ];
 
   # Hardware.
-
   powerManagement.cpuFreqGovernor = "schedutil";
   hardware = {
     enableRedistributableFirmware = true;
@@ -142,41 +143,7 @@
   time.timeZone = "Asia/Tokyo";
 
   # Users.
-
   # sops.secrets.passwd.neededForUsers = true;
-  programs.zsh.enable = true; # As shell.
-  programs.zsh.ohMyZsh = {
-    enable = true;
-    plugins = [
-      "git"
-      "aws"
-      "colorize"
-      "docker"
-      "docker-compose"
-      "dotenv"
-      "emacs"
-      "emoji"
-      "emoji-clock"
-      "encode64"
-      "git-prompt"
-      "golang"
-      "history"
-      "iterm2"
-      "ng"
-      "nmap"
-      "npm"
-      "pip"
-      "python"
-      "pyenv"
-      "postgres"
-      "rust"
-      "systemadmin"
-      "torrent"
-      "urltools"
-      "zsh-interactive-cd"
-    ];
-    theme = "passion";
-  };
   users = {
     mutableUsers = true;
     users."yuzuki" = {
@@ -200,7 +167,6 @@
   # users.groups."transmission".members = [ config.users.users.yuzuki.name ];
 
   # Services.
-
   # AMD Ryzen 5950x
   systemd.services.nix-daemon.serviceConfig = {
     CPUQuota = "3000%";
@@ -211,6 +177,8 @@
     MemorySwapMax = "32G";
     IOWeight = 50;
   };
+  # Workaround: https://github.com/NixOS/nixpkgs/issues/81138
+  systemd.services.keystat.wantedBy = [ "multi-user.target" ];
 
   # Moved to services code block
   # KDE pulls in pipewire via xdg-desktop-portal anyways.
@@ -231,7 +199,6 @@
   '';
 
   services = {
-
     # If you have a ssd, don't forget to enable fstrim
     fstrim = {
       enable = true;
@@ -266,10 +233,6 @@
       };
     };
   };
-
-  systemd.packages = [ my.pkgs.keystat ];
-  # Workaround: https://github.com/NixOS/nixpkgs/issues/81138
-  systemd.services.keystat.wantedBy = [ "multi-user.target" ];
 
   # vm configration Refered from ../invar/configuration.nix
   # onBoot ignore

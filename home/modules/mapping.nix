@@ -21,6 +21,5 @@ let
 in
 {
   home.file =
-    mkHomeFile ./rime ".config/ibus/rime" //
-    mkHomeFile ./zsh ".config/zsh";
+    mkHomeFile ./rime ".config/ibus/rime";
 }

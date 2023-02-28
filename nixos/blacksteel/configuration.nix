@@ -145,6 +145,38 @@
 
   # sops.secrets.passwd.neededForUsers = true;
   programs.zsh.enable = true; # As shell.
+  programs.zsh.ohMyZsh = {
+    enable = true;
+    plugins = [
+      "git"
+      "aws"
+      "colorize"
+      "docker"
+      "docker-compose"
+      "dotenv"
+      "emacs"
+      "emoji"
+      "emoji-clock"
+      "encode64"
+      "git-prompt"
+      "golang"
+      "history"
+      "iterm2"
+      "ng"
+      "nmap"
+      "npm"
+      "pip"
+      "python"
+      "pyenv"
+      "postgres"
+      "rust"
+      "systemadmin"
+      "torrent"
+      "urltools"
+      "zsh-interactive-cd"
+    ];
+    theme = "passion";
+  };
   users = {
     mutableUsers = true;
     users."yuzuki" = {

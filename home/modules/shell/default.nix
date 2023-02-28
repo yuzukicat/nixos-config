@@ -1,39 +1,5 @@
 { lib, pkgs, config, my, ... }:
-{
-
-  programs.ohMyZsh = {
-    enable = true;
-    plugins = [
-      "git"
-      "aws"
-      "colorize"
-      "docker"
-      "docker-compose"
-      "dotenv"
-      "emacs"
-      "emoji"
-      "emoji-clock"
-      "encode64"
-      "git-prompt"
-      "golang"
-      "history"
-      "iterm2"
-      "ng"
-      "nmap"
-      "npm"
-      "pip"
-      "python"
-      "pyenv"
-      "postgres"
-      "rust"
-      "systemadmin"
-      "torrent"
-      "urltools"
-      "zsh-interactive-cd"
-    ];
-    theme = "passion";
-  };
-  
+{  
   home.sessionVariables = {
     # Rust and python outputs.
     PATH = "$HOME/.local/bin\${PATH:+:}$PATH";

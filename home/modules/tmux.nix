@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     pkgs.tmuxPlugins.nord
   ];
   programs.tmux = {

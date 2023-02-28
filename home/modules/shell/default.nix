@@ -1,7 +1,7 @@
 { lib, pkgs, config, my, ... }:
 {
 
-  programs.zsh.ohMyZsh = {
+  programs.ohMyZsh = {
     enable = true;
     plugins = [
       "git"

@@ -94,6 +94,7 @@
         "zsh-interactive-cd"
       ];
       theme = "passion";
+      custom = "${./passion.zsh-theme}";
     };
 
     # Ref: https://blog.quarticcat.com/zh/posts/how-do-i-make-my-zsh-smooth-as-fuck/

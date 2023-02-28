@@ -15,7 +15,6 @@
     ./modules/mail.nix
     ./modules/mapping.nix
     ./modules/mime-apps.nix
-    ./modules/nvim
     ./modules/programs.nix
     # ./modules/rime-fcitx.nix
     ./modules/rust.nix

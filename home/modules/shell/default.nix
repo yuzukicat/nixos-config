@@ -112,7 +112,7 @@
       source ${./cmds.zsh}
       source ${./key-bindings.zsh}
       source ${./completion.zsh}
-      source ${./passion.zsh-theme}/share/oh-my-zsh/custom/themes/passion.zsh-theme
+      source ${./passion.zsh-theme}/share/oh-my-zsh/custom/themes
 
       ZSH_AUTOSUGGEST_MANUAL_REBIND=1
       ZSH_AUTOSUGGEST_HISTORY_IGNORE=$'*\n*'

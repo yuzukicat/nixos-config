@@ -2,17 +2,27 @@
 {
   programs.tmux = {
     enable = true;
-    baseIndex = 1;
+    baseIndex = 0;
     clock24 = true;
     escapeTime = 1;
     historyLimit = 100000;
-    keyMode = "vi";
-    prefix = "C-a";
+    keyMode = "nano";
+    mouse = true;
+    prefix = "C-b";
+    shell = "\${pkgs.zsh}/bin/zsh";
     terminal = "tmux-256color"; # Fix wierd behaviors for dim colors.
+    plugins = with pkgs; [
+      {
+        plugin = tmuxPlugins.tpm;
+        extraConfig = "
+            set -g @plugin "arcticicestudio/nord-tmux"
+          ";
+      }
+    ];
 
     # tmux
     extraConfig = ''
-      set -g mouse on
+      # set -g mouse on
       set -g set-clipboard on
       set -g word-separators " ,\"'[](){}<>=:@"
 
@@ -63,6 +73,8 @@
       bind-key -n DoubleClick3Pane copy-mode -M \; send-keys -X select-word \; send-keys -X copy-selection-no-clear
       bind-key -n TripleClick3Pane copy-mode -M \; send-keys -X select-line \; send-keys -X copy-selection-no-clear
       bind-key -T copy-mode-vi MouseDown3Pane send-keys -X cancel
+
+      run '~/.tmux/plugins/tpm/tpm'
     '';
   };
 }

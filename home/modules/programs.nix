@@ -1,7 +1,7 @@
 { lib, pkgs, my, ... }:
 
 let
-  myPython = pkgs.python3.withPackages (ps: with ps; [
+  myPython = pkgs.python3.withPackages (py: with py; [
     aiohttp
     numpy
     pylint
@@ -9,7 +9,14 @@ let
     requests
     toml
     epc
+    pip
   ]);
+
+  myNode = pkgs.nodejs.withPackages (v8: with v8; [
+    npm-check-updates
+    npm
+  ]);
+
 
 in {
   home.packages = with pkgs; [
@@ -29,7 +36,7 @@ in {
 
     # Dev
     cachix patchelf nixpkgs-review nix-update nix-output-monitor # Nix utils
-    gcc ghc myPython # Compiler & interpreters
+    gcc ghc myPython myNode# Compiler & interpreters
     gdb # Debugger
     sqlite-interactive # sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip

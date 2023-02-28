@@ -170,25 +170,6 @@
         extraModules = with nixosModules; [ home-manager sops plsama-5-27 ];
       };
 
-      silver = mkSystem "silver" "x86_64-linux" inputs.nixpkgs-stable {
-        extraModules = with nixosModules; [ sops ];
-      };
-
-      lithium = mkSystem "lithium" "x86_64-linux" inputs.nixpkgs-stable {
-        extraModules = with nixosModules; [ sops ];
-      };
-
-      copper = mkSystem "copper" "x86_64-linux" inputs.nixpkgs-stable {
-        extraModules = with nixosModules; [ sops ];
-      };
-
-      unmatched = mkSystem "unmatched" "riscv64-linux" inputs.nixpkgs-unmatched { };
-      unmatched-cross = mkSystem "unmatched" "x86_64-linux" inputs.nixpkgs-unmatched {
-        extraModules = [
-          { nixpkgs.crossSystem.config = "riscv64-unknown-linux-gnu"; }
-        ];
-      };
-
       minimal-image = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs {
         extraModules = with nixosModules; [ home-manager sops plsama-5-27 ];
       };

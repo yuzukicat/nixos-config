@@ -17,6 +17,10 @@ let
     npm
   ]);
 
+  ohMyZsh = pkgs.zsh.withPackages (zsh: with zsh; [
+    oh-my-zsh
+  ]);
+
 in {
   home.packages = with pkgs; [
     # Console
@@ -39,7 +43,7 @@ in {
     sqlite-interactive # sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip
     bash-completion cling elixir github-cli
-    go oh-my-zsh
+    go ohMyZsh
 
     # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
     # system:

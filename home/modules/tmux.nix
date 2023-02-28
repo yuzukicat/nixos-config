@@ -6,7 +6,7 @@
     clock24 = true;
     escapeTime = 1;
     historyLimit = 100000;
-    keyMode = "nano";
+    keyMode = "emacs";
     mouse = true;
     prefix = "C-b";
     shell = "\${pkgs.zsh}/bin/zsh";

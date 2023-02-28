@@ -11,6 +11,7 @@
     spectacle
     firefox
     nordic
+    zafiro-icons
     nordzy-icon-theme
     nordzy-cursor-theme
     plasma-browser-integration

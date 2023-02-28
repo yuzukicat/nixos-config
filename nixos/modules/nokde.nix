@@ -38,7 +38,7 @@
       #   user = "yuzuki";
       # };
 
-      sddm.theme = "${pkgs.nordic}"
+      sddm.theme = "${pkgs.nordic}";
     };
 
     desktopManager.plasma5 = {

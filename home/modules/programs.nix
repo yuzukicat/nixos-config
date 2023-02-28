@@ -12,10 +12,8 @@ let
     pip
   ]);
 
-  myNode = pkgs.nodejs.withPackages (ps: with ps; [
-    npm
-    npx
-    node
+  myNode = pkgs.nodePackages.withPackages (ps: with ps; [
+    npm-check-updates
   ]);
 
 in {
@@ -40,7 +38,7 @@ in {
     sqlite-interactive sqls# sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip
     bash-completion cling elixir gh
-    go 
+    go nodejs
 
     # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
     # system:

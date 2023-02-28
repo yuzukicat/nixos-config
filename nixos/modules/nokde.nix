@@ -38,7 +38,7 @@
       #   user = "yuzuki";
       # };
 
-      sddm.theme = pkgs.nordic + ".local/share/sddm";
+      sddm.theme = "nordic";
       # settings.Theme.CursorTheme = "Nordic-cursors";
       # settings.Theme.IconsTheme = "Zafiro-Nord-Black";
     };

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    pkgs.tmuxPlugins.nord
+    tmuxPlugins.nord
   ];
   programs.tmux = {
     enable = true;

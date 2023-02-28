@@ -12,12 +12,7 @@
     shell = "\${pkgs.zsh}/bin/zsh";
     terminal = "tmux-256color"; # Fix wierd behaviors for dim colors.
     plugins = with pkgs; [
-      {
-        plugin = tmuxPlugins.tpm;
-        extraConfig = "
-            set -g @plugin "arcticicestudio/nord-tmux"
-          ";
-      }
+      tmuxPlugins.tpm
     ];
 
     # tmux
@@ -73,6 +68,10 @@
       bind-key -n DoubleClick3Pane copy-mode -M \; send-keys -X select-word \; send-keys -X copy-selection-no-clear
       bind-key -n TripleClick3Pane copy-mode -M \; send-keys -X select-line \; send-keys -X copy-selection-no-clear
       bind-key -T copy-mode-vi MouseDown3Pane send-keys -X cancel
+
+      # List of plugins
+      # set -g @plugin 'tmux-plugins/tpm'
+      # set -g @plugin 'tmux-plugins/tmux-sensible'
 
       run '~/.tmux/plugins/tpm/tpm'
     '';

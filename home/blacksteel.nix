@@ -6,7 +6,6 @@
   imports = [
     ./modules/wayland-dpi.nix
 
-    ./modules/alacritty.nix
     ./modules/direnv.nix
     ./modules/firefox.nix
     ./modules/git.nix
@@ -14,18 +13,19 @@
     ./modules/helix
     ./modules/lf.nix
     ./modules/mail.nix
+    ./modules/mapping.nix
     ./modules/mime-apps.nix
     ./modules/nvim
     ./modules/programs.nix
     # ./modules/rime-fcitx.nix
     ./modules/rust.nix
-    ./modules/shell
     ./modules/task.nix
+    ./modules/tex.nix
     ./modules/tmux.nix
     ./modules/user-dirs.nix
-    ./modules/mapping.nix
-    ./modules/emacs-exwm.nix
-    ./modules/tex.nix
+    ./modules/helix
+    ./modules/rime
+    ./modules/shell
   ];
 
   wayland.dpi = 120;

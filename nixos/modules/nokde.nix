@@ -10,7 +10,7 @@
     okular
     spectacle
     firefox
-    nordic-cursors
+    nordic
     plasma-browser-integration
     plasma5Packages.bismuth
   ];
@@ -22,11 +22,6 @@
   };
 
   nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
-
-
-  environment.systemPackages = 
-      let nordic pkgs.nordic ./packages/mysddmtheme {}; in [ nordic];
-
 
   services.xserver = {
     enable = true;
@@ -43,9 +38,7 @@
       #   user = "yuzuki";
       # };
 
-      sddm.theme = "nordic";
-      # settings.Theme.CursorTheme = "Nordic-cursors";
-      # settings.Theme.IconsTheme = pkgs.zafiro-icons + "/share/sddm/icons/zafiro-icons";
+      sddm.theme = "${pkgs.nordic}"
     };
 
     desktopManager.plasma5 = {

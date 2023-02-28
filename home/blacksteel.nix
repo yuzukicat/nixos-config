@@ -21,7 +21,6 @@
     ./modules/task.nix
     ./modules/tmux.nix
     ./modules/user-dirs.nix
-    ./modules/xdgify.nix
     ./modules/helix
     ./modules/shell
   ];

@@ -10,6 +10,6 @@
   # XDG Spec doens't have BIN_HOME yet.
   home.xdg.configFile."go/env".text = ''
     GOPATH=${config.xdg.cacheHome}/go
-    GOBIN=${config.home.homeDirectory}/.local/bin
+    GOBIN=${config.homeDirectory}/.local/bin
   '';
 }

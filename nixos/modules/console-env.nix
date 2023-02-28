@@ -7,7 +7,7 @@
   # - nano # Already have vim.
   # - perl # No.
   # - rsync strace # Already in systemPackages.
-  environment.defaultPackages = [ nano ];
+  environment.defaultPackages = with pkgs; [ nano ];
 
   environment.systemPackages = with pkgs; [
     cntr nix-top # Nix helpers.

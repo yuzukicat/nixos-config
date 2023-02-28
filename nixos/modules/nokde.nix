@@ -11,6 +11,8 @@
     spectacle
     firefox
     nordic
+    nordzy-icon-theme
+    nordzy-cursor-theme
     plasma-browser-integration
     plasma5Packages.bismuth
   ];

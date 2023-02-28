@@ -171,7 +171,7 @@
 
   # AMD Ryzen 5800x
   systemd.services.nix-daemon.serviceConfig = {
-    CPUQuota = "1500%";
+    CPUQuota = "3000%";
     CPUWeight = 50;
 
     MemoryMax = "26G";

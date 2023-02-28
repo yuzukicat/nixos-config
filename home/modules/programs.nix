@@ -12,10 +12,6 @@ let
     pip
   ]);
 
-  myNode = pkgs.nodePackages.withPackages (ps: with ps; [
-    npm-check-updates
-  ]);
-
 in {
   home.packages = with pkgs; [
     # Console
@@ -33,12 +29,12 @@ in {
 
     # Dev
     cachix patchelf nixpkgs-review nix-update nix-output-monitor # Nix utils
-    gcc ghc myPython myNode# Compiler & interpreters
+    gcc ghc myPython # Compiler & interpreters
     gdb # Debugger
     sqlite-interactive sqls# sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip
     bash-completion cling elixir gh
-    go nodejs
+    go nodejs nodePackages.npm-check-updates
 
     # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
     # system:

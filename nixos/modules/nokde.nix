@@ -32,14 +32,15 @@
 
     displayManager = {
       sddm.enable = true;
-      # defaultSession = "plasmawayland";
+      defaultSession = "plasmawayland";
       # autoLogin = {
       #   enable = true;
       #   user = "yuzuki";
       # };
 
-      # https://github.com/MarianArlt/kde-plasma-chili/issues/1
-      sddm.theme = ${pkgs.nordic};
+      theme = pkgs.nordic + ".local/share/sddm/themes/nordic";
+      # settings.Theme.CursorTheme = "Nordic-cursors";
+      # settings.Theme.IconsTheme = "Zafiro-Nord-Black";
     };
 
     desktopManager.plasma5 = {

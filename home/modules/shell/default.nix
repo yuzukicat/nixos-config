@@ -128,7 +128,7 @@
     nix-zsh-completions # Prefer nix's builtin completion.
     fzf bat # WARN: They are used by fzf.vim!
     my.pkgs.colors fzf-zsh
-    awscli2 docker emacs iterm2
+    awscli2 docker emacs
     nmap postgresql screen
   ];
 }

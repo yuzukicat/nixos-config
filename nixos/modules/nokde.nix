@@ -39,7 +39,7 @@
       # };
 
       # https://github.com/MarianArlt/kde-plasma-chili/issues/1
-      sddm.theme = pkgs.nordic;
+      sddm.theme = ${pkgs.nordic};
     };
 
     desktopManager.plasma5 = {

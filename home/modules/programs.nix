@@ -1,7 +1,7 @@
 { lib, pkgs, my, ... }:
 
 let
-  myPython = pkgs.python3.withPackages (py: with py; [
+  myPython = pkgs.python3.withPackages (ps: with ps; [
     aiohttp
     numpy
     pylint
@@ -12,10 +12,10 @@ let
     pip
   ]);
 
-  myNode = pkgs.npm.withPackages (v8: with v8; [
-    npm-check-updates
+  myNode = pkgs.nodejs.withPackages (ps: with ps; [
+    npm
     npx
-    nodejs
+    node
   ]);
 
 in {

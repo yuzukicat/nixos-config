@@ -18,6 +18,7 @@
     libarchive zstd # Compression.
 
     my.pkgs.nixos-rebuild-shortcut
+    tmuxPlugins.nord
 
     emacs wget home-manager
     htop iotop iftop gwenview kitty okular spectacle nordic

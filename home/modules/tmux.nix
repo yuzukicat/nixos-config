@@ -8,8 +8,8 @@
     historyLimit = 100000;
     keyMode = "emacs";
     mouse = true;
-    prefix = "C-b";
-    shell = "\${pkgs.zsh}/bin/zsh";
+    # prefix = "C-b";
+    # shell = "\${pkgs.zsh}/bin/zsh";
     terminal = "tmux-256color"; # Fix wierd behaviors for dim colors.
     plugins = with pkgs; [
       {

@@ -3,10 +3,7 @@
   assertions = [
     {
       assertion =
-        config.programs.firefox.enable &&
-        config.programs.feh.enable &&
-        config.programs.neovim.enable &&
-        config.programs.alacritty.enable;
+        config.programs.firefox.enable;
       message = "firefox, feh, and neovim are used in MIME apps";
     }
   ];
@@ -27,13 +24,13 @@
       "video/*" = "vlc.desktop";
       #
       "application/xhtml+xml" = "firefox.desktop";
-      "text/*" = "nvim.desktop";
+      "text/*" = "kde.org.helix.desktop";
       "text/html" = "firefox.desktop";
       "text/xml" = "firefox.desktop";
       "x-scheme-handler/ftp" = "firefox.desktop";
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";
-      "x-scheme-handler/terminal" = "alacritty.desktop";
+      "x-scheme-handler/terminal" = "org.kde.konsole.desktop";
     };
   };
 }

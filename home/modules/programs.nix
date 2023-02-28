@@ -30,7 +30,6 @@ in {
     # GUI
     kolourpaint libreoffice okular # Files
     electrum electron-cash monero-gui # Cryptocurrency
-    (prismlauncher.override { jdks = [ openjdk ]; }) /* steam <- enabled system-wide */ # Games
     tdesktop my.pkgs.nheko-fix # Messaging
     wf-recorder obs-studio # Recording
 
@@ -41,19 +40,19 @@ in {
     sqlite-interactive # sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip
     bash-completion cling elixir github-cli
-    go
+    go oh-my-zsh
 
     # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
     # system:
     trash-cli bc
-    hyfetch
+    my.pkgs.hyfetch
 
     # internet:
     aria2 element-desktop vlc /*syncplay*/
 
     # work:
-    scribus gimp xournalpp krita calibre gwenview
-    pdftag ocrmypdf poppler_utils
+    scribus gwenview gimp krita calibre
+    xournalpp pdftag ocrmypdf poppler_utils
     goldendict zotero
 
     # non-oss:

@@ -19,9 +19,9 @@
     # ./modules/rime-fcitx.nix
     ./modules/rust.nix
     ./modules/task.nix
-    ./modules/tex.nix
     ./modules/tmux.nix
     ./modules/user-dirs.nix
+    ./modules/xdgify.nix
     ./modules/helix
     ./modules/shell
   ];
@@ -38,8 +38,6 @@
 
   home.sessionVariables.GTK_USE_PORTAL = 1;
 
-  programs.alacritty.settings.font.size = lib.mkForce 10;
-
   home.file = let
     home = config.home.homeDirectory;
     link = path: config.lib.file.mkOutOfStoreSymlink "${home}/${path}";
@@ -53,19 +51,6 @@
   };
 
   programs.gpg.homedir = "${config.home.homeDirectory}/storage/personal/gnupg";
-
-  systemd.user.services."rime-sync" = {
-    Unit.Description = "Export rime dictionary";
-    # https://github.com/fcitx/fcitx5-rime/issues/28#issuecomment-828484970
-    Service.ExecStart = ''${pkgs.qt5.qttools.bin}/bin/qdbus org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.SetConfig "fcitx://config/addon/rime/sync" ""'';
-  };
-  systemd.user.timers."rime-sync" = {
-    Timer = {
-      OnCalendar = "*-*-* 03:00:00";
-      Persistent = true;
-    };
-    Install.WantedBy = [ "timers.target" ];
-  };
 
   home.stateVersion = "22.11";
 }

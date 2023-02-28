@@ -125,7 +125,7 @@
   home.packages = with pkgs; [
     nix-zsh-completions # Prefer nix's builtin completion.
     fzf bat # WARN: They are used by fzf.vim!
-    my.pkgs.colors
+    my.pkgs.colors fzf-zsh
     awscli2 docker emacs iterm2
     nmap postgresql screen
   ];

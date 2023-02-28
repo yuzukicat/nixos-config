@@ -169,7 +169,7 @@
 
   # Services.
 
-  # AMD Ryzen 5800x
+  # AMD Ryzen 5950x
   systemd.services.nix-daemon.serviceConfig = {
     CPUQuota = "3000%";
     CPUWeight = 50;

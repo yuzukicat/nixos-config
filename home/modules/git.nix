@@ -56,4 +56,5 @@
       advice.detachedHead = false;
     };
   };
+  programs.gh.enable = true;
 }

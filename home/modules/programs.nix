@@ -12,9 +12,10 @@ let
     pip
   ]);
 
-  myNode = pkgs.nodejs.withPackages (v8: with v8; [
+  myNode = pkgs.npm.withPackages (v8: with v8; [
     npm-check-updates
-    npm
+    npx
+    nodejs
   ]);
 
 in {
@@ -36,10 +37,10 @@ in {
     cachix patchelf nixpkgs-review nix-update nix-output-monitor # Nix utils
     gcc ghc myPython myNode# Compiler & interpreters
     gdb # Debugger
-    sqlite-interactive # sqlite
+    sqlite-interactive sqls# sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip
-    bash-completion cling elixir github-cli
-    go
+    bash-completion cling elixir gh
+    go 
 
     # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
     # system:
@@ -59,4 +60,11 @@ in {
   ];
 
   programs.feh.enable = true;
+  programs.hyfetch.settings = {
+    preset = "transgender";
+    mode = "rgb";
+    color_align = {
+      mode = "horizontal";
+    };
+  };
 }

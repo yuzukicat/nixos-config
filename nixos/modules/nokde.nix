@@ -23,6 +23,11 @@
 
   nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
 
+
+  environment.systemPackages = 
+      let nordic pkgs.nordic ./packages/mysddmtheme {}; in [ nordic];
+
+
   services.xserver = {
     enable = true;
     layout = "us";
@@ -38,7 +43,7 @@
       #   user = "yuzuki";
       # };
 
-      theme = pkgs.nordic + "/share/sddm/themes/nordic";
+      sddm.theme = "nordic";
       # settings.Theme.CursorTheme = "Nordic-cursors";
       # settings.Theme.IconsTheme = pkgs.zafiro-icons + "/share/sddm/icons/zafiro-icons";
     };

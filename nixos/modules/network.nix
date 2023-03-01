@@ -43,10 +43,10 @@
     };
   };
 
-  systemd.network.wait-online = {
-    anyInterface = true;
-    timeout = 15;
-  };
+  # systemd.network.wait-online = {
+  #   anyInterface = true;
+  #   timeout = 15;
+  # };
 
   # networking.proxy.default = if config.networking.hostName != "wlsn" then "http://127.0.0.1:7890" else "";
   # networking.proxy.allProxy = "http://127.0.0.1:7890";

@@ -24,7 +24,7 @@ in {
     # GUI
     kolourpaint libreoffice mpv okular # Files
     electrum electron-cash monero-gui # Cryptocurrency
-    tdesktop my.pkgs.nheko-fix # Messaging
+    tdesktop # Messaging
     wf-recorder obs-studio # Recording
 
     # Dev

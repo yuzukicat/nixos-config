@@ -5,12 +5,11 @@
 
   imports = [
     ./modules/wayland-dpi.nix
-
+    ./modules/alacritty.nix
     ./modules/direnv.nix
     ./modules/firefox.nix
     ./modules/git.nix
     ./modules/gpg.nix
-    ./modules/helix
     ./modules/lf.nix
     ./modules/mail.nix
     ./modules/mapping.nix
@@ -25,17 +24,13 @@
     ./modules/shell
   ];
 
-  wayland.dpi = 120;
-
-  xdg.enable = true;
-
   programs.zsh.loginExtra = ''
     if [[ -z $DISPLAY && "$(tty)" = /dev/tty1 ]] && type sway >/dev/null; then
       exec systemd-cat --identifier=sway sway
     fi
   '';
 
-  home.sessionVariables.GTK_USE_PORTAL = 1;
+  # home.sessionVariables.GTK_USE_PORTAL = 1;
 
   home.file = let
     home = config.home.homeDirectory;
@@ -43,7 +38,7 @@
     linkPersonal = path: link "storage/personal/${path}";
   in {
     # ".local/share/fcitx5/rime/sync".source = linkPersonal "rime-sync";
-    ".local/share/password-store".source = linkPersonal "password-store";
+    # ".local/share/password-store".source = linkPersonal "password-store";
     ".local/share/task".source = linkPersonal "taskwarrior";
     ".ssh".source = linkPersonal "ssh";
   };

@@ -21,13 +21,13 @@
   };
   
   console = {
-    font = lib.mkOverride 900 "Lat2-Terminus16";
+    font = "Lat2-Terminus16";
     # keyMap= "us";
     useXkbConfig = true;
   };
 
-  services.kmscon = {
-    enable = true;
-    extraConfig = "font-size=20";
-  };
+  # services.kmscon = {
+  #   enable = true;
+  #   extraConfig = "font-size=20";
+  # };
 }

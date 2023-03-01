@@ -7,7 +7,7 @@
   # - nano # Already have vim.
   # - perl # No.
   # - rsync strace # Already in systemPackages.
-  environment.defaultPackages = with pkgs; [ nano ];
+  environment.defaultPackages = with pkgs; [ ];
 
   environment.systemPackages = with pkgs; [
     cntr nix-top # Nix helpers.
@@ -21,7 +21,7 @@
     tmuxPlugins.nord
 
     emacs wget home-manager
-    htop iotop iftop gwenview kitty okular spectacle
+    htop iotop iftop
   ];
 
   programs.less = {

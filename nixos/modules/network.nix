@@ -30,17 +30,17 @@
     };
 
     # Work Station
-    interfaces = {
-      enp4s0.useDHCP = lib.mkDefault true;
-      wlp5s0.useDHCP = lib.mkDefault true;
-    };
+    # interfaces = {
+    #   enp4s0.useDHCP = lib.mkDefault true;
+    #   wlp5s0.useDHCP = lib.mkDefault true;
+    # };
 
     # 5950x
-    # interfaces = {
-    #   enp7s0.useDHCP = lib.mkDefault true;
-    #   wlp6s0.useDHCP = lib.mkDefault true;
-    #   tailscale0.useDHCP = lib.mkDefault true;
-    # };
+    interfaces = {
+      enp7s0.useDHCP = lib.mkDefault true;
+      wlp6s0.useDHCP = lib.mkDefault true;
+      tailscale0.useDHCP = lib.mkDefault true;
+    };
   };
 
   systemd.network.wait-online = {
@@ -62,10 +62,10 @@
   #   };
   # };
 
-  services.zerotierone = {
-    enable = true;
-    joinNetworks = [ ];
-  };
+  # services.zerotierone = {
+  #   enable = true;
+  #   joinNetworks = [ ];
+  # };
 
   services.openssh = {
     enable = true;
@@ -104,5 +104,5 @@
   #   '';
   # };
 
-  services.tailscale.enable = true;
+  # services.tailscale.enable = true;
 }

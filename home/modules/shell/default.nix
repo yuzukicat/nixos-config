@@ -125,7 +125,7 @@
 
   programs.zoxide.enable = true;
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
     nix-zsh-completions # Prefer nix's builtin completion.
     fzf bat # WARN: They are used by fzf.vim!
     my.pkgs.colors fzf-zsh

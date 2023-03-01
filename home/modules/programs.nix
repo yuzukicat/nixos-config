@@ -13,7 +13,7 @@ let
   ]);
 
 in {
-  home.packages = with pkgs; [
+  home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
     # Console
     runzip scc bubblewrap difftastic # Random stuff
     xsel wl-clipboard # CLI-Desktop
@@ -22,7 +22,7 @@ in {
     sops # Sops
 
     # GUI
-    kolourpaint libreoffice okular # Files
+    kolourpaint libreoffice mpv okular # Files
     electrum electron-cash monero-gui # Cryptocurrency
     tdesktop my.pkgs.nheko-fix # Messaging
     wf-recorder obs-studio # Recording
@@ -51,9 +51,19 @@ in {
 
     # non-oss:
     zoom-us obsidian
+
+    alacritty autorandr dircolors discocss exa feh lieer mako ncmpcpp nnn notmuch
   ];
 
+  programs.alacritty.settings.font.size = lib.mkForce 10;
+  programs.autorandr.enable = true;
+  programs.dircolors.enable = true;
+  programs.exa.enable = true;
   programs.feh.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
   programs.hyfetch.settings = {
     preset = "transgender";
     mode = "rgb";
@@ -61,4 +71,6 @@ in {
       mode = "horizontal";
     };
   };
+  programs.jq.enable = true;
+  programs.nnn.enable = true;
 }

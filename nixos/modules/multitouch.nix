@@ -3,7 +3,7 @@
 {
   # Enable touchpad and touchscreen support (enabled default in most desktopManager).
 
-  environment.systemPackages = with pkgs; [ libwacom ];
+  # environment.systemPackages = with pkgs; [ libwacom ];
   services.xserver.libinput = {
     enable = true;
     touchpad = {
@@ -17,12 +17,12 @@
     };
   };
 
-  services.xserver.wacom.enable = true;
-  # services.xserver.digimend.enable = true;
+  # services.xserver.wacom.enable = true;
+  # # services.xserver.digimend.enable = true;
 
-  hardware.opentabletdriver.enable = true;
-  hardware.opentabletdriver.daemon.enable = true;
+  # hardware.opentabletdriver.enable = true;
+  # hardware.opentabletdriver.daemon.enable = true;
 
-  # Touchégg is a multitouch gesture recognizer.
-  services.touchegg.enable = true;
+  # # Touchégg is a multitouch gesture recognizer.
+  # services.touchegg.enable = true;
 }

@@ -2,20 +2,20 @@
 {
   imports = [ ./l10n.nix ];
 
-  environment.systemPackages = with pkgs; [
-    ark
-    filelight
-    gwenview
-    kitty
-    okular
-    spectacle
-    firefox
+  environment.systemPackages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
     nordic
     zafiro-icons
     nordzy-icon-theme
     nordzy-cursor-theme
+    aha # needed by kinfocenter for fwupd support
     plasma-browser-integration
-    plasma5Packages.bismuth
+    konsole
+    oxygen
+    (lib.getBin qttools) # Expose qdbus in PATH
+    elisa
+    gwenview
+    okular
+    print-manager
   ];
 
   programs = {
@@ -35,51 +35,23 @@
 
     displayManager = {
       sddm.enable = true;
-      defaultSession = "plasmawayland";
+      # defaultSession = "plasmawayland";
       # autoLogin = {
       #   enable = true;
       #   user = "yuzuki";
       # };
-
-      # sddm.theme = "nordic";
-      # settings.Theme.CursorTheme = "Nordic-cursors";
-      # settings.Theme.IconsTheme = "Zafiro-Nord-Black";
     };
 
     desktopManager.plasma5 = {
       enable = true;
-      runUsingSystemd = true;
-      kdeglobals.KDE.SingleClick = false;
-      # Use QT Scaling?
+      supportDDC = true;
       useQtScaling = true;
+      kdeglobals.KDE.SingleClick = false;
     };
 
     # To make it work on clevo nh55vr rtx-3070max-q
     videoDrivers = [ "nvidia" ];
   };
 
-  xdg.portal.enable = true;
-
-  services.autorandr.enable = true;
-
-  security.pam.services.sddm.enableKwallet = true;
-  
-  # system.activationScripts.installerDesktop = let
-
-  #   # Comes from documentation.nix when xserver and nixos.enable are true.
-  #   # manualDesktopFile = "/run/current-system/sw/share/applications/nixos-manual.desktop";
-
-  #   homeDir = "/home/yuzuki/";
-  #   # transmissionDir = homeDir + "transmission/";
-  #   desktopDir = homeDir + "Desktop/";
-  #   storageDir = homeDir + "storage/";
-
-  # in ''
-  #   mkdir -p ${desktopDir}
-  #   mkdir -p ${storageDir}
-  #   chown yuzuki ${homeDir} ${desktopDir} ${storageDir}
-
-  #   ln -sfT ${pkgs.gparted}/share/applications/gparted.desktop ${desktopDir + "gparted.desktop"}
-  #   ln -sfT ${pkgs.konsole}/share/applications/org.kde.konsole.desktop ${desktopDir + "org.kde.konsole.desktop"}
-  # '';
+  services.colord.enable = true;
 }

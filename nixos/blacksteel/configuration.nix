@@ -6,15 +6,16 @@
   imports = [
     # ./vm.nix
 
+    ../modules/bluetooth.nix
     ../modules/console-env.nix
-    ../modules/device-fix.nix
+    ../modules/cups.nix
+    ../modules/desktop-server.nix
+    ../modules/internationalisation.nix
+    ../modules/multitouch.nix
+    ../modules/network.nix
     ../modules/nix-common.nix
     ../modules/nix-registry.nix
     ../modules/nokde.nix
-    ../modules/internationalisation.nix
-    ../modules/network.nix
-    ../modules/bluetooth.nix
-    ../modules/cups.nix
     ../modules/steam.nix
   ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.blacksteel);
 
@@ -194,10 +195,6 @@
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
   hardware.pulseaudio.extraConfig = "load-module module-switch-on-connect";
 
-  services.logind.extraConfig = ''
-    HandlePowerKey=suspend
-  '';
-
   services = {
     # If you have a ssd, don't forget to enable fstrim
     fstrim = {
@@ -258,10 +255,10 @@
   # Question: Can it fix the bus error info on boot??
   users.groups."adbusers".members = [ config.users.users.yuzuki.name ];
 
-  programs.wireshark = {
-    enable = true;
-    package = pkgs.wireshark-qt;
-  };
+  # programs.wireshark = {
+  #   enable = true;
+  #   package = pkgs.wireshark-qt;
+  # };
   
   # environment.etc Refered from ../invar/configuration.nix
   environment.etc = {

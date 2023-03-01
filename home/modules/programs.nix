@@ -52,7 +52,7 @@ in {
     # non-oss:
     zoom-us obsidian
 
-    alacritty autorandr dircolors discocss exa feh lieer mako ncmpcpp nnn notmuch
+    alacritty autorandr discocss exa feh lieer mako ncmpcpp nnn notmuch
   ];
 
   programs.alacritty.settings.font.size = lib.mkForce 10;

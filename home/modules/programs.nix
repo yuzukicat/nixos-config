@@ -68,5 +68,4 @@ in {
     };
   };
   programs.jq.enable = true;
-  programs.nnn.enable = true;
 }

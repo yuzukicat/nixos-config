@@ -60,10 +60,6 @@ in {
   programs.dircolors.enable = true;
   programs.exa.enable = true;
   programs.feh.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
   programs.hyfetch.settings = {
     preset = "transgender";
     mode = "rgb";

@@ -11,7 +11,7 @@ let
     epc
     pip
   ]);
-  myCodeOSS = pkgs.vscode.fhsWithPackages (ps: with ps;[ rustup zlib openssl.dev pkg-config
+  myCodeOSS = pkgs.vscode.fhsWithPackages (ps: with pkgs.vscode-extensions;[ rustup zlib openssl.dev pkg-config
       ms-vscode.anycode
       editorconfig.editorconfig
       esbenp.prettier-vscode

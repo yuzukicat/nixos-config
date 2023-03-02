@@ -20,7 +20,7 @@
     my.pkgs.nixos-rebuild-shortcut
     tmuxPlugins.nord
 
-    emacs wget home-manager zsh-nix-shell
+    emacs wget home-manager zsh-nix-shell vscode.fhs
     htop iotop iftop
   ];
 
@@ -61,5 +61,5 @@
   programs.command-not-found.enable = false;
 
   # programs.nano.defaultEditor = true;
-
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }

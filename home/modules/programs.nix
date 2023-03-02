@@ -11,7 +11,65 @@ let
     epc
     pip
   ]);
-  myCodeOSS = pkgs.vscode.fhsWithPackages (ps: with pkgs.vscode-extensions;[
+in {
+  home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
+    # Console
+    runzip scc bubblewrap difftastic # Random stuff
+    xsel wl-clipboard # CLI-Desktop
+    beancount my.pkgs.double-entry-generator # Accounting
+    tealdeer man-pages # Manual
+    sops # Sops
+
+    # GUI
+    kolourpaint libreoffice mpv okular # Files
+    electrum electron-cash # Cryptocurrency
+    tdesktop # Messaging
+    wf-recorder obs-studio # Recording
+
+    # Dev
+    cachix patchelf nixpkgs-review nix-update nix-output-monitor # Nix utils
+    gcc ghc myPython myCodeOSS # Compiler & interpreters
+    gdb # Debugger
+    sqlite-interactive sqls# sqlite
+    cabal-install gnumake yarn binutils ruby_3_1 xclip
+    bash-completion cling elixir gh
+    go nodejs nodePackages.npm-check-updates
+
+    # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
+    # system:
+    trash-cli bc
+    my.pkgs.hyfetch
+
+    # internet:
+    aria2 element-desktop vlc /*syncplay*/
+
+    # work:
+    scribus gwenview gimp krita calibre
+    xournalpp pdftag ocrmypdf poppler_utils
+    goldendict zotero
+
+    # non-oss:
+    zoom-us obsidian
+
+    autorandr discocss exa feh lieer mako ncmpcpp notmuch 
+  ];
+
+  programs.alacritty.settings.font.size = lib.mkForce 10;
+  programs.autorandr.enable = true;
+  programs.dircolors.enable = true;
+  programs.exa.enable = true;
+  programs.feh.enable = true;
+  programs.hyfetch.settings = {
+    preset = "transgender";
+    mode = "rgb";
+    color_align = {
+      mode = "horizontal";
+    };
+  };
+  programs.jq.enable = true;
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode.fhsWithPackages (ps: with pkgs.vscode-extensions; [
       ms-vscode.anycode
       editorconfig.editorconfig
       esbenp.prettier-vscode
@@ -62,63 +120,6 @@ let
       bierner.emojisense
       ms-vscode.hexeditor
       kddejong.vscode-cfn-lint
-  ]);
-
-in {
-  home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
-    # Console
-    runzip scc bubblewrap difftastic # Random stuff
-    xsel wl-clipboard # CLI-Desktop
-    beancount my.pkgs.double-entry-generator # Accounting
-    tealdeer man-pages # Manual
-    sops # Sops
-
-    # GUI
-    kolourpaint libreoffice mpv okular # Files
-    electrum electron-cash # Cryptocurrency
-    tdesktop # Messaging
-    wf-recorder obs-studio # Recording
-
-    # Dev
-    cachix patchelf nixpkgs-review nix-update nix-output-monitor # Nix utils
-    gcc ghc myPython myCodeOSS # Compiler & interpreters
-    gdb # Debugger
-    sqlite-interactive sqls# sqlite
-    cabal-install gnumake yarn binutils ruby_3_1 xclip
-    bash-completion cling elixir gh
-    go nodejs nodePackages.npm-check-updates
-
-    # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
-    # system:
-    trash-cli bc
-    my.pkgs.hyfetch
-
-    # internet:
-    aria2 element-desktop vlc /*syncplay*/
-
-    # work:
-    scribus gwenview gimp krita calibre
-    xournalpp pdftag ocrmypdf poppler_utils
-    goldendict zotero
-
-    # non-oss:
-    zoom-us obsidian
-
-    autorandr discocss exa feh lieer mako ncmpcpp notmuch
-  ];
-
-  programs.alacritty.settings.font.size = lib.mkForce 10;
-  programs.autorandr.enable = true;
-  programs.dircolors.enable = true;
-  programs.exa.enable = true;
-  programs.feh.enable = true;
-  programs.hyfetch.settings = {
-    preset = "transgender";
-    mode = "rgb";
-    color_align = {
-      mode = "horizontal";
-    };
+    ]);
   };
-  programs.jq.enable = true;
-  home.sessionVariables.NIXOS_OZONE_WL = "1";
 }

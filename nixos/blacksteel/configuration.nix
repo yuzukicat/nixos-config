@@ -169,15 +169,15 @@
 
   # Services.
   # AMD Ryzen 5950x
-  systemd.services.nix-daemon.serviceConfig = {
-    CPUQuota = "3000%";
-    CPUWeight = 50;
+  # systemd.services.nix-daemon.serviceConfig = {
+  #   CPUQuota = "3000%";
+  #   CPUWeight = 50;
 
-    MemoryMax = "26G";
-    MemoryHigh = "24G";
-    MemorySwapMax = "32G";
-    IOWeight = 50;
-  };
+  #   MemoryMax = "26G";
+  #   MemoryHigh = "24G";
+  #   MemorySwapMax = "32G";
+  #   IOWeight = 50;
+  # };
   # Workaround: https://github.com/NixOS/nixpkgs/issues/81138
   systemd.services.keystat.wantedBy = [ "multi-user.target" ];
 
@@ -203,13 +203,13 @@
     };
     timesyncd.enable = true;
     # Avoid Linux locking up in low memory situations using earlyoom
-    earlyoom = {
-      enable = true;
-      # earlyoom configration Refered from ../invar/configuration.nix
-      freeMemThreshold = 5;
-      freeSwapThreshold = 10;
-      enableNotifications = true;
-    };
+    # earlyoom = {
+    #   enable = true;
+    #   # earlyoom configration Refered from ../invar/configuration.nix
+    #   freeMemThreshold = 5;
+    #   freeSwapThreshold = 10;
+    #   enableNotifications = true;
+    # };
     # transmission configration Refered from ../invar/configuration.nix
     # transmission = {
     #   enable = true;

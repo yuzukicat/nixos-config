@@ -51,7 +51,7 @@ in {
     # non-oss:
     zoom-us obsidian
 
-    autorandr discocss exa feh lieer mako ncmpcpp notmuch vscode
+    autorandr discocss lieer mako ncmpcpp notmuch
   ];
 
   programs.alacritty.settings.font.size = lib.mkForce 10;
@@ -69,6 +69,7 @@ in {
   programs.jq.enable = true;
   # install VS Code via Home Manager
   programs.vscode = {
+    enable = true;
     extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
       ms-vscode.anycode

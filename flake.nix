@@ -13,6 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "flake-utils";
     };
+    plasma-manager = {
+      url = "github:pjones/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -100,6 +105,9 @@
             super = config;
           };
         };
+        extraModules = [
+          inputs.plasma-manager.homeManagerModules.plasma-manager
+        ];
       };
 
       sops = { config, ... }: {

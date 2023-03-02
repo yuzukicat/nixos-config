@@ -69,6 +69,6 @@ in {
   programs.jq.enable = true;
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode.withPackages (ps: with ps; [ rustup zlib openssl.dev pkg-config ]);
+    package = pkgs.vscode-with-extensions;
   };
 }

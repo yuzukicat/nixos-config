@@ -51,7 +51,7 @@ in {
     # non-oss:
     zoom-us obsidian
 
-    autorandr discocss exa feh lieer mako ncmpcpp notmuch 
+    autorandr discocss exa feh lieer mako ncmpcpp notmuch vscode
   ];
 
   programs.alacritty.settings.font.size = lib.mkForce 10;

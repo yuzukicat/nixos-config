@@ -11,6 +11,13 @@ let
     epc
     pip
   ]);
+  myCodeOSS = pkgs.vscode-with-extensions.vscode-extensions (ps: with ps;[
+    ms-vscode.anycode
+    golang.go
+    prisma.prisma
+    ms-toolsai.jupyter
+    ms-python.python
+    ms-pyright.pyright]);
 
 in {
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
@@ -29,7 +36,7 @@ in {
 
     # Dev
     cachix patchelf nixpkgs-review nix-update nix-output-monitor # Nix utils
-    gcc ghc myPython # Compiler & interpreters
+    gcc ghc myPython myCodeOSS# Compiler & interpreters
     gdb # Debugger
     sqlite-interactive sqls# sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip

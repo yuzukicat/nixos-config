@@ -24,7 +24,7 @@ in {
     # GUI
     kolourpaint libreoffice mpv okular # Files
     electrum electron-cash # Cryptocurrency
-    tdesktop # Messaging
+    # Messaging
     wf-recorder # Recording
 
     # Dev

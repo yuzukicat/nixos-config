@@ -18,10 +18,9 @@ in {
     xsel wl-clipboard # CLI-Desktop
     beancount my.pkgs.double-entry-generator # Accounting
     tealdeer man-pages # Manual
-    sops # Sops
 
     # GUI
-    kolourpaint libreoffice mpv okular # Files
+    kolourpaint libreoffice mpv # Files
     electrum electron-cash # Cryptocurrency
     tdesktop # Messaging
     wf-recorder obs-studio # Recording
@@ -30,18 +29,19 @@ in {
     cachix patchelf nixpkgs-review nix-update nix-output-monitor # Nix utils
     gcc ghc myPython # Compiler & interpreters
     gdb # Debugger
-    sqlite-interactive sqls # sqlite
+    sqlite-interactive sqls postgresql# sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip
     bash-completion cling elixir gh
     go nodejs nodePackages.npm-check-updates
 
     # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
     # system:
-    trash-cli bc
+    trash-cli
     my.pkgs.hyfetch
 
     # internet:
-    aria2 element-desktop vlc /*syncplay*/
+    # aria2
+    element-desktop vlc /*syncplay*/
 
     # work:
     scribus gwenview gimp krita calibre
@@ -50,14 +50,14 @@ in {
 
     # non-oss:
     zoom-us obsidian
-
-    autorandr discocss lieer mako ncmpcpp notmuch
+    docker
+    emacs
+    discocss #?discord with bug
+    notmuch # email engine
   ];
 
   programs.alacritty.settings.font.size = lib.mkForce 10;
-  programs.autorandr.enable = true;
   programs.dircolors.enable = true;
-  programs.exa.enable = true;
   programs.feh.enable = true;
   programs.hyfetch.settings = {
     preset = "transgender";
@@ -66,7 +66,9 @@ in {
       mode = "horizontal";
     };
   };
-  programs.jq.enable = true;
+  programs.lieer.enable = true; # ? cli mail
+  programs.mako.enable = true; # notification daemon for Wayland
+  programs.ncmpcpp.enable = true; # ? cli music management
   # install VS Code via Home Manager
   programs.vscode = {
     enable = true;

@@ -126,9 +126,9 @@
 
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
     nix-zsh-completions # Prefer nix's builtin completion.
+    zsh-nix-shell # Use zsh for nix
     fzf bat # WARN: They are used by fzf.vim!
     my.pkgs.colors fzf-zsh
-    docker emacs
-    nmap postgresql screen
+    nmap screen
   ];
 }

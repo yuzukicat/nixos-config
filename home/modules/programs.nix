@@ -25,7 +25,7 @@ in {
     kolourpaint libreoffice mpv okular # Files
     electrum electron-cash # Cryptocurrency
     tdesktop # Messaging
-    wf-recorder # Recording
+    wf-recorder obs-studio # Recording
 
     # Dev
     cachix patchelf nixpkgs-review nix-update nix-output-monitor # Nix utils

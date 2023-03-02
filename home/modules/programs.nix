@@ -30,7 +30,7 @@ in {
     cachix patchelf nixpkgs-review nix-update nix-output-monitor # Nix utils
     gcc ghc myPython # Compiler & interpreters
     gdb # Debugger
-    sqlite-interactive sqls# sqlite
+    sqlite-interactive sqls # sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip
     bash-completion cling elixir gh
     go nodejs nodePackages.npm-check-updates
@@ -69,6 +69,59 @@ in {
   programs.jq.enable = true;
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode-with-extensions;
+    extensions = with pkgs.vscode-extensions; [
+      bbenoist.nix
+      vscode-utils.nix
+      ms-vscode.anycode
+      editorconfig.editorconfig
+      esbenp.prettier-vscode
+      dbaeumer.vscode-eslint
+      donjayamanne.githistory
+      mhutchie.git-graph
+      codezombiech.gitignore
+      matklad.rust-analyzer
+      golang.go
+      zxh404.vscode-proto3
+      oderwat.indent-rainbow
+      _2gua.rainbow-brackets
+      shardulm94.trailing-spaces
+      ms-python.python
+      ms-python.vscode-pylance
+      ms-pyright.pyright
+      ms-python.vscode-pylance
+      njpwerner.autodocstring
+      ms-toolsai.jupyter
+      ms-toolsai.jupyter-keymap
+      ms-toolsai.jupyter-renderers
+      mechatroner.rainbow-csv
+      graphql.vscode-graphql
+      irongeek.vscode-env
+      prisma.prisma
+      yzhang.markdown-all-in-one
+      bierner.markdown-checkbox
+      bierner.markdown-mermaid
+      bradlc.vscode-tailwindcss
+      angular.ng-template
+      kamikillerto.vscode-colorize
+      eg2.vscode-npm-script
+      wix.vscode-import-cost
+      msjsdiag.debugger-for-chrome
+      jnoortheen.nix-ide
+      kamadorueda.alejandra
+      bungcip.better-toml
+      ms-vscode.cmake-tools
+      timonwong.shellcheck
+      foxundermoon.shell-format
+      elixir-lsp.vscode-elixir-ls
+      gruntfuggly.todo-tree
+      pkief.material-icon-theme
+      catppuccin.catppuccin-vsc
+      bodil.file-browser
+      alexdima.copy-relative-path
+      rioj7.commandOnAllFiles
+      bierner.emojisense
+      ms-vscode.hexeditor
+      kddejong.vscode-cfn-lint
+    ];
   };
 }

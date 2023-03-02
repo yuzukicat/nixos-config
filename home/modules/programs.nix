@@ -71,7 +71,6 @@ in {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
-      vscode-utils.nix
       ms-vscode.anycode
       editorconfig.editorconfig
       esbenp.prettier-vscode
@@ -122,6 +121,6 @@ in {
       bierner.emojisense
       ms-vscode.hexeditor
       kddejong.vscode-cfn-lint
-    ];
+    ]++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [];
   };
 }

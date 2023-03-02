@@ -11,7 +11,7 @@ let
     epc
     pip
   ]);
-  myCodeOSS = pkgs.vscode-with-extensions.vscodeExtensions (vscodeExtensions: with vscode-extensions;[
+  myCodeOSS = with pkgs.vscode-with-extensions.vscodeExtensions;[
     ms-vscode.anycode
     editorconfig.editorconfig
     esbenp.prettier-vscode
@@ -62,7 +62,7 @@ let
     bierner.emojisense
     ms-vscode.hexeditor
     kddejong.vscode-cfn-lint
-  ]);
+  ];
 
 in {
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [

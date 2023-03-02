@@ -20,7 +20,7 @@
     my.pkgs.nixos-rebuild-shortcut
     tmuxPlugins.nord
 
-    emacs wget home-manager zsh-nix-shell
+    emacs wget home-manager zsh-nix-shell vscode.fhs
     htop iotop iftop
   ];
 

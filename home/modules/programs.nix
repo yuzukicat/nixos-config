@@ -52,7 +52,7 @@ in {
     # non-oss:
     zoom-us obsidian
 
-    autorandr discocss exa feh lieer mako ncmpcpp notmuch vscode
+    autorandr discocss exa feh lieer mako ncmpcpp notmuch
   ];
 
   programs.alacritty.settings.font.size = lib.mkForce 10;
@@ -69,6 +69,7 @@ in {
   };
   programs.jq.enable = true;
   programs.vscode = {
+    package = pkgs.vscode.fhs;
     extensions = with pkgs.vscode-extensions; [
         ms-vscode.anycode
         editorconfig.editorconfig
@@ -130,4 +131,5 @@ in {
     #   }
     # ];
   };
+  home.sessionVariables.NIXOS_OZONE_WL = "1";
 }

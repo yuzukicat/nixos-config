@@ -22,8 +22,11 @@
 
     emacs wget home-manager zsh-nix-shell
     htop iotop iftop
+    vscode
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
+        bbenoist.nix
+        vscode-utils.nix
         ms-vscode.anycode
         editorconfig.editorconfig
         esbenp.prettier-vscode

@@ -28,7 +28,7 @@ in {
 
     # Dev
     cachix patchelf nixpkgs-review nix-update nix-output-monitor # Nix utils
-    gcc ghc myPython myCodeOSS # Compiler & interpreters
+    gcc ghc myPython # Compiler & interpreters
     gdb # Debugger
     sqlite-interactive sqls# sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip

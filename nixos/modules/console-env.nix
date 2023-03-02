@@ -54,8 +54,6 @@
     ]);
   };
 
-  programs.autorandr.enable = true; # Automatically select a display configuration based on connected devices.
-
   # Don't stuck for searching missing commands.
   programs.command-not-found.enable = false;
 

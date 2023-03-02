@@ -13,11 +13,56 @@ let
   ]);
   myCodeOSS = pkgs.vscode-with-extensions.vscode-extensions (ps: with ps;[
     ms-vscode.anycode
+    editorconfig.editorconfig
+    esbenp.prettier-vscode
+    dbaeumer.vscode-eslint
+    donjayamanne.githistory
+    mhutchie.git-graph
+    codezombiech.gitignore
+    matklad.rust-analyzer
     golang.go
-    prisma.prisma
-    ms-toolsai.jupyter
+    zxh404.vscode-proto3
+    oderwat.indent-rainbow
+    _2gua.rainbow-brackets
+    shardulm94.trailing-spaces
     ms-python.python
-    ms-pyright.pyright]);
+    ms-python.vscode-pylance
+    ms-pyright.pyright
+    ms-python.vscode-pylance
+    njpwerner.autodocstring
+    ms-toolsai.jupyter
+    ms-toolsai.jupyter-keymap
+    ms-toolsai.jupyter-renderers
+    mechatroner.rainbow-csv
+    graphql.vscode-graphql
+    irongeek.vscode-env
+    prisma.prisma
+    yzhang.markdown-all-in-one
+    bierner.markdown-checkbox
+    bierner.markdown-mermaid
+    bradlc.vscode-tailwindcss
+    angular.ng-template
+    kamikillerto.vscode-colorize
+    eg2.vscode-npm-script
+    wix.vscode-import-cost
+    msjsdiag.debugger-for-chrome
+    jnoortheen.nix-ide
+    kamadorueda.alejandra
+    bungcip.better-toml
+    ms-vscode.cmake-tools
+    timonwong.shellcheck
+    foxundermoon.shell-format
+    elixir-lsp.vscode-elixir-ls
+    gruntfuggly.todo-tree
+    pkief.material-icon-theme
+    catppuccin.catppuccin-vsc
+    bodil.file-browser
+    alexdima.copy-relative-path
+    rioj7.commandOnAllFiles
+    bierner.emojisense
+    ms-vscode.hexeditor
+    kddejong.vscode-cfn-lint
+  ]);
 
 in {
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [

@@ -23,9 +23,9 @@ in {
 
     # GUI
     kolourpaint libreoffice mpv okular # Files
-    electrum electron-cash monero-gui # Cryptocurrency
+    electrum electron-cash # Cryptocurrency
     tdesktop # Messaging
-    wf-recorder obs-studio # Recording
+    wf-recorder # Recording
 
     # Dev
     cachix patchelf nixpkgs-review nix-update nix-output-monitor # Nix utils

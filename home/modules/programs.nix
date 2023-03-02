@@ -67,8 +67,8 @@ in {
     };
   };
   programs.jq.enable = true;
+  # install VS Code via Home Manager
   programs.vscode = {
-    enable = true;
     extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
       ms-vscode.anycode

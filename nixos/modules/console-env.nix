@@ -61,5 +61,6 @@
   programs.command-not-found.enable = false;
 
   # programs.nano.defaultEditor = true;
+  # To use VS Code under Wayland, set the environment variable NIXOS_OZONE_WL=1:
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }

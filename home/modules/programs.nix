@@ -11,7 +11,7 @@ let
     epc
     pip
   ]);
-  myCodeOSS = pkgs.vscode-with-extensions.vscode-extensions (ps: with ps;[
+  myCodeOSS = pkgs.vscode-with-extensions.withPackages (ps: with vscode-extensions;[
     ms-vscode.anycode
     editorconfig.editorconfig
     esbenp.prettier-vscode

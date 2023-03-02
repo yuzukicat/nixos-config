@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   i18n = {
     supportedLocales = [ "all" ]; # Override console-env.

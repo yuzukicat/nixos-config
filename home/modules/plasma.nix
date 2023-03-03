@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   programs.plasma = {
-    enable = true;
+    enable = false;
 
     # # Some high-level settings:
     # workspace.clickItemTo = "select";

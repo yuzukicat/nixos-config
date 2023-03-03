@@ -100,15 +100,18 @@ in {
       graphql.vscode-graphql
       irongeek.vscode-env
       prisma.prisma
+      cweijan.vscode-database-client2
       yzhang.markdown-all-in-one
       bierner.markdown-checkbox
       bierner.markdown-mermaid
+      davidanson.vscode-markdownlint
       bradlc.vscode-tailwindcss
       angular.ng-template
-      kamikillerto.vscode-colorize
+      gencer.html-slim-scss-css-class-completion
+      jpoissonnier.vscode-styled-components
       eg2.vscode-npm-script
       wix.vscode-import-cost
-      msjsdiag.debugger-for-chrome
+      firefox-devtools.vscode-firefox-debug
       jnoortheen.nix-ide
       kamadorueda.alejandra
       bungcip.better-toml
@@ -120,11 +123,13 @@ in {
       pkief.material-icon-theme
       catppuccin.catppuccin-vsc
       bodil.file-browser
+      christian-kohler.path-intellisense
       alexdima.copy-relative-path
       rioj7.commandOnAllFiles
       bierner.emojisense
       ms-vscode.hexeditor
       kddejong.vscode-cfn-lint
+      streetsidesoftware.code-spell-checker
     ]++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [];
   };
 }

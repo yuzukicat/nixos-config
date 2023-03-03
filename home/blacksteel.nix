@@ -24,12 +24,12 @@
     ./modules/shell
   ];
 
-  lib.homeManagerConfiguration = {
-    extraModules = [
-      inputs.plasma-manager.homeManagerModules.plasma-manager
-    ];
-    configuration = import ./modules/plasma.nix;
-  };
+  # lib.homeManagerConfiguration = {
+  #   extraModules = [
+  #     inputs.plasma-manager.homeManagerModules.plasma-manager
+  #   ];
+  #   configuration = import ./modules/plasma.nix;
+  # };
 
   programs.zsh.loginExtra = ''
     if [[ -z $DISPLAY && "$(tty)" = /dev/tty1 ]] && type sway >/dev/null; then

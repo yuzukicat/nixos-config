@@ -24,6 +24,10 @@
     ./modules/shell
   ];
 
+  extraModules = [
+    inputs.plasma-manager.homeManagerModules.plasma-manager
+  ];
+
   programs.zsh.loginExtra = ''
     if [[ -z $DISPLAY && "$(tty)" = /dev/tty1 ]] && type sway >/dev/null; then
       exec systemd-cat --identifier=sway sway

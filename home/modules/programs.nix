@@ -1,4 +1,4 @@
-{ lib, pkgs, my, inputs, ... }:
+{ lib, pkgs, my, ... }:
 
 let
   myPython = pkgs.python3.withPackages (ps: with ps; [
@@ -12,10 +12,6 @@ let
     pip
   ]);
 in {
-  # Required by programmes.plasma
-  home.extraModules = with lib.homeManagerConfiguration; [
-    inputs.plasma-manager.homeManagerModules.plasma-manager
-  ];
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
     # Console
     runzip scc bubblewrap difftastic # Random stuff

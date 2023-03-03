@@ -95,7 +95,7 @@
       };
 
       home-manager = { config, inputs, my, ... }: {
-        imports = [ inputs.home-manager.nixosModules.home-manager inputs.plasma-manager.homeManagerModules.plasma-manager];
+        imports = [ inputs.home-manager.nixosModules.home-manager ];
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
@@ -132,7 +132,7 @@
         nixpkgs.overlays = [
           (final: prev: {
             inherit (inputs.nixpkgs-plasma-5-27.legacyPackages.${config.nixpkgs.system})
-              libsForQt5 plasma5 kdeGear kdeFrameworks;
+              libsForQt5;
           })
         ];
 
@@ -189,6 +189,7 @@
       inherit lib;
       pkgs = nixpkgs.legacyPackages.${system};
     };
+
     checks = packages;
 
     devShells.default =

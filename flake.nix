@@ -176,7 +176,7 @@
         extraModules = with nixosModules; [ home-manager sops fix-qtwayland-crash ];
       };
 
-      blacksteel = mkSystem "blacksteel" "x86_64-linux" inputs.nixpkgs {
+      blacksteel = mkSystem "blacksteel" "x86_64-linux" inputs.nixpkgs-stable {
         extraModules = with nixosModules; [ home-manager sops plsama-5-27 plasma-manager];
       };
 

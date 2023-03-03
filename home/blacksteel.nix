@@ -38,7 +38,7 @@
     linkPersonal = path: link "storage/personal/${path}";
   in {
     # ".local/share/fcitx5/rime/sync".source = linkPersonal "rime-sync";
-    # ".local/share/password-store".source = linkPersonal "password-store";
+    ".local/share/password-store".source = linkPersonal "password-store";
     ".local/share/task".source = linkPersonal "taskwarrior";
     ".ssh".source = linkPersonal "ssh";
   };

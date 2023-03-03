@@ -108,7 +108,7 @@
       };
 
       plasma-manager = { inputs, ... }: {
-          imports = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];  
+          imports = [ inputs.plasma-manager.nixosModules.plasma-manager ];  
       };
 
       sops = { config, ... }: {
@@ -136,7 +136,7 @@
         nixpkgs.overlays = [
           (final: prev: {
             inherit (inputs.nixpkgs-plasma-5-27.legacyPackages.${config.nixpkgs.system})
-              libsForQt5;
+              libsForQt5 plasma5 kdeGear kdeFrameworks;
           })
         ];
 

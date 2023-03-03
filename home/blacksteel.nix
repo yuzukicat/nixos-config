@@ -24,7 +24,7 @@
     ./modules/shell
   ];
 
-  extraModules = [
+  lib.homeManagerConfiguration.extraModules = [
     inputs.plasma-manager.homeManagerModules.plasma-manager
   ];
 

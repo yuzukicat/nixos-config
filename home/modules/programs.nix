@@ -54,14 +54,13 @@ in {
     emacs
     discocss #?discord with bug
     notmuch # email engine
-    inputs.plasma-manager.homeManagerModules.plasma-manager
   ];
 
   programs.alacritty.settings.font.size = lib.mkForce 10;
   programs.autorandr.enable = true; # Automatically select a display configuration based on connected devices.
   programs.dircolors.enable = true;
   programs.feh.enable = true;
-  programs.plasma = {
+  programs.inputs.plasma-manager.homeManagerModules.plasma-manager = {
     enable = true;
 
     # Some high-level settings:

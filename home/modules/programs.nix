@@ -1,4 +1,4 @@
-{ lib, pkgs, my, ... }:
+{ lib, pkgs, my, inputs, ... }:
 
 let
   myPython = pkgs.python3.withPackages (ps: with ps; [
@@ -54,6 +54,7 @@ in {
     emacs
     discocss #?discord with bug
     notmuch # email engine
+    inputs.plasma-manager.homeManagerModules.plasma-manager
   ];
 
   programs.alacritty.settings.font.size = lib.mkForce 10;

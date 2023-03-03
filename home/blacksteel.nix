@@ -1,4 +1,4 @@
-{ lib, config, inputs, ... }:
+{ lib, config, ... }:
 
 {
   programs.home-manager.enable = true;
@@ -22,11 +22,6 @@
     ./modules/user-dirs.nix
     ./modules/helix
     ./modules/shell
-  ];
-  
-  # Ensure Plasma Manager is available:
-  extraModules = [
-    inputs.plasma-manager.homeManagerModules.plasma-manager
   ];
 
   programs.zsh.loginExtra = ''

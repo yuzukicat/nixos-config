@@ -11,8 +11,11 @@ let
     epc
     pip
   ]);
-  plasma = inputs.plasma-manager.homeManagerModules.plasma-manager;
 in {
+  # Required by programmes.plasma
+  home.extraModules = [
+    inputs.plasma-manager.homeManagerModules.plasma-manager
+  ];
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
     # Console
     runzip scc bubblewrap difftastic # Random stuff
@@ -55,7 +58,6 @@ in {
     emacs
     discocss #?discord with bug
     notmuch # email engine
-    plasma
   ];
 
   programs.alacritty.settings.font.size = lib.mkForce 10;

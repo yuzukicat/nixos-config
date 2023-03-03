@@ -16,7 +16,6 @@
     plasma-manager = {
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "flake-utils";
       inputs.home-manager.follows = "home-manager";
     };
     rust-overlay = {
@@ -176,8 +175,8 @@
         extraModules = with nixosModules; [ home-manager sops fix-qtwayland-crash ];
       };
 
-      blacksteel = mkSystem "blacksteel" "x86_64-linux" inputs.nixpkgs-stable {
-        extraModules = with nixosModules; [ home-manager sops plsama-5-27];
+      blacksteel = mkSystem "blacksteel" "x86_64-linux" inputs.nixpkgs {
+        extraModules = with nixosModules; [ home-manager sops plsama-5-27 plasma-manager];
       };
 
       minimal-image = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs {

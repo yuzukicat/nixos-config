@@ -3,7 +3,7 @@
 {
   programs.emacs = {
     enable = true;
-    package = inputs.emacs-overlay.packages.${pkgs.system};
+    package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
     extraConfig = ''
       (setq standard-indent 2)
     '';

@@ -28,7 +28,7 @@
     extraModules = [
       inputs.plasma-manager.homeManagerModules.plasma-manager
     ];
-    configuration = import ./modules/plasma.nix;
+    # configuration = import ./modules/plasma.nix;
   };
 
   programs.zsh.loginExtra = ''

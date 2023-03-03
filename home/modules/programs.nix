@@ -12,7 +12,7 @@ let
     pip
   ]);
 in {
-  home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
+  home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; with inputs.plasma-manager.packages.${pkgs.system}; [
     # Console
     runzip scc bubblewrap difftastic # Random stuff
     xsel wl-clipboard # CLI-Desktop
@@ -54,6 +54,7 @@ in {
     emacs
     discocss #?discord with bug
     notmuch # email engine
+    plasma
   ];
 
   programs.alacritty.settings.font.size = lib.mkForce 10;

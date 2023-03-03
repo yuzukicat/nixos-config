@@ -22,12 +22,12 @@
     ./modules/user-dirs.nix
     ./modules/helix
     ./modules/shell
-  ]++ lib.homeManagerConfiguration {
-    # Ensure Plasma Manager is available:
-    extraModules = [
-      inputs.plasma-manager.homeManagerModules.plasma-manager
-    ];
-  };
+  ];
+  
+  # Ensure Plasma Manager is available:
+  extraModules = [
+    inputs.plasma-manager.homeManagerModules.plasma-manager
+  ];
 
   programs.zsh.loginExtra = ''
     if [[ -z $DISPLAY && "$(tty)" = /dev/tty1 ]] && type sway >/dev/null; then

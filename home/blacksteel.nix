@@ -22,7 +22,7 @@
     ./modules/user-dirs.nix
     ./modules/helix
     ./modules/shell
-  ];
+  ]++ inputs.plasma-manager.homeManagerModules.plasma-manager;
 
   programs.zsh.loginExtra = ''
     if [[ -z $DISPLAY && "$(tty)" = /dev/tty1 ]] && type sway >/dev/null; then

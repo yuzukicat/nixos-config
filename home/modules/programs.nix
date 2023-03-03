@@ -55,6 +55,7 @@ in {
     emacs
     discocss #?discord with bug
     notmuch # email engine
+    plasma
   ];
 
   programs.alacritty.settings.font.size = lib.mkForce 10;

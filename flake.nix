@@ -108,7 +108,7 @@
       };
 
       plasma-manager = { inputs, ... }: {
-          imports = [ inputs.plasma-manager.nixosModules.plasma-manager ];  
+          imports = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];  
       };
 
       sops = { config, ... }: {

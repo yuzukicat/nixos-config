@@ -176,7 +176,7 @@
       };
 
       blacksteel = mkSystem "blacksteel" "x86_64-linux" inputs.nixpkgs {
-        extraModules = with nixosModules; [ home-manager sops plsama-5-27 ];
+        extraModules = with nixosModules; [ home-manager sops plsama-5-27 plasma-manager];
       };
 
       minimal-image = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs {

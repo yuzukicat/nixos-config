@@ -13,7 +13,7 @@ let
   ]);
 in {
   # Required by programmes.plasma
-  home.extraModules = [
+  home.extraModules = with lib.homeManagerConfiguration; [
     inputs.plasma-manager.homeManagerModules.plasma-manager
   ];
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [

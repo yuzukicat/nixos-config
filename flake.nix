@@ -105,9 +105,10 @@
             super = config;
           };
         };
-        extraModules = [
-          inputs.plasma-manager.homeManagerModules.plasma-manager
-        ];
+      };
+
+      plasma-manager = { inputs, ... }: {
+          imports = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];  
       };
 
       sops = { config, ... }: {

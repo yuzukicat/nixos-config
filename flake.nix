@@ -16,6 +16,7 @@
     plasma-manager = {
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
       inputs.home-manager.follows = "home-manager";
     };
     rust-overlay = {

@@ -11,6 +11,7 @@ let
     epc
     pip
   ]);
+  plasma = inputs.plasma-manager.homeManagerModules.plasma-manager;
 in {
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
     # Console
@@ -60,7 +61,7 @@ in {
   programs.autorandr.enable = true; # Automatically select a display configuration based on connected devices.
   programs.dircolors.enable = true;
   programs.feh.enable = true;
-  programs.inputs.plasma-manager.homeManagerModules.plasma-manager = {
+  programs.plasma = {
     enable = true;
 
     # Some high-level settings:

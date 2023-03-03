@@ -51,7 +51,6 @@ in {
     # non-oss:
     zoom-us obsidian
     docker
-    emacs
     discocss #?discord with bug
     notmuch # email engine
   ];

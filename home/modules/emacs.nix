@@ -14,9 +14,11 @@ in {
     extraConfig = ''
       (setq standard-indent 2)
     '';
-    extraPackages = with package; [
-      use-package
-    ];
+    extraPackages = self: super: rec {
+      with self.package; [
+        use-package
+      ];
+    };
     overrides = self: super: rec {
       toggle-one-window = with self.package;[
         (trivialBuild rec {

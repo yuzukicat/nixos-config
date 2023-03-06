@@ -118,7 +118,7 @@ in {
   programs.dircolors.enable = true;
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsGit;
+    package = inputs.rust-overlay.packages.${pkgs.system}.emacsGit;
     extraConfig = let
       readRecursively = dir:
         builtins.concatStringsSep "\n"

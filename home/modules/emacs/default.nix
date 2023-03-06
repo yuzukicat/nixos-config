@@ -8,9 +8,11 @@
       (setq standard-indent 2)
     '';
     extraPackages = epkgs: [ epkgs.emms epkgs.magit epkgs.use-package ];
-    overrides = epkgs: epkgs: rec {
+    overrides = self: super: rec {
       haskell-mode = self.melpaPackages.haskell-mode;
-      lambda-line = my.pkgs.lambda-line.nix;
+      lambda-line = lambda-line.nix {
+        inherit (epkgs) trivialBuild all-the-icons;
+      };
     };
   };
 }

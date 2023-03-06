@@ -106,7 +106,7 @@
         };
       };
 
-      emacs-overlay = { config, inputs, ... }: {
+      emacs-overlay = { config, inputs, pkgs, ... }: {
         nixpkgs.overlays = import [ inputs.emacs-overlay.packages.${pkgs.system} ];
       };
 

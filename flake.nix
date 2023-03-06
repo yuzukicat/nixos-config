@@ -107,7 +107,7 @@
       };
 
       emacs-overlay = { config, inputs, ... }: {
-        imports = [ inputs.emacs-overlay.overlay ];
+        imports = [ inputs.emacs-overlay ];
       };
 
       sops = { config, ... }: {

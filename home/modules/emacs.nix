@@ -15,7 +15,7 @@ in {
       (setq standard-indent 2)
     '';
     extraPackages = [];
-    overrides = self: super: rec {
+    overrides = self: super: {
       toggle-one-window = self.trivialBuild rec {
         pname = "toggle-one-window";
         ename = pname;

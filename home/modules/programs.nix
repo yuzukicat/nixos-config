@@ -119,16 +119,6 @@ in {
   programs.emacs = {
     enable = true;
     package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
-    extraConfig = let
-      readRecursively = dir:
-        builtins.concatStringsSep "\n"
-          (lib.mapAttrsToList (name: value: if value == "regular"
-                                            then builtins.readFile (dir + "/${name}")
-                                            else (if value == "directory"
-                                                  then readRecursively (dir + "/${name}")
-                                                  else [ ]))
-                              (builtins.readDir dir));
-    in readRecursively ./emacs;
     extraPackages = epkgs: [ ];
     overrides = self: super: rec {
       tree-sitter-langs = self.tree-sitter-langs.withPlugins

@@ -9,4 +9,5 @@ in {
     (doom-emacs.override {
       doomPrivateDir = ./doom.d;
     })
+  ];
 }

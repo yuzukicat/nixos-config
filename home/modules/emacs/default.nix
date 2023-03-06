@@ -1,20 +1,29 @@
 { config, lib, pkgs, inputs, my, ... }:
 
+let
+  # Global target
+  emacsGit = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
+
+  home = config.home.homeDirectory;
+
+in {
+
 {
   programs.emacs = {
     enable = true;
-    package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
+    package = emacsGit;
     extraConfig = ''
       (setq standard-indent 2)
     '';
-    extraPackages = with emacsPackages; [
+    extraPackages = with pkgs; with emacsGit.emacsPackages; [
       emms
       magit
       use-package
+      all-the-icons
     ];
     overrides = self: super: rec {
       haskell-mode = self.melpaPackages.haskell-mode;
-      lambda-line = with emacsPackages; [ my.pkgs.lambda-line.nix ];
+      lambda-line = with pkgs; with emacsGit.emacsPackages; [ my.pkgs.lambda-line.nix ];
     };
   };
 }

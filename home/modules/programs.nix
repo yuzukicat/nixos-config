@@ -82,7 +82,7 @@ in {
                                                       else [ ]))
                                   (builtins.readDir dir));
         in readRecursively ./emacs;
-    extraPackages = with inputs.emacs-overlay.packages.${pkgs.system}.emacsGit.emacsPackages; [
+    extraPackages = with inputs.emacs-overlay.packages.${pkgs.system}.emacsGit; [
       use-package
       ligature
       diminish

@@ -8,11 +8,13 @@
 (setq backup-directory-alist '(("." . "~/.backups")))
 (add-to-list 'load-path (expand-file-name "yuzuki" user-emacs-directory))
 
+(require 'yuzuki-exwm.el)
 (defgroup yuzuki ()
   "yuzuki EMACS config."
   :tag "yuzuki"
   :prefix "yuzuki-"
   :group 'applications)
+(require 'yuzuki-langserver-lsp.el)
 (defcustom yuzuki-lsp nil
   "Set which LSP to use."
   :tag "LSP config"
@@ -22,10 +24,9 @@
           (const :tag "lsp-mode" lsp-mode)
           (const :tag "eglot" eglot)))
 (setq yuzuki-lsp 'eglot)
-(require 'yuzuki-langserver-lsp)
-(require 'yuzuki-langserver-eglot)
-(require 'yuzuki-c)
-(require 'yuzuki-tex)
+(require 'yuzuki-langserver-eglot.el)
+(require 'yuzuki-c.el)
+(require 'yuzuki-tex.el)
 
 
 (global-set-key (kbd "C-z") 'undo)

@@ -1,4 +1,4 @@
-{ lib, pkgs, my, ... }:
+{ lib, pkgs, my, inputs, ... }:
 
 let
   myPython = pkgs.python3.withPackages (ps: with ps; [

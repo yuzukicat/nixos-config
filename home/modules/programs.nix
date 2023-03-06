@@ -81,7 +81,7 @@ in {
                                                       then readRecursively (dir + "/${name}")
                                                       else [ ]))
                                   (builtins.readDir dir));
-        in readRecursively "./emacs/*";
+        in readRecursively ./emacs;
     extraPackages = epkgs: [ ];
     overrides = self: super: rec {
       tree-sitter-langs = self.tree-sitter-langs.withPlugins

@@ -8,7 +8,7 @@
 (setq backup-directory-alist '(("." . "~/.backups")))
 (add-to-list 'load-path (expand-file-name "shu" user-emacs-directory))
 
-(require './shu/shu-exwm)
+(require 'shu-exwm)
 (defgroup shu ()
   "Shu EMACS config."
   :tag "Shu"

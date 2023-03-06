@@ -83,6 +83,7 @@ in {
                                   (builtins.readDir dir));
         in readRecursively ./emacs;
     extraPackages = epkgs: [
+      epkgs.use-package
       epkgs.ligature
       epkgs.diminish
       epkgs.winum

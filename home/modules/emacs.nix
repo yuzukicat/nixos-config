@@ -16,7 +16,7 @@ in {
     '';
     extraPackages = [];
     overrides = self: super: rec {
-      toggle-one-window = epkgs.trivialBuild rec {
+      toggle-one-window = self.trivialBuild rec {
         pname = "toggle-one-window";
         ename = pname;
         version = "git";

@@ -28,6 +28,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    emacs-upstream = {
+      url = "github:emacs-mirror/emacs/emacs-29";
+      flake = false;
+    };
     nocargo = {
       url = "github:oxalica/nocargo";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -106,11 +110,35 @@
         };
       };
 
-      emacs-overlay = { config, ... }: {
+      emacs-overlay = { config, inputs, ... }: {
         nixpkgs.overlays = [
+          inputs.emacs-overlay.overlay
           (final: prev: {
-            inherit (inputs.emacs-overlay.packages.${config.nixpkgs.system})
-              emacsGit;
+            emacs29 = prev.emacsGit.overrideAttrs (old: {
+              name = "emacs29";
+              version = emacs-upstream.shortRev;
+              src = inputs.emacs-upstream;
+            });
+            # TODO: figure out a way to import based on this...
+            # sys = pkgs.lib.last (pkgs.lib.splitString "-" pkgs.system);
+            emacsWithConfig = (prev.emacsWithPackagesFromUsePackage {
+              # config = builtins.readFile "../../static/emacs/init.org";
+              config = ./static/emacs/init.org;
+              package = final.emacs29.overrideAttrs (super: {
+                patches = [
+                  (prev.fetchpatch {
+                    name = "gc-block-align-patch";
+                    url = "https://github.com/tyler-dodge/emacs/commit/36d2a8d5a4f741ae99540e139fff2621bbacfbaa.patch";
+                    sha256 = "sha256-/hJa8LIqaAutny6RX/x6a+VNpNET86So9xE8zdh27p8=";
+                  })
+                ];
+              });
+              # Force these two even though they're outside of the org config.
+              extraEmacsPackages = epkgs: [
+                epkgs.use-package
+                epkgs.org
+              ];
+            });
           })
         ];
       };

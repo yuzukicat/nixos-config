@@ -8,7 +8,6 @@
 (setq backup-directory-alist '(("." . "~/.backups")))
 (add-to-list 'load-path (expand-file-name "yuzuki" user-emacs-directory))
 
-(require 'yuzuki-exwm)
 (defgroup yuzuki ()
   "yuzuki EMACS config."
   :tag "yuzuki"

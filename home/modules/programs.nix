@@ -11,6 +11,10 @@ let
     epc
     pip
   ]);
+  myEmacsPackages = import ./emacs.nix pkgs; in rec {
+    emacsGit = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit  myEmacsPackages;
+    inherit (inputs.emacs-overlay.packages.${pkgs.system});
+  }
 in {
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
     # Console

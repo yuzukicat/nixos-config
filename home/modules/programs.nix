@@ -11,7 +11,6 @@ let
     epc
     pip
   ]);
-  emacsPackage = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
   emacsPackageWithPkgs =
     pkgs.emacsWithPackagesFromUsePackage {
       config =
@@ -26,7 +25,7 @@ let
                                   (builtins.readDir dir));
         in readRecursively ./emacs;
       alwaysEnsure = true;
-      package = emacsPackage;
+      package = inputs.rust-overlay.packages.${pkgs.system}.emacsGit;
       extraEmacsPackages = epkgs: [ ];
       override = epkgs: epkgs // ({
         tree-sitter-langs = epkgs.tree-sitter-langs.withPlugins
@@ -113,7 +112,8 @@ in {
     docker
     discocss #?discord with bug
     notmuch # email engine
-  ];
+  ]++ emacsPackageWithPkgs
+    ++ lspPackages;
 
   programs.alacritty.settings.font.size = lib.mkForce 10;
   programs.autorandr.enable = true; # Automatically select a display configuration based on connected devices.

@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   trivialBuild,
   fetchFromGitHub,
   all-the-icons,
@@ -14,7 +15,7 @@ trivialBuild rec {
     hash = "sha256-2tOXMqpmd14ohzmrRoV5Urf0HlnRPV1EVHm/d8OBSGE=";
   };
   # elisp dependencies
-  propagatedUserEnvPkgs = with inputs.emacs-overlay.packages.${pkgs.system}.emacsGit.emacsPackages; [
+  propagatedUserEnvPkgs = with pkgs; with inputs.emacs-overlay.packages.${pkgs.system}.emacsGit.emacsPackages; [
     all-the-icons
   ];
   buildInputs = propagatedUserEnvPkgs;

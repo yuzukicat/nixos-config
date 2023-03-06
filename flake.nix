@@ -123,7 +123,7 @@
             # sys = pkgs.lib.last (pkgs.lib.splitString "-" pkgs.system);
             emacsWithConfig = (prev.emacsWithPackagesFromUsePackage {
               # config = builtins.readFile "../../static/emacs/init.org";
-              config = ./static/emacs/init.org;
+              config = ./home/modules/emacs/init.org;
               package = final.emacs29.overrideAttrs (super: {
                 patches = [
                   (prev.fetchpatch {

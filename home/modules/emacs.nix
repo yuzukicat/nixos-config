@@ -1,29 +1,89 @@
-{ config, lib, pkgs, inputs, my, ... }:
-
+{ inputs, pkgs, config, lib, name, ... }:
 let
-
-  home = config.home.homeDirectory;
-
-in {
-  home.packages = with pkgs; with inputs.emacs-overlay.packages.${pkgs.system}; [
-
-  ];
-  programs.emacs = {
-    enable = true;
-    package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
-    extraConfig = ''
-      (setq standard-indent 2)
-      (use-package toggle-one-window)
-    '';
-    extraPackages = epkgs: [ epkgs.emms epkgs.magit epkgs.use-package ];
-    overrides = self: super: rec {
-      # haskell-mode = epkgs.melpaPackages.haskell-mode;
-      toggle-one-window = self.trivialBuild rec {
-        pname = "toggle-one-window";
-        ename = pname;
-        version = "git";
-        src = inputs.epkgs-toggle-one-window;
-      };
+  emacsPackage = pkgs.emacsGitNativeComp;
+  emacsPackageWithPkgs =
+    pkgs.emacsWithPackagesFromUsePackage {
+      config =
+        let
+          readRecursively = dir:
+            builtins.concatStringsSep "\n"
+              (lib.mapAttrsToList (name: value: if value == "regular"
+                                                then builtins.readFile (dir + "/${name}")
+                                                else (if value == "directory"
+                                                      then readRecursively (dir + "/${name}")
+                                                      else [ ]))
+                                  (builtins.readDir dir));
+        in readRecursively ./emacs;
+      alwaysEnsure = true;
+      package = emacsPackage;
+      extraEmacsPackages = epkgs: [ ];
+      override = epkgs: epkgs // (let
+        vterm-mouse-support = epkgs.melpaPackages.vterm.overrideAttrs (old: {
+          patches = (old.patches or [ ])
+                    ++ [ ./patch/vterm-mouse-support.patch ];
+        });
+      in {
+        tree-sitter-langs = epkgs.tree-sitter-langs.withPlugins
+          # Install all tree sitter grammars available from nixpkgs
+          (grammars: builtins.filter lib.isDerivation (lib.attrValues (grammars // {
+            tree-sitter-nix = grammars.tree-sitter-nix.overrideAttrs (old: {
+              version = "fixed";
+              src = inputs.tree-sitter-nix-oxa;
+            });
+          })));
+        # vterm = vterm-mouse-support;
+        # multi-vterm = epkgs.melpaPackages.multi-vterm.overrideAttrs (old: {
+        #   buildInputs = [ emacsPackage pkgs.texinfo vterm-mouse-support ];
+        #   propagatedBuildInputs = lib.singleton vterm-mouse-support;
+        #   propagatedUserEnvPkgs = lib.singleton vterm-mouse-support;
+        # });
+        toggle-one-window = epkgs.trivialBuild rec {
+          pname = "toggle-one-window";
+          ename = pname;
+          version = "git";
+          src = inputs.epkgs-toggle-one-window;
+        };
+        exwm-ns = epkgs.trivialBuild rec {
+          pname = "exwm-ns";
+          ename = pname;
+          version = "git";
+          src = inputs.epkgs-exwm-ns;
+          patches = [ ./patch/exwm-ns.patch ];
+        };
+        ligature = epkgs.trivialBuild rec {
+          pname = "ligature";
+          ename = pname;
+          version = "git";
+          src = inputs.epkgs-ligature;
+        };
+      });
     };
+  lspPackages = with pkgs; [
+    rust-analyzer
+    nil # rnix-lsp
+    pyright
+    haskell-language-server
+    solargraph
+    yaml-language-server
+    clang-tools
+    elixir_ls
+    lua53Packages.digestif
+  ];
+  exwmSessionVariables = {
+    EDITOR = "emacsclient";
+    XMODIFIERS = "@im=ibus";
+    LC_CTYPE = "ja_JP.UTF-8";
+    GTK_IM_MODULE = "ibus";
+    QT_IM_MODULE = "ibus";
+    CLUTTER_IM_MODULE = "ibus";
   };
+in
+rec {
+  home.sessionVariables = exwmSessionVariables // {
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+  };
+
+  home.packages = lib.singleton emacsPackageWithPkgs
+                  ++ lspPackages
+                  ++ [ pkgs.zoxide pkgs.fzf ];
 }

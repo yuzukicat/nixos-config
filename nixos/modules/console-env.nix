@@ -53,7 +53,7 @@
       defaultInitFile = true;
 
       # Package is optional, defaults to pkgs.emacs
-      package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
+      package = pkgs.emacsGit;
 
       # By default emacsWithPackagesFromUsePackage will only pull in
       # packages with `:ensure`, `:ensure t` or `:ensure <package name>`.
@@ -157,7 +157,7 @@
   # programs.gnupg.agent.pinentryFlavor = "qt";
   services.flatpak.enable = true; #  A framework for distributing desktop applications across various Linux distributions.
   services.emacs = {
-    package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
+    package = pkgs.emacsGit;
     enable = true;
   };
   # To use VS Code under Wayland, set the environment variable NIXOS_OZONE_WL=1:

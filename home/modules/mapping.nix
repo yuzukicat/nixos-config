@@ -21,6 +21,6 @@ let
 in
 {
   home.file =
-    mkHomeFile ./rime ".config/ibus/rime";
-    # mkHomeFile ./emacs ".emacs.d";
+    mkHomeFile ./rime ".config/ibus/rime"; //
+    mkHomeFile ./emacs ".emacs.d";
 }

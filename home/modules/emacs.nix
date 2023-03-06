@@ -14,7 +14,7 @@ in {
     extraConfig = ''
       (setq standard-indent 2)
     '';
-    extraPackages = epkgs: [ epkgs.emms epkgs.magit epkgs.use-package];
+    extraPackages = epkgs: [ ];
     overrides = epkgs: epkgs // {
       # haskell-mode = epkgs.melpaPackages.haskell-mode;
       toggle-one-window = epkgs.trivialBuild rec {

@@ -20,7 +20,6 @@
     ./modules/task.nix
     ./modules/tmux.nix
     ./modules/user-dirs.nix
-    ./modules/emacs.nix
     ./modules/helix
     ./modules/shell
   ];

@@ -7,31 +7,8 @@
   # - nano # Already have vim.
   # - perl # No.
   # - rsync strace # Already in systemPackages.
-  environment.defaultPackages = with pkgs; [ ];
-
-  environment.systemPackages = with pkgs; [
-    cntr nix-top # Nix helpers.
-    procs # procs zsh
-    ncdu # Ncdu is a disk usage analyzer with an ncurses interface
-    swapview smartmontools pciutils # lspci
-    usbutils # System info.
-    curl git strace pv # Monitoring of data being sent through pipe, including copying file.
-    exa # exa --long --header --recurse
-    fd ripgrep lsof jq loop bc file # Determine the type of a file and its data. Doesn't take the file extension into account, and runs a series of tests to discover the type of file data.
-    rsync dnsutils # dig example.com MX +short; nslookup example.com
-    my.pkgs.rawmv # Utilities.
-    e2fsprogs # For ext234.
-    compsize # Filesystems.
-    gnupg age pwgen # pwgen -c -n -s -v -B
-    sops ssh-to-age # Crypto.
-    libarchive zstd # Compression.
-
-    my.pkgs.nixos-rebuild-shortcut
-    tmuxPlugins.nord
-
-    wget home-manager
-
-  ]++ (emacsWithPackagesFromUsePackage {
+  environment.defaultPackages = [
+    (emacsWithPackagesFromUsePackage {
       # Your Emacs config file. Org mode babel files are also
       # supported.
       # NB: Config files cannot contain unicode characters, since
@@ -116,7 +93,31 @@
           src = inputs.epkgs-ligature;
         };
       };
-    });
+    })
+  ];
+
+  environment.systemPackages = with pkgs; [
+    cntr nix-top # Nix helpers.
+    procs # procs zsh
+    ncdu # Ncdu is a disk usage analyzer with an ncurses interface
+    swapview smartmontools pciutils # lspci
+    usbutils # System info.
+    curl git strace pv # Monitoring of data being sent through pipe, including copying file.
+    exa # exa --long --header --recurse
+    fd ripgrep lsof jq loop bc file # Determine the type of a file and its data. Doesn't take the file extension into account, and runs a series of tests to discover the type of file data.
+    rsync dnsutils # dig example.com MX +short; nslookup example.com
+    my.pkgs.rawmv # Utilities.
+    e2fsprogs # For ext234.
+    compsize # Filesystems.
+    gnupg age pwgen # pwgen -c -n -s -v -B
+    sops ssh-to-age # Crypto.
+    libarchive zstd # Compression.
+
+    my.pkgs.nixos-rebuild-shortcut
+    tmuxPlugins.nord
+
+    wget home-manager
+  ];
 
   programs.less = { # Dealing with a large text file page by page, resulting in fast loading speeds.
     enable = true;

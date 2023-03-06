@@ -81,8 +81,7 @@
 
     inherit (nixpkgs) lib;
 
-    overlays = [
-    ];
+    overlays = [];
 
     nixosModules = {
       # Ref: https://github.com/dramforever/config/blob/63be844019b7ca675ea587da3b3ff0248158d9fc/flake.nix#L24-L28
@@ -105,6 +104,10 @@
             super = config;
           };
         };
+      };
+
+      emacs-overlay = { config, inputs, ... }: {
+        imports = [ inputs.emacs-overlay.overlay; ];
       };
 
       sops = { config, ... }: {
@@ -172,7 +175,7 @@
       };
 
       blacksteel = mkSystem "blacksteel" "x86_64-linux" inputs.nixpkgs {
-        extraModules = with nixosModules; [ home-manager sops plsama-5-27 ];
+        extraModules = with nixosModules; [ home-manager sops plsama-5-27 emacs-overlay];
       };
 
       minimal-image = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs {

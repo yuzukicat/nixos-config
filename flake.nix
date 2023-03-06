@@ -107,7 +107,7 @@
       };
 
       emacs-overlay = { config, inputs, ... }: {
-        imports = [ inputs.emacs-overlay.overlay; ];
+        imports = [ inputs.emacs-overlay.overlay ];
       };
 
       sops = { config, ... }: {
@@ -175,7 +175,7 @@
       };
 
       blacksteel = mkSystem "blacksteel" "x86_64-linux" inputs.nixpkgs {
-        extraModules = with nixosModules; [ home-manager sops plsama-5-27 emacs-overlay];
+        extraModules = with nixosModules; [ home-manager sops plsama-5-27 emacs-overlay ];
       };
 
       minimal-image = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs {

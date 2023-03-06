@@ -164,7 +164,6 @@ in {
           src = inputs.epkgs-ligature;
         };
       });
-    };
   };
   programs.feh.enable = true;
   programs.hyfetch.settings = {

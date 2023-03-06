@@ -4,7 +4,6 @@
   all-the-icons,
 }:
 trivialBuild rec {
-  inherit (pkgs) fetchFromGitHub;
   inherit (epkgs) trivialBuild all-the-icons;
   pname = "lambda-line";
   version = "main-23-11-2022";

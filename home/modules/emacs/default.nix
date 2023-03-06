@@ -20,10 +20,12 @@ in {
       magit
       use-package
       all-the-icons
+      trivialBuild
     ];
-    overrides = self: super: rec {
-      haskell-mode = self.melpaPackages.haskell-mode;
-      lambda-line = with pkgs; with emacsGit.emacsPackages; [ my.pkgs.lambda-line.nix ];
+    overrides =  {
+      lambda-line = my.pkgs.lambda-line.nix {
+        inherit (pkgs) fetchFromGitHub trivialBuild all-the-icons;
+      };
     };
   };
 }

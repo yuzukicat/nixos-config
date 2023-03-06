@@ -14,11 +14,11 @@ in {
     extraConfig = ''
       (setq standard-indent 2)
     '';
-    extraPackages = with inputs.emacs-overlay.packages.${pkgs.system}.emacsGit.emacsPackages; [
+    extraPackages = with inputs.emacs-overlay.packages.${pkgs.system}.emacsGit.epkgs; [
         use-package
       ];
     overrides = {
-      toggle-one-window = with inputs.emacs-overlay.packages.${pkgs.system}.emacsGit.emacsPackages; [
+      toggle-one-window = with inputs.emacs-overlay.packages.${pkgs.system}.emacsGit.epkgs; [
         (trivialBuild rec {
           pname = "toggle-one-window";
           ename = pname;

@@ -69,72 +69,72 @@ in {
   programs.alacritty.settings.font.size = lib.mkForce 10;
   programs.autorandr.enable = true; # Automatically select a display configuration based on connected devices.
   programs.dircolors.enable = true;
-  programs.emacs = {
-    enable = true;
-    package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
-    extraConfig = let
-          readRecursively = dir:
-            builtins.concatStringsSep "\n"
-              (lib.mapAttrsToList (name: value: if value == "regular"
-                                                then builtins.readFile (dir + "/${name}")
-                                                else (if value == "directory"
-                                                      then readRecursively (dir + "/${name}")
-                                                      else [ ]))
-                                  (builtins.readDir dir));
-        in readRecursively ./emacs;
-    extraPackages = epkgs: [ 
-      epkgs.use-package
-      epkgs.ligature
-      epkgs.diminish
-      epkgs.winum
-      epkgs.ivy
-      epkgs.counsel
-      epkgs.swiper
-      epkgs.flycheck
-      epkgs.doom-themes
-      epkgs.nix-mode
-      epkgs.markdown-mode
-      epkgs.yaml-mode
-      epkgs.rust-mode
-      epkgs.elixir-mode
-      epkgs.cargo
-      epkgs.dired-single
-      epkgs.dirvish
-      epkgs.pdf-tools
-      epkgs.tree-sitter-langs
-      epkgs.undo-tree
-      epkgs.cmake-mode
-    ];
-    overrides = self: super: rec {
-      tree-sitter-langs = self.tree-sitter-langs.withPlugins
-        # Install all tree sitter grammars available from nixpkgs
-        (grammars: builtins.filter lib.isDerivation (lib.attrValues (grammars // {
-          tree-sitter-nix = grammars.tree-sitter-nix.overrideAttrs (old: {
-            version = "fixed";
-            src = inputs.tree-sitter-nix-oxa;
-          });
-        })));
-      toggle-one-window = self.trivialBuild rec {
-        pname = "toggle-one-window";
-        ename = pname;
-        version = "git";
-        src = inputs.epkgs-toggle-one-window;
-      };
-      exwm-ns = self.trivialBuild rec {
-        pname = "exwm-ns";
-        ename = pname;
-        version = "git";
-        src = inputs.epkgs-exwm-ns;
-        patches = [ ./patch/exwm-ns.patch ];
-      };
-      ligature = self.trivialBuild rec {
-        pname = "ligature";
-        ename = pname;
-        version = "git";
-        src = inputs.epkgs-ligature;
-      };
-    };
-  };
+  # programs.emacs = {
+  #   enable = true;
+  #   package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
+  #   extraConfig = let
+  #         readRecursively = dir:
+  #           builtins.concatStringsSep "\n"
+  #             (lib.mapAttrsToList (name: value: if value == "regular"
+  #                                               then builtins.readFile (dir + "/${name}")
+  #                                               else (if value == "directory"
+  #                                                     then readRecursively (dir + "/${name}")
+  #                                                     else [ ]))
+  #                                 (builtins.readDir dir));
+  #       in readRecursively ./emacs;
+  #   extraPackages = epkgs: [ 
+  #     epkgs.use-package
+  #     epkgs.ligature
+  #     epkgs.diminish
+  #     epkgs.winum
+  #     epkgs.ivy
+  #     epkgs.counsel
+  #     epkgs.swiper
+  #     epkgs.flycheck
+  #     epkgs.doom-themes
+  #     epkgs.nix-mode
+  #     epkgs.markdown-mode
+  #     epkgs.yaml-mode
+  #     epkgs.rust-mode
+  #     epkgs.elixir-mode
+  #     epkgs.cargo
+  #     epkgs.dired-single
+  #     epkgs.dirvish
+  #     epkgs.pdf-tools
+  #     epkgs.tree-sitter-langs
+  #     epkgs.undo-tree
+  #     epkgs.cmake-mode
+  #   ];
+  #   overrides = self: super: rec {
+  #     tree-sitter-langs = self.tree-sitter-langs.withPlugins
+  #       # Install all tree sitter grammars available from nixpkgs
+  #       (grammars: builtins.filter lib.isDerivation (lib.attrValues (grammars // {
+  #         tree-sitter-nix = grammars.tree-sitter-nix.overrideAttrs (old: {
+  #           version = "fixed";
+  #           src = inputs.tree-sitter-nix-oxa;
+  #         });
+  #       })));
+  #     toggle-one-window = self.trivialBuild rec {
+  #       pname = "toggle-one-window";
+  #       ename = pname;
+  #       version = "git";
+  #       src = inputs.epkgs-toggle-one-window;
+  #     };
+  #     exwm-ns = self.trivialBuild rec {
+  #       pname = "exwm-ns";
+  #       ename = pname;
+  #       version = "git";
+  #       src = inputs.epkgs-exwm-ns;
+  #       patches = [ ./patch/exwm-ns.patch ];
+  #     };
+  #     ligature = self.trivialBuild rec {
+  #       pname = "ligature";
+  #       ename = pname;
+  #       version = "git";
+  #       src = inputs.epkgs-ligature;
+  #     };
+  #   };
+  # };
   programs.feh.enable = true;
   programs.hyfetch.settings = {
     preset = "transgender";

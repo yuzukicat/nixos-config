@@ -37,6 +37,23 @@
     fi
   '';
 
+  xsession = {
+    enable = true;
+    scriptPath = ".xsessions/exwm.xsession";
+    profilePath = ".xsessions/exwm.xprofile";
+    initExtra = ''
+      ibus-daemon -xrRd
+    '';
+    windowManager.command = ''
+      emacs --daemon
+      emacsclient -c -e '(init-exwm)'
+    '';
+    importedVariables = lib.attrNames exwmSessionVariables;
+  };
+  xresources.properties = {
+    "Emacs*useXIM" = true;
+  };
+
   # home.sessionVariables.GTK_USE_PORTAL = 1;
 
   home.file = let
@@ -48,6 +65,13 @@
     ".local/share/password-store".source = linkPersonal "password-store";
     ".local/share/task".source = linkPersonal "taskwarrior";
     ".ssh".source = linkPersonal "ssh";
+    ".xsessions/exwm-plasma.xsession" = {
+      executable = true;
+      text = builtins.replaceStrings
+        [ xsession.windowManager.command ]
+        [ "env KDEWM=${pkgs.writeShellScript "exwm-plasma-integration" "${emacsPackageWithPkgs}/bin/emacsclient -c -e '(exwm-init)'"} startplasma-x11" ]
+        (config.home.file.${xsession.scriptPath}.text);
+    };
   };
 
   programs.gpg.homedir = "${config.home.homeDirectory}/storage/personal/gnupg";

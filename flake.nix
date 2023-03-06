@@ -47,19 +47,24 @@
       url = "github:oxalica/tree-sitter-nix";
       flake = false;
     };
+    nix-doom-emacs = {
+      url = "github:nix-community/nix-doom-emacs";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
-    epkgs-ligature = {
-      url = "github:mickeynp/ligature.el";
-      flake = false;
-    };
-    epkgs-toggle-one-window = {
-      url = "github:manateelazycat/toggle-one-window";
-      flake = false;
-    };
-    epkgs-exwm-ns = {
-      url = "github:timor/exwm-ns";
-      flake = false;
-    };
+    # epkgs-ligature = {
+    #   url = "github:mickeynp/ligature.el";
+    #   flake = false;
+    # };
+    # epkgs-toggle-one-window = {
+    #   url = "github:manateelazycat/toggle-one-window";
+    #   flake = false;
+    # };
+    # epkgs-exwm-ns = {
+    #   url = "github:timor/exwm-ns";
+    #   flake = false;
+    # };
 
     lsp-nil = {
       url = "github:oxalica/nil";

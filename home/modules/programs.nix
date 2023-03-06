@@ -58,11 +58,6 @@ in {
   programs.alacritty.settings.font.size = lib.mkForce 10;
   programs.autorandr.enable = true; # Automatically select a display configuration based on connected devices.
   programs.dircolors.enable = true;
-  programs.doom-emacs = {
-    enable = true;
-    doomPrivateDir = ./doom.d; # Directory containing your config.el, init.el
-                                # and packages.el files
-  };
   programs.feh.enable = true;
   programs.hyfetch.settings = {
     preset = "transgender";

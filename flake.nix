@@ -44,8 +44,6 @@
     };
     nix-doom-emacs = {
       url = "github:nix-community/nix-doom-emacs";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     # epkgs-ligature = {

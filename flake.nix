@@ -44,6 +44,7 @@
     };
     nix-doom-emacs = {
       url = "github:nix-community/nix-doom-emacs";
+      flake = false;
     };
 
     # epkgs-ligature = {

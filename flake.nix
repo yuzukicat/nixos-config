@@ -116,7 +116,7 @@
           (final: prev: {
             emacs29 = prev.emacsGit.overrideAttrs (old: {
               name = "emacs29";
-              version = emacs-upstream.shortRev;
+              version = inputs.emacs-upstream.shortRev;
               src = inputs.emacs-upstream;
             });
             # TODO: figure out a way to import based on this...

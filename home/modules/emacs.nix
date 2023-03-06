@@ -14,18 +14,15 @@ in {
     extraConfig = ''
       (setq standard-indent 2)
     '';
-    extraPackages = with inputs.emacs-overlay.packages.${pkgs.system}.emacsGit.epkgs; [
-        use-package
-      ];
-    overrides = {
-      toggle-one-window = with inputs.emacs-overlay.packages.${pkgs.system}.emacsGit.epkgs; [
-        (trivialBuild rec {
-          pname = "toggle-one-window";
-          ename = pname;
-          version = "git";
-          src = inputs.epkgs-toggle-one-window;
-        })
-      ];
+    extraPackages = epkgs: [ epkgs.emms epkgs.magit epkgs.use-package];
+    overrides = epkgs: epkgs // {
+      # haskell-mode = epkgs.melpaPackages.haskell-mode;
+      toggle-one-window = epkgs.trivialBuild rec {
+        pname = "toggle-one-window";
+        ename = pname;
+        version = "git";
+        src = inputs.epkgs-toggle-one-window;
+      };
     };
   };
 }

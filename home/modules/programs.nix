@@ -130,8 +130,7 @@ in {
                               (builtins.readDir dir));
     in readRecursively ./emacs;
     extraPackages = epkgs: [ ];
-    overrides = epkgs: epkgs // (let
-      in {
+    overrides = epkgs: extraPackages // ({
         tree-sitter-langs = epkgs.tree-sitter-langs.withPlugins
           # Install all tree sitter grammars available from nixpkgs
           (grammars: builtins.filter lib.isDerivation (lib.attrValues (grammars // {

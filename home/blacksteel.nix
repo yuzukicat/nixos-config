@@ -53,7 +53,7 @@
       recursive = true;
     };
     ".emacs.d/init.org" = {
-      source = ./modules/emacs/emacs/init.org;
+      source = ./modules/emacs/init.org;
       recursive = true;
     };
   };

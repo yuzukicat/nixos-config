@@ -13,6 +13,8 @@ in {
     package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
     extraConfig = ''
       (setq standard-indent 2)
+      (use-package toggle-one-window
+        :bind ("C-c 1" . toggle-one-window))
     '';
     extraPackages = epkgs: [ epkgs.emms epkgs.magit epkgs.use-package ];
     overrides = self: super: rec {

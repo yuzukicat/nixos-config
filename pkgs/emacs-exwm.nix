@@ -71,7 +71,5 @@ let
   ];
 in
 rec {
-  home.sessionVariables = exwmSessionVariables // {
-    _JAVA_AWT_WM_NONREPARENTING = "1";
-  };
+
 }

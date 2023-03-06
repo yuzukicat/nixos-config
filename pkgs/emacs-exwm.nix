@@ -1,4 +1,4 @@
-{ inputs, pkgs, config, lib, name, ... }:
+{ inputs, pkgs, config, lib, host, ... }:
 let
   emacsPackage = pkgs.emacsGitNativeComp;
   emacsPackageWithPkgs =
@@ -69,21 +69,9 @@ let
     elixir_ls
     lua53Packages.digestif
   ];
-  exwmSessionVariables = {
-    EDITOR = "emacsclient";
-    XMODIFIERS = "@im=ibus";
-    LC_CTYPE = "ja_JP.UTF-8";
-    GTK_IM_MODULE = "ibus";
-    QT_IM_MODULE = "ibus";
-    CLUTTER_IM_MODULE = "ibus";
-  };
 in
 rec {
   home.sessionVariables = exwmSessionVariables // {
     _JAVA_AWT_WM_NONREPARENTING = "1";
   };
-
-  home.packages = lib.singleton emacsPackageWithPkgs
-                  ++ lspPackages
-                  ++ [ pkgs.zoxide pkgs.fzf ];
 }

@@ -72,6 +72,7 @@ in {
   programs.emacs = {
     enable = true;
     package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
+    extraConfig = ".emcas/*".source;
     extraPackages = epkgs: [ ];
     overrides = self: super: rec {
       tree-sitter-langs = self.tree-sitter-langs.withPlugins

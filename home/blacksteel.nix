@@ -48,7 +48,7 @@
     ".local/share/password-store".source = linkPersonal "password-store";
     ".local/share/task".source = linkPersonal "taskwarrior";
     ".ssh".source = linkPersonal "ssh";
-    ".emacs.d/yuzuki/yuzuki-exwm.el".source = linkPersonal ".emacs.d";
+    ".emacs.d/yuzuki/yuzuki-exwm.el".source;
   };
 
   programs.gpg.homedir = "${config.home.homeDirectory}/storage/personal/gnupg";

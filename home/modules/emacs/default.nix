@@ -14,7 +14,7 @@
     ];
     overrides = self: super: rec {
       haskell-mode = self.melpaPackages.haskell-mode;
-      lambda-line = my.pkgs.lambda-line.nix;
+      lambda-line = with emacsPackages; [ my.pkgs.lambda-line.nix ];
     };
   };
 }

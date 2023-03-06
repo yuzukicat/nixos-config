@@ -110,7 +110,7 @@
         nixpkgs.overlays = [
           (final: prev: {
             inherit (inputs.emacs-overlay.packages.${config.nixpkgs.system})
-              emacsWithPackagesFromUsePackage;
+              emacsGit;
           })
         ];
       };

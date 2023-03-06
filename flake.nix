@@ -23,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     nocargo = {
       url = "github:oxalica/nocargo";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,30 +47,26 @@
       url = "github:oxalica/tree-sitter-nix";
       flake = false;
     };
-    nix-doom-emacs = {
-      url = "github:nix-community/nix-doom-emacs";
+
+    epkgs-ligature = {
+      url = "github:mickeynp/ligature.el";
+      flake = false;
+    };
+    epkgs-toggle-one-window = {
+      url = "github:manateelazycat/toggle-one-window";
+      flake = false;
+    };
+    epkgs-exwm-ns = {
+      url = "github:timor/exwm-ns";
       flake = false;
     };
 
-    # epkgs-ligature = {
-    #   url = "github:mickeynp/ligature.el";
-    #   flake = false;
-    # };
-    # epkgs-toggle-one-window = {
-    #   url = "github:manateelazycat/toggle-one-window";
-    #   flake = false;
-    # };
-    # epkgs-exwm-ns = {
-    #   url = "github:timor/exwm-ns";
-    #   flake = false;
-    # };
-
-    # lsp-nil = {
-    #   url = "github:oxalica/nil";
-    #   inputs.flake-utils.follows = "flake-utils";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.rust-overlay.follows = "rust-overlay";
-    # };
+    lsp-nil = {
+      url = "github:oxalica/nil";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
 
     meta-sifive = {
       url = "github:sifive/meta-sifive/2021.11.00";

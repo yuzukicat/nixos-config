@@ -7,7 +7,7 @@
     ./modules/wayland-dpi.nix
     ./modules/alacritty.nix
     ./modules/direnv.nix
-    ./modules/doom.nix
+    ./modules/emacs.nix
     ./modules/firefox.nix
     ./modules/git.nix
     ./modules/gpg.nix

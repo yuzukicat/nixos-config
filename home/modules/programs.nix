@@ -67,7 +67,7 @@ in {
     };
   };
   programs.lieer.enable = true; # ? cli mail
-  programs.mako.enable = true; # notification daemon for Wayland
+  services.mako.enable = true; # notification daemon for Wayland
   programs.ncmpcpp.enable = true; # ? cli music management
   # install VS Code via Home Manager
   programs.vscode = {

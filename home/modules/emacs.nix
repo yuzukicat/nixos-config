@@ -18,7 +18,7 @@ in {
       use-package
     ];
     overrides = self: super: rec {
-      toggle-one-window = with package;[
+      toggle-one-window = with self.package;[
         (trivialBuild rec {
           pname = "toggle-one-window";
           ename = pname;

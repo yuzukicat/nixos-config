@@ -14,14 +14,18 @@ in {
     extraConfig = ''
       (setq standard-indent 2)
     '';
-    extraPackages = [];
+    extraPackages = with package; [
+      use-package
+    ];
     overrides = self: super: rec {
-      toggle-one-window = pkgs.trivialBuild rec {
-        pname = "toggle-one-window";
-        ename = pname;
-        version = "git";
-        src = inputs.epkgs-toggle-one-window;
-      };
+      toggle-one-window = with package;[
+        (trivialBuild rec {
+          pname = "toggle-one-window";
+          ename = pname;
+          version = "git";
+          src = inputs.epkgs-toggle-one-window;
+        })
+      ];
     };
   };
 }

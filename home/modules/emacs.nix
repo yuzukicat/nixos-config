@@ -16,6 +16,8 @@ in {
     '';
     extraPackages = epkgs: [ epkgs.emms epkgs.magit epkgs.use-package];
     overrides = epkgs: epkgs // {
+      inherit (pkgs) fetchFromGitHub;
+      inherit (epkgs) trivialBuild;
       # haskell-mode = epkgs.melpaPackages.haskell-mode;
       toggle-one-window = trivialBuild rec {
         pname = "toggle-one-window";

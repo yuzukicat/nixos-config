@@ -10,7 +10,7 @@
     extraPackages = epkgs: [ epkgs.emms epkgs.magit epkgs.use-package ];
     overrides = self: super: rec {
       haskell-mode = self.melpaPackages.haskell-mode;
-      lambda-line = lambda-line.nix {
+      lambda-line = my.pkgs.lambda-line.nix {
         inherit (epkgs) trivialBuild all-the-icons;
       };
     };

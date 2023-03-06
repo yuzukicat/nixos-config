@@ -38,7 +38,6 @@ in {
     # system:
     trash-cli
     my.pkgs.hyfetch
-    my.pkgs.emacs-exwm
 
     # internet:
     # aria2

@@ -69,10 +69,6 @@
   # Some defaults, override "basics.nix"
   # programs.gnupg.agent.pinentryFlavor = "qt";
   services.flatpak.enable = true; #  A framework for distributing desktop applications across various Linux distributions.
-  services.emacs = {
-    package = pkgs.emacsGit;
-    enable = true;
-  };
   # To use VS Code under Wayland, set the environment variable NIXOS_OZONE_WL=1:
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }

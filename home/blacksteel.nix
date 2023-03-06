@@ -48,9 +48,31 @@
     ".local/share/password-store".source = linkPersonal "password-store";
     ".local/share/task".source = linkPersonal "taskwarrior";
     ".ssh".source = linkPersonal "ssh";
+    ".emacs.d/early-init.el" = {
+      source = ./modules/emacs/early-init.el;
+      recursive = true;
+    };
+    ".emacs.d/init.org" = {
+      source = ./modules/emacs/emacs/init.org;
+      recursive = true;
+    };
   };
 
   programs.gpg.homedir = "${config.home.homeDirectory}/storage/personal/gnupg";
+
+    # Add to home managers dag to make sure the activation fails if emacs can't
+  # parse the init files and nuke any temp dirs we don't need/want to stick
+  # around if present.
+  home.activation.freshEmacs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    printf "home/blacksteel.nix: clean ~/.emacs.d\n" >&2
+    $DRY_RUN_CMD rm -rf $VERBOSE_ARG ~/.emacs.d/init.el ~/.emacs.d/init.elc ~/.emacs.d/elpa ~/.emacs.d/eln-cache
+  '';
+
+  # Only test emacs config on macos for now
+  home.activation.testEmacs = lib.mkIf pkgs.stdenv.isDarwin (lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    printf "home/blacksteel.nix: test emacs\n" >&2
+    $DRY_RUN_CMD ${pkgs.emacsWithConfig}/bin/emacs --debug-init --batch -u $USER
+  '');
 
   home.stateVersion = "22.11";
 }

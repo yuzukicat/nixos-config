@@ -1,4 +1,4 @@
-;;; shu-c --- C and C++ modes
+;;; yuzuki-c --- C and C++ modes
 ;;; Commentary:
 "C and C++ modes"
 ;;; Code:
@@ -9,5 +9,5 @@
 				(awk-mode . "awk")
 				(other . "linux")))
 
-(provide 'shu-c)
-;;; shu-c.el ends here
+(provide 'yuzuki-c)
+;;; yuzuki-c.el ends here

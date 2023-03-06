@@ -1,32 +1,32 @@
 ﻿;;; init --- Init file of emacs
 ;;; Commentary:
-"The shu init file of emacs and exwm."
+"The yuzuki init file of emacs and exwm."
 ;;; Code:
 
 (package-initialize)
 (setq use-package-always-ensure t)
 (setq backup-directory-alist '(("." . "~/.backups")))
-(add-to-list 'load-path (expand-file-name "shu" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "yuzuki" user-emacs-directory))
 
-(require 'shu/shu-exwm)
-(defgroup shu ()
-  "Shu EMACS config."
-  :tag "Shu"
-  :prefix "shu-"
+(require 'yuzuki-exwm)
+(defgroup yuzuki ()
+  "yuzuki EMACS config."
+  :tag "yuzuki"
+  :prefix "yuzuki-"
   :group 'applications)
-(defcustom shu-lsp nil
+(defcustom yuzuki-lsp nil
   "Set which LSP to use."
   :tag "LSP config"
-  :group 'shu
+  :group 'yuzuki
   :type `(choice
           (const :tag "disabled" ,nil)
           (const :tag "lsp-mode" lsp-mode)
           (const :tag "eglot" eglot)))
-(setq shu-lsp 'eglot)
-(require 'shu-langserver-lsp)
-(require 'shu-langserver-eglot)
-(require 'shu-c)
-(require 'shu-tex)
+(setq yuzuki-lsp 'eglot)
+(require 'yuzuki-langserver-lsp)
+(require 'yuzuki-langserver-eglot)
+(require 'yuzuki-c)
+(require 'yuzuki-tex)
 
 
 (global-set-key (kbd "C-z") 'undo)

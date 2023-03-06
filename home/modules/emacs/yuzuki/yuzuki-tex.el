@@ -1,6 +1,6 @@
-;;; shu-tex --- LaTeX configuration of Shu
+;;; yuzuki-tex --- LaTeX configuration of yuzuki
 ;;; Commentary:
-"LaTeX configuration combined with EMACS of Shu"
+"LaTeX configuration combined with EMACS of yuzuki"
 ;;; Code:
 
 (setq tex-default-mode 'latex-mode
@@ -24,5 +24,5 @@
   ;; If you prefer you can use `obsidian-insert-link'
   ("C-c C-l" . obsidian-insert-wikilink)))
 
-(provide 'shu-tex)
-;;; shu-tex.el ends here
+(provide 'yuzuki-tex)
+;;; yuzuki-tex.el ends here

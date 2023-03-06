@@ -1,38 +1,38 @@
-;;; shu-exwm --- Configuration of Emacs X Window Manager
+;;; yuzuki-exwm --- Configuration of Emacs X Window Manager
 ;;; Commentary:
 "Configuration of exwm."
 ;;; Code:
 
-(defun shu-exwm-start-process-gui-command (cmd)
+(defun yuzuki-exwm-start-process-gui-command (cmd)
   "A temporary solution when `start-process-shell-command' doesn't work for X apps (marked as CMD)."
   (progn (multi-vterm-dedicated-open) ;; temporary solution
          (message cmd)
          (vterm-send-string (format "%s\n" cmd))
          (multi-vterm-dedicated-close)))
 
-(defun shu-exwm-lock-screen ()
+(defun yuzuki-exwm-lock-screen ()
   "Lock screen."
   (interactive)
-  (shu-exwm-start-process-gui-command "i3lock-shu"))
+  (yuzuki-exwm-start-process-gui-command "i3lock-yuzuki"))
 
-(defun shu-exwm-screenshot ()
+(defun yuzuki-exwm-screenshot ()
   "Take a screenshot."
   (interactive)
-  (shu-exwm-start-process-gui-command "set a ~/Pictures/Screenshots/$(date +%s).png; maim $a; xclip -selection clipboard $a -t image/png"))
+  (yuzuki-exwm-start-process-gui-command "set a ~/Pictures/Screenshots/$(date +%s).png; maim $a; xclip -selection clipboard $a -t image/png"))
 
-(defun shu-exwm-screenshot-area ()
+(defun yuzuki-exwm-screenshot-area ()
   "Take a screenshot of a mouse selected area."
   (interactive)
-  (shu-exwm-start-process-gui-command "set a ~/Pictures/Screenshots/$(date +%s).png; maim -s $a; xclip -selection clipboard $a -t image/png"))
+  (yuzuki-exwm-start-process-gui-command "set a ~/Pictures/Screenshots/$(date +%s).png; maim -s $a; xclip -selection clipboard $a -t image/png"))
 
-(defun shu-exwm-d-launcher ()
+(defun yuzuki-exwm-d-launcher ()
   "Open rofi desktop app launcher."
   (interactive)
-  (shu-exwm-start-process-gui-command "rofi -show drun"))
+  (yuzuki-exwm-start-process-gui-command "rofi -show drun"))
 
-(defvar shu-exwm-keymap
+(defvar yuzuki-exwm-keymap
   (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "s-`") 'shu-toggle-frame-transparency)
+    (define-key map (kbd "s-`") 'yuzuki-toggle-frame-transparency)
     (define-key map (kbd "s-r") 'exwm-reset) ;; reset to line mode
     (define-key map (kbd "s-d") 'exwm-workspace-delete)
     (define-key map (kbd "s-a") 'exwm-workspace-add)
@@ -41,10 +41,10 @@
     (define-key map (kbd "s-K") (lambda () (interactive)
                                   (kill-current-buffer)(delete-window)))
     (define-key map (kbd "s-<return>") 'multi-vterm)
-    (define-key map (kbd "s-s") 'shu-exwm-d-launcher)
-    (define-key map (kbd "<print>") 'shu-exwm-screenshot-area)
-    (define-key map (kbd "s-<print>") 'shu-exwm-screenshot)
-    (define-key map (kbd "s-l") 'shu-exwm-lock-screen)
+    (define-key map (kbd "s-s") 'yuzuki-exwm-d-launcher)
+    (define-key map (kbd "<print>") 'yuzuki-exwm-screenshot-area)
+    (define-key map (kbd "s-<print>") 'yuzuki-exwm-screenshot)
+    (define-key map (kbd "s-l") 'yuzuki-exwm-lock-screen)
     (define-key map (kbd "s-<up>") 'windmove-up)
     (define-key map (kbd "s-<down>") 'windmove-down)
     (define-key map (kbd "s-<right>") 'windmove-right)
@@ -82,7 +82,7 @@
                              (exwm-workspace-move-window ,(- i 1))
                              (exwm-workspace-switch ,(- i 1)))))
     map);MARK ;; see ../../emacs-exwm.nix
-  "Keymap for shu's exwm shortkeys.")
+  "Keymap for yuzuki's exwm shortkeys.")
 
 (use-package exwm
   :config
@@ -100,9 +100,9 @@
   (mapcar (lambda (item)
           (pcase item
             (`(,key . ,func) (exwm-input-set-key `[,key] func))))
-        (remove 'keymap shu-exwm-keymap))
+        (remove 'keymap yuzuki-exwm-keymap))
   (mapcar (lambda (item) (push item exwm-input-prefix-keys))
-          (mapcar 'car (remove 'keymap shu-exwm-keymap)))
+          (mapcar 'car (remove 'keymap yuzuki-exwm-keymap)))
 
   (push ?\C-q exwm-input-prefix-keys)
   (define-key exwm-mode-map [?\C-q] #'exwm-input-send-next-key)
@@ -131,10 +131,10 @@
 (use-package desktop-environment
   :diminish
   :config
-  (define-key desktop-environment-mode-map (kbd "s-l") 'shu-exwm-lock-screen)
+  (define-key desktop-environment-mode-map (kbd "s-l") 'yuzuki-exwm-lock-screen)
   (define-key desktop-environment-mode-map (kbd "S-<print>") nil)
-  (define-key desktop-environment-mode-map (kbd "<print>") 'shu-exwm-screenshot-area)
-  (define-key desktop-environment-mode-map (kbd "<XF86ScreenSaver>") 'shu-exwm-lock-screen)
+  (define-key desktop-environment-mode-map (kbd "<print>") 'yuzuki-exwm-screenshot-area)
+  (define-key desktop-environment-mode-map (kbd "<XF86ScreenSaver>") 'yuzuki-exwm-lock-screen)
   (setq desktop-environment-update-exwm-global-keys :prefix)
   (setq exwm-layout-show-all-buffers t)
   (desktop-environment-mode))
@@ -149,13 +149,13 @@
     (start-process-shell-command "firefox" nil "firefox")
     (start-process-shell-command "thunderbird" nil "thunderbird")
     (start-process-shell-command "polybar" nil "polybar")
-    (start-process-shell-command "xsslock" nil "xss-lock --transfer-sleep-lock -- i3lock-shu")
-    (start-process-shell-command "autolock" nil "xautolock -time 5 -locker i3lock-shu -detectsleep -notify 5 -notifier \"i3lock-shu --grace-mode 5\"")
+    (start-process-shell-command "xsslock" nil "xss-lock --transfer-sleep-lock -- i3lock-yuzuki")
+    (start-process-shell-command "autolock" nil "xautolock -time 5 -locker i3lock-yuzuki -detectsleep -notify 5 -notifier \"i3lock-yuzuki --grace-mode 5\"")
     (start-process-shell-command "blueman" nil "blueman-applet")
     (start-process-shell-command "megasync" nil "megasync")
-    (shu-exwm-start-process-gui-command "dolphin --daemon &")
+    (yuzuki-exwm-start-process-gui-command "dolphin --daemon &")
     ;; (start-process-shell-command "feh" nil "feh --bg-scale ~/clash-configuration/background-image")
     (exwm-workspace-switch 0)))
 
-(provide 'shu-exwm)
-;;; shu-exwm.el ends here.
+(provide 'yuzuki-exwm)
+;;; yuzuki-exwm.el ends here.

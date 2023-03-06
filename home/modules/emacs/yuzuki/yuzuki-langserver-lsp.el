@@ -1,8 +1,8 @@
-;;; shu-langserver-lsp --- lsp-mode config
+;;; yuzuki-langserver-lsp --- lsp-mode config
 ;;; Commentary:
 "Lsp-mode config."
 ;;; Code:
-(if (eq shu-lsp 'lsp-mode)
+(if (eq yuzuki-lsp 'lsp-mode)
     ((use-package lsp-mode
        :commands (lsp)
        :hook (prog-mode . lsp)
@@ -30,5 +30,5 @@
              lsp-ui-doc-enable t
              lsp-lens-enable t))))
 
-(provide 'shu-langserver-lsp)
-;;; shu-langserver-lsp.el ends here.
+(provide 'yuzuki-langserver-lsp)
+;;; yuzuki-langserver-lsp.el ends here.

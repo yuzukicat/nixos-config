@@ -19,13 +19,9 @@ in {
       emms
       magit
       use-package
-      all-the-icons
-      trivialBuild
     ];
     overrides =  {
-      lambda-line = my.pkgs.lambda-line.nix {
-        inherit (pkgs) fetchFromGitHub trivialBuild all-the-icons;
-      };
+      lambda-line = my.pkgs.lambda-line.nix;
     };
   };
 }

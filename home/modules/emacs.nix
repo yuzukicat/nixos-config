@@ -35,6 +35,6 @@ in {
           version = "git";
           src = inputs.epkgs-toggle-one-window;
         };
-      };
+      });
   };
 }

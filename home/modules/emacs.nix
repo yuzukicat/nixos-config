@@ -15,8 +15,8 @@ in {
       (setq standard-indent 2)
     '';
     extraPackages = [];
-    overrides = self: super: {
-      toggle-one-window = self.trivialBuild rec {
+    overrides = self: super: rec {
+      toggle-one-window = trivialBuild rec {
         pname = "toggle-one-window";
         ename = pname;
         version = "git";

@@ -130,7 +130,12 @@ in {
                               (builtins.readDir dir));
     in readRecursively ./emacs;
     extraPackages = epkgs: [ ];
-    overrides = epkgs: [({
+    overrides = epkgs: epkgs // (let
+        vterm-mouse-support = epkgs.melpaPackages.vterm.overrideAttrs (old: {
+          patches = (old.patches or [ ])
+                    ++ [ ./patch/vterm-mouse-support.patch ];
+        });
+      in {
         tree-sitter-langs = epkgs.tree-sitter-langs.withPlugins
           # Install all tree sitter grammars available from nixpkgs
           (grammars: builtins.filter lib.isDerivation (lib.attrValues (grammars // {
@@ -158,7 +163,8 @@ in {
           version = "git";
           src = inputs.epkgs-ligature;
         };
-      })];
+      });
+    };
   };
   programs.feh.enable = true;
   programs.hyfetch.settings = {

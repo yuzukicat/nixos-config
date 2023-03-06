@@ -15,14 +15,14 @@ in {
       (setq standard-indent 2)
     '';
     extraPackages = epkgs: [ epkgs.emms epkgs.magit epkgs.use-package];
-    # overrides = epkgs: epkgs // {
-    #   haskell-mode = epkgs.melpaPackages.haskell-mode;
-    #   toggle-one-window = epkgs.trivialBuild rec {
-    #     pname = "toggle-one-window";
-    #     ename = pname;
-    #     version = "git";
-    #     src = inputs.epkgs-toggle-one-window;
-    #   };
-    # };
+    overrides = epkgs: epkgs // {
+      # haskell-mode = epkgs.melpaPackages.haskell-mode;
+      toggle-one-window = trivialBuild rec {
+        pname = "toggle-one-window";
+        ename = pname;
+        version = "git";
+        src = inputs.epkgs-toggle-one-window;
+      };
+    };
   };
 }

@@ -15,8 +15,13 @@ in {
       (setq standard-indent 2)
     '';
     extraPackages = [];
-    overrides = {
-      lambda-line = my.pkgs.lambda-line;
+    overrides = self: super: rec {
+      toggle-one-window = epkgs.trivialBuild rec {
+        pname = "toggle-one-window";
+        ename = pname;
+        version = "git";
+        src = inputs.epkgs-toggle-one-window;
+      };
     };
   };
 }

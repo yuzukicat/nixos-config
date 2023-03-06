@@ -9,7 +9,7 @@
   # - rsync strace # Already in systemPackages.
   environment.defaultPackages = with pkgs; [ ];
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; with inputs.emacs-overlay.packages.${pkgs.system}; [
     cntr nix-top # Nix helpers.
     procs # procs zsh
     ncdu # Ncdu is a disk usage analyzer with an ncurses interface
@@ -29,7 +29,7 @@
     my.pkgs.nixos-rebuild-shortcut
     tmuxPlugins.nord
 
-    wget home-manager
+    wget home-manager emacsGit
 
     (emacsWithPackagesFromUsePackage {
       # Your Emacs config file. Org mode babel files are also
@@ -52,7 +52,7 @@
       defaultInitFile = true;
 
       # Package is optional, defaults to pkgs.emacs
-      package = inputs.rust-overlay.packages.${pkgs.system}.emacsGit;
+      package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
 
       # By default emacsWithPackagesFromUsePackage will only pull in
       # packages with `:ensure`, `:ensure t` or `:ensure <package name>`.
@@ -117,6 +117,12 @@
         };
       };
     })
+    (emacsWithPackagesFromPackageRequires {
+      packageElisp = builtins.readFile ./emacs/init.el;
+      extraEmacsPackages = epkgs: [
+        epkgs.package-lint
+      ];
+    });
   ];
 
   programs.less = { # Dealing with a large text file page by page, resulting in fast loading speeds.

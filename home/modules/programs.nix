@@ -131,8 +131,7 @@ in {
     in readRecursively ./emacs;
     extraPackages = epkgs: [ ];
     overrides = self: super: rec {
-      haskell-mode = self.melpaPackages.haskell-mode;
-      tree-sitter-langs = epkgs.tree-sitter-langs.withPlugins
+      tree-sitter-langs = self.tree-sitter-langs.withPlugins
         # Install all tree sitter grammars available from nixpkgs
         (grammars: builtins.filter lib.isDerivation (lib.attrValues (grammars // {
           tree-sitter-nix = grammars.tree-sitter-nix.overrideAttrs (old: {
@@ -140,20 +139,20 @@ in {
             src = inputs.tree-sitter-nix-oxa;
           });
         })));
-      toggle-one-window = epkgs.trivialBuild rec {
+      toggle-one-window = self.trivialBuild rec {
         pname = "toggle-one-window";
         ename = pname;
         version = "git";
         src = inputs.epkgs-toggle-one-window;
       };
-      exwm-ns = epkgs.trivialBuild rec {
+      exwm-ns = self.trivialBuild rec {
         pname = "exwm-ns";
         ename = pname;
         version = "git";
         src = inputs.epkgs-exwm-ns;
         patches = [ ./patch/exwm-ns.patch ];
       };
-      ligature = epkgs.trivialBuild rec {
+      ligature = self.trivialBuild rec {
         pname = "ligature";
         ename = pname;
         version = "git";

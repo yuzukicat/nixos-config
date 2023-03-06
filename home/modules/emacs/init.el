@@ -9,7 +9,6 @@
 (add-to-list 'load-path (expand-file-name "shu" user-emacs-directory))
 
 (require 'shu-exwm)
-(require 'shu-term)
 (defgroup shu ()
   "Shu EMACS config."
   :tag "Shu"
@@ -37,7 +36,6 @@
 (global-set-key (kbd "C-<tab>") 'find-file-at-point)
 (define-key global-map (kbd "<mouse-8>") (kbd "M-w"))
 (define-key global-map (kbd "<mouse-9>") (kbd "C-y"))
-(xterm-mouse-mode t) ;; use mouse in -nw mode
 (tool-bar-mode 0) (menu-bar-mode 0) (scroll-bar-mode 0)
 (fringe-mode '(10 . 10))
 (setq-default cursor-type 'bar
@@ -191,13 +189,9 @@
           ("DEBUG"      error bold))))
 
 ;; Language modes
-(use-package racket-mode
-  :mode ("\\.rkt\\'" . racket-mode)
-  :hook (racket-mode . racket-xp-mode))
 (use-package nix-mode)
 (use-package markdown-mode)
 (use-package yaml-mode)
-(use-package fish-mode)
 (use-package rust-mode)
 (use-package elixir-mode)
 (use-package cargo)

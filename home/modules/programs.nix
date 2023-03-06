@@ -25,7 +25,7 @@ let
                                   (builtins.readDir dir));
         in readRecursively ./emacs;
       alwaysEnsure = true;
-      package = inputs.rust-overlay.packages.${pkgs.system}.emacsGit;
+      package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
       extraEmacsPackages = epkgs: [ ];
       override = epkgs: epkgs // ({
         tree-sitter-langs = epkgs.tree-sitter-langs.withPlugins
@@ -95,8 +95,6 @@ in {
     # system:
     trash-cli
     my.pkgs.hyfetch
-    emacsPackageWithPkgs
-    lspPackages
 
     # internet:
     # aria2

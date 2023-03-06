@@ -9,7 +9,7 @@
   # - rsync strace # Already in systemPackages.
   environment.defaultPackages = with pkgs; [ ];
 
-  environment.systemPackages = with pkgs; with inputs.emacs-overlay.packages.${pkgs.system}; [
+  environment.systemPackages = with pkgs; [
     cntr nix-top # Nix helpers.
     procs # procs zsh
     ncdu # Ncdu is a disk usage analyzer with an ncurses interface
@@ -31,7 +31,7 @@
 
     wget home-manager
 
-    (emacsWithPackagesFromUsePackage {
+  ]++ (emacsWithPackagesFromUsePackage {
       # Your Emacs config file. Org mode babel files are also
       # supported.
       # NB: Config files cannot contain unicode characters, since
@@ -116,8 +116,7 @@
           src = inputs.epkgs-ligature;
         };
       };
-    })
-  ];
+    });
 
   programs.less = { # Dealing with a large text file page by page, resulting in fast loading speeds.
     enable = true;

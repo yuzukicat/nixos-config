@@ -9,7 +9,7 @@
   # - rsync strace # Already in systemPackages.
   environment.defaultPackages = with pkgs; [ ];
 
-  environment.systemPackages = with pkgs; with inputs.emacs-overlay.packages.${pkgs.system}; [
+  environment.systemPackages = with pkgs; [
     cntr nix-top # Nix helpers.
     procs # procs zsh
     ncdu # Ncdu is a disk usage analyzer with an ncurses interface
@@ -29,7 +29,7 @@
     my.pkgs.nixos-rebuild-shortcut
     tmuxPlugins.nord
 
-    wget home-manager emacsGit
+    wget home-manager
 
     (emacsWithPackagesFromUsePackage {
       # Your Emacs config file. Org mode babel files are also
@@ -117,12 +117,6 @@
         };
       };
     })
-    (emacsWithPackagesFromPackageRequires {
-      packageElisp = builtins.readFile ./emacs/init.el;
-      extraEmacsPackages = epkgs: [
-        epkgs.package-lint
-      ];
-    })
   ];
 
   programs.less = { # Dealing with a large text file page by page, resulting in fast loading speeds.
@@ -162,7 +156,7 @@
   # programs.gnupg.agent.pinentryFlavor = "qt";
   services.flatpak.enable = true; #  A framework for distributing desktop applications across various Linux distributions.
   services.emacs = {
-    package = pkgs.emacsGit;
+    package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
     enable = true;
   };
   # To use VS Code under Wayland, set the environment variable NIXOS_OZONE_WL=1:

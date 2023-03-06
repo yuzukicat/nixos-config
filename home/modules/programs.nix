@@ -11,6 +11,63 @@ let
     epc
     pip
   ]);
+  emacsPackageWithPkgs =
+    pkgs.emacsWithPackagesFromUsePackage {
+      config =
+        let
+          readRecursively = dir:
+            builtins.concatStringsSep "\n"
+              (lib.mapAttrsToList (name: value: if value == "regular"
+                                                then builtins.readFile (dir + "/${name}")
+                                                else (if value == "directory"
+                                                      then readRecursively (dir + "/${name}")
+                                                      else [ ]))
+                                  (builtins.readDir dir));
+        in readRecursively ./emacs;
+      alwaysEnsure = true;
+      package = pkgs.emacsGitNativeComp;
+      extraEmacsPackages = epkgs: [ ];
+      override = epkgs: epkgs // ({
+        tree-sitter-langs = epkgs.tree-sitter-langs.withPlugins
+          # Install all tree sitter grammars available from nixpkgs
+          (grammars: builtins.filter lib.isDerivation (lib.attrValues (grammars // {
+            tree-sitter-nix = grammars.tree-sitter-nix.overrideAttrs (old: {
+              version = "fixed";
+              src = inputs.tree-sitter-nix-oxa;
+            });
+          })));
+        toggle-one-window = epkgs.trivialBuild rec {
+          pname = "toggle-one-window";
+          ename = pname;
+          version = "git";
+          src = inputs.epkgs-toggle-one-window;
+        };
+        exwm-ns = epkgs.trivialBuild rec {
+          pname = "exwm-ns";
+          ename = pname;
+          version = "git";
+          src = inputs.epkgs-exwm-ns;
+          patches = [ ./patch/exwm-ns.patch ];
+        };
+        ligature = epkgs.trivialBuild rec {
+          pname = "ligature";
+          ename = pname;
+          version = "git";
+          src = inputs.epkgs-ligature;
+        };
+      });
+    };
+  lspPackages = with pkgs; [
+    rust-analyzer
+    nil # rnix-lsp
+    pyright
+    haskell-language-server
+    solargraph
+    yaml-language-server
+    clang-tools
+    elixir_ls
+    lua53Packages.digestif
+  ];
 in {
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
     # Console
@@ -38,6 +95,8 @@ in {
     # system:
     trash-cli
     my.pkgs.hyfetch
+    emacsPackageWithPkgs
+    lspPackages
 
     # internet:
     # aria2

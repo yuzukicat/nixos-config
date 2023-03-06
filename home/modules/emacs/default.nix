@@ -8,7 +8,7 @@
       (setq standard-indent 2)
     '';
     extraPackages = epkgs: [ epkgs.emms epkgs.magit epkgs.use-package ];
-    overrides = self: super: rec {
+    overrides = epkgs: epkgs: rec {
       haskell-mode = self.melpaPackages.haskell-mode;
       lambda-line = my.pkgs.lambda-line.nix;
     };

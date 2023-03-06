@@ -82,7 +82,7 @@ in {
                                                       else [ ]))
                                   (builtins.readDir dir));
         in readRecursively ./emacs;
-    extraPackages = self: [
+    extraPackages = literalExpression "epkgs: [ 
       epkgs.use-package
       epkgs.ligature
       epkgs.diminish
@@ -104,7 +104,7 @@ in {
       epkgs.tree-sitter-langs
       epkgs.undo-tree
       epkgs.cmake-mode
-     ];
+    ]";
     overrides = self: super: rec {
       tree-sitter-langs = self.tree-sitter-langs.withPlugins
         # Install all tree sitter grammars available from nixpkgs

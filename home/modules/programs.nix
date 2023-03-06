@@ -82,28 +82,28 @@ in {
                                                       else [ ]))
                                   (builtins.readDir dir));
         in readRecursively ./emacs;
-    extraPackages = with inputs.emacs-overlay.packages.${pkgs.system}.emacsGit; [
-      epkgs.use-package
-      epkgs.ligature
-      epkgs.diminish
-      epkgs.winum
-      epkgs.ivy
-      epkgs.counsel
-      epkgs.swiper
-      epkgs.flycheck
-      epkgs.doom-themes
-      epkgs.nix-mode
-      epkgs.markdown-mode
-      epkgs.yaml-mode
-      epkgs.rust-mode
-      epkgs.elixir-mode
-      epkgs.cargo
-      epkgs.dired-single
-      epkgs.dirvish
-      epkgs.pdf-tools
-      epkgs.tree-sitter-langs
-      epkgs.undo-tree
-      epkgs.cmake-mode
+    extraPackages = with emacsPackages; [
+      use-package
+      ligature
+      diminish
+      winum
+      ivy
+      counsel
+      swiper
+      flycheck
+      doom-themes
+      nix-mode
+      markdown-mode
+      yaml-mode
+      rust-mode
+      elixir-mode
+      cargo
+      dired-single
+      dirvish
+      pdf-tools
+      tree-sitter-langs
+      undo-tree
+      cmake-mode
      ];
     overrides = self: super: rec {
       tree-sitter-langs = self.tree-sitter-langs.withPlugins

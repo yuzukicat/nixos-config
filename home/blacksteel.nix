@@ -7,7 +7,6 @@
     ./modules/wayland-dpi.nix
     ./modules/alacritty.nix
     ./modules/direnv.nix
-    ./modules/emacs-exwm.nix
     ./modules/firefox.nix
     ./modules/git.nix
     ./modules/gpg.nix

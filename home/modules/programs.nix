@@ -82,7 +82,28 @@ in {
                                                       else [ ]))
                                   (builtins.readDir dir));
         in readRecursively ./emacs;
-    extraPackages = epkgs: [ ];
+    extraPackages = epkgs: [
+      epkgs.ligature
+      epkgs.diminish
+      epkgs.winum
+      epkgs.ivy
+      epkgs.counsel
+      epkgs.swiper
+      epkgs.flycheck
+      epkgs.doom-themes
+      epkgs.nix-mode
+      epkgs.markdown-mode
+      epkgs.yaml-mode
+      epkgs.rust-mode
+      epkgs.elixir-mode
+      epkgs.cargo
+      epkgs.dired-single
+      epkgs.dirvish
+      epkgs.pdf-tools
+      epkgs.tree-sitter-langs
+      epkgs.undo-tree
+      epkgs.cmake-mode
+     ];
     overrides = self: super: rec {
       tree-sitter-langs = self.tree-sitter-langs.withPlugins
         # Install all tree sitter grammars available from nixpkgs

@@ -122,7 +122,7 @@
       extraEmacsPackages = epkgs: [
         epkgs.package-lint
       ];
-    });
+    })
   ];
 
   programs.less = { # Dealing with a large text file page by page, resulting in fast loading speeds.

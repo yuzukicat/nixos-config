@@ -48,7 +48,6 @@
     ".local/share/password-store".source = linkPersonal "password-store";
     ".local/share/task".source = linkPersonal "taskwarrior";
     ".ssh".source = linkPersonal "ssh";
-    ".emacs.d/shu/shu-exwm.el".source = pkgs.writeText "shu-exwm.el";
   };
 
   programs.gpg.homedir = "${config.home.homeDirectory}/storage/personal/gnupg";

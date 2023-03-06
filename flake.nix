@@ -109,7 +109,7 @@
       emacs-overlay = { config, ... }: {
         nixpkgs.overlays = [
           (final: prev: {
-            inherit (inputs.emacs-overlay.legacyPackages.${config.nixpkgs.system})
+            inherit (inputs.emacs-overlay.packages.${config.nixpkgs.system})
               emacsWithPackagesFromUsePackage;
           })
         ];

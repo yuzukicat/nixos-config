@@ -11,7 +11,6 @@
       emms
       magit
       use-package
-      all-the-icons
     ];
     overrides = self: super: rec {
       haskell-mode = self.melpaPackages.haskell-mode;

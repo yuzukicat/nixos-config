@@ -13,7 +13,7 @@ trivialBuild rec {
     hash = "sha256-2tOXMqpmd14ohzmrRoV5Urf0HlnRPV1EVHm/d8OBSGE=";
   };
   # elisp dependencies
-  propagatedUserEnvPkgs = [
+  propagatedUserEnvPkgs = with emacsPackages; [
     all-the-icons
   ];
   buildInputs = propagatedUserEnvPkgs;

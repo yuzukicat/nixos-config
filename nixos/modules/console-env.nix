@@ -1,4 +1,4 @@
-{ lib, pkgs, my, ... }:
+{ lib, pkgs, my, inputs, ... }:
 {
   # Reduce the closure size.
   # fonts.fontconfig.enable = lib.mkDefault false;

@@ -11,6 +11,7 @@ let
     epc
     pip
   ]);
+  emacsPackage = pkgs.emacsGitNativeComp;
   emacsPackageWithPkgs =
     pkgs.emacsWithPackagesFromUsePackage {
       config =
@@ -25,7 +26,7 @@ let
                                   (builtins.readDir dir));
         in readRecursively ./emacs;
       alwaysEnsure = true;
-      package = inputs.emacs-overlay.packages.${pkgs.system}.emacsGit;
+      package = emacsPackage;
       extraEmacsPackages = epkgs: [ ];
       override = epkgs: epkgs // ({
         tree-sitter-langs = epkgs.tree-sitter-langs.withPlugins

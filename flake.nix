@@ -158,7 +158,6 @@
                 epkgs.yaml-mode
                 epkgs.fish-mode
                 epkgs.rust-mode
-                epkgs.elixir-mode
                 epkgs.cargo
                 epkgs.dired-single
                 epkgs.dirvish

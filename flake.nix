@@ -158,28 +158,28 @@
                 epkgs.pdf-tools
                 epkgs.tree-sitter-langs
                 epkgs.undo-tree
-                # epkgs.mwim
-                # epkgs.good-scroll
-                # epkgs.dashboard
-                # epkgs.magit
-                # epkgs.hydra
-                # epkgs.use-package-hydra
-                # epkgs.multiple-cursors
-                # epkgs.lsp-mode
-                # epkgs.lsp-ivy
-                # epkgs.lsp-ui
-                # epkgs.projectile
-                # epkgs.counsel-projectile
-                # epkgs.treemacs
-                # epkgs.treemacs-projectile
-                # epkgs.treemacs-icons-dired
-                # epkgs.treemacs-tab-bar
-                # epkgs.lsp-treemacs
-                # epkgs.company
-                # epkgs.company-box
-                # epkgs.yasnippet
-                # epkgs.yasnippet-snippets
-                # epkgs.go-mode
+                epkgs.mwim
+                epkgs.good-scroll
+                epkgs.dashboard
+                epkgs.magit
+                epkgs.hydra
+                epkgs.use-package-hydra
+                epkgs.multiple-cursors
+                epkgs.lsp-mode
+                epkgs.lsp-ivy
+                epkgs.lsp-ui
+                epkgs.projectile
+                epkgs.counsel-projectile
+                epkgs.treemacs
+                epkgs.treemacs-projectile
+                epkgs.treemacs-icons-dired
+                epkgs.treemacs-tab-bar
+                epkgs.lsp-treemacs
+                epkgs.company
+                epkgs.company-box
+                epkgs.yasnippet
+                epkgs.yasnippet-snippets
+                epkgs.go-mode
               ];
               override = epkgs: epkgs // {
                 tree-sitter-langs = epkgs.tree-sitter-langs.withPlugins

@@ -27,29 +27,15 @@
 (require 'shu-c)
 (require 'shu-tex)
 
-(use-package dashboard
-  :ensure t
-  :config
-  (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
-  (setq dashboard-projects-backend 'projectile) ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
-  (setq dashboard-startup-banner 'official) ;; 也可以自定义图片
-			  (projects . 10))) ;; 显示多少个最近项目
-  (dashboard-setup-startup-hook)
-
-(use-package good-scroll
-  :ensure t
-  :if window-system          ;; 在图形化界面时才使用这个插件
-  :init (good-scroll-mode))
-
-(setq confirm-kill-emacs #'yes-or-no-p)      ;; 在关闭 Emacs 前询问是否确认关闭，防止误触
-(electric-pair-mode t)                       ;; 自动补全括号
-(add-hook 'prog-mode-hook #'show-paren-mode) ;; 编程模式下，光标在括号上时高亮另一个括号
-(column-number-mode t)                       ;; 在 Mode line 上显示列号
-(global-auto-revert-mode t)                  ;; 当另一程序修改了文件时，让 Emacs 及时刷新 Buffer
-(setq make-backup-files nil)                 ;; 关闭文件自动备份
-(add-hook 'prog-mode-hook #'hs-minor-mode)   ;; 编程模式下，可以折叠代码块
-(global-display-line-numbers-mode 1)         ;; 在 Window 显示行号
-(setq display-line-numbers-type 'relative)   ;; （可选）显示相对行号
+(setq confirm-kill-emacs #'yes-or-no-p)      ; 在关闭 Emacs 前询问是否确认关闭，防止误触
+(electric-pair-mode t)                       ; 自动补全括号
+(add-hook 'prog-mode-hook #'show-paren-mode) ; 编程模式下，光标在括号上时高亮另一个括号
+(column-number-mode t)                       ; 在 Mode line 上显示列号
+(global-auto-revert-mode t)                  ; 当另一程序修改了文件时，让 Emacs 及时刷新 Buffer
+(setq make-backup-files nil)                 ; 关闭文件自动备份
+(add-hook 'prog-mode-hook #'hs-minor-mode)   ; 编程模式下，可以折叠代码块
+(global-display-line-numbers-mode 1)         ; 在 Window 显示行号
+(setq display-line-numbers-type 'relative)   ; （可选）显示相对行号
 
 (global-set-key (kbd "C-z") 'undo)
 (global-unset-key (kbd "C-x C-z"))
@@ -99,7 +85,7 @@
                                        "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
                                        "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
                                        "\\\\" "://"))
-  (global-ligature-mode t))))
+  (global-ligature-mode t))
 
 (use-package diminish
   :config
@@ -152,11 +138,7 @@
 
 ;; Spell check and auto fill
 (use-package flycheck
-  :ensure t
-  :config
-  (setq truncate-lines nil) ;; 如果单行信息很长会自动换行
-  :hook
-  (prog-mode . flycheck-mode))
+  :config (global-flycheck-mode))
 (use-package company
   :diminish company-mode
   :hook (after-init . global-company-mode)
@@ -167,14 +149,8 @@
         company-show-quick-access t
         company-idle-delay 0
         company-tooltip-idle-delay 0
-        company-minimum-prefix-length 1  ;; 只需敲 1 个字母就开始进行自动补全
-        company-show-numbers t ;; 给选项编号 按快捷键 M-1、M-2 等等来进行选择
-        company-selection-wrap-around t
-        company-transformers '(company-sort-by-occurrence))) ;; 根据选择的频率进行排序，读者如果不喜欢可以去掉
-(use-package company-box
-        :ensure t
-        :if window-system
-        :hook (company-mode . company-box-mode))
+        company-minimum-prefix-length 1))
+
 ;; Theme
 (use-package doom-themes
   :config
@@ -281,28 +257,6 @@
 
 (use-package toggle-one-window
   :bind ("C-c 1" . toggle-one-window))
-
-(use-package mwim
-  :ensure t
-  :bind
-  ("C-a" . mwim-beginning-of-code-or-line)
-  ("C-e" . mwim-end-of-code-or-line))
-
-(use-package hydra
-  :ensure t)
-
-(use-package use-package-hydra
-  :ensure t
-  :after hydra) 
-
-(use-package multiple-cursors
-  :ensure t
-  :after hydra
-  :bind
-  (("C-x C-h m" . hydra-multiple-cursors/body)
-   ("C-S-<mouse-1>" . mc/toggle-cursor-on-click))
-  :hydra (hydra-multiple-cursors
-		  (:hint nil)))
 
 ;; Lsp-bridge
 ;; (use-package posframe)

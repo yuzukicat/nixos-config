@@ -48,8 +48,24 @@
     ".local/share/password-store".source = linkPersonal "password-store";
     ".local/share/task".source = linkPersonal "taskwarrior";
     ".ssh".source = linkPersonal "ssh";
-    ".emacs.d/early-init.el" = {
-      source = ./modules/emacs/early-init.el;
+    ".emacs.d/init.el" = {
+      source = ./modules/emacs/init.el;
+      recursive = true;
+    };
+    ".emacs.d/shu-tex.el" = {
+      source = ./modules/emacs/shu-tex.el;
+      recursive = true;
+    };
+    ".emacs.d/shu-langserver-lsp.el" = {
+      source = ./modules/emacs/shu-langserver-lsp.el;
+      recursive = true;
+    };
+    ".emacs.d/shu-langserver-eglot.el" = {
+      source = ./modules/emacs/shu-langserver-eglot.el;
+      recursive = true;
+    };
+    ".emacs.d/shu-c.el" = {
+      source = ./modules/emacs/shu-c.el;
       recursive = true;
     };
   };

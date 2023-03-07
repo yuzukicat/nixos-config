@@ -27,15 +27,14 @@
 (require 'shu-c)
 (require 'shu-tex)
 
-(setq confirm-kill-emacs #'yes-or-no-p)      ; 在关闭 Emacs 前询问是否确认关闭，防止误触
-(electric-pair-mode t)                       ; 自动补全括号
-(add-hook 'prog-mode-hook #'show-paren-mode) ; 编程模式下，光标在括号上时高亮另一个括号
-(column-number-mode t)                       ; 在 Mode line 上显示列号
-(global-auto-revert-mode t)                  ; 当另一程序修改了文件时，让 Emacs 及时刷新 Buffer
-(setq make-backup-files nil)                 ; 关闭文件自动备份
-(add-hook 'prog-mode-hook #'hs-minor-mode)   ; 编程模式下，可以折叠代码块
-(global-display-line-numbers-mode 1)         ; 在 Window 显示行号
-(setq display-line-numbers-type 'relative)   ; （可选）显示相对行号
+(setq confirm-kill-emacs #'yes-or-no-p)      ;; 在关闭 Emacs 前询问是否确认关闭，防止误触
+(electric-pair-mode t)                       ;; 自动补全括号
+(column-number-mode t)                       ;; 在 Mode line 上显示列号
+(global-auto-revert-mode t)                  ;; 当另一程序修改了文件时，让 Emacs 及时刷新 Buffer
+(setq make-backup-files nil)                 ;; 关闭文件自动备份
+(add-hook 'prog-mode-hook #'hs-minor-mode)   ;; 编程模式下，可以折叠代码块
+(global-display-line-numbers-mode 1)         ;; 在 Window 显示行号
+(setq display-line-numbers-type 'relative)   ;; （可选）显示相对行号
 
 (global-set-key (kbd "C-z") 'undo)
 (global-unset-key (kbd "C-x C-z"))
@@ -100,15 +99,28 @@
 (use-package winum
   :config (winum-mode))
 
+;; hydra
+(use-package hydra
+  :ensure t)
+
+(use-package use-package-hydra
+  :ensure t
+  :after hydra) 
+
 ;; Ivy tool set
 (use-package ivy
+  :ensure t
   :diminish ivy-mode
+  :init
+  (ivy-mode 1)
+  (counsel-mode 1)
   :config
   (ivy-mode)
   (define-key global-map (kbd "C-x b") 'ivy-switch-buffer)
   (define-key global-map (kbd "C-c v") 'ivy-push-view)
   (define-key global-map (kbd "C-c V") 'ivy-pop-view))
 (use-package counsel
+  :ensure t
   :config
   (define-key global-map (kbd "M-x") 'counsel-M-x)
   (define-key global-map (kbd "C-x C-f") 'counsel-find-file)
@@ -138,7 +150,9 @@
 
 ;; Spell check and auto fill
 (use-package flycheck
-  :config (global-flycheck-mode))
+  :ensure t
+  :hook                        ;; 为模式设置 hook
+  (prog-mode . flycheck-mode))
 (use-package company
   :diminish company-mode
   :hook (after-init . global-company-mode)
@@ -175,7 +189,7 @@
 
 
 ;; Parentheses and highlight TODO
-(show-paren-mode t)
+(add-hook 'prog-mode-hook #'show-paren-mode) ; 编程模式下，光标在括号上时高亮另一个括号
 (setq show-paren-style 'parenthesis)
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -243,8 +257,16 @@
   (add-to-list 'tree-sitter-major-mode-language-alist '(markdown-mode . markdown))
   (add-to-list 'tree-sitter-major-mode-language-alist '(yaml-mode . yaml)))
 
+;; mwim
+(use-package mwim
+  :ensure t
+  :config
+  (define-key global-map (kbd "C-a") 'mwim-beginning-of-code-or-line)
+  (define-key global-map (kbd "C-e") 'mwim-end-of-code-or-line))
+
 ;; Undo tree
 (use-package undo-tree
+  :ensure t
   :delight
   :diminish undo-tree-mode
   :config
@@ -254,6 +276,11 @@
         ;; undo-tree-history-directory-alist `(("." . ,(expand-file-name ".cache/undo-tree/" user-emacs-directory)))
         )
   (global-undo-tree-mode))
+
+(use-package good-scroll
+  :ensure t
+  :if window-system          ;; 在图形化界面时才使用这个插件
+  :init (good-scroll-mode))
 
 (use-package toggle-one-window
   :bind ("C-c 1" . toggle-one-window))

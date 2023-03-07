@@ -166,6 +166,7 @@
                 epkgs.dired-single
                 epkgs.dirvish
                 epkgs.pdf-tools
+                epkgs.tree-sitter
                 epkgs.tree-sitter-langs
                 epkgs.undo-tree
                 epkgs.mwim

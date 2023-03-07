@@ -110,7 +110,7 @@
         nixpkgs.overlays = [
           inputs.emacs-overlay.overlay
           (final: prev: {
-            emacs30 = prev.emacsUnstable
+            emacs30 = prev.emacsUnstable;
             # TODO: figure out a way to import based on this...
             # sys = pkgs.lib.last (pkgs.lib.splitString "-" pkgs.system);
             emacsWithConfig = (prev.emacsWithPackagesFromUsePackage {

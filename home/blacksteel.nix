@@ -53,19 +53,19 @@
       recursive = true;
     };
     ".emacs.d/shu-tex.el" = {
-      source = ./modules/emacs/shu-tex.el;
+      source = ./modules/emacs/shu/shu-tex.el;
       recursive = true;
     };
     ".emacs.d/shu-langserver-lsp.el" = {
-      source = ./modules/emacs/shu-langserver-lsp.el;
+      source = ./modules/emacs/shu/shu-langserver-lsp.el;
       recursive = true;
     };
     ".emacs.d/shu-langserver-eglot.el" = {
-      source = ./modules/emacs/shu-langserver-eglot.el;
+      source = ./modules/emacs/shu/shu-langserver-eglot.el;
       recursive = true;
     };
     ".emacs.d/shu-c.el" = {
-      source = ./modules/emacs/shu-c.el;
+      source = ./modules/emacs/shu/shu-c.el;
       recursive = true;
     };
   };

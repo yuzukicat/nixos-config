@@ -110,7 +110,11 @@
         nixpkgs.overlays = [
           inputs.emacs-overlay.overlay
           (final: prev: {
-            emacs30 = prev.emacsUnstable;
+            emacs29 = prev.emacsGit.overrideAttrs (old: {
+              name = "emacs29";
+              version = inputs.emacs-upstream.shortRev;
+              src = inputs.emacs-upstream;
+            });
             # TODO: figure out a way to import based on this...
             # sys = pkgs.lib.last (pkgs.lib.splitString "-" pkgs.system);
             emacsWithConfig = (prev.emacsWithPackagesFromUsePackage {
@@ -128,7 +132,15 @@
                 in readRecursively ./home/modules/emacs;
               # config = ./home/modules/emacs/init.el;
               alwaysEnsure = true;
-              package = final.emacs30;
+              package = final.emacs29.overrideAttrs (super: {
+                patches = [
+                  (prev.fetchpatch {
+                    name = "gc-block-align-patch";
+                    url = "https://github.com/tyler-dodge/emacs/commit/36d2a8d5a4f741ae99540e139fff2621bbacfbaa.patch";
+                    sha256 = "sha256-/hJa8LIqaAutny6RX/x6a+VNpNET86So9xE8zdh27p8=";
+                  })
+                ];
+              });
               # Force these two even though they're outside of the org config.
               extraEmacsPackages = epkgs: [
                 epkgs.use-package

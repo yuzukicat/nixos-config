@@ -24,7 +24,6 @@
 (setq shu-lsp 'eglot)
 (require 'shu-langserver-lsp)
 (require 'shu-langserver-eglot)
-(require 'shu-c)
 (require 'shu-tex)
 
 

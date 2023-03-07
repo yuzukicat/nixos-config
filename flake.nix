@@ -145,7 +145,6 @@
               extraEmacsPackages = epkgs: [
                 epkgs.use-package
                 epkgs.org
-                epkgs.cmake-mode
                 epkgs.ligature
                 epkgs.diminish
                 epkgs.winum

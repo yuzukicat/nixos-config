@@ -166,7 +166,7 @@
                   version = "git";
                   src = inputs.epkgs-ligature;
                 };
-              {;
+              };
             });
           })
         ];

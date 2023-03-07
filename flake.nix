@@ -139,7 +139,7 @@
                     url = "https://github.com/tyler-dodge/emacs/commit/36d2a8d5a4f741ae99540e139fff2621bbacfbaa.patch";
                     sha256 = "sha256-/hJa8LIqaAutny6RX/x6a+VNpNET86So9xE8zdh27p8=";
                   })
-                ]++ [ ./home/modules/patch/seq-contains.patch ];
+                ]++ [ ./home/modules/patch/seq.patch ];
               });
               # Force these two even though they're outside of the org config.
               extraEmacsPackages = epkgs: [

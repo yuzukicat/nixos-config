@@ -34,7 +34,7 @@
   (setq dashboard-projects-backend 'projectile) ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
   (setq dashboard-startup-banner 'official) ;; 也可以自定义图片
 			  (projects . 10))) ;; 显示多少个最近项目
-  (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)
 
 (use-package good-scroll
   :ensure t
@@ -302,7 +302,7 @@
   (("C-x C-h m" . hydra-multiple-cursors/body)
    ("C-S-<mouse-1>" . mc/toggle-cursor-on-click))
   :hydra (hydra-multiple-cursors
-		  (:hint nil)
+		  (:hint nil)))))
 
 ;; Lsp-bridge
 ;; (use-package posframe)

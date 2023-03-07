@@ -29,7 +29,7 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     emacs-upstream = {
-      url = "github:yuzukicat/emacs/master";
+      url = "github:emacs-mirror/emacs/master";
       flake = false;
     };
     nocargo = {

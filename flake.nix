@@ -136,7 +136,6 @@
               # Force these two even though they're outside of the org config.
               extraEmacsPackages = epkgs: [
                 epkgs.use-package
-                epkgs.org
               ];
             });
           })

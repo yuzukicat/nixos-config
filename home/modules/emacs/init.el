@@ -258,6 +258,22 @@
 (use-package toggle-one-window
   :bind ("C-c 1" . toggle-one-window))
 
+(use-package hydra
+  :ensure t)
+
+(use-package use-package-hydra
+  :ensure t
+  :after hydra) 
+
+(use-package multiple-cursors
+  :ensure t
+  :after hydra
+  :bind
+  (("C-x C-h m" . hydra-multiple-cursors/body)
+   ("C-S-<mouse-1>" . mc/toggle-cursor-on-click))
+  :hydra (hydra-multiple-cursors
+		  (:hint nil)
+
 ;; Lsp-bridge
 ;; (use-package posframe)
 ;; (use-package markdown-mode)

@@ -158,6 +158,9 @@
                 epkgs.pdf-tools
                 epkgs.tree-sitter-langs
                 epkgs.undo-tree
+                epkgs.hydra
+                epkgs.use-package-hydra
+                epkgs.multiple-cursors
               ];
               override = epkgs: epkgs // {
                 tree-sitter-langs = epkgs.tree-sitter-langs.withPlugins

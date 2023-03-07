@@ -41,10 +41,6 @@
               blink-cursor-interval 0.7
               blink-cursor-blinks 8)
 
-(pixel-scroll-precision-mode t) ;; smooth scrolling
-(add-hook 'minibuffer-mode-hook #'(lambda () (pixel-scroll-precision-mode 0)))
-(add-hook 'minibuffer-exit-hook #'(lambda () (pixel-scroll-precision-mode t)))
-
 (defalias 'yes-or-no-p 'y-or-n-p)
 ;; (desktop-save-mode 1) ;; auto save window
 (setq inhibit-splash-screen t ;; hide welcome screen

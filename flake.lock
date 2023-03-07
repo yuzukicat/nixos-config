@@ -10,11 +10,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1678097883,
-        "narHash": "sha256-IG/v/syRMm0OLjT7F/naRjqN6bvAQEhlIlnS4U5y5EQ=",
+        "lastModified": 1678183951,
+        "narHash": "sha256-T0OVHgaLukTs0dFuIKZJ102dlsMp7X9trcQ4BIXh/Eg=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "3f8a6436e158849050e711574a97126a6d3fec02",
+        "rev": "a640fde298d0b55085267eb7bbbac0c529aec66e",
         "type": "github"
       },
       "original": {
@@ -26,33 +26,17 @@
     "emacs-upstream": {
       "flake": false,
       "locked": {
-        "lastModified": 1678110149,
-        "narHash": "sha256-maXfrpBtdQNPpRgcYTJkVXSnnUd1sbVNazeDjlDzhWg=",
-        "owner": "emacs-mirror",
+        "lastModified": 1678163067,
+        "narHash": "sha256-EXsCOsICodFgz+SpKTgXclAwjLxM/khHwr0fbZ1pzlQ=",
+        "owner": "yuzukicat",
         "repo": "emacs",
-        "rev": "de4277af009115ceba7fe920163c05c608ea9524",
+        "rev": "805b5499d077731e752c28f03411714be0eac9d0",
         "type": "github"
       },
       "original": {
-        "owner": "emacs-mirror",
-        "ref": "emacs-29",
+        "owner": "yuzukicat",
+        "ref": "master",
         "repo": "emacs",
-        "type": "github"
-      }
-    },
-    "epkgs-exwm-ns": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1604918985,
-        "narHash": "sha256-QZCEcpqWZgjppp/P48+DtC4XoR/4UAlXXxJA5FYLoLI=",
-        "owner": "timor",
-        "repo": "exwm-ns",
-        "rev": "0230bb989d5c4c2d5474c35ba77882b65dc19bd9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "timor",
-        "repo": "exwm-ns",
         "type": "github"
       }
     },
@@ -139,11 +123,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1677968357,
-        "narHash": "sha256-IUhVAgLyx1Cnhy64xeX2AQlpTUf+ADLBxhQv+FtPiUI=",
+        "lastModified": 1678131052,
+        "narHash": "sha256-hVeE+mTQTPJ658dEk3pUcwBU1BVsVX9wxwKMH2f5ulU=",
         "owner": "oxalica",
         "repo": "nil",
-        "rev": "bb9a748cce2a9be973178c6217f2f22baf015e11",
+        "rev": "fc91c3f6d634423bd0da7efb33294687a413fc5a",
         "type": "github"
       },
       "original": {
@@ -323,7 +307,6 @@
       "inputs": {
         "emacs-overlay": "emacs-overlay",
         "emacs-upstream": "emacs-upstream",
-        "epkgs-exwm-ns": "epkgs-exwm-ns",
         "epkgs-ligature": "epkgs-ligature",
         "epkgs-toggle-one-window": "epkgs-toggle-one-window",
         "flake-utils": "flake-utils",
@@ -352,11 +335,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1678069954,
-        "narHash": "sha256-52oErh9xblq9hS3eQurgKLVT8W85TpcMB7mIJCaGuIk=",
+        "lastModified": 1678156469,
+        "narHash": "sha256-DyUmhPPS2B+01BsQ3AwLrcA+m6PHfyUeShiLbmQxCf4=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "695b8bb0af23d4ad3826fe7a372a5d677ad5c2bd",
+        "rev": "423b16bef17c9e8e9ea515e502c0c5d0f8e51f4a",
         "type": "github"
       },
       "original": {

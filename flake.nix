@@ -119,7 +119,18 @@
             # sys = pkgs.lib.last (pkgs.lib.splitString "-" pkgs.system);
             emacsWithConfig = (prev.emacsWithPackagesFromUsePackage {
               # config = builtins.readFile "../../static/emacs/init.org";
-              config = ./home/modules/emacs/early-init.el;
+              config = 
+                let
+                  readRecursively = dir:
+                    builtins.concatStringsSep "\n"
+                      (lib.mapAttrsToList (name: value: if value == "regular"
+                                                        then builtins.readFile (dir + "/${name}")
+                                                        else (if value == "directory"
+                                                              then readRecursively (dir + "/${name}")
+                                                              else [ ]))
+                                          (builtins.readDir dir));
+                in readRecursively ./home/modules/emacs;
+              # config = ./home/modules/emacs/init.el;
               package = final.emacs29.overrideAttrs (super: {
                 patches = [
                   (prev.fetchpatch {

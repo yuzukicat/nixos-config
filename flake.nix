@@ -110,11 +110,7 @@
         nixpkgs.overlays = [
           inputs.emacs-overlay.overlay
           (final: prev: {
-            emacs29 = prev.emacsGit.overrideAttrs (old: {
-              name = "emacs29";
-              version = inputs.emacs-upstream.shortRev;
-              src = inputs.emacs-upstream;
-            });
+            emacs30 = prev.emacsUnstable;
             # TODO: figure out a way to import based on this...
             # sys = pkgs.lib.last (pkgs.lib.splitString "-" pkgs.system);
             emacsWithConfig = (prev.emacsWithPackagesFromUsePackage {
@@ -132,15 +128,12 @@
                 in readRecursively ./home/modules/emacs;
               # config = ./home/modules/emacs/init.el;
               alwaysEnsure = true;
-              package = final.emacs29.overrideAttrs (super: {
-                patches = [
-  
-                ];
-              });
+              package = prev.emacs30;
               # Force these two even though they're outside of the org config.
               extraEmacsPackages = epkgs: [
                 epkgs.use-package
                 epkgs.org
+                epkgs.cmake-mode
                 epkgs.ligature
                 epkgs.diminish
                 epkgs.winum

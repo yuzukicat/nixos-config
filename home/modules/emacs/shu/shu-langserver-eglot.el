@@ -11,7 +11,8 @@
       (add-to-list 'eglot-server-programs '(elixir-mode . ("elixir-ls")))
       (add-to-list 'eglot-server-programs '(nix-mode . ("nil")))
       :hook
-      ((python-mode
+      ((c-mode c++-mode ;; -> see ./shu-c.el
+	python-mode
 	ruby-mode
 	rust-mode
 	haskell-mode

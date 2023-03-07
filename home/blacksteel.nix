@@ -64,6 +64,10 @@
       source = ./modules/emacs/shu/shu-langserver-eglot.el;
       recursive = true;
     };
+    ".emacs.d/shu-c.el" = {
+      source = ./modules/emacs/shu/shu-c.el;
+      recursive = true;
+    };
   };
 
   programs.gpg.homedir = "${config.home.homeDirectory}/storage/personal/gnupg";

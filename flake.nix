@@ -144,6 +144,27 @@
               extraEmacsPackages = epkgs: [
                 epkgs.use-package
                 epkgs.org
+                epkgs.cmake-mode
+                epkgs.ligature
+                epkgs.diminish
+                epkgs.winum
+                epkgs.ivy
+                epkgs.counsel
+                epkgs.swiper
+                epkgs.flycheck
+                epkgs.doom-themes
+                epkgs.nix-mode
+                epkgs.markdown-mode
+                epkgs.yaml-mode
+                epkgs.fish-mode
+                epkgs.rust-mode
+                epkgs.elixir-mode
+                epkgs.cargo
+                epkgs.dired-single
+                epkgs.dirvish
+                epkgs.pdf-tools
+                epkgs.tree-sitter-langs
+                epkgs.undo-tree
               ];
               override = epkgs: epkgs // {
                 tree-sitter-langs = epkgs.tree-sitter-langs.withPlugins

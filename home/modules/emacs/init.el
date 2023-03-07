@@ -194,7 +194,6 @@
 (use-package nix-mode)
 (use-package markdown-mode)
 (use-package yaml-mode)
-(use-package fish-mode)
 (use-package rust-mode)
 (use-package elixir-mode)
 (use-package cargo)

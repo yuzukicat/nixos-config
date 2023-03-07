@@ -138,7 +138,7 @@
                 epkgs.use-package
                 epkgs.org
               ];
-              override = epkgs: epkgs // (
+              override = epkgs: epkgs // {
                 tree-sitter-langs = epkgs.tree-sitter-langs.withPlugins
                   # Install all tree sitter grammars available from nixpkgs
                   (grammars: builtins.filter lib.isDerivation (lib.attrValues (grammars // {
@@ -166,7 +166,7 @@
                   version = "git";
                   src = inputs.epkgs-ligature;
                 };
-              );
+              {;
             });
           })
         ];

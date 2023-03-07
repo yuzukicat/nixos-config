@@ -3,7 +3,7 @@ index 0118b80..920bf1b 100644
 --- a/exwm-ns.el
 +++ b/exwm-ns.el
 @@ -34,8 +34,9 @@
-  `(cl-defgeneric seq-count (pred sequence)
+    (cl-defgeneric seq-count (pred sequence)
       "Return the number of elements in SEQUENCE for which PRED returns non-nil."
       (let ((count 0))
         (seq-doseq (elt sequence)

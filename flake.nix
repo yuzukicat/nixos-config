@@ -140,16 +140,26 @@
                 epkgs.cmake-mode
                 epkgs.ligature
                 epkgs.diminish
+                epkgs.magit
                 epkgs.winum
+                epkgs.hydra
+                epkgs.multiple-cursors
+                epkgs.use-package-hydra
                 epkgs.ivy
                 epkgs.counsel
                 epkgs.swiper
+                epkgs.zoxide
+                epkgs.fzf
+                epkgs.anzu
                 epkgs.flycheck
+                epkgs.company
+                epkgs.company-box
                 epkgs.doom-themes
+                epkgs.rainbow-delimiters
+                epkgs.hl-todo
                 epkgs.nix-mode
                 epkgs.markdown-mode
                 epkgs.yaml-mode
-                epkgs.fish-mode
                 epkgs.rust-mode
                 epkgs.elixir-mode
                 epkgs.cargo
@@ -160,11 +170,7 @@
                 epkgs.undo-tree
                 epkgs.mwim
                 epkgs.good-scroll
-                epkgs.dashboard
-                epkgs.magit
-                epkgs.hydra
-                epkgs.use-package-hydra
-                epkgs.multiple-cursors
+                epkgs.toggle-one-window
                 epkgs.lsp-mode
                 epkgs.lsp-ivy
                 epkgs.lsp-ui
@@ -175,8 +181,6 @@
                 epkgs.treemacs-icons-dired
                 epkgs.treemacs-tab-bar
                 epkgs.lsp-treemacs
-                epkgs.company
-                epkgs.company-box
                 epkgs.yasnippet
                 epkgs.yasnippet-snippets
                 epkgs.go-mode

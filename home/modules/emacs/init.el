@@ -100,16 +100,47 @@
   :config (winum-mode))
 
 ;; hydra
-(use-package hydra
-  :ensure t)
+(use-package hydra)
 
 (use-package use-package-hydra
+  :after hydra)
+
+;; multiple-cursors
+(use-package multiple-cursors
   :ensure t
-  :after hydra) 
+  :after hydra
+  :bind
+  (("C-x C-h m" . hydra-multiple-cursors/body)
+   ("C-S-<mouse-1>" . mc/toggle-cursor-on-click))
+  :hydra (hydra-multiple-cursors
+		  (:hint nil)
+		  "
+Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cursor%s(if (> (mc/num-cursors) 1) \"s\" \"\")
+------------------------------------------------------------------
+ [_p_]   Prev     [_n_]   Next     [_l_] Edit lines  [_0_] Insert numbers
+ [_P_]   Skip     [_N_]   Skip     [_a_] Mark all    [_A_] Insert letters
+ [_M-p_] Unmark   [_M-n_] Unmark   [_s_] Search      [_q_] Quit
+ [_|_] Align with input CHAR       [Click] Cursor at point"
+		  ("l" mc/edit-lines :exit t)
+		  ("a" mc/mark-all-like-this :exit t)
+		  ("n" mc/mark-next-like-this)
+		  ("N" mc/skip-to-next-like-this)
+		  ("M-n" mc/unmark-next-like-this)
+		  ("p" mc/mark-previous-like-this)
+		  ("P" mc/skip-to-previous-like-this)
+		  ("M-p" mc/unmark-previous-like-this)
+		  ("|" mc/vertical-align)
+		  ("s" mc/mark-all-in-region-regexp :exit t)
+		  ("0" mc/insert-numbers :exit t)
+		  ("A" mc/insert-letters :exit t)
+		  ("<mouse-1>" mc/add-cursor-on-click)
+		  ;; Help with click recognition in this hydra
+		  ("<down-mouse-1>" ignore)
+		  ("<drag-mouse-1>" ignore)
+		  ("q" nil)))
 
 ;; Ivy tool set
 (use-package ivy
-  :ensure t
   :diminish ivy-mode
   :init
   (ivy-mode 1)
@@ -120,7 +151,6 @@
   (define-key global-map (kbd "C-c v") 'ivy-push-view)
   (define-key global-map (kbd "C-c V") 'ivy-pop-view))
 (use-package counsel
-  :ensure t
   :config
   (define-key global-map (kbd "M-x") 'counsel-M-x)
   (define-key global-map (kbd "C-x C-f") 'counsel-find-file)
@@ -150,7 +180,6 @@
 
 ;; Spell check and auto fill
 (use-package flycheck
-  :ensure t
   :hook                        ;; 为模式设置 hook
   (prog-mode . flycheck-mode))
 (use-package company
@@ -189,7 +218,7 @@
 
 
 ;; Parentheses and highlight TODO
-(add-hook 'prog-mode-hook #'show-paren-mode) ; 编程模式下，光标在括号上时高亮另一个括号
+(add-hook 'prog-mode-hook #'show-paren-mode) ;; 编程模式下，光标在括号上时高亮另一个括号
 (setq show-paren-style 'parenthesis)
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -207,9 +236,6 @@
           ("DEBUG"      error bold))))
 
 ;; Language modes
-(use-package racket-mode
-  :mode ("\\.rkt\\'" . racket-mode)
-  :hook (racket-mode . racket-xp-mode))
 (use-package nix-mode)
 (use-package markdown-mode)
 (use-package yaml-mode)
@@ -259,14 +285,13 @@
 
 ;; mwim
 (use-package mwim
-  :ensure t
   :config
-  (define-key global-map (kbd "C-a") 'mwim-beginning-of-code-or-line)
-  (define-key global-map (kbd "C-e") 'mwim-end-of-code-or-line))
+  :bind
+  ("C-a" . mwim-beginning-of-code-or-line)
+  ("C-e" . mwim-end-of-code-or-line))
 
 ;; Undo tree
 (use-package undo-tree
-  :ensure t
   :delight
   :diminish undo-tree-mode
   :config
@@ -278,7 +303,6 @@
   (global-undo-tree-mode))
 
 (use-package good-scroll
-  :ensure t
   :if window-system          ;; 在图形化界面时才使用这个插件
   :init (good-scroll-mode))
 

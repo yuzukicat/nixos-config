@@ -68,11 +68,5 @@
     $DRY_RUN_CMD rm -rf $VERBOSE_ARG ~/.emacs.d/init.el ~/.emacs.d/init.elc ~/.emacs.d/elpa ~/.emacs.d/eln-cache
   '';
 
-  # Only test emacs config on macos for now
-  home.activation.testEmacs = lib.mkIf pkgs.stdenv.isDarwin (lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    printf "home/blacksteel.nix: test emacs\n" >&2
-    $DRY_RUN_CMD ${pkgs.emacsWithConfig}/bin/emacs --debug-init --batch -u $USER
-  '');
-
   home.stateVersion = "22.11";
 }

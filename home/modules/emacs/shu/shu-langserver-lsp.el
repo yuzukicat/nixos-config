@@ -32,7 +32,7 @@
        ;; https://github.com/emacs-lsp/lsp-mode/blob/master/docs/tutorials/how-to-turn-off.md
        (setq lsp-enable-symbol-highlighting t
              lsp-ui-doc-enable t
-             lsp-lens-enable t))))
+             lsp-lens-enable t))
     (use-package projectile
        :ensure t
        :bind (("C-c p" . projectile-command-map))
@@ -101,7 +101,7 @@
     (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
     ;; Start LSP Mode and YASnippet mode
     (add-hook 'go-mode-hook #'lsp-deferred)
-    (add-hook 'go-mode-hook #'yas-minor-mode)
+    (add-hook 'go-mode-hook #'yas-minor-mode)))
 
 (provide 'shu-langserver-lsp)
 ;;; shu-langserver-lsp.el ends here.

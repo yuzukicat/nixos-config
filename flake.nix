@@ -29,7 +29,7 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     emacs-upstream = {
-      url = "github:emacs-mirror/emacs/master";
+      url = "github:yuzukicat/emacs/master";
       flake = false;
     };
     nocargo = {
@@ -132,15 +132,7 @@
                 in readRecursively ./home/modules/emacs;
               # config = ./home/modules/emacs/init.el;
               alwaysEnsure = true;
-              package = final.emacs29.overrideAttrs (super: {
-                patches = [
-                  (prev.fetchpatch {
-                    name = "gc-block-align-patch";
-                    url = "https://github.com/tyler-dodge/emacs/commit/36d2a8d5a4f741ae99540e139fff2621bbacfbaa.patch";
-                    sha256 = "sha256-/hJa8LIqaAutny6RX/x6a+VNpNET86So9xE8zdh27p8=";
-                  })
-                ];
-              });
+              package = final.emacs29;
               # Force these two even though they're outside of the org config.
               extraEmacsPackages = epkgs: [
                 epkgs.use-package

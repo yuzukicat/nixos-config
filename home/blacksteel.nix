@@ -52,10 +52,6 @@
       source = ./modules/emacs/early-init.el;
       recursive = true;
     };
-    ".emacs.d/init.org" = {
-      source = ./modules/emacs/init.org;
-      recursive = true;
-    };
   };
 
   programs.gpg.homedir = "${config.home.homeDirectory}/storage/personal/gnupg";

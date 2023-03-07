@@ -21,11 +21,25 @@
           (const :tag "disabled" ,nil)
           (const :tag "lsp-mode" lsp-mode)
           (const :tag "eglot" eglot)))
-(setq shu-lsp 'eglot)
+(setq shu-lsp 'lsp-mode)
 (require 'shu-langserver-lsp)
 (require 'shu-langserver-eglot)
 (require 'shu-c)
 (require 'shu-tex)
+
+(use-package dashboard
+  :ensure t
+  :config
+  (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
+  ;; (setq dashboard-projects-backend 'projectile) ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
+  (setq dashboard-startup-banner 'official) ;; 也可以自定义图片
+			  (projects . 10))) ;; 显示多少个最近项目
+  (dashboard-setup-startup-hook))
+
+(use-package good-scroll
+  :ensure t
+  :if window-system          ;; 在图形化界面时才使用这个插件
+  :init (good-scroll-mode))
 
 (setq confirm-kill-emacs #'yes-or-no-p)      ; 在关闭 Emacs 前询问是否确认关闭，防止误触
 (electric-pair-mode t)                       ; 自动补全括号
@@ -138,7 +152,11 @@
 
 ;; Spell check and auto fill
 (use-package flycheck
-  :config (global-flycheck-mode))
+  :ensure t
+  :config
+  (setq truncate-lines nil) ; 如果单行信息很长会自动换行
+  :hook
+  (prog-mode . flycheck-mode))
 (use-package company
   :diminish company-mode
   :hook (after-init . global-company-mode)
@@ -149,8 +167,14 @@
         company-show-quick-access t
         company-idle-delay 0
         company-tooltip-idle-delay 0
-        company-minimum-prefix-length 1))
-
+        company-minimum-prefix-length 1  ;; 只需敲 1 个字母就开始进行自动补全
+        company-show-numbers t ;; 给选项编号 按快捷键 M-1、M-2 等等来进行选择
+        company-selection-wrap-around t
+        company-transformers '(company-sort-by-occurrence))) ;; 根据选择的频率进行排序，读者如果不喜欢可以去掉
+(use-package company-box
+        :ensure t
+        :if window-system
+        :hook (company-mode . company-box-mode))
 ;; Theme
 (use-package doom-themes
   :config
@@ -257,6 +281,12 @@
 
 (use-package toggle-one-window
   :bind ("C-c 1" . toggle-one-window))
+
+(use-package mwim
+  :ensure t
+  :bind
+  ("C-a" . mwim-beginning-of-code-or-line)
+  ("C-e" . mwim-end-of-code-or-line))
 
 (use-package hydra
   :ensure t)

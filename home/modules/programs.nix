@@ -21,6 +21,9 @@ let
     clang-tools
     elixir_ls
     lua53Packages.digestif
+    nodePackages.bash-language-server
+    nodePackages.vscode-langservers-extracted
+    gopls
   ];
 in {
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [

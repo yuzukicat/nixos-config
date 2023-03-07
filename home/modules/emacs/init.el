@@ -99,7 +99,7 @@
                                        "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
                                        "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
                                        "\\\\" "://"))
-  (global-ligature-mode t))
+  (global-ligature-mode t))))
 
 (use-package diminish
   :config
@@ -302,7 +302,7 @@
   (("C-x C-h m" . hydra-multiple-cursors/body)
    ("C-S-<mouse-1>" . mc/toggle-cursor-on-click))
   :hydra (hydra-multiple-cursors
-		  (:hint nil)))))
+		  (:hint nil)))
 
 ;; Lsp-bridge
 ;; (use-package posframe)

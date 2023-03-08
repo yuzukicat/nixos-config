@@ -319,18 +319,18 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
   ;; :bind ("C-c 1" . toggle-one-window))
 
 ;; Lsp-bridge
-(use-package posframe)
-(use-package markdown-mode)
-(use-package yasnippet)
-(add-to-list 'load-path "~/.emacs.d/lsp-bridge")
-(require 'lsp-bridge)
-(yas-global-mode 1)
-(global-lsp-bridge-mode)
-(setq lsp-bridge-enable-hover-diagnostic t
-      lsp-bridge-enable-auto-format-code t
-      acm-enable-doc t
-      acm-enable-icon t
-      acm-enable-quick-access t)
+;; (use-package posframe)
+;; (use-package markdown-mode)
+;; (use-package yasnippet)
+;; (add-to-list 'load-path "~/.emacs.d/lsp-bridge")
+;; (require 'lsp-bridge)
+;; (yas-global-mode 1)
+;; (global-lsp-bridge-mode)
+;; (setq lsp-bridge-enable-hover-diagnostic t
+;;       lsp-bridge-enable-auto-format-code t
+;;       acm-enable-doc t
+;;       acm-enable-icon t
+;;       acm-enable-quick-access t)
 
 (provide 'init)
 ;;; init.el ends here

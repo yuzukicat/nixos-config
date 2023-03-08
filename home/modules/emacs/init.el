@@ -8,6 +8,50 @@
 (setq backup-directory-alist '(("." . "~/.backups")))
 (add-to-list 'load-path (expand-file-name "shu" user-emacs-directory))
 
+;; Encoding and Envs
+(prefer-coding-system 'utf-8)
+
+(setenv "LANG" "en_US.UTF-8")
+(setenv "LC_ALL" "en_US.UTF-8")
+(setenv "LC_CTYPE" "en_US.UTF-8")
+
+;; Feature Mode
+(column-number-mode t)                       ;; 在 Mode line 上显示列号
+(tool-bar-mode 0) (menu-bar-mode 0) (scroll-bar-mode 0)
+(toggle-scroll-bar -1)
+(global-auto-revert-mode t)                  ;; 当另一程序修改了文件时，让 Emacs 及时刷新 Buffer
+(toggle-frame-fullscreen)
+
+;; File Operation
+(setq tab-width 4
+(setq inhibit-splash-screen t                ;; hide welcome screen
+      mouse-drag-copy-region nil)
+      initial-scratch-message nil
+      sentence-end-double-space nil
+      make-backup-files nil                  ;; 关闭文件自动备份
+      auto-save-default nil)
+(setq-default indent-tabs-mode -1)
+
+;; History
+(savehist-mode 1)
+(setq savehist-file "~/.emacs.d/.savehist")
+(setq history-length t)
+(setq history-delete-duplicates t)
+(setq savehist-save-minibuffer-history 1)
+(setq savehist-additional-variables
+      '(kill-ring
+        search-ring
+        regexp-search-ring))
+
+;; Performance
+(if (not (display-graphic-p))
+    (progn
+      ;; 增大垃圾回收的阈值，提高整体性能（内存换效率）
+      (setq gc-cons-threshold (* 8192 8192 8))
+      ;; 增大同LSP服务器交互时的读取文件的大小
+      (setq read-process-output-max (* 1024 1024 1024)) ;; 1024MB
+      ))
+
 (defgroup shu ()
   "Shu EMACS config."
   :tag "Shu"
@@ -29,9 +73,6 @@
 
 (setq confirm-kill-emacs #'yes-or-no-p)      ;; 在关闭 Emacs 前询问是否确认关闭，防止误触
 (electric-pair-mode t)                       ;; 自动补全括号
-(column-number-mode t)                       ;; 在 Mode line 上显示列号
-(global-auto-revert-mode t)                  ;; 当另一程序修改了文件时，让 Emacs 及时刷新 Buffer
-(setq make-backup-files nil)                 ;; 关闭文件自动备份
 (add-hook 'prog-mode-hook #'hs-minor-mode)   ;; 编程模式下，可以折叠代码块
 (global-display-line-numbers-mode 1)         ;; 在 Window 显示行号
 (setq display-line-numbers-type 'relative)   ;; （可选）显示相对行号
@@ -43,7 +84,6 @@
 (global-set-key (kbd "C-<tab>") 'find-file-at-point)
 (define-key global-map (kbd "<mouse-8>") (kbd "M-w"))
 (define-key global-map (kbd "<mouse-9>") (kbd "C-y"))
-(tool-bar-mode 0) (menu-bar-mode 0) (scroll-bar-mode 0)
 (fringe-mode '(10 . 10))
 (setq-default cursor-type 'bar
               blink-cursor-interval 0.7
@@ -51,9 +91,6 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 ;; (desktop-save-mode 1) ;; auto save window
-(setq inhibit-splash-screen t ;; hide welcome screen
-      mouse-drag-copy-region nil)
-(setq-default indent-tabs-mode -1)
 (setq backward-delete-char-untabify-method nil)
 (define-minor-mode show-trailing-whitespace-mode "Show trailing whitespace."
   :init-value nil

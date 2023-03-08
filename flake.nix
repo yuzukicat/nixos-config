@@ -138,7 +138,7 @@
                 epkgs.use-package
                 epkgs.org
                 epkgs.cmake-mode
-                # epkgs.ligature
+                epkgs.ligature
                 epkgs.diminish
                 epkgs.magit
                 epkgs.winum
@@ -152,8 +152,8 @@
                 epkgs.fzf
                 epkgs.anzu
                 epkgs.flycheck
-                # epkgs.company
-                # epkgs.company-box
+                epkgs.company
+                epkgs.company-box
                 epkgs.doom-themes
                 epkgs.rainbow-delimiters
                 epkgs.hl-todo
@@ -173,19 +173,19 @@
                 epkgs.good-scroll
                 epkgs.posframe
                 epkgs.popon
-                # epkgs.toggle-one-window
+                epkgs.toggle-one-window
                 epkgs.yasnippet
                 epkgs.yasnippet-snippets
-                # epkgs.lsp-mode
-                # epkgs.lsp-ivy
-                # epkgs.lsp-ui
+                epkgs.lsp-mode
+                epkgs.lsp-ivy
+                epkgs.lsp-ui
                 epkgs.projectile
                 epkgs.counsel-projectile
                 epkgs.treemacs
                 epkgs.treemacs-projectile
                 epkgs.treemacs-icons-dired
                 epkgs.treemacs-tab-bar
-                # epkgs.lsp-treemacs
+                epkgs.lsp-treemacs
                 epkgs.go-mode
               ];
               override = epkgs: epkgs // {

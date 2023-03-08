@@ -17,6 +17,7 @@
       twemoji-color-font
       font-awesome
       hanazono
+      emacs-all-the-icons-fonts # Required by emacs
 
       # CJKV
       noto-fonts-cjk

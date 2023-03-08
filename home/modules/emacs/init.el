@@ -213,6 +213,7 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
   ;; (defun new-frame-setup (frame)
   ;;   (if (display-graphic-p frame)
   (load-theme 'doom-tomorrow-day t)
+  (doom-themes-treemacs-config)
   ;;     (disable-theme 'doom-tomorrow-day)))
   ;; (mapc 'new-frame-setup (frame-list))
   ;; (add-hook 'after-make-frame-functions 'new-frame-setup)
@@ -224,6 +225,8 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
 ;;       awesome-tray-mode-line-height 0.1)
 ;; (awesome-tray-mode 1)
 
+(use-package all-the-icons
+  :if (display-graphic-p))
 
 ;; Parentheses and highlight TODO
 (add-hook 'prog-mode-hook #'show-paren-mode) ;; 编程模式下，光标在括号上时高亮另一个括号

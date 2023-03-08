@@ -155,6 +155,7 @@
                 epkgs.company
                 epkgs.company-box
                 epkgs.doom-themes
+                epkgs.all-the-icons
                 epkgs.rainbow-delimiters
                 epkgs.hl-todo
                 epkgs.nix-mode
@@ -167,7 +168,14 @@
                 epkgs.dirvish
                 epkgs.pdf-tools
                 epkgs.tree-sitter
-                epkgs.tree-sitter-langs
+                (epkgs.tree-sitter-langs.withPlugins
+                  # Install all tree sitter grammars available from nixpkgs
+                  (grammars: builtins.filter lib.isDerivation (lib.attrValues (grammars // {
+                    tree-sitter-nix = grammars.tree-sitter-nix.overrideAttrs (old: {
+                      version = "fixed";
+                      src = inputs.tree-sitter-nix-oxa;
+                    });
+                  }))))
                 epkgs.undo-tree
                 epkgs.mwim
                 epkgs.good-scroll
@@ -201,14 +209,7 @@
                 epkgs.go-mode
               ];
               override = epkgs: epkgs // {
-                tree-sitter-langs = epkgs.tree-sitter-langs.withPlugins
-                  # Install all tree sitter grammars available from nixpkgs
-                  (grammars: builtins.filter lib.isDerivation (lib.attrValues (grammars // {
-                    tree-sitter-nix = grammars.tree-sitter-nix.overrideAttrs (old: {
-                      version = "fixed";
-                      src = inputs.tree-sitter-nix-oxa;
-                    });
-                  })));
+                # tree-sitter-langs = ;
               };
             });
           })

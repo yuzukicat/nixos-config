@@ -107,7 +107,6 @@
 
 ;; multiple-cursors
 (use-package multiple-cursors
-  :ensure t
   :after hydra
   :bind
   (("C-x C-h m" . hydra-multiple-cursors/body)

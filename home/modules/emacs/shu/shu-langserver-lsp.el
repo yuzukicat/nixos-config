@@ -4,17 +4,20 @@
 ;;; Code:
 
 (use-package lsp-mode
-:ensure t
-:init
-;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-(setq lsp-keymap-prefix "C-c l"
-      lsp-file-watch-threshold 500)
-:commands (lsp lsp-deferred)
-:config
-(setq lsp-completion-provider :none) ;; 阻止 lsp 重新设置 company-backend 而覆盖我们 yasnippet 的设置
-(setq lsp-headerline-breadcrumb-enable t)
-:bind
-("C-c l s" . lsp-ivy-workspace-symbol)) ;; 可快速搜索工作区内的符号（类名、函数名、变量名等）
+      :commands (lsp lsp-deferred)
+      :hook (prog-mode . lsp)
+      :init
+      (setq lsp-auto-configure t
+            lsp-auto-guess-root t
+            lsp-idle-delay 0.500
+            lsp-keymap-prefix "C-c l"
+	      lsp-file-watch-threshold 500
+            lsp-session-file "~/.emacs/.cache/lsp-sessions")
+      :config
+      (setq lsp-completion-provider :none) ;; 阻止 lsp 重新设置 company-backend 而覆盖我们 yasnippet 的设置
+      (setq lsp-headerline-breadcrumb-enable t)
+      :bind
+      ("C-c l s" . lsp-ivy-workspace-symbol)) ;; 可快速搜索工作区内的符号（类名、函数名、变量名等）
 (use-package lsp-ivy
       :diminish
       :after lsp-mode)
@@ -32,7 +35,70 @@
       ;; https://github.com/emacs-lsp/lsp-mode/blob/master/docs/tutorials/how-to-turn-off.md
       (setq lsp-enable-symbol-highlighting t
             lsp-ui-doc-enable t
-            lsp-lens-enable t))
+            lsp-lens-enable t)
+      :config
+      (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+      (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+      (setq lsp-ui-doc-position 'top))
+
+(use-package yasnippet
+  :hook
+  (prog-mode . yas-minor-mode)
+  :config
+  (yas-reload-all)
+  ;; add company-yasnippet to company-backends
+  (defun company-mode/backend-with-yas (backend)
+    (if (and (listp backend) (member 'company-yasnippet backend))
+	backend
+      (append (if (consp backend) backend (list backend))
+              '(:with company-yasnippet))))
+  (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+  ;; unbind <TAB> completion
+  (define-key yas-minor-mode-map [(tab)]        nil)
+  (define-key yas-minor-mode-map (kbd "TAB")    nil)
+  (define-key yas-minor-mode-map (kbd "<tab>")  nil)
+  :bind
+  (:map yas-minor-mode-map ("S-<tab>" . yas-expand)))
+
+(use-package yasnippet-snippets
+  :after yasnippet)
+
+(use-package projectile
+  :ensure t
+  :bind (("C-c p" . projectile-command-map))
+  :config
+  (setq projectile-mode-line "Projectile")
+  (setq projectile-track-known-projects-automatically nil))
+
+(use-package counsel-projectile
+  :ensure t
+  :after (projectile)
+  :init (counsel-projectile-mode))
+
+(use-package treemacs
+  :ensure t
+  :defer t
+  :config
+  ;; (treemacs-tag-follow-mode)
+  treemacs-project-follow-mode
+  :bind
+  (:map global-map
+        ("M-0"       . treemacs-select-window)
+        ("C-x t 1"   . treemacs-delete-other-windows)
+        ("C-x t t"   . treemacs)
+        ("C-x t B"   . treemacs-bookmark)
+        ;; ("C-x t C-t" . treemacs-find-file)
+        ("C-x t M-t" . treemacs-find-tag))
+  (:map treemacs-mode-map
+	("/" . treemacs-advanced-helpful-hydra)))
+
+(use-package treemacs-projectile
+  :ensure t
+  :after (treemacs projectile))
+
+(use-package lsp-treemacs
+  :ensure t
+  :after (treemacs lsp))
 
 (provide 'shu-langserver-lsp)
 ;;; shu-langserver-lsp.el ends here.

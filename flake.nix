@@ -172,6 +172,8 @@
                 epkgs.mwim
                 epkgs.good-scroll
                 epkgs.toggle-one-window
+                epkgs.yasnippet
+                epkgs.yasnippet-snippets
                 epkgs.lsp-mode
                 epkgs.lsp-ivy
                 epkgs.lsp-ui
@@ -182,8 +184,6 @@
                 epkgs.treemacs-icons-dired
                 epkgs.treemacs-tab-bar
                 epkgs.lsp-treemacs
-                epkgs.yasnippet
-                epkgs.yasnippet-snippets
                 epkgs.go-mode
               ];
               override = epkgs: epkgs // {

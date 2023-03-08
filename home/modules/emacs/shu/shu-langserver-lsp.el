@@ -28,7 +28,27 @@
        ;; https://github.com/emacs-lsp/lsp-mode/blob/master/docs/tutorials/how-to-turn-off.md
        (setq lsp-enable-symbol-highlighting t
              lsp-ui-doc-enable t
-             lsp-lens-enable t))))
+             lsp-lens-enable t))
+     (use-package yasnippet
+       :hook
+       (prog-mode . yas-minor-mode)
+       :config
+       (yas-reload-all)
+       ;; add company-yasnippet to company-backends
+       (defun company-mode/backend-with-yas (backend)
+             (if (and (listp backend) (member 'company-yasnippet backend))
+              backend
+             (append (if (consp backend) backend (list backend))
+              '(:with company-yasnippet))))
+       (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+       ;; unbind <TAB> completion
+       (define-key yas-minor-mode-map [(tab)]        nil)
+       (define-key yas-minor-mode-map (kbd "TAB")    nil)
+       (define-key yas-minor-mode-map (kbd "<tab>")  nil)
+       :bind
+       :map yas-minor-mode-map ("S-<tab>" . yas-expand))
+     (use-package yasnippet-snippets
+       :after yasnippet)))
 
 (provide 'shu-langserver-lsp)
 ;;; shu-langserver-lsp.el ends here.

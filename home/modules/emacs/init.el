@@ -21,7 +21,7 @@
           (const :tag "disabled" ,nil)
           (const :tag "lsp-mode" lsp-mode)
           (const :tag "eglot" eglot)))
-(setq shu-lsp 'disabled)
+(setq shu-lsp 'lsp-mode)
 (require 'shu-langserver-lsp)
 (require 'shu-langserver-eglot)
 (require 'shu-c)

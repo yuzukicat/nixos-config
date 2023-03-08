@@ -174,12 +174,12 @@
                 epkgs.posframe
                 epkgs.popon
                 # epkgs.toggle-one-window
-                (epkgs.trivialBuild rec {
-                  pname = "toggle-one-window";
-                  ename = pname;
-                  version = "git";
-                  src = inputs.epkgs-toggle-one-window;
-                })
+                # (epkgs.trivialBuild rec {
+                #   pname = "toggle-one-window";
+                #   ename = pname;
+                #   version = "git";
+                #   src = inputs.epkgs-toggle-one-window;
+                # })
                 (epkgs.trivialBuild rec {
                   pname = "ligature";
                   ename = pname;

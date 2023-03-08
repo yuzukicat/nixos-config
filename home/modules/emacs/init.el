@@ -315,8 +315,8 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
   :if window-system          ;; 在图形化界面时才使用这个插件
   :init (good-scroll-mode))
 
-;; (use-package toggle-one-window
-  ;; :bind ("C-c 1" . toggle-one-window))
+(use-package toggle-one-window
+  :bind ("C-c 1" . toggle-one-window))
 
 ;; Lsp-bridge
 ;; (use-package posframe)

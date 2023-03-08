@@ -138,7 +138,7 @@
                 epkgs.use-package
                 epkgs.org
                 epkgs.cmake-mode
-                epkgs.ligature
+                # epkgs.ligature
                 epkgs.diminish
                 epkgs.magit
                 epkgs.winum

@@ -25,7 +25,7 @@
 ;; File Operation
 (setq tab-width 4
       inhibit-splash-screen t                ;; hide welcome screen
-      mouse-drag-copy-region nil)
+      mouse-drag-copy-region nil
       initial-scratch-message nil
       sentence-end-double-space nil
       make-backup-files nil                  ;; 关闭文件自动备份

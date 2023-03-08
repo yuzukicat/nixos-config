@@ -21,7 +21,7 @@
           (const :tag "disabled" ,nil)
           (const :tag "lsp-mode" lsp-mode)
           (const :tag "eglot" eglot)))
-(setq shu-lsp 'lsp-mode)
+(setq shu-lsp 'disabled)
 (require 'shu-langserver-lsp)
 (require 'shu-langserver-eglot)
 (require 'shu-c)
@@ -184,24 +184,24 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
   (setq truncate-lines nil) ;; 如果单行信息很长会自动换行
   :hook
   (prog-mode . flycheck-mode))
-(use-package company
-  :diminish company-mode
-  :hook (after-init . global-company-mode)
-  :bind ("M-<tab>". company-complete-selection)
-  :config
-  (setq company-tooltip-align-annotations t
-        company-tooltip-limit 10
-        company-show-quick-access t
-        company-show-numbers t ;; 给选项编号 (按快捷键 M-1、M-2 等等来进行选择).
-        company-selection-wrap-around t
-        company-idle-delay 0
-        company-tooltip-idle-delay 0
-        company-transformers '(company-sort-by-occurrence) ;; 根据选择的频率进行排序
-        company-minimum-prefix-length 1)) ;; 只需敲 1 个字母就开始进行自动补全
-(use-package company-box
-  :if window-system
-  :hook (company-mode . company-box-mode))
-(global-set-key (kbd "M-/") 'hippie-expand)
+;; (use-package company
+;;   :diminish company-mode
+;;   :hook (after-init . global-company-mode)
+;;   :bind ("M-<tab>". company-complete-selection)
+;;   :config
+;;   (setq company-tooltip-align-annotations t
+;;         company-tooltip-limit 10
+;;         company-show-quick-access t
+;;         company-show-numbers t ;; 给选项编号 (按快捷键 M-1、M-2 等等来进行选择).
+;;         company-selection-wrap-around t
+;;         company-idle-delay 0
+;;         company-tooltip-idle-delay 0
+;;         company-transformers '(company-sort-by-occurrence) ;; 根据选择的频率进行排序
+;;         company-minimum-prefix-length 1)) ;; 只需敲 1 个字母就开始进行自动补全
+;; (use-package company-box
+;;   :if window-system
+;;   :hook (company-mode . company-box-mode))
+;; (global-set-key (kbd "M-/") 'hippie-expand)
 
 ;; Theme
 (use-package doom-themes
@@ -319,13 +319,18 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
   ;; :bind ("C-c 1" . toggle-one-window))
 
 ;; Lsp-bridge
-;; (use-package posframe)
-;; (use-package markdown-mode)
-;; (use-package yasnippet)
-;; (add-to-list 'load-path "~/.emacs.d/lsp-bridge")
-;; (require 'lsp-bridge)
-;; (yas-global-mode 1)
-;; (global-lsp-bridge-mode)
+(use-package posframe)
+(use-package markdown-mode)
+(use-package yasnippet)
+(add-to-list 'load-path "~/.emacs.d/lsp-bridge")
+(require 'lsp-bridge)
+(yas-global-mode 1)
+(global-lsp-bridge-mode)
+(setq lsp-bridge-enable-hover-diagnostic t
+      lsp-bridge-enable-auto-format-code t
+      acm-enable-doc t
+      acm-enable-icon t
+      acm-enable-quick-access t)
 
 (provide 'init)
 ;;; init.el ends here

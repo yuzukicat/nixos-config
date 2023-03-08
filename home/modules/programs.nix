@@ -8,7 +8,11 @@ let
     pyyaml
     requests
     toml
+    # Required for lsp-bridge
     epc
+    orjson
+    sexpdata
+    six
     pip
   ]);
   lspPackages = with pkgs; [
@@ -21,8 +25,6 @@ let
     clang-tools
     elixir_ls
     lua53Packages.digestif
-    nodePackages.bash-language-server
-    nodePackages.vscode-langservers-extracted
     gopls
   ];
 in {
@@ -46,7 +48,7 @@ in {
     sqlite-interactive sqls postgresql# sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip
     bash-completion cling elixir gh
-    go nodejs nodePackages.npm-check-updates
+    nodejs nodePackages.npm-check-updates
 
     # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
     # system:
@@ -78,6 +80,9 @@ in {
     package = pkgs.emacsWithConfig;
   };
   programs.feh.enable = true;
+  programs.go = {
+    enable = true;
+  };
   programs.hyfetch.settings = {
     preset = "transgender";
     mode = "rgb";

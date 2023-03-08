@@ -82,7 +82,8 @@ in {
   programs.feh.enable = true;
   programs.go = {
     enable = true;
-    goBin = ".local/bin.go";
+    goPath = "go";
+    goBin = ".local/bin";
   };
   programs.hyfetch.settings = {
     preset = "transgender";

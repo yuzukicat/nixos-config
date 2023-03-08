@@ -174,6 +174,18 @@
                 epkgs.posframe
                 epkgs.popon
                 # epkgs.toggle-one-window
+                (epkgs.trivialBuild rec {
+                  pname = "toggle-one-window";
+                  ename = pname;
+                  version = "git";
+                  src = inputs.epkgs-toggle-one-window;
+                })
+                (epkgs.trivialBuild rec {
+                  pname = "ligature";
+                  ename = pname;
+                  version = "git";
+                  src = inputs.epkgs-ligature;
+                })
                 epkgs.yasnippet
                 epkgs.yasnippet-snippets
                 epkgs.lsp-mode
@@ -197,18 +209,6 @@
                       src = inputs.tree-sitter-nix-oxa;
                     });
                   })));
-                toggle-one-window = epkgs.trivialBuild rec {
-                  pname = "toggle-one-window";
-                  ename = pname;
-                  version = "git";
-                  src = inputs.epkgs-toggle-one-window;
-                };
-                ligature = epkgs.trivialBuild rec {
-                  pname = "ligature";
-                  ename = pname;
-                  version = "git";
-                  src = inputs.epkgs-ligature;
-                };
               };
             });
           })

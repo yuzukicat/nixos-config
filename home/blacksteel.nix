@@ -73,19 +73,12 @@
 
   programs.gpg.homedir = "${config.home.homeDirectory}/storage/personal/gnupg";
 
-  home.sessionVariables.GOBIN = "${config.home.homeDirectory}"/.local/bin;
-
   # Add to home managers dag to make sure the activation fails if emacs can't
   # parse the init files and nuke any temp dirs we don't need/want to stick
   # around if present.
   home.activation.freshEmacs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     printf "home/blacksteel.nix: clean ~/.emacs.d\n" >&2
     $DRY_RUN_CMD rm -rf $VERBOSE_ARG ~/.emacs.d/init.el ~/.emacs.d/init.elc ~/.emacs.d/elpa ~/.emacs.d/eln-cache
-  '';
-
-  home.activation.setupGoDirectories = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/.local
-    $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/.local/bin
   '';
 
   home.stateVersion = "22.11";

@@ -138,7 +138,7 @@
                 epkgs.use-package
                 epkgs.org
                 epkgs.cmake-mode
-                epkgs.ligature
+                # epkgs.ligature
                 epkgs.diminish
                 epkgs.magit
                 epkgs.winum
@@ -173,7 +173,7 @@
                 epkgs.good-scroll
                 epkgs.posframe
                 epkgs.popon
-                epkgs.toggle-one-window
+                # epkgs.toggle-one-window
                 epkgs.yasnippet
                 epkgs.yasnippet-snippets
                 epkgs.lsp-mode

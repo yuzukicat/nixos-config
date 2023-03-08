@@ -82,7 +82,6 @@ in {
   programs.go = {
     enable = true;
     package = pkgs.go;
-    goPath = "go";
     packages = {
       "golang.org/x/tools/gopls@latest" = builtins.fetchGit "https://go.googlesource.com/gopls";
     };

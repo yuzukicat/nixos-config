@@ -25,7 +25,6 @@ let
     clang-tools
     elixir_ls
     lua53Packages.digestif
-    gopls
   ];
 in {
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
@@ -83,9 +82,9 @@ in {
   programs.go = {
     enable = true;
     goPath = "go";
-    goBin = ".local/bin.go";
+    goBin = "go/bin.go";
     packages = {
-      
+      "golang.org/x/tools/gopls@latest" = pkgs.gopls;
     };
   };
   programs.hyfetch.settings = {

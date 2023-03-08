@@ -85,12 +85,7 @@
     $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/go
     $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/go/src
     $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/go/pkg
-    $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/go/pkg/mod
     $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/go/bin
-    $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/go/bin/gopls
-    $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/.local
-    $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/.local/bin
-    $DRY_RUN_CMD ln -s "${pkgs.gopls}"/bin/gopls "${config.home.homeDirectory}"/.local/bin
     $DRY_RUN_CMD go mod init
   '';
 

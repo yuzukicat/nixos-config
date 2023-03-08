@@ -84,7 +84,7 @@ in {
     package = pkgs.go;
     goPath = "go";
     packages = {
-      "golang.org/x/tools/gopls@latest" = builtins.fetchGit "https://go.googlesource.com/gopls";;
+      "golang.org/x/tools/gopls@latest" = builtins.fetchGit "https://go.googlesource.com/gopls";
     };
   };
   programs.hyfetch.settings = {

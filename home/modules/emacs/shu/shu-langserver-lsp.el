@@ -80,7 +80,7 @@
   :defer t
   :config
   ;; (treemacs-tag-follow-mode)
-  treemacs-project-follow-mode
+  (treemacs-project-follow-mode)
   :bind
   (:map global-map
         ("M-0"       . treemacs-select-window)

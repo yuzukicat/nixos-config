@@ -82,7 +82,7 @@ in {
   programs.go = {
     enable = true;
     goPath = "go";
-    goBin = "go/bin.go";
+    goBin = "go/bin";
     packages = {
       "golang.org/x/tools/gopls@latest" = pkgs.gopls;
     };

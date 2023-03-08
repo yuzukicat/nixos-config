@@ -81,13 +81,5 @@
     $DRY_RUN_CMD rm -rf $VERBOSE_ARG ~/.emacs.d/init.el ~/.emacs.d/init.elc ~/.emacs.d/elpa ~/.emacs.d/eln-cache
   '';
 
-  home.activation.setupGoDirectories = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/go
-    $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/go/src
-    $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/go/pkg
-    $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}"/go/bin
-    $DRY_RUN_CMD go mod init
-  '';
-
   home.stateVersion = "22.11";
 }

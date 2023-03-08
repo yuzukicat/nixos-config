@@ -4,13 +4,17 @@
 ;;; Code:
 (if (eq shu-lsp 'lsp-mode)
     ((use-package lsp-mode
-       :commands (lsp)
+       :commands (lsp lsp-deferred)
        :hook (prog-mode . lsp)
        :init
-       (setq lsp-auto-configure t
-             lsp-auto-guess-root t
-             lsp-idle-delay 0.500
-             lsp-session-file "~/.emacs/.cache/lsp-sessions"))
+       (setq lsp-keymap-prefix "C-c l"
+	       lsp-file-watch-threshold 500
+             lsp-idle-delay 0.500)
+         :config
+         (setq lsp-completion-provider :none) ;; 阻止 lsp 重新设置 company-backend 而覆盖我们 yasnippet 的设置
+         (setq lsp-headerline-breadcrumb-enable t)
+         :bind
+         ("C-c l s" . lsp-ivy-workspace-symbol)) ;; 可快速搜索工作区内的符号（类名、函数名、变量名等）
      (use-package lsp-ivy
        :diminish
        :after lsp-mode)

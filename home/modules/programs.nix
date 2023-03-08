@@ -25,6 +25,7 @@ let
     clang-tools
     elixir_ls
     lua53Packages.digestif
+    gopls
   ];
 in {
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
@@ -83,7 +84,7 @@ in {
     enable = true;
     package = pkgs.go;
     packages = {
-      "golang.org/x/tools/gopls@latest" = builtins.fetchGit "https://go.googlesource.com/gopls";
+      "golang.org/x/tools/gopls@latest" = pkgs.gopls;
     };
   };
   programs.hyfetch.settings = {

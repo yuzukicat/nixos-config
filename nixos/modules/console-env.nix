@@ -71,4 +71,8 @@
   services.flatpak.enable = true; #  A framework for distributing desktop applications across various Linux distributions.
   # To use VS Code under Wayland, set the environment variable NIXOS_OZONE_WL=1:
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacsWithConfig; # replace with emacs-gtk, or a version provided by the community overlay if desired.
+  };
 }

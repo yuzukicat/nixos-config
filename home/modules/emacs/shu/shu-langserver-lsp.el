@@ -45,8 +45,7 @@
        (define-key yas-minor-mode-map [(tab)]        nil)
        (define-key yas-minor-mode-map (kbd "TAB")    nil)
        (define-key yas-minor-mode-map (kbd "<tab>")  nil)
-       :bind
-       :map yas-minor-mode-map ("S-<tab>" . yas-expand))
+       (define-key yas-minor-mode-map (kbd "S-<tab>") 'yas-expand)
      (use-package yasnippet-snippets
        :after yasnippet)))
 

@@ -173,8 +173,7 @@
                 epkgs.good-scroll
                 epkgs.posframe
                 epkgs.popon
-                epkgs.acm-terminal
-                epkgs.toggle-one-window
+                # epkgs.toggle-one-window
                 epkgs.yasnippet
                 epkgs.yasnippet-snippets
                 # epkgs.lsp-mode

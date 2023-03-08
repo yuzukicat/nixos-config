@@ -81,10 +81,10 @@ in {
   programs.feh.enable = true;
   programs.go = {
     enable = true;
+    package = pkgs.go;
     goPath = "go";
-    goBin = "go/bin";
     packages = {
-      "golang.org/x/tools/gopls@latest" = pkgs.gopls;
+      "golang.org/x/tools/gopls@latest" = builtins.fetchGit "https://go.googlesource.com/gopls";;
     };
   };
   programs.hyfetch.settings = {

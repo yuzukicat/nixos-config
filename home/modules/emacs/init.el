@@ -184,24 +184,24 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
   (setq truncate-lines nil) ;; 如果单行信息很长会自动换行
   :hook
   (prog-mode . flycheck-mode))
-;; (use-package company
-;;   :diminish company-mode
-;;   :hook (after-init . global-company-mode)
-;;   :bind ("M-<tab>". company-complete-selection)
-;;   :config
-;;   (setq company-tooltip-align-annotations t
-;;         company-tooltip-limit 10
-;;         company-show-quick-access t
-;;         company-show-numbers t ;; 给选项编号 (按快捷键 M-1、M-2 等等来进行选择).
-;;         company-selection-wrap-around t
-;;         company-idle-delay 0
-;;         company-tooltip-idle-delay 0
-;;         company-transformers '(company-sort-by-occurrence) ;; 根据选择的频率进行排序
-;;         company-minimum-prefix-length 1)) ;; 只需敲 1 个字母就开始进行自动补全
-;; (use-package company-box
-;;   :if window-system
-;;   :hook (company-mode . company-box-mode))
-;; (global-set-key (kbd "M-/") 'hippie-expand)
+(use-package company
+  :diminish company-mode
+  :hook (after-init . global-company-mode)
+  :bind ("M-<tab>". company-complete-selection)
+  :config
+  (setq company-tooltip-align-annotations t
+        company-tooltip-limit 10
+        company-show-quick-access t
+        company-show-numbers t ;; 给选项编号 (按快捷键 M-1、M-2 等等来进行选择).
+        company-selection-wrap-around t
+        company-idle-delay 0
+        company-tooltip-idle-delay 0
+        company-transformers '(company-sort-by-occurrence) ;; 根据选择的频率进行排序
+        company-minimum-prefix-length 1)) ;; 只需敲 1 个字母就开始进行自动补全
+(use-package company-box
+  :if window-system
+  :hook (company-mode . company-box-mode))
+(global-set-key (kbd "M-/") 'hippie-expand)
 
 ;; Theme
 (use-package doom-themes

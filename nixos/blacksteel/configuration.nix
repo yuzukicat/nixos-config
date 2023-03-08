@@ -75,32 +75,9 @@
   # Use nixos-generate-config --root /mnt then copy and paste
   # Questions.
   # Work Station
-  # fileSystems = {
-  #   "/" = {
-  #     device = "/dev/disk/by-uuid/5fe2d576-ca83-41a1-a431-95b8374505ca";
-  #     fsType = "btrfs";
-  #     # zstd:1  W: ~510MiB/s
-  #     # zstd:3  W: ~330MiB/s
-  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
-  #   };
-
-  #   "/boot" = {
-  #     device = "/dev/disk/by-uuid/7B83-4C68";
-  #     fsType = "vfat";
-  #   };
-
-  #   "/home" = {
-  #     device = "/dev/disk/by-uuid/413ae8ad-772e-48f8-b5b0-2468c20c5a66";
-  #     fsType = "btrfs";
-  #     # zstd:1  W: ~510MiB/s
-  #     # zstd:3  W: ~330MiB/s
-  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
-  #   };
-  # };
-  # # 5950x PC
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/cd16103a-da56-459e-ae5e-4d2e7041e973";
+      device = "/dev/disk/by-uuid/5fe2d576-ca83-41a1-a431-95b8374505ca";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
@@ -108,18 +85,41 @@
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/47E8-4FB6";
+      device = "/dev/disk/by-uuid/7B83-4C68";
       fsType = "vfat";
     };
 
     "/home" = {
-      device = "/dev/disk/by-uuid/4b4d1ff4-1cd0-4364-8975-99e57fa8d369";
+      device = "/dev/disk/by-uuid/413ae8ad-772e-48f8-b5b0-2468c20c5a66";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
       # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
     };
   };
+  # # 5950x PC
+  # fileSystems = {
+  #   "/" = {
+  #     device = "/dev/disk/by-uuid/cd16103a-da56-459e-ae5e-4d2e7041e973";
+  #     fsType = "btrfs";
+  #     # zstd:1  W: ~510MiB/s
+  #     # zstd:3  W: ~330MiB/s
+  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
+  #   };
+
+  #   "/boot" = {
+  #     device = "/dev/disk/by-uuid/47E8-4FB6";
+  #     fsType = "vfat";
+  #   };
+
+  #   "/home" = {
+  #     device = "/dev/disk/by-uuid/4b4d1ff4-1cd0-4364-8975-99e57fa8d369";
+  #     fsType = "btrfs";
+  #     # zstd:1  W: ~510MiB/s
+  #     # zstd:3  W: ~330MiB/s
+  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
+  #   };
+  # };
 
   # swapDevices = [
   #   {

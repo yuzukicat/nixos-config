@@ -53,11 +53,11 @@
       ))
 
 ;; Titlebar
-(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-(add-to-list 'default-frame-alist '(ns-appearance . dark))
+;; (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+;; (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
-(set-face-background 'vertical-border (face-background 'default))
-(set-face-foreground 'vertical-border "grey")
+;; (set-face-background 'vertical-border (face-background 'default))
+;; (set-face-foreground 'vertical-border "grey")
 
 (defgroup shu ()
   "Shu EMACS config."
@@ -254,8 +254,34 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
   :config
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
+  ;; FIXME: These below are now global. We should patch doom
+  ;;        themes to let them display correctly in terminal.
+  ;; (defun new-frame-setup (frame)
+  ;;   (if (display-graphic-p frame)
   (load-theme 'doom-tomorrow-day t)
-  (doom-themes-treemacs-config))
+  (if (display-graphic-p)
+    (progn
+      ;; or for treemacs users
+      (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+      (doom-themes-treemacs-config)
+      ))
+  ;; (doom-themes-treemacs-config)
+  ;;     (disable-theme 'doom-tomorrow-day)))
+  ;; (mapc 'new-frame-setup (frame-list))
+  ;; (add-hook 'after-make-frame-functions 'new-frame-setup)
+  )
+;; (add-to-list 'load-path "~/.emacs.d/awesome-tray")
+;; (require 'awesome-tray)
+;; (setq awesome-tray-mode-line-inactive-color "#d6d4d4"
+;;       awesome-tray-mode-line-active-color "#8abeb7"
+;;       awesome-tray-mode-line-height 0.1)
+;; (awesome-tray-mode 1)
+
+;; modeline
+ (use-package doom-modeline
+   :ensure t
+   :hook (after-init . doom-modeline-mode))
+ (set-face-background 'mode-line nil)
 
 ;; Parentheses and highlight TODO
 (add-hook 'prog-mode-hook #'show-paren-mode) ;; 编程模式下，光标在括号上时高亮另一个括号

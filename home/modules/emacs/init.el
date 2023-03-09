@@ -18,9 +18,9 @@
 ;; Feature Mode
 (column-number-mode t)                       ;; 在 Mode line 上显示列号
 (tool-bar-mode 0) (menu-bar-mode 0) (scroll-bar-mode 0)
-;; (toggle-scroll-bar -1)
+(toggle-scroll-bar -1)
 (global-auto-revert-mode t)                  ;; 当另一程序修改了文件时，让 Emacs 及时刷新 Buffer
-(toggle-frame-fullscreen)
+;; (toggle-frame-fullscreen)
 
 ;; File Operation
 (setq tab-width 4
@@ -254,34 +254,8 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
   :config
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
-  ;; FIXME: These below are now global. We should patch doom
-  ;;        themes to let them display correctly in terminal.
-  ;; (defun new-frame-setup (frame)
-  ;;   (if (display-graphic-p frame)
   (load-theme 'doom-tomorrow-day t)
-  ;; (if (display-graphic-p)
-  ;;   (progn
-  ;;     ;; or for treemacs users
-  ;;     (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-  ;;     (doom-themes-treemacs-config)
-  ;;     ))
-  (doom-themes-treemacs-config)
-  ;;     (disable-theme 'doom-tomorrow-day)))
-  ;; (mapc 'new-frame-setup (frame-list))
-  ;; (add-hook 'after-make-frame-functions 'new-frame-setup)
-  )
-;; (add-to-list 'load-path "~/.emacs.d/awesome-tray")
-;; (require 'awesome-tray)
-;; (setq awesome-tray-mode-line-inactive-color "#d6d4d4"
-;;       awesome-tray-mode-line-active-color "#8abeb7"
-;;       awesome-tray-mode-line-height 0.1)
-;; (awesome-tray-mode 1)
-
-;; modeline
- (use-package doom-modeline
-   :ensure t
-   :hook (after-init . doom-modeline-mode))
- (set-face-background 'mode-line nil)
+  (doom-themes-treemacs-config))
 
 ;; Parentheses and highlight TODO
 (add-hook 'prog-mode-hook #'show-paren-mode) ;; 编程模式下，光标在括号上时高亮另一个括号

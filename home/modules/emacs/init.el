@@ -75,8 +75,6 @@
 (require 'shu-langserver-eglot)
 (require 'shu-c)
 (require 'shu-tex)
-(require 'dashboard)
-(dashboard-setup-startup-hook)
 
 (setq confirm-kill-emacs #'yes-or-no-p)      ;; 在关闭 Emacs 前询问是否确认关闭，防止误触
 (electric-pair-mode t)                       ;; 自动补全括号
@@ -248,13 +246,23 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
 
 ;; Dashboard
  (use-package dashboard
+  :ensure t
   :config
-  (setq dashboard-center-content t)
-  (setq dashboard-set-footer nil)
+  (setq dashboard-banner-logo-title "Welcome to Emacs!") ;; 个性签名，随读者喜好设置
   (setq dashboard-projects-backend 'projectile) ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
-  (setq dashboard-banner-logo-title "EMACS Vanilla") ;; 个性签名，随读者喜好设置
-  (setq dashboard-startup-banner  'nil) ;; 也可以自定义图片
-  (setq (projects . 10))) ;; 显示多少个最近项目
+  (setq dashboard-startup-banner '( "██╗░░░░░███████╗███╗░░░███╗░█████╗░███╗░░██╗"
+                                    "██║░░░░░██╔════╝████╗░████║██╔══██╗████╗░██║"
+                                    "██║░░░░░█████╗░░██╔████╔██║██║░░██║██╔██╗██║"
+                                    "██║░░░░░██╔══╝░░██║╚██╔╝██║██║░░██║██║╚████║"
+                                    "███████╗███████╗██║░╚═╝░██║╚█████╔╝██║░╚███║"
+                                    "╚══════╝╚══════╝╚═╝░░░░░╚═╝░╚════╝░╚═╝░░╚══╝"
+                                    ""
+                                    "                Emacs Master                "
+                                    "")) ;; 也可以自定义图片
+  (setq dashboard-items '((recents  . 0)   ;; 显示多少个最近文件
+			  (bookmarks . 0)  ;; 显示多少个最近书签
+			  (projects . 10))) ;; 显示多少个最近项目
+  (dashboard-setup-startup-hook))
 
 ;; Theme
 (use-package all-the-icons

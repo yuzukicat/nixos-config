@@ -20,7 +20,7 @@
 
 ;; File Operation
 (setq tab-width 4
-      inhibit-splash-screen t                ;; hide welcome screen
+      ;; inhibit-splash-screen t                ;; hide welcome screen
       mouse-drag-copy-region nil
       initial-scratch-message nil
       sentence-end-double-space nil

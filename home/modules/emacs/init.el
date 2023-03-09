@@ -75,6 +75,8 @@
 (require 'shu-langserver-eglot)
 (require 'shu-c)
 (require 'shu-tex)
+(require 'dashboard)
+(dashboard-setup-startup-hook)
 
 (setq confirm-kill-emacs #'yes-or-no-p)      ;; 在关闭 Emacs 前询问是否确认关闭，防止误触
 (electric-pair-mode t)                       ;; 自动补全括号
@@ -247,7 +249,6 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
 ;; Dashboard
  (use-package dashboard
   :config
-  (dashboard-setup-startup-hook)
   (setq dashboard-center-content t)
   (setq dashboard-set-footer nil)
   (setq dashboard-projects-backend 'projectile) ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用

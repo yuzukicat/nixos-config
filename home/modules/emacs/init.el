@@ -257,13 +257,13 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
   ;; (defun new-frame-setup (frame)
   ;;   (if (display-graphic-p frame)
   (load-theme 'doom-tomorrow-day t)
-  (if (display-graphic-p)
-    (progn
-      ;; or for treemacs users
-      (setq doom-themes-treemacs-theme "doom-tomorrow-day") ; use the colorful treemacs theme
-      (doom-themes-treemacs-config)
-      ))
-  ;; (doom-themes-treemacs-config)
+  ;; (if (display-graphic-p)
+  ;;   (progn
+  ;;     ;; or for treemacs users
+  ;;     (setq doom-themes-treemacs-theme "doom-tomorrow-day") ; use the colorful treemacs theme
+  ;;     (doom-themes-treemacs-config)
+  ;;     ))
+  (doom-themes-treemacs-config)
   ;;     (disable-theme 'doom-tomorrow-day)))
   ;; (mapc 'new-frame-setup (frame-list))
   ;; (add-hook 'after-make-frame-functions 'new-frame-setup)

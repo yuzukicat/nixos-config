@@ -154,6 +154,7 @@
                 epkgs.flycheck
                 epkgs.company
                 epkgs.company-box
+                epkgs.dashboard
                 epkgs.doom-themes
                 epkgs.doom-modeline
                 epkgs.all-the-icons

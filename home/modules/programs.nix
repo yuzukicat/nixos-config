@@ -21,12 +21,20 @@ let
     pyright
     haskell-language-server
     solargraph
-    yaml-language-server
     clang-tools
     elixir_ls
     lua53Packages.digestif
+    cmake-language-server
+    kotlin-language-server
     gopls
+    sqls
     nodePackages.bash-language-server
+    nodePackages.dockerfile-language-server-nodejs
+    nodePackages.eslint
+    nodePackages.graphql-language-service-cli
+    nodePackages.unified-language-server
+    nodePackages.vscode-langservers-extracted
+    nodePackages.yaml-language-server
   ];
 in {
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
@@ -86,6 +94,7 @@ in {
     package = pkgs.go;
     packages = {
       "golang.org/x/tools/gopls@latest" = pkgs.gopls;
+      "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;
     };
   };
   programs.hyfetch.settings = {

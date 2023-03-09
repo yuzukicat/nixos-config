@@ -11,26 +11,21 @@
 ;; Encoding and Envs
 (prefer-coding-system 'utf-8)
 
-(setenv "LANG" "en_US.UTF-8")
-(setenv "LC_ALL" "en_US.UTF-8")
-(setenv "LC_CTYPE" "en_US.UTF-8")
-
 ;; Feature Mode
 (column-number-mode t)                       ;; 在 Mode line 上显示列号
 (tool-bar-mode 0) (menu-bar-mode 0) (scroll-bar-mode 0)
-(toggle-scroll-bar -1)
+;; (toggle-scroll-bar -1)
 (global-auto-revert-mode t)                  ;; 当另一程序修改了文件时，让 Emacs 及时刷新 Buffer
 ;; (toggle-frame-fullscreen)
 
 ;; File Operation
-(setq tab-width 4
-      inhibit-splash-screen t                ;; hide welcome screen
+(setq inhibit-splash-screen t                ;; hide welcome screen
       mouse-drag-copy-region nil
       initial-scratch-message nil
       sentence-end-double-space nil
       make-backup-files nil                  ;; 关闭文件自动备份
       auto-save-default nil)
-(setq-default indent-tabs-mode -1)
+;; (setq-default indent-tabs-mode -1)
 
 ;; History
 (savehist-mode 1)
@@ -53,11 +48,11 @@
       ))
 
 ;; Titlebar
-;; (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-;; (add-to-list 'default-frame-alist '(ns-appearance . dark))
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
 
-;; (set-face-background 'vertical-border (face-background 'default))
-;; (set-face-foreground 'vertical-border "grey")
+(set-face-background 'vertical-border (face-background 'default))
+(set-face-foreground 'vertical-border "grey")
 
 (defgroup shu ()
   "Shu EMACS config."
@@ -279,7 +274,6 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
 
 ;; modeline
  (use-package doom-modeline
-   :ensure t
    :hook (after-init . doom-modeline-mode))
  (set-face-background 'mode-line nil)
 

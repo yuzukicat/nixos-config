@@ -91,7 +91,7 @@ in {
   programs.feh.enable = true;
   programs.go = {
     enable = true;
-    package = pkgs.go;
+    package = pkgs.go_1_20;
     packages = {
       "golang.org/x/tools/gopls@latest" = pkgs.gopls;
       "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;

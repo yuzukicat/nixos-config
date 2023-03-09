@@ -247,6 +247,9 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
 (global-set-key (kbd "M-/") 'hippie-expand)
 
 ;; Theme
+(use-package all-the-icons
+  :if (display-graphic-p))
+
 (use-package doom-themes
   :config
   (setq doom-themes-enable-bold t
@@ -278,11 +281,7 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
  (use-package doom-modeline
    :ensure t
    :hook (after-init . doom-modeline-mode))
-
  (set-face-background 'mode-line nil)
-
-(use-package all-the-icons
-  :if (display-graphic-p))
 
 ;; Parentheses and highlight TODO
 (add-hook 'prog-mode-hook #'show-paren-mode) ;; 编程模式下，光标在括号上时高亮另一个括号

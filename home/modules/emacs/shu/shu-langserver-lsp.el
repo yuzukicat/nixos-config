@@ -50,8 +50,6 @@
             ("M-." . lsp-ui-peek-find-definitions)
             ("C-c u" . lsp-ui-imenu))
       :hook (lsp-mode . lsp-ui-mode)
-      :custom-face
-      (lsp-ui-doc-background ((t (:background ni))))
       :init
       ;; https://github.com/emacs-lsp/lsp-mode/blob/master/docs/tutorials/how-to-turn-off.md
       (setq lsp-enable-symbol-highlighting t

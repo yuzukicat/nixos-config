@@ -26,6 +26,7 @@ let
     elixir_ls
     lua53Packages.digestif
     gopls
+    nodePackages.bash-language-server
   ];
 in {
   home.packages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [

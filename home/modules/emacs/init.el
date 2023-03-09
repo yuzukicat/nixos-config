@@ -252,7 +252,7 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
   (setq dashboard-set-footer nil)
   (setq dashboard-projects-backend 'projectile) ;; 读者可以暂时注释掉这一行，等安装了 projectile 后再使用
   (setq dashboard-banner-logo-title "EMACS Vanilla") ;; 个性签名，随读者喜好设置
-  (setq dashboard-startup-banner  'nil)) ;; 也可以自定义图片
+  (setq dashboard-startup-banner  'nil) ;; 也可以自定义图片
   (setq (projects . 10))) ;; 显示多少个最近项目
 
 ;; Theme

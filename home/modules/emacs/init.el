@@ -14,18 +14,19 @@
 ;; Feature Mode
 (column-number-mode t)                       ;; 在 Mode line 上显示列号
 (tool-bar-mode 0) (menu-bar-mode 0) (scroll-bar-mode 0)
-;; (toggle-scroll-bar -1)
+(toggle-scroll-bar -1)
 (global-auto-revert-mode t)                  ;; 当另一程序修改了文件时，让 Emacs 及时刷新 Buffer
 ;; (toggle-frame-fullscreen)
 
 ;; File Operation
-(setq inhibit-splash-screen t                ;; hide welcome screen
+(setq tab-width 4
+      inhibit-splash-screen t                ;; hide welcome screen
       mouse-drag-copy-region nil
       initial-scratch-message nil
       sentence-end-double-space nil
       make-backup-files nil                  ;; 关闭文件自动备份
       auto-save-default nil)
-;; (setq-default indent-tabs-mode -1)
+(setq-default indent-tabs-mode -1)
 
 ;; History
 (savehist-mode 1)
@@ -46,6 +47,8 @@
       ;; 增大同LSP服务器交互时的读取文件的大小
       (setq read-process-output-max (* 1024 1024 1024 8)) ;; 1024MB
       ))
+;; Don’t compact font caches during GC.
+(setq inhibit-compacting-font-caches t)
 
 ;; Titlebar
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
@@ -257,7 +260,7 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
   (if (display-graphic-p)
     (progn
       ;; or for treemacs users
-      (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+      (setq doom-themes-treemacs-theme "doom-tomorrow-day") ; use the colorful treemacs theme
       (doom-themes-treemacs-config)
       ))
   ;; (doom-themes-treemacs-config)

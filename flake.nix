@@ -157,6 +157,7 @@
                 epkgs.doom-themes
                 epkgs.doom-modeline
                 epkgs.all-the-icons
+                epkgs.rainbow-mode
                 epkgs.rainbow-delimiters
                 epkgs.hl-todo
                 epkgs.nix-mode

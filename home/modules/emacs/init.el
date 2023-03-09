@@ -56,9 +56,6 @@
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
-(let ((display-table (or standard-display-table (make-display-table))))
-  (set-display-table-slot display-table 'vertical-border (make-glyph-code ?│)) ;; or ┃ │
-  (setq standard-display-table display-table))
 (set-face-background 'vertical-border (face-background 'default))
 (set-face-foreground 'vertical-border "grey")
 

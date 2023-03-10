@@ -100,20 +100,20 @@
   # # 5950x PC
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/cd16103a-da56-459e-ae5e-4d2e7041e973";
+      device = "/dev/disk/by-uuid/9f88fff0-fd52-4e4d-8064-11e87d543ca8";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
-      # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
+      options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/47E8-4FB6";
+      device = "/dev/disk/by-uuid/1B53-78FB";
       fsType = "vfat";
     };
 
     "/home" = {
-      device = "/dev/disk/by-uuid/4b4d1ff4-1cd0-4364-8975-99e57fa8d369";
+      device = "/dev/disk/by-uuid/15e05209-11bd-4fc8-b63b-52a37f25824c";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s

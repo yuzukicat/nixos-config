@@ -67,7 +67,6 @@
       enable = true;
       plugins = [
         "git"
-        "colorize"
         "docker"
         "docker-compose"
         "dotenv"

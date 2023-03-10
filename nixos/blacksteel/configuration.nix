@@ -170,7 +170,7 @@
   # Services.
   # AMD Ryzen 5950x
   systemd.services.nix-daemon.serviceConfig = {
-    CPUQuota = "1500%";
+    CPUQuota = "3000%";
     CPUWeight = 50;
 
     # MemoryMax = "26G";
@@ -203,18 +203,18 @@
     };
     timesyncd.enable = true;
     # Avoid Linux locking up in low memory situations using earlyoom
-    # earlyoom = {
-    #   enable = true;
-    #   # earlyoom configration Refered from ../invar/configuration.nix
-    #   freeMemThreshold = 5;
-    #   freeSwapThreshold = 10;
-    #   enableNotifications = true;
-    # };
+    earlyoom = {
+      enable = true;
+      # earlyoom configration Refered from ../invar/configuration.nix
+      freeMemThreshold = 5;
+      freeSwapThreshold = 10;
+      enableNotifications = true;
+    };
     # transmission configration Refered from ../invar/configuration.nix
-    # transmission = {
-    #   enable = true;
-    #   home = "/home/transmission";
-    # };
+    transmission = {
+      enable = true;
+      home = "/home/transmission";
+    };
     btrbk.instances.snapshot = {
       onCalendar = "*:00,30";
       settings = {
@@ -255,10 +255,10 @@
   # Question: Can it fix the bus error info on boot??
   users.groups."adbusers".members = [ config.users.users.yuzuki.name ];
 
-  # programs.wireshark = {
-  #   enable = true;
-  #   package = pkgs.wireshark-qt;
-  # };
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark-qt;
+  };
   
   # environment.etc Refered from ../invar/configuration.nix
   environment.etc = {

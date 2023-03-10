@@ -46,15 +46,15 @@ in {
 
     # GUI
     kolourpaint libreoffice mpv # Files
-    # electrum electron-cash # Cryptocurrency
-    # tdesktop # Messaging
-    # wf-recorder obs-studio # Recording
+    electrum electron-cash # Cryptocurrency
+    tdesktop # Messaging
+    wf-recorder obs-studio # Recording
 
     # Dev
     cachix patchelf nixpkgs-review nix-update nix-output-monitor # Nix utils
     gcc ghc myPython # Compiler & interpreters
     gdb # Debugger
-    sqlite-interactive sqls postgresql# sqlite
+    sqlite-interactive sqls postgresql # sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip
     bash-completion cling elixir gh
     nodejs nodePackages.npm-check-updates
@@ -65,7 +65,7 @@ in {
     my.pkgs.hyfetch
 
     # internet:
-    # aria2
+    aria2
     element-desktop vlc /*syncplay*/
 
     # work:

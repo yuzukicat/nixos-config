@@ -69,6 +69,10 @@
       source = ./modules/emacs/shu/shu-c.el;
       recursive = true;
     };
+    ".oh-my-zsh/custom/themes/passion.zsh-theme" = {
+      source = ./modules/omz/passion.zsh-theme;
+      recursive = true;
+    };
   };
 
   programs.gpg.homedir = "${config.home.homeDirectory}/storage/personal/gnupg";

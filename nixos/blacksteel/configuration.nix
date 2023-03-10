@@ -100,11 +100,11 @@
   # # 5950x PC
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/9f88fff0-fd52-4e4d-8064-11e87d543ca8";
+      device = "/dev/disk/by-uuid/9f88fff0-fd52-4ec4-8064-11e87d543ca8";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
-      # options = [ "relatime" "compress=zstd:1" "subvol=@" ];
+      options = [ "relatime" "compress=zstd:1" "subvol=@" ];
     };
 
     "/boot" = {

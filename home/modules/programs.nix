@@ -46,9 +46,9 @@ in {
 
     # GUI
     kolourpaint libreoffice mpv # Files
-    electrum electron-cash # Cryptocurrency
-    tdesktop # Messaging
-    wf-recorder obs-studio # Recording
+    # electrum electron-cash # Cryptocurrency
+    # tdesktop # Messaging
+    # wf-recorder obs-studio # Recording
 
     # Dev
     cachix patchelf nixpkgs-review nix-update nix-output-monitor # Nix utils
@@ -57,7 +57,7 @@ in {
     sqlite-interactive sqls postgresql# sqlite
     cabal-install gnumake yarn binutils ruby_3_1 xclip
     bash-completion cling elixir gh
-    nodejs nodePackages.npm-check-updates
+    # nodejs nodePackages.npm-check-updates
 
     # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
     # system:

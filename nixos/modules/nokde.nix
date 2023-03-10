@@ -51,7 +51,7 @@
     };
 
     # To make it work on clevo nh55vr rtx-3070max-q
-    # videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "nvidia" ];
   };
 
   services.colord.enable = true;

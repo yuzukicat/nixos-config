@@ -2,15 +2,17 @@
 {
   virtualisation.libvirtd = {
     enable = true;
+    onBoot = "ignore";
     qemu.package = pkgs.qemu_kvm;
   };
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-  virtualisation.kvmgt = {
-    enable = true;
-    # Random generated UUIDs.
-    # vgpus."i915-GVTg_V5_4".uuid = "7dbe463d-94fc-425c-8ccd-55d0f9d5d26b"; # 1920x1200
-    vgpus."i915-GVTg_V5_8".uuid = [ "89584099-86a4-4b77-b770-16c0a93c260a" ]; # 1024x768
-  };
+  # KVMGT implements Intel ® GVT-g for KVM, with >80% of native 3D performance
+  # virtualisation.kvmgt = {
+  #   enable = true;
+  #   # Random generated UUIDs.
+  #   # vgpus."i915-GVTg_V5_4".uuid = "7dbe463d-94fc-425c-8ccd-55d0f9d5d26b"; # 1920x1200
+  #   vgpus."i915-GVTg_V5_8".uuid = [ "89584099-86a4-4b77-b770-16c0a93c260a" ]; # 1024x768
+  # };
 
   systemd.services."win10-hd-vm-disk" = let
     dmName = "win10-hd-vm-disk";

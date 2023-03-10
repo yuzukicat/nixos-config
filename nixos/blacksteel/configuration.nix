@@ -231,13 +231,6 @@
     };
   };
 
-  # vm configration Refered from ../invar/configuration.nix
-  # onBoot ignore
-  # virtualisation.libvirtd = {
-  #   enable = true;
-  #   onBoot = "ignore";
-  # };
-
   # Global ssh settings. Also for remote builders.
   programs.ssh = {
     knownHosts = my.ssh.knownHosts;

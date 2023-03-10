@@ -211,10 +211,10 @@
       enableNotifications = true;
     };
     # transmission configration Refered from ../invar/configuration.nix
-    transmission = {
-      enable = true;
-      home = "/home/transmission";
-    };
+    # transmission = {
+    #   enable = true;
+    #   home = "/home/transmission";
+    # };
     btrbk.instances.snapshot = {
       onCalendar = "*:00,30";
       settings = {

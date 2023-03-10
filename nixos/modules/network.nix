@@ -1,6 +1,6 @@
 { lib, ... }:
 
-{ 
+{
 
   # Network configration Refered from ../invar/configuration.nix
   networking = {

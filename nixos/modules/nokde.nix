@@ -3,20 +3,20 @@
   imports = [ ./l10n.nix ];
 
   environment.systemPackages = with pkgs; with libsForQt5; with plasma5; with kdeGear; with kdeFrameworks; [
-    # nordic
-    # zafiro-icons
-    # nordzy-icon-theme
-    # nordzy-cursor-theme
-    # aha # needed by kinfocenter for fwupd support
-    # plasma-browser-integration
-    # konsole
-    # oxygen
-    # (lib.getBin qttools) # Expose qdbus in PATH
-    # elisa
-    # gwenview
-    # okular
-    # print-manager
-    # plasma5Packages.bismuth
+    nordic
+    zafiro-icons
+    nordzy-icon-theme
+    nordzy-cursor-theme
+    aha # needed by kinfocenter for fwupd support
+    plasma-browser-integration
+    konsole
+    oxygen
+    (lib.getBin qttools) # Expose qdbus in PATH
+    elisa
+    gwenview
+    okular
+    print-manager
+    plasma5Packages.bismuth
   ];
 
   programs = {
@@ -46,12 +46,12 @@
     desktopManager.plasma5 = {
       enable = true;
       supportDDC = true;
-      # useQtScaling = true;
+      useQtScaling = true;
       kdeglobals.KDE.SingleClick = false;
     };
 
     # To make it work on clevo nh55vr rtx-3070max-q
-    videoDrivers = [ "nvidia" ];
+    # videoDrivers = [ "nvidia" ];
   };
 
   services.colord.enable = true;

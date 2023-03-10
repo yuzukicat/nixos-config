@@ -84,10 +84,10 @@ in {
   programs.autorandr.enable = true; # Automatically select a display configuration based on connected devices.
   programs.dircolors.enable = true;
   # TODO: Finish porting emacs config over future me fix
-  # programs.emacs = {
-  #   enable = true;
-  #   package = pkgs.emacsWithConfig;
-  # };
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacsWithConfig;
+  };
   programs.feh.enable = true;
   programs.go = {
     enable = true;

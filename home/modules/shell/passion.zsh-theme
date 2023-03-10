@@ -5,7 +5,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     {
         gdate
     } || {
-        echo "\n$fg_bold[yellow]passsion.zsh-theme depends on cmd [gdate] to get current time in milliseconds$reset_color"
+        echo "\n$fg_bold[yellow]passion.zsh-theme depends on cmd [gdate] to get current time in milliseconds$reset_color"
         echo "$fg_bold[yellow][gdate] is not installed by default in macOS$reset_color"
         echo "$fg_bold[yellow]to get [gdate] by running:$reset_color"
         echo "$fg_bold[green]brew install coreutils;$reset_color";
@@ -59,10 +59,10 @@ function directory() {
 
 
 # git
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[blue]%}git(%{$fg_no_bold[red]%}";
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[cyan]%}[git %{$fg_no_bold[red]%}";
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} ";
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[blue]%}) 🔥";
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_no_bold[blue]%})";
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[cyan]%}] 🔥";
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_no_bold[cyan]%}]";
 
 function update_git_status() {
     GIT_STATUS=$(git_prompt_info);
@@ -97,13 +97,13 @@ function command_status() {
 
 # output command execute after
 output_command_execute_after() {
-    if [ "$COMMAND_TIME_BEIGIN" = "-20200325" ] || [ "$COMMAND_TIME_BEIGIN" = "" ];
+    if [ "$COMMAND_TIME_BEGIN" = "-20200325" ] || [ "$COMMAND_TIME_BEGIN" = "" ];
     then
         return 1;
     fi
 
     # cmd
-    local cmd="${$(fc -l | tail -1)#*  }";
+    local cmd="$(fc -ln -1)";
     local color_cmd="";
     if $1;
     then
@@ -121,8 +121,8 @@ output_command_execute_after() {
 
     # cost
     local time_end="$(current_time_millis)";
-    local cost=$(bc -l <<<"${time_end}-${COMMAND_TIME_BEIGIN}");
-    COMMAND_TIME_BEIGIN="-20200325"
+    local cost=$(bc -l <<<"${time_end}-${COMMAND_TIME_BEGIN}");
+    COMMAND_TIME_BEGIN="-20200325"
     local length_cost=${#cost};
     if [ "$length_cost" = "4" ];
     then
@@ -139,8 +139,8 @@ output_command_execute_after() {
 
 # command execute before
 # REF: http://zsh.sourceforge.net/Doc/Release/Functions.html
-preexec() {
-    COMMAND_TIME_BEIGIN="$(current_time_millis)";
+preexec() { # cspell:disable-line
+    COMMAND_TIME_BEGIN="$(current_time_millis)";
 }
 
 current_time_millis() {
@@ -168,7 +168,7 @@ current_time_millis() {
 
 # command execute after
 # REF: http://zsh.sourceforge.net/Doc/Release/Functions.html
-precmd() {
+precmd() { # cspell:disable-line
     # last_cmd
     local last_cmd_return_code=$?;
     local last_cmd_result=true;
@@ -191,14 +191,14 @@ precmd() {
 
 
 # set option
-setopt PROMPT_SUBST;
+setopt PROMPT_SUBST; # cspell:disable-line
 
 
 # timer
 #REF: https://stackoverflow.com/questions/26526175/zsh-menu-completion-causes-problems-after-zle-reset-prompt
 TMOUT=1;
-TRAPALRM() {
-    # $(git_prompt_info) cost too much time which will raise stutters when inputting. so we need to disable it in this occurence.
+TRAPALRM() { # cspell:disable-line
+    # $(git_prompt_info) cost too much time which will raise stutters when inputting. so we need to disable it in this occurrence.
     # if [ "$WIDGET" != "expand-or-complete" ] && [ "$WIDGET" != "self-insert" ] && [ "$WIDGET" != "backward-delete-char" ]; then
     # black list will not enum it completely. even some pipe broken will appear.
     # so we just put a white list here.

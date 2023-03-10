@@ -26,7 +26,7 @@ zstyle ':completion:*' path-completion false
 # 2. Substring completion.
 zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
 
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # Use caching so that commands like apt and dpkg complete are useable
 zstyle ':completion:*' use-cache yes

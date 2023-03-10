@@ -22,5 +22,6 @@ in
 {
   home.file =
     mkHomeFile ./rime ".config/ibus/rime" //
-    mkHomeFile ./emacs ".emacs.d";
+    mkHomeFile ./emacs ".emacs.d" //
+    mkHomeFile ./shell/passion.zsh-theme ".oh-my-zsh/custom/themes";
 }

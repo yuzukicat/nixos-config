@@ -21,6 +21,26 @@ And restart ``nix-daemon.service`` using ``sudo systemctl restart nix-daemon``.
 
 [Nix | Arch](https://wiki.archlinux.org/title/Nix)
 
+3. To manually gc:
+
+```
+nix-env --delete-generations 1d
+nix-store --gc
+nix-collect-garbage -d
+```
+
+4. To apply new flake:
+
+```
+nixos-rebuild switch --impure --flake .#blacksteel --option extra-experimental-features auto-allocate-uids --option extra-experimental-features cgroups
+```
+
+5. To generate hardware configuration (then delete them and use them in your own input):
+
+```
+nixos-generate-config --root /mnt
+```
+
 # Error handling for building nixos using nix flake   
 
 ## Nix flakes /nix/store/***-source no such file or directory   

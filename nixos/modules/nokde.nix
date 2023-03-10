@@ -46,7 +46,7 @@
     desktopManager.plasma5 = {
       enable = true;
       supportDDC = true;
-      useQtScaling = true;
+      # useQtScaling = true;
       kdeglobals.KDE.SingleClick = false;
     };
 

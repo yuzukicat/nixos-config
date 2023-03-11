@@ -47,7 +47,7 @@ in {
     # GUI
     kolourpaint libreoffice mpv # Files
     electrum electron-cash # Cryptocurrency
-    # tdesktop # Messaging
+    tdesktop # Messaging
     wf-recorder obs-studio # Recording
 
     # Dev

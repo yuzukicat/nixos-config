@@ -60,9 +60,6 @@
       "/nix/var/nix/profiles/per-user/root/channels"
     ];
 
-    systemd.tmpfiles.rules = [
-      "L+ ${inputs.nixpkgs}     - - - - ${inputs.nixpkgs}"
-    ];
 
     # buildMachines = [
     #   {
@@ -76,4 +73,8 @@
     #   }
     # ];
   };
+  
+  systemd.tmpfiles.rules = [
+    "L+ ${inputs.nixpkgs}     - - - - ${inputs.nixpkgs}"
+  ];
 }

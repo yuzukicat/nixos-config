@@ -229,6 +229,7 @@
         };
       };
     };
+    fwupd.enable = true;
   };
 
   # Global ssh settings. Also for remote builders.

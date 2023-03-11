@@ -32,7 +32,7 @@
   # Boot.
   boot = {
     # disable initrd
-    initrd = {
+    # initrd = {
       # systemd.enable = true;
 
       # availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "sd_mod" "sdhci_pci"];
@@ -43,7 +43,7 @@
     #     allowDiscards = true;
     #     crypttabExtraOpts = [ "fido2-device=auto" ];
     #   };
-    };
+    # };
 
     # For MGLRU in Linux 6.1
     # https://github.com/NixOS/nixpkgs/pull/205269
@@ -80,7 +80,7 @@
     };
   };
 
-  systemd.packages = [ my.pkgs.keystat ];
+  # systemd.packages = [ my.pkgs.keystat ];
 
   # Use nixos-generate-config --root /mnt then copy and paste
   # Questions.
@@ -108,28 +108,28 @@
   #   };
   # };
   # # 5950x PC
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/cd16103a-da56-459e-ae5e-4d2e7041e973";
-      fsType = "btrfs";
-      # zstd:1  W: ~510MiB/s
-      # zstd:3  W: ~330MiB/s
-      # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
-    };
+  # fileSystems = {
+  #   "/" = {
+  #     device = "/dev/disk/by-uuid/9f88fff0-fd52-4ec4-8064-11e87d543ca8";
+  #     fsType = "btrfs";
+  #     # zstd:1  W: ~510MiB/s
+  #     # zstd:3  W: ~330MiB/s
+  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" ];
+  #   };
 
-    "/boot" = {
-      device = "/dev/disk/by-uuid/47E8-4FB6";
-      fsType = "vfat";
-    };
+  #   "/boot" = {
+  #     device = "/dev/disk/by-uuid/1B53-78FB";
+  #     fsType = "vfat";
+  #   };
 
-    "/home" = {
-      device = "/dev/disk/by-uuid/4b4d1ff4-1cd0-4364-8975-99e57fa8d369";
-      fsType = "btrfs";
-      # zstd:1  W: ~510MiB/s
-      # zstd:3  W: ~330MiB/s
-      # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
-    };
-  };
+  #   "/home" = {
+  #     device = "/dev/disk/by-uuid/15e05209-11bd-4fc8-b63b-52a37f25824c";
+  #     fsType = "btrfs";
+  #     # zstd:1  W: ~510MiB/s
+  #     # zstd:3  W: ~330MiB/s
+  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
+  #   };
+  # };
 
   # swapDevices = [
   #   {
@@ -157,39 +157,39 @@
   # sops.secrets.passwd.neededForUsers = true;
   users = {
     mutableUsers = true;
-    users."yuzuki" = {
+    users."nixos" = {
       isNormalUser = true;
       shell = pkgs.zsh;
       # Allow the graphical user to login without password
       initialHashedPassword = "";
-      # password = "yuzuki";
+      # password = "nixos";
       # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
-      group = config.users.groups.yuzuki.name;
+      group = config.users.groups.nixos.name;
       extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" "video" ];
     };
-    groups."yuzuki".gid = 1000;
+    groups."nixos".gid = 1000;
     # Allow the user to log in as root without a password.
     users.root.initialHashedPassword = "";
   };
-  home-manager.users."yuzuki" =
-    import ../../home/blacksteel.nix;
+  # home-manager.users."nixos" =
+  #   import ../../home/blacksteel.nix;
   # Transmission user group
-  # users.groups."transmission".members = [ config.users.users.yuzuki.name ];
+  # users.groups."transmission".members = [ config.users.users.nixos.name ];
 
   # Services.
   # AMD Ryzen 5950x
-  # systemd.services.nix-daemon.serviceConfig = {
-  #   CPUQuota = "3000%";
-  #   CPUWeight = 50;
+  systemd.services.nix-daemon.serviceConfig = {
+    CPUQuota = "1500%";
+    CPUWeight = 50;
 
-  #   MemoryMax = "26G";
-  #   MemoryHigh = "24G";
-  #   MemorySwapMax = "32G";
-  #   IOWeight = 50;
-  # };
+    # MemoryMax = "26G";
+    # MemoryHigh = "24G";
+    # MemorySwapMax = "32G";
+    IOWeight = 50;
+  };
   # Workaround: https://github.com/NixOS/nixpkgs/issues/81138
-  systemd.services.keystat.wantedBy = [ "multi-user.target" ];
+  # systemd.services.keystat.wantedBy = [ "multi-user.target" ];
 
   # Moved to services code block
   # KDE pulls in pipewire via xdg-desktop-portal anyways.
@@ -213,40 +213,33 @@
     };
     timesyncd.enable = true;
     # Avoid Linux locking up in low memory situations using earlyoom
-    # earlyoom = {
-    #   enable = true;
-    #   # earlyoom configration Refered from ../invar/configuration.nix
-    #   freeMemThreshold = 5;
-    #   freeSwapThreshold = 10;
-    #   enableNotifications = true;
-    # };
+    earlyoom = {
+      enable = true;
+      # earlyoom configration Refered from ../invar/configuration.nix
+      freeMemThreshold = 5;
+      freeSwapThreshold = 10;
+      enableNotifications = true;
+    };
     # transmission configration Refered from ../invar/configuration.nix
     # transmission = {
     #   enable = true;
     #   home = "/home/transmission";
     # };
-    btrbk.instances.snapshot = {
-      onCalendar = "*:00,30";
-      settings = {
-        timestamp_format = "long-iso";
-        preserve_day_of_week = "monday";
-        preserve_hour_of_day = "6";
-        snapshot_preserve_min = "6h";
-        volume."/" = {
-          snapshot_dir = ".snapshots";
-          subvolume."home/yuzuki".snapshot_preserve = "48h 7d";
-          subvolume."home/yuzuki/storage".snapshot_preserve = "48h 7d 4w";
-        };
-      };
-    };
+    # btrbk.instances.snapshot = {
+    #   onCalendar = "*:00,30";
+    #   settings = {
+    #     timestamp_format = "long-iso";
+    #     preserve_day_of_week = "monday";
+    #     preserve_hour_of_day = "6";
+    #     snapshot_preserve_min = "6h";
+    #     volume."/" = {
+    #       snapshot_dir = ".snapshots";
+    #       subvolume."home/nixos".snapshot_preserve = "48h 7d";
+    #       subvolume."home/nixos/storage".snapshot_preserve = "48h 7d 4w";
+    #     };
+    #   };
+    # };
   };
-
-  # vm configration Refered from ../invar/configuration.nix
-  # onBoot ignore
-  # virtualisation.libvirtd = {
-  #   enable = true;
-  #   onBoot = "ignore";
-  # };
 
   # Global ssh settings. Also for remote builders.
   programs.ssh = {
@@ -263,7 +256,7 @@
   programs.adb.enable = true;
   # adbusers usergroup Refered from ../invar/configuration.nix
   # Question: Can it fix the bus error info on boot??
-  users.groups."adbusers".members = [ config.users.users.yuzuki.name ];
+  users.groups."adbusers".members = [ config.users.users.nixos.name ];
 
   # programs.wireshark = {
   #   enable = true;
@@ -289,5 +282,4 @@
   ];
 
   system.stateVersion = "22.11";
-
 }

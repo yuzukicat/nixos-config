@@ -48,15 +48,20 @@
       stalled-download-timeout = 10;
     };
 
-    registry = {
-      nixpkgs = {
-        from = { id = "nixpkgs"; type = "indirect"; };
-        flake = inputs.nixpkgs;
-      };
-    };
+    # registry = {
+    #   nixpkgs = {
+    #     from = { id = "nixpkgs"; type = "indirect"; };
+    #     flake = inputs.nixpkgs;
+    #   };
+    # };
 
     nixPath = [
       "nixpkgs=${inputs.nixpkgs}"
+      "/nix/var/nix/profiles/per-user/root/channels"
+    ];
+
+    systemd.tmpfiles.rules = [
+      "L+ ${inputs.nixpkgs}     - - - - ${inputs.nixpkgs}"
     ];
 
     # buildMachines = [

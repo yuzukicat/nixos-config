@@ -14,7 +14,7 @@
     # ./modules/mail.nix
     ./modules/mapping.nix
     # ./modules/mime-apps.nix
-    ./modules/programs.nix
+    # ./modules/programs.nix
     # ./modules/rust.nix
     # ./modules/task.nix
     # ./modules/tmux.nix

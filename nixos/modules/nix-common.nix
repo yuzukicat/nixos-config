@@ -48,12 +48,12 @@
       stalled-download-timeout = 10;
     };
 
-    # registry = {
-    #   nixpkgs = {
-    #     from = { id = "nixpkgs"; type = "indirect"; };
-    #     flake = inputs.nixpkgs;
-    #   };
-    # };
+    registry = {
+      nixpkgs = {
+        from = { id = "nixpkgs"; type = "indirect"; };
+        flake = unstable;
+      };
+    };
 
     nixPath = [
       "nixpkgs=${inputs.nixpkgs}"
@@ -73,8 +73,4 @@
     #   }
     # ];
   };
-  
-  systemd.tmpfiles.rules = [
-    "L+ ${inputs.nixpkgs}     - - - - ${inputs.nixpkgs}"
-  ];
 }

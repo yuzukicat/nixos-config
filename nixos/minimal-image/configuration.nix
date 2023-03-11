@@ -172,8 +172,8 @@
     # Allow the user to log in as root without a password.
     users.root.initialHashedPassword = "";
   };
-  # home-manager.users."nixos" =
-  #   import ../../home/blacksteel.nix;
+  home-manager.users."nixos" =
+    import ../../home/minimal-iso.nix;
   # Transmission user group
   # users.groups."transmission".members = [ config.users.users.nixos.name ];
 

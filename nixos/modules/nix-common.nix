@@ -57,7 +57,10 @@
 
     nixPath = [
       "nixpkgs=${inputs.nixpkgs}"
+      "/nix/var/nix/profiles/per-user/root/channels"
+      "/nix/var/nix/profiles/per-user/yuzuki/channels"
     ];
+
 
     # buildMachines = [
     #   {

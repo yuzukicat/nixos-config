@@ -5,19 +5,23 @@
 
   imports = [
     ./modules/wayland-dpi.nix
+    ./modules/alacritty.nix
     ./modules/direnv.nix
     ./modules/firefox.nix
     ./modules/git.nix
     ./modules/gpg.nix
     ./modules/lf.nix
+    ./modules/mail.nix
     ./modules/mapping.nix
     ./modules/mime-apps.nix
     ./modules/programs.nix
     # ./modules/rime-fcitx.nix
     ./modules/rust.nix
     ./modules/task.nix
+    ./modules/tmux.nix
     ./modules/user-dirs.nix
     # ./modules/xdgify.nix
+    ./modules/helix
     ./modules/shell
   ];
 
@@ -28,11 +32,11 @@
   #   configuration = import ./modules/plasma.nix;
   # };
 
-  programs.zsh.loginExtra = ''
-    if [[ -z $DISPLAY && "$(tty)" = /dev/tty1 ]] && type sway >/dev/null; then
-      exec systemd-cat --identifier=sway sway
-    fi
-  '';
+  # programs.zsh.loginExtra = ''
+  #   if [[ -z $DISPLAY && "$(tty)" = /dev/tty1 ]] && type sway >/dev/null; then
+  #     exec systemd-cat --identifier=sway sway
+  #   fi
+  # '';
 
   # home.sessionVariables.GTK_USE_PORTAL = 1;
 

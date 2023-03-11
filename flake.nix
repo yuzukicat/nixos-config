@@ -288,7 +288,7 @@
       };
 
       minimal-image = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs {
-        extraModules = with nixosModules; [ home-manager plsama-5-27 emacs-overlay ];
+        extraModules = with nixosModules; [ sops plsama-5-27 emacs-overlay ];
       };
     };
 

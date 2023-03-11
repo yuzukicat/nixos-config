@@ -240,19 +240,19 @@
         ];
       };
 
-      plsama-5-27 = { config, ... }: {
-        nixpkgs.overlays = [
-          (final: prev: {
-            inherit (inputs.nixpkgs-plasma-5-27.legacyPackages.${config.nixpkgs.system})
-              libsForQt5;
-          })
-        ];
+      # plsama-5-27 = { config, ... }: {
+      #   nixpkgs.overlays = [
+      #     (final: prev: {
+      #       inherit (inputs.nixpkgs-plasma-5-27.legacyPackages.${config.nixpkgs.system})
+      #         libsForQt5;
+      #     })
+      #   ];
 
-        disabledModules = [ "services/x11/desktop-managers/plasma5.nix" ];
-        imports = [
-          "${inputs.nixpkgs-plasma-5-27}/nixos/modules/services/x11/desktop-managers/plasma5.nix"
-        ];
-      };
+      #   disabledModules = [ "services/x11/desktop-managers/plasma5.nix" ];
+      #   imports = [
+      #     "${inputs.nixpkgs-plasma-5-27}/nixos/modules/services/x11/desktop-managers/plasma5.nix"
+      #   ];
+      # };
     };
 
     mkSystem = name: system: nixpkgs: { extraModules ? [] }: nixpkgs.lib.nixosSystem {
@@ -284,7 +284,7 @@
       };
 
       blacksteel = mkSystem "blacksteel" "x86_64-linux" inputs.nixpkgs {
-        extraModules = with nixosModules; [ home-manager sops plsama-5-27 emacs-overlay ];
+        extraModules = with nixosModules; [ home-manager sops emacs-overlay ];
       };
 
       minimal-image = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs {

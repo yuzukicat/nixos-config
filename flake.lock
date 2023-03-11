@@ -123,11 +123,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1678496470,
-        "narHash": "sha256-5WEdrN+ABrNOdfQc2k2mf+fj+ZvZR1Dp/PtypEdlFWA=",
+        "lastModified": 1678547626,
+        "narHash": "sha256-aQ0PpPNEBp7gAoRDLgXtuKRDj5RHVaQpZLFsHpzdjE4=",
         "owner": "oxalica",
         "repo": "nil",
-        "rev": "09bcbd1ddddcbc79ff608e75f24e0b1e38e3d4ae",
+        "rev": "2552c08e3967e3a5137d7d3db0af5166877d4630",
         "type": "github"
       },
       "original": {
@@ -188,22 +188,6 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-plasma-5-27": {
-      "locked": {
-        "lastModified": 1676373744,
-        "narHash": "sha256-Nla/NoATvNGaasVsRe80DnNjCP/KvSvtWkm6A20xFAU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "a217df51cf3d4a6dba245eba903f1b5604ca30a1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "pull/211767/head",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -315,7 +299,6 @@
         "meta-sifive": "meta-sifive",
         "nix-dram": "nix-dram",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-plasma-5-27": "nixpkgs-plasma-5-27",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unmatched": "nixpkgs-unmatched",
         "nocargo": "nocargo",

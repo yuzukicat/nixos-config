@@ -51,15 +51,13 @@
     registry = {
       nixpkgs = {
         from = { id = "nixpkgs"; type = "indirect"; };
-        flake = unstable;
+        flake = inputs.nixpkgs;
       };
     };
 
     nixPath = [
       "nixpkgs=${inputs.nixpkgs}"
-      "/nix/var/nix/profiles/per-user/root/channels"
     ];
-
 
     # buildMachines = [
     #   {

@@ -5,7 +5,6 @@
 
   imports = [
     ./modules/wayland-dpi.nix
-    ./modules/alacritty.nix
     ./modules/direnv.nix
     ./modules/firefox.nix
     ./modules/git.nix
@@ -17,7 +16,6 @@
     # ./modules/rime-fcitx.nix
     ./modules/rust.nix
     ./modules/task.nix
-    ./modules/tmux.nix
     ./modules/user-dirs.nix
     # ./modules/xdgify.nix
     ./modules/shell

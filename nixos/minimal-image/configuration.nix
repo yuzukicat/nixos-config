@@ -7,6 +7,7 @@
     ../modules/console-env.nix
     ../modules/cups.nix
     ../modules/desktop-server.nix
+    ../modules/docker.nix
     ../modules/internationalisation.nix
     ../modules/multitouch.nix
     ../modules/network.nix
@@ -50,10 +51,15 @@
     #
     # NB. Don't upgrate to 6.2 before the BTRFS bug gets fixed.
     # https://lore.kernel.org/linux-btrfs/CABXGCsNzVxo4iq-tJSGm_kO1UggHXgq6CdcHDL=z5FL4njYXSQ@mail.gmail.com
-    kernelPackages = pkgs.linuxPackages_6_1;
+    kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [ "kvm-amd" "amdgpu" ];
     extraModulePackages = [ ];
+    # For amd dual monitor
+    boot.kernelParams = [
+      "video=card0-DP-1:2560x1440@60"
+      "video=card0-DP-2:2560x1440@60"
+    ];
 
     # For hibernate-resume.
     # `sudo btrfs inspect-internal map-swapfile /var/swap/resume --resume-offset`
@@ -166,7 +172,7 @@
       # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
       group = config.users.groups.nixos.name;
-      extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" "video" ];
+      extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" "video" "docker" ];
     };
     groups."nixos".gid = 1000;
     # Allow the user to log in as root without a password.
@@ -239,6 +245,7 @@
     #     };
     #   };
     # };
+    fwupd.enable = true;
   };
 
   # Global ssh settings. Also for remote builders.

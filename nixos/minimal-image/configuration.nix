@@ -53,7 +53,7 @@
     # https://lore.kernel.org/linux-btrfs/CABXGCsNzVxo4iq-tJSGm_kO1UggHXgq6CdcHDL=z5FL4njYXSQ@mail.gmail.com
     kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelModules = [ "kvm-amd" "amdgpu" ];
+    kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
     # For amd dual monitor
     kernelParams = [

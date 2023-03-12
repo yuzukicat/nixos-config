@@ -44,7 +44,7 @@
     # kernelPackages = pkgs.linuxPackages_6_1;
     kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelModules = [ "kvm-amd" "amdgpu" ];
+    kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
     # For amd dual monitor
     kernelParams = [

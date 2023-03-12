@@ -22,7 +22,6 @@
     cabal-install gnumake yarn binutils ruby_3_1 xclip
     bash-completion cling elixir gh
     nodejs nodePackages.npm-check-updates
-    haskell
     haskellPackages.hocker
 
     # Configuration from https://github.com/sauricat/flakes.git/home/home.nix

@@ -274,7 +274,7 @@
   environment.systemPackages = with pkgs; [
     # systemPackages Refered from ../invar/configuration.nix && ../minimal-image
     neofetch
-    # radeontop
+    radeontop
     solaar # Logitech devices control.
     ltunify
     virt-manager

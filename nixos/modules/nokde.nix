@@ -51,24 +51,24 @@
     };
 
     # To make it work on clevo nh55vr rtx-3070max-q
-    videoDrivers = [ "nvidia" ];
-    # videoDrivers = [ "amdgpu" ];
+    # videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "amdgpu" ];
   };
 
-  # # HIP
-  # systemd.tmpfiles.rules = [
-  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
-  # ];
+  # HIP
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+  ];
 
-  # # OpenCL && amdvlk
-  # hardware.opengl.extraPackages = with pkgs; [
-  #   rocm-opencl-icd
-  #   rocm-opencl-runtime
-  #   amdvlk
-  # ];
+  # OpenCL && amdvlk
+  hardware.opengl.extraPackages = with pkgs; [
+    rocm-opencl-icd
+    rocm-opencl-runtime
+    amdvlk
+  ];
 
-  # # Vulkan
-  # hardware.opengl.driSupport = true;
+  # Vulkan
+  hardware.opengl.driSupport = true;
 
-  # services.colord.enable = true;
+  services.colord.enable = true;
 }

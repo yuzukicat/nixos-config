@@ -1,10 +1,9 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = [ 
-    pkgs.dockerTools
-    pkgs.nix-prefetch-docker
-    haskellPackages.hocker
+  environment.systemPackages = with pkgs; [ 
+    dockerTools
+    nix-prefetch-docker
   ];
   virtualisation.docker.enable = true;
   virtualisation.docker.storageDriver = "btrfs";

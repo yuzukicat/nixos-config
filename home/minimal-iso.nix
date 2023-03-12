@@ -11,6 +11,7 @@
     ./modules/git.nix
     ./modules/gpg.nix
     ./modules/lf.nix
+    ./modules/light-home.nix
     ./modules/mail.nix
     ./modules/mapping.nix
     ./modules/mime-apps.nix

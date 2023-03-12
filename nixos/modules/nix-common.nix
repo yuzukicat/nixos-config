@@ -1,7 +1,7 @@
 { pkgs, config, inputs, ... }:
 {
   # Install a proprietary or unfree package
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
   #
   # nixpkgs.config.permittedInsecurePackages = with pkgs; [
   #     "qtwebkit-5.212.0-alpha4"

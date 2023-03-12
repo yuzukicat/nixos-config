@@ -180,12 +180,12 @@
   # Services.
   # AMD Ryzen 5950x
   systemd.services.nix-daemon.serviceConfig = {
-    CPUQuota = "1500%";
+    CPUQuota = "3000%";
     CPUWeight = 50;
 
-    # MemoryMax = "26G";
-    # MemoryHigh = "24G";
-    # MemorySwapMax = "32G";
+    MemoryMax = "52G";
+    MemoryHigh = "48G";
+    MemorySwapMax = "64G";
     IOWeight = 50;
   };
   # Workaround: https://github.com/NixOS/nixpkgs/issues/81138
@@ -275,7 +275,7 @@
   environment.systemPackages = with pkgs; [
     # systemPackages Refered from ../invar/configuration.nix && ../minimal-image
     neofetch
-    # radeontop
+    radeontop
     solaar # Logitech devices control.
     ltunify
     virt-manager
@@ -283,7 +283,7 @@
 
   # Expend the disk size
   system.build.image = import <nixpkgs/nixos/lib/make-disk-image.nix> {
-    diskSize = 1024 * 28;
+    diskSize = 1024 * 64;
     installBootLoader = true;
     partitionTableType = "efi";
     inherit config lib pkgs;

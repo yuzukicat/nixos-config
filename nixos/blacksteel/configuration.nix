@@ -40,10 +40,16 @@
     #
     # NB. Don't upgrate to 6.2 before the BTRFS bug gets fixed.
     # https://lore.kernel.org/linux-btrfs/CABXGCsNzVxo4iq-tJSGm_kO1UggHXgq6CdcHDL=z5FL4njYXSQ@mail.gmail.com
-    kernelPackages = pkgs.linuxPackages_6_1;
+    # kernelPackages = pkgs.linuxPackages_6_1;
+    kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [ "kvm-amd" "amdgpu" ];
     extraModulePackages = [ ];
+    # For amd dual monitor
+    boot.kernelParams = [
+      "video=card0-DP-1:2560x1440@60"
+      "video=card0-DP-2:2560x1440@60"
+    ];
 
     # For hibernate-resume.
     # `sudo btrfs inspect-internal map-swapfile /var/swap/resume --resume-offset`
@@ -173,9 +179,9 @@
     CPUQuota = "3000%";
     CPUWeight = 50;
 
-    # MemoryMax = "26G";
-    # MemoryHigh = "24G";
-    # MemorySwapMax = "32G";
+    MemoryMax = "52G";
+    MemoryHigh = "48G";
+    MemorySwapMax = "64G";
     IOWeight = 50;
   };
   # Workaround: https://github.com/NixOS/nixpkgs/issues/81138
@@ -266,7 +272,7 @@
   environment.systemPackages = with pkgs; [
     # systemPackages Refered from ../invar/configuration.nix && ../minimal-image
     neofetch
-    # radeontop
+    radeontop
     solaar # Logitech devices control.
     ltunify
     virt-manager

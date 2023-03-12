@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [ 
-    dockerTools
     nix-prefetch-docker
   ];
   virtualisation.docker.enable = true;

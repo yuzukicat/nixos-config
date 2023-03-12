@@ -44,13 +44,14 @@
     # kernelPackages = pkgs.linuxPackages_6_1;
     kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelModules = [ "kvm-amd" "amdgpu" ];
+    # kernelModules = [ "kvm-amd" "amdgpu" ];
+    kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
     # For amd dual monitor
-    kernelParams = [
-      "video=card0-DP-1:2560x1440@60"
-      "video=card0-DP-2:2560x1440@60"
-    ];
+    # kernelParams = [
+    #   "video=card0-DP-1:2560x1440@60"
+    #   "video=card0-DP-2:2560x1440@60"
+    # ];
 
     # For hibernate-resume.
     # `sudo btrfs inspect-internal map-swapfile /var/swap/resume --resume-offset`
@@ -273,7 +274,7 @@
   environment.systemPackages = with pkgs; [
     # systemPackages Refered from ../invar/configuration.nix && ../minimal-image
     neofetch
-    radeontop
+    # radeontop
     solaar # Logitech devices control.
     ltunify
     virt-manager

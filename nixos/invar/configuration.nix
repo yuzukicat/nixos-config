@@ -1,22 +1,20 @@
 # Forked from github.com/yuzukilica/nixos-config
 # For the purpose of testing, to install nixos on clevo nh55vr workstation.
-{ lib, config, pkgs, inputs, my, ... }:
+{ lib, config, pkgs, inputs, my, modulesPath, ... }:
 
 {
   imports = [
     # ./vm.nix
-
+    (modulesPath + "/profiles/qemu-guest.nix")
     ../modules/bluetooth.nix
     ../modules/console-env.nix
-    ../modules/cups.nix
     ../modules/desktop-server.nix
     ../modules/internationalisation.nix
     ../modules/multitouch.nix
     ../modules/network.nix
     ../modules/nix-common.nix
     ../modules/nix-registry.nix
-    ../modules/nokde.nix
-    ../modules/steam.nix
+    ../modules/gui.nix
   ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.blacksteel);
 
   # Boot.
@@ -229,6 +227,7 @@
         };
       };
     };
+    fwupd.enable = true;
   };
 
   # Global ssh settings. Also for remote builders.
@@ -269,7 +268,28 @@
     solaar # Logitech devices control.
     ltunify
     virt-manager
+    aspell
+    arandr
+    bat
+    btop # A monitor of resources
+    dmenu # dmenu is a fast and lightweight dynamic menu for X
+    slstatus # slstatus is a status monitor for window managers that use WM_NAME or stdin to fill the status bar
+    feh # feh is an X11 image viewer aimed mostly at console users
+    gcc
+    glow # Render markdown on the CLI, with pizzazz!
+    gimp
+    killall
+    my.pkgs.hyfetch
+    pandoc
+    pamixer # pamixer is like amixer but for pulseaudio. It can control the volume levels of the sinks
+    gnumake
+    texmacs
+    texlive.combined.scheme-full
   ];
+
+  qt.enable = true;
+  qt.platformTheme = "gtk2";
+  qt.style = "gtk2";
 
   system.stateVersion = "22.11";
 }

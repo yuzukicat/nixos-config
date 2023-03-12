@@ -283,7 +283,7 @@
 
   # Expend the disk size
   system.build.image = import <nixpkgs/nixos/lib/make-disk-image.nix> {
-    diskSize = 1024 * 64;
+    diskSize = 1024 * 28;
     installBootLoader = true;
     partitionTableType = "efi";
     inherit config lib pkgs;

@@ -135,6 +135,7 @@
               package = final.emacs29;
               # Force these two even though they're outside of the org config.
               extraEmacsPackages = epkgs: [
+                my.pkgs.lsp-bridge
                 epkgs.use-package
                 epkgs.org
                 epkgs.cmake-mode

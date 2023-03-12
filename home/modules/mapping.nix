@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, my, ... }:
 let
   copyDir = fromDir: toDir: # fromDir is a path, toDir is a string.
     lib.mapAttrs'

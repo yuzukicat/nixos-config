@@ -29,5 +29,5 @@ in
           easy_en/use_wordninja_rs: true
           easy_en/wordninja_rs_path: "${pkgs.wordninja-rs}/bin/wordninja"
       '';
-      }
+      };
 }

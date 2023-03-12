@@ -10,6 +10,7 @@
     ../modules/console-env.nix
     ../modules/cups.nix
     ../modules/desktop-server.nix
+    ../modules/docker.nix
     ../modules/internationalisation.nix
     ../modules/multitouch.nix
     ../modules/network.nix
@@ -162,7 +163,7 @@
       # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
       group = config.users.groups.yuzuki.name;
-      extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" "video" ];
+      extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" "video" "docker" ];
     };
     groups."yuzuki".gid = 1000;
     # Allow the user to log in as root without a password.

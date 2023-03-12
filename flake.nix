@@ -106,7 +106,7 @@
         };
       };
 
-      emacs-overlay = { config, inputs, ... }: {
+      emacs-overlay = { config, inputs, my, ... }: {
         nixpkgs.overlays = [
           inputs.emacs-overlay.overlay
           (final: prev: {

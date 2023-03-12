@@ -44,14 +44,14 @@
     # kernelPackages = pkgs.linuxPackages_6_1;
     kernelPackages = pkgs.linuxPackages_latest;
 
-    # kernelModules = [ "kvm-amd" "amdgpu" ];
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [ "kvm-amd" "amdgpu" ];
+    # kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
     # For amd dual monitor
-    # kernelParams = [
-    #   "video=card0-DP-1:2560x1440@60"
-    #   "video=card0-DP-2:2560x1440@60"
-    # ];
+    kernelParams = [
+      "video=card0-DP-1:2560x1440@60"
+      "video=card0-DP-2:2560x1440@60"
+    ];
 
     # For hibernate-resume.
     # `sudo btrfs inspect-internal map-swapfile /var/swap/resume --resume-offset`
@@ -83,9 +83,32 @@
   # Use nixos-generate-config --root /mnt then copy and paste
   # Questions.
   # Work Station
+  # fileSystems = {
+  #   "/" = {
+  #     device = "/dev/disk/by-uuid/5fe2d576-ca83-41a1-a431-95b8374505ca";
+  #     fsType = "btrfs";
+  #     # zstd:1  W: ~510MiB/s
+  #     # zstd:3  W: ~330MiB/s
+  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
+  #   };
+
+  #   "/boot" = {
+  #     device = "/dev/disk/by-uuid/7B83-4C68";
+  #     fsType = "vfat";
+  #   };
+
+  #   "/home" = {
+  #     device = "/dev/disk/by-uuid/413ae8ad-772e-48f8-b5b0-2468c20c5a66";
+  #     fsType = "btrfs";
+  #     # zstd:1  W: ~510MiB/s
+  #     # zstd:3  W: ~330MiB/s
+  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
+  #   };
+  # };
+  # Yuzucat
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/5fe2d576-ca83-41a1-a431-95b8374505ca";
+      device = "/dev/disk/by-uuid/f4209ec3-f651-4017-8732-9a201b7b48ba";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
@@ -93,12 +116,12 @@
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/7B83-4C68";
+      device = "/dev/disk/by-uuid/0D59-C632";
       fsType = "vfat";
     };
 
     "/home" = {
-      device = "/dev/disk/by-uuid/413ae8ad-772e-48f8-b5b0-2468c20c5a66";
+      device = "/dev/disk/by-uuid/c91e8302-9950-4d9c-afd2-5a340c1c86de";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s

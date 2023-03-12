@@ -1,6 +1,6 @@
 {
   gpg = {
-    fingerprint = "F90FFD6D585C2BA1F13DE8A97571654CF88E31C2";
+    fingerprint = "18F26315BA5E759C625CA569B9E2C6CCFE325354";
     publicKeyFile = ./gpg-pubkey.asc;
   };
 

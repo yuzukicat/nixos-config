@@ -29,11 +29,18 @@
       checkReversePath = "loose";
     };
 
-    # Work Station
+    # yuzuki
     interfaces = {
-      enp4s0.useDHCP = lib.mkDefault true;
-      wlp5s0.useDHCP = lib.mkDefault true;
+      docker0.useDHCP = lib.mkDefault true;
+      enp15s0.useDHCP = lib.mkDefault true;
+      wlp14s0.useDHCP = lib.mkDefault true;
     };
+    
+    # Work Station
+    # interfaces = {
+    #   enp4s0.useDHCP = lib.mkDefault true;
+    #   wlp5s0.useDHCP = lib.mkDefault true;
+    # };
 
     # 5950x
     # interfaces = {

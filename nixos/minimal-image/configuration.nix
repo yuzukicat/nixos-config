@@ -56,7 +56,7 @@
     kernelModules = [ "kvm-amd" "amdgpu" ];
     extraModulePackages = [ ];
     # For amd dual monitor
-    boot.kernelParams = [
+    kernelParams = [
       "video=card0-DP-1:2560x1440@60"
       "video=card0-DP-2:2560x1440@60"
     ];

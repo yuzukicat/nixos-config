@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 let
   copyDir = fromDir: toDir: # fromDir is a path, toDir is a string.
     lib.mapAttrs'
@@ -27,7 +27,7 @@ in
       ".config/ibus/rime/easy_en.custom.yaml".text = ''
         patch:
           easy_en/use_wordninja_rs: true
-          easy_en/wordninja_rs_path: "${pkgs.wordninja-rs}/bin/wordninja"
+          easy_en/wordninja_rs_path: "${my.pkgs.wordninja-rs}/bin/wordninja"
       '';
       };
 }

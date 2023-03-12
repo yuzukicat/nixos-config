@@ -16,6 +16,7 @@
         anthy
         rime
         uniemoji
+        my.pkgs.librime-lua
       ];
     };
   };

@@ -49,6 +49,7 @@
     ".local/share/password-store".source = linkPersonal "password-store";
     ".local/share/task".source = linkPersonal "taskwarrior";
     ".ssh".source = linkPersonal "ssh";
+    ".config/ibus/rime".source = linkPersonal "rime";
     ".emacs.d/init.el" = {
       source = ./modules/emacs/init.el;
       recursive = true;

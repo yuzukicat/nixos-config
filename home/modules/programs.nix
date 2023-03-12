@@ -74,7 +74,7 @@ in {
     goldendict zotero
 
     # non-oss:
-    zoom-us obsidian my.pkgs.librime-lua wordninja
+    zoom-us obsidian my.pkgs.librime-lua
     docker
     discocss #?discord with bug
     notmuch # email engine

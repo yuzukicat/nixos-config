@@ -1,4 +1,4 @@
-{ pkgs, my, ... }:
+{ pkgs, ... }:
 {
   i18n = {
     supportedLocales = [ "all" ]; # Override console-env.
@@ -16,7 +16,6 @@
         anthy
         rime
         uniemoji
-        my.pkgs.librime-lua
       ];
     };
   };

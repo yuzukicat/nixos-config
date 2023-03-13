@@ -3,6 +3,9 @@
 "Lsp-mode config."
 ;;; Code:
 
+(add-to-list 'load-path (expand-file-name "lib/lsp-mode" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lib/lsp-mode/clients" user-emacs-directory))
+
 (use-package lsp-mode
       :commands (lsp lsp-deferred)
       :hook (prog-mode . lsp)
@@ -132,7 +135,10 @@
 
 (use-package lsp-treemacs
   :ensure t
-  :after (treemacs lsp))
+  :after (treemacs lsp)
+  :config
+  (setq lsp-treemacs-sync-mode 1)
+  )
 
 (provide 'shu-langserver-lsp)
 ;;; shu-langserver-lsp.el ends here.

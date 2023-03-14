@@ -44,14 +44,14 @@
     # kernelPackages = pkgs.linuxPackages_6_1;
     kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelModules = [ "kvm-amd" "amdgpu" ];
-    # kernelModules = [ "kvm-amd" ];
+    # kernelModules = [ "kvm-amd" "amdgpu" ];
+    kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
     # For amd dual monitor
-    kernelParams = [
-      "video=card0-DP-1:2560x1440@60"
-      "video=card0-DP-2:2560x1440@60"
-    ];
+    # kernelParams = [
+    #   "video=card0-DP-1:2560x1440@60"
+    #   "video=card0-DP-2:2560x1440@60"
+    # ];
 
     # For hibernate-resume.
     # `sudo btrfs inspect-internal map-swapfile /var/swap/resume --resume-offset`
@@ -106,51 +106,51 @@
   #   };
   # };
   # Yuzucat
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/f4209ec3-f651-4017-8732-9a201b7b48ba";
-      fsType = "btrfs";
-      # zstd:1  W: ~510MiB/s
-      # zstd:3  W: ~330MiB/s
-      # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
-    };
-
-    "/boot" = {
-      device = "/dev/disk/by-uuid/0D59-C632";
-      fsType = "vfat";
-    };
-
-    "/home" = {
-      device = "/dev/disk/by-uuid/c91e8302-9950-4d9c-afd2-5a340c1c86de";
-      fsType = "btrfs";
-      # zstd:1  W: ~510MiB/s
-      # zstd:3  W: ~330MiB/s
-      # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
-    };
-  };
-  # # 5950x PC
   # fileSystems = {
   #   "/" = {
-  #     device = "/dev/disk/by-uuid/9f88fff0-fd52-4ec4-8064-11e87d543ca8";
+  #     device = "/dev/disk/by-uuid/f4209ec3-f651-4017-8732-9a201b7b48ba";
   #     fsType = "btrfs";
   #     # zstd:1  W: ~510MiB/s
   #     # zstd:3  W: ~330MiB/s
-  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" ];
+  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
   #   };
 
   #   "/boot" = {
-  #     device = "/dev/disk/by-uuid/1B53-78FB";
+  #     device = "/dev/disk/by-uuid/0D59-C632";
   #     fsType = "vfat";
   #   };
 
   #   "/home" = {
-  #     device = "/dev/disk/by-uuid/15e05209-11bd-4fc8-b63b-52a37f25824c";
+  #     device = "/dev/disk/by-uuid/c91e8302-9950-4d9c-afd2-5a340c1c86de";
   #     fsType = "btrfs";
   #     # zstd:1  W: ~510MiB/s
   #     # zstd:3  W: ~330MiB/s
   #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
   #   };
   # };
+  # # 5950x PC
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/9f88fff0-fd52-4ec4-8064-11e87d543ca8";
+      fsType = "btrfs";
+      # zstd:1  W: ~510MiB/s
+      # zstd:3  W: ~330MiB/s
+      # options = [ "relatime" "compress=zstd:1" "subvol=@" ];
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-uuid/1B53-78FB";
+      fsType = "vfat";
+    };
+
+    "/home" = {
+      device = "/dev/disk/by-uuid/15e05209-11bd-4fc8-b63b-52a37f25824c";
+      fsType = "btrfs";
+      # zstd:1  W: ~510MiB/s
+      # zstd:3  W: ~330MiB/s
+      # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
+    };
+  };
 
   # swapDevices = [
   #   {
@@ -204,9 +204,9 @@
     CPUQuota = "3000%";
     CPUWeight = 50;
 
-    MemoryMax = "52G";
-    MemoryHigh = "48G";
-    MemorySwapMax = "64G";
+    # MemoryMax = "52G";
+    # MemoryHigh = "48G";
+    # MemorySwapMax = "64G";
     IOWeight = 50;
   };
   # Workaround: https://github.com/NixOS/nixpkgs/issues/81138

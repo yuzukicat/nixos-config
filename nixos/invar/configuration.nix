@@ -15,7 +15,7 @@
     ../modules/nix-common.nix
     ../modules/nix-registry.nix
     ../modules/gui.nix
-  ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.blacksteel);
+  ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.invar);
 
   # Boot.
   boot = {
@@ -95,29 +95,6 @@
       # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
     };
   };
-  # # 5950x PC
-  # fileSystems = {
-  #   "/" = {
-  #     device = "/dev/disk/by-uuid/9f88fff0-fd52-4ec4-8064-11e87d543ca8";
-  #     fsType = "btrfs";
-  #     # zstd:1  W: ~510MiB/s
-  #     # zstd:3  W: ~330MiB/s
-  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" ];
-  #   };
-
-  #   "/boot" = {
-  #     device = "/dev/disk/by-uuid/1B53-78FB";
-  #     fsType = "vfat";
-  #   };
-
-  #   "/home" = {
-  #     device = "/dev/disk/by-uuid/15e05209-11bd-4fc8-b63b-52a37f25824c";
-  #     fsType = "btrfs";
-  #     # zstd:1  W: ~510MiB/s
-  #     # zstd:3  W: ~330MiB/s
-  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
-  #   };
-  # };
 
   # swapDevices = [
   #   {
@@ -134,8 +111,7 @@
     cpu.amd.updateMicrocode = true;
     logitech.wireless.enable = true;
     logitech.wireless.enableGraphical = true; # Solaar.
-    # To-do: GPU acceleration
-    # opengl.extraPackages = with pkgs; [ intel-media-driver ]; # vaapi
+    hardware.opengl.enable = true;
   };
 
   # Time Zone

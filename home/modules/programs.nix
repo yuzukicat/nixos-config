@@ -96,9 +96,6 @@ in {
       "golang.org/x/tools/gopls@latest" = pkgs.gopls;
       "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;
     };
-    extraGoPaths = [
-      "./storage/personal/golang-leet-code-solve"
-    ];
   };
   programs.hyfetch.settings = {
     preset = "transgender";

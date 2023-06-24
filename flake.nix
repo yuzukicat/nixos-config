@@ -41,10 +41,10 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rawmv = {
-      url = "github:oxalica/rawmv";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # rawmv = {
+    #   url = "github:oxalica/rawmv";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     meta-sifive = {
       url = "github:sifive/meta-sifive/2021.11.00";
       flake = false;
@@ -427,7 +427,7 @@
           [
             system-label
             {networking.hostName = lib.mkDefault name;}
-            { nixpkgs.overlays = builtins.attrValues overlays; }
+            {nixpkgs.overlays = builtins.attrValues overlays;}
             ./nixos/${name}/configuration.nix
           ]
           ++ extraModules;
@@ -450,15 +450,15 @@
           extraModules = with nixosModules; [home-manager sops emacs-overlay];
         };
 
-        unmatched = mkSystem "unmatched" "riscv64-linux" inputs.nixpkgs-unmatched { };
+        unmatched = mkSystem "unmatched" "riscv64-linux" inputs.nixpkgs-unmatched {};
         unmatched-cross = mkSystem "unmatched" "x86_64-linux" inputs.nixpkgs-unmatched {
           extraModules = [
-            { nixpkgs.crossSystem.config = "riscv64-unknown-linux-gnu"; }
+            {nixpkgs.crossSystem.config = "riscv64-unknown-linux-gnu";}
           ];
         };
 
-        minimal-image-stable = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs-stable { };
-        minimal-image-unstable = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs { };
+        minimal-image-stable = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs-stable {};
+        minimal-image-unstable = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs {};
       };
 
       images = {

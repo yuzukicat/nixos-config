@@ -30,7 +30,7 @@
     lua53Packages.digestif
     cmake-language-server
     kotlin-language-server
-    my.pkgs.gopls
+    gopls
     my.pkgs.gotools
     # go-tools
     # protoc-gen-go

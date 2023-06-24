@@ -91,6 +91,7 @@
     cryptsetup
     fastpbkdf2
     drive
+    yubikey-manager
   ];
 
   programs.less = {

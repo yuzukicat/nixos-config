@@ -82,7 +82,7 @@
       fetchSubmodules = false;
       sha256 = "sha256-1VLU7pg9WElFkNXxyH6+WSeebGLtGdC2eEBLbLHi78w=";
     };
-    vendorSha256 = "sha256-W5t1ZLI4zBocAtxfB8zXfxx2asgUXrMi9YOfkWcOxmM=";
+    vendorSha256 = "sha256-01Y7v+ITIx1uzASLDuB/WKmXUijAdjvXQvn30u3BH/Y=";
     date = "2023-06-23";
   };
   lsp-bridge = {
@@ -120,51 +120,6 @@
       sha256 = "sha256-9mxHmMeA/tNO0axc8cQD1MzWsG0GIJc8a57MXKycZf4=";
     };
     date = "2023-05-19";
-  };
-  rawmv = {
-    pname = "rawmv";
-    version = "v1.0.1";
-    src = fetchFromGitHub {
-      owner = "oxalica";
-      repo = "rawmv";
-      rev = "v1.0.1";
-      fetchSubmodules = false;
-      sha256 = "sha256-/9ZboDyd07xu+8I/fHmofvU64Laj5FZEbE8UK3tfO/w=";
-    };
-    cargoHash = "sha256-sEpvRgvxcH7qnUZ5S3khXdJucmhZ8tl/tIVfpQxV56Y=";
-  };
-  sway-systemd = {
-    pname = "sway-systemd";
-    version = "v0.4.0";
-    src = fetchFromGitHub {
-      owner = "alebastr";
-      repo = "sway-systemd";
-      rev = "v0.4.0";
-      fetchSubmodules = false;
-      sha256 = "sha256-wznYE1/lVJtvf5Nq96gbPYisxc2gWLahVydwcH1vwoQ=";
-    };
-  };
-  sway-unwrapped = {
-    pname = "sway-unwrapped";
-    version = "1.8-rc2";
-    src = fetchFromGitHub {
-      owner = "swaywm";
-      repo = "sway";
-      rev = "1.8-rc2";
-      fetchSubmodules = false;
-      sha256 = "sha256-a1ypTSWcyOk1s97ogrVFrKfhRKfkHzbAqN5smoO36Wg=";
-    };
-  };
-  swaylock-effects = {
-    pname = "swaylock-effects";
-    version = "v1.6.11";
-    src = fetchFromGitHub {
-      owner = "jirutka";
-      repo = "swaylock-effects";
-      rev = "v1.6.11";
-      fetchSubmodules = false;
-      sha256 = "sha256-MKmWVYssO9HAcP5uqwpy9kDa6/kfZyV2NI7ibozt7Ug=";
-    };
   };
   xpi = {
     pname = "xpi";

@@ -128,7 +128,7 @@
         "extract": null,
         "name": "gotools",
         "passthru": {
-            "vendorSha256": "sha256-W5t1ZLI4zBocAtxfB8zXfxx2asgUXrMi9YOfkWcOxmM="
+            "vendorSha256": "sha256-01Y7v+ITIx1uzASLDuB/WKmXUijAdjvXQvn30u3BH/Y="
         },
         "pinned": false,
         "src": {
@@ -203,88 +203,6 @@
             "type": "github"
         },
         "version": "1d96f9984d581bbf6b64b940599786a9c91e2ad6"
-    },
-    "rawmv": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "rawmv",
-        "passthru": {
-            "cargoHash": "sha256-sEpvRgvxcH7qnUZ5S3khXdJucmhZ8tl/tIVfpQxV56Y="
-        },
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "oxalica",
-            "repo": "rawmv",
-            "rev": "v1.0.1",
-            "sha256": "sha256-/9ZboDyd07xu+8I/fHmofvU64Laj5FZEbE8UK3tfO/w=",
-            "type": "github"
-        },
-        "version": "v1.0.1"
-    },
-    "sway-systemd": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "sway-systemd",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "alebastr",
-            "repo": "sway-systemd",
-            "rev": "v0.4.0",
-            "sha256": "sha256-wznYE1/lVJtvf5Nq96gbPYisxc2gWLahVydwcH1vwoQ=",
-            "type": "github"
-        },
-        "version": "v0.4.0"
-    },
-    "sway-unwrapped": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "sway-unwrapped",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "swaywm",
-            "repo": "sway",
-            "rev": "1.8-rc2",
-            "sha256": "sha256-a1ypTSWcyOk1s97ogrVFrKfhRKfkHzbAqN5smoO36Wg=",
-            "type": "github"
-        },
-        "version": "1.8-rc2"
-    },
-    "swaylock-effects": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "swaylock-effects",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "jirutka",
-            "repo": "swaylock-effects",
-            "rev": "v1.6.11",
-            "sha256": "sha256-MKmWVYssO9HAcP5uqwpy9kDa6/kfZyV2NI7ibozt7Ug=",
-            "type": "github"
-        },
-        "version": "v1.6.11"
     },
     "xpi": {
         "cargoLocks": null,

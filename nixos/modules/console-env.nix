@@ -36,7 +36,7 @@
     file # Determine the type of a file and its data. Doesn't take the file extension into account, and runs a series of tests to discover the type of file data.
     rsync
     dnsutils # dig example.com MX +short; nslookup example.com
-    # inputs.rawmv.packages.${pkgs.system}.rawmv # Utilities.
+    inputs.rawmv.packages.${pkgs.system}.rawmv # Utilities.
     e2fsprogs # For ext234.
     compsize # Filesystems.
     gnupg
@@ -148,7 +148,7 @@
   systemd.services."autovt@tty1".enable = false;
 
   systemd.timers."dis-pipeline" = {
-    wantedBy = [ "timers.target" ];
+    wantedBy = ["timers.target"];
     timerConfig = {
       OnBootSec = "5m";
       OnUnitActiveSec = "5m";
@@ -163,15 +163,15 @@
       pkgs.gyb
     ];
     script = ''
-    DISCORD_TOKEN=
-    # sops exec-env secret.yaml
-    ${pkgs.bash}/bin/bash discordchatexporter-cli exportdm -t $DISCORD_TOKEN -f HtmlLight -o /home/yuzuki/storage/personal/developers.yuzuki/dis-pipeline/ --after $(date +"%Y-%m-%d" -d "1")
-    ${pkgs.bash}/bin/bash discordchatexporter-cli export -c 990609254656393237 981066064446246963 1108580536546504855 -t $DISCORD_TOKEN -f HtmlLight -o /home/yuzuki/storage/personal/developers.yuzuki/dis-pipeline/ --after $(date +"%Y-%m-%d" -d "1")
-    # gyb --action create-project --email dawei.jiang@nowhere.co.jp --config-folder /home/yuzuki/storage/personal/gmail/
-    ${pkgs.bash}/bin/bash gyb --action backup --email dawei.jiang@nowhere.co.jp --config-folder /home/yuzuki/storage/personal/gmail/ --local-folder /home/yuzuki/storage/personal/developers.yuzuki/email-pipeline/ --search "(from: victor@nowhere.co.jp OR yamadera@nowhere.co.jp) OR (to: victor@nowhere.co.jp OR to: yamadera@nowhere.co.jp) AND (after:2023-05-09)"
-    # rename .eml .mht **/*.eml
-    # whisper-cpp-download-ggml-model large
-  '';
+      DISCORD_TOKEN=
+      # sops exec-env secret.yaml
+      ${pkgs.bash}/bin/bash discordchatexporter-cli exportdm -t $DISCORD_TOKEN -f HtmlLight -o /home/yuzuki/storage/personal/developers.yuzuki/dis-pipeline/ --after $(date +"%Y-%m-%d" -d "1")
+      ${pkgs.bash}/bin/bash discordchatexporter-cli export -c 990609254656393237 981066064446246963 1108580536546504855 -t $DISCORD_TOKEN -f HtmlLight -o /home/yuzuki/storage/personal/developers.yuzuki/dis-pipeline/ --after $(date +"%Y-%m-%d" -d "1")
+      # gyb --action create-project --email dawei.jiang@nowhere.co.jp --config-folder /home/yuzuki/storage/personal/gmail/
+      ${pkgs.bash}/bin/bash gyb --action backup --email dawei.jiang@nowhere.co.jp --config-folder /home/yuzuki/storage/personal/gmail/ --local-folder /home/yuzuki/storage/personal/developers.yuzuki/email-pipeline/ --search "(from: victor@nowhere.co.jp OR yamadera@nowhere.co.jp) OR (to: victor@nowhere.co.jp OR to: yamadera@nowhere.co.jp) AND (after:2023-05-09)"
+      # rename .eml .mht **/*.eml
+      # whisper-cpp-download-ggml-model large
+    '';
     serviceConfig = {
       Type = "oneshot";
       User = "yuzuki";

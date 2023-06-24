@@ -103,22 +103,22 @@
       source = ./modules/vdirsyncer/config;
       recursive = true;
     };
-     ".config/khal/config" = {
+    ".config/khal/config" = {
       source = ./modules/khal/config;
       recursive = true;
-     };
-     ".authinfo.gpg" = {
-       source = ./modules/authinfo/.authinfo.gpg;
-       recursive = true;
-     };
-     ".mailcap" = {
-       source = ./modules/wanderlust/.mailcap;
-       recursive = true;
-     };
-     ".mailrc" = {
-       source = ./modules/wanderlust/.mailrc;
-       recursive = true;
-     };
+    };
+    ".authinfo.gpg" = {
+      source = ./modules/authinfo/.authinfo.gpg;
+      recursive = true;
+    };
+    ".mailcap" = {
+      source = ./modules/wanderlust/.mailcap;
+      recursive = true;
+    };
+    ".mailrc" = {
+      source = ./modules/wanderlust/.mailrc;
+      recursive = true;
+    };
   };
 
   programs.gpg.homedir = "${config.home.homeDirectory}/storage/personal/gnupg";
@@ -136,5 +136,5 @@
   #   export WINEPREFIX=$HOME/.wine-battlenet
   # '';
 
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
 }

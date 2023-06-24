@@ -14,6 +14,7 @@
     ../modules/network.nix
     ../modules/nix-common.nix
     ../modules/nix-registry.nix
+    ../modules/systemd-unit-protections.nix
   ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.invar);
 
   # Boot.
@@ -272,5 +273,5 @@
   qt.platformTheme = "gtk2";
   qt.style = "gtk2";
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.05";
 }

@@ -3,9 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs-plasma-5-27.url = "github:NixOS/nixpkgs/pull/211767/head";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unmatched.url = "github:oxalica/nixpkgs/test/unmatched";
+    nixpkgs-sddm-0-20-0.url = "github:NixOS/nixpkgs/pull/239389/head";
+
+    # Placeholder.
+    blank.follows = "nixpkgs";
 
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
@@ -17,15 +20,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-    emacs-upstream = {
-      url = "github:yuzukicat/emacs/master";
-      flake = false;
-    };
     nocargo = {
       url = "github:oxalica/nocargo";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,11 +30,34 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
-    # nix-dram = {
-    #   url = "github:dramforever/nix-dram";
-    #   inputs.flake-utils.follows = "flake-utils";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nix-dram = {
+      url = "github:dramforever/nix-dram";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.flake-compat.follows = "blank";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    rawmv = {
+      url = "github:oxalica/rawmv";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    meta-sifive = {
+      url = "github:sifive/meta-sifive/2021.11.00";
+      flake = false;
+    };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+    emacs-upstream = {
+      url = "github:yuzukicat/emacs/master";
+      flake = false;
+    };
     tree-sitter-nix-oxa = {
       url = "github:oxalica/tree-sitter-nix";
       flake = false;
@@ -50,10 +67,6 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.rust-overlay.follows = "rust-overlay";
-    };
-    meta-sifive = {
-      url = "github:sifive/meta-sifive/2021.11.00";
-      flake = false;
     };
     # Optional.
     # secrets.url = "/home/yuzuki/storage/personal/nixos-config/nixos/blacksteel";
@@ -69,19 +82,10 @@
 
     overlays = {
       # FIXME: https://github.com/NixOS/nixpkgs/issues/229358
-      fix-prismlauncher-build = final: prev: {
-        prismlauncher = prev.prismlauncher.override {
-          tomlplusplus = prev.tomlplusplus.override {
-            meson = prev.meson.overrideAttrs (old: {
-              patches = old.patches or [] ++ [
-                (final.fetchpatch {
-                  url = "https://github.com/mesonbuild/meson/commit/7c78c2b5a0314078bdabb998ead56925dc8b0fc0.patch";
-                  hash = "sha256-vSnHhuOIXf/1X+bUkUmGND5b30ES0O8EDArwb4p2/w4=";
-                })
-              ];
-            });
-          };
-        };
+      sddm = final: prev: {
+        libsForQt5 = prev.libsForQt5.overrideScope' (final_: prev_: {
+          inherit (inputs.nixpkgs-sddm-0-20-0.legacyPackages.${final.stdenv.system}.libsForQt5) sddm;
+        });
       };
     };
 
@@ -406,20 +410,6 @@
         sops.gnupg.sshKeyPaths = [];
         sops.defaultSopsFile = ./nixos/${config.networking.hostName}/secret.yaml;
       };
-
-      # FIXME: This requires IFD and impure.
-      fix-qtwayland-crash = {pkgs, ...}: {
-        system.replaceRuntimeDependencies = with pkgs; [
-          {
-            original = qt5.qtwayland;
-            replacement = callPackage ./pkgs/qt5wayland.nix {};
-          }
-          {
-            original = qt6.qtwayland;
-            replacement = callPackage ./pkgs/qt6wayland {};
-          }
-        ];
-      };
     };
 
     mkSystem = name: system: nixpkgs: {extraModules ? []}:
@@ -460,13 +450,34 @@
           extraModules = with nixosModules; [home-manager sops emacs-overlay];
         };
 
-        minimal-image = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs {
-          extraModules = with nixosModules; [home-manager sops emacs-overlay];
+        unmatched = mkSystem "unmatched" "riscv64-linux" inputs.nixpkgs-unmatched { };
+        unmatched-cross = mkSystem "unmatched" "x86_64-linux" inputs.nixpkgs-unmatched {
+          extraModules = [
+            { nixpkgs.crossSystem.config = "riscv64-unknown-linux-gnu"; }
+          ];
         };
+
+        minimal-image-stable = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs-stable { };
+        minimal-image-unstable = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs { };
       };
 
       images = {
-        minimal-iso = self.nixosConfigurations.minimal-image.config.system.build.isoImage;
+        minimal-iso-stable = self.nixosConfigurations.minimal-image-stable.config.system.build.isoImage;
+        minimal-iso-unstable = self.nixosConfigurations.minimal-image-unstable.config.system.build.isoImage;
+      };
+      templates = {
+        rust-bin = {
+          description = "A simple Rust project for binaries";
+          path = ./templates/rust-bin;
+        };
+        rust-lib = {
+          description = "A simple Rust project for libraries";
+          path = ./templates/rust-lib;
+        };
+        ci-rust = {
+          description = "A sample GitHub CI setup for Rust projects";
+          path = ./templates/ci-rust;
+        };
       };
     }
     // flake-utils.lib.eachDefaultSystem (system: rec {

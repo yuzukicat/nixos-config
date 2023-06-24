@@ -25,6 +25,7 @@
       ../modules/nokde.nix
       ../modules/steam.nix
       ../modules/virtualisation.nix
+      ../modules/systemd-unit-protections.nix
       # ../modules/nvdia.nix
     ]
     ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.blacksteel);
@@ -41,7 +42,8 @@
       #   luks.devices."invar-luks" = {
       #     device = "/dev/disk/by-uuid/aa50ce23-65c4-4b9a-8484-641a06a9d08c";
       #     allowDiscards = true;
-      #     crypttabExtraOpts = [ "fido2-device=auto" ];
+      # https://blog.cloudflare.com/speeding-up-linux-disk-encryption/
+      # crypttabExtraOpts = [ "fido2-device=auto" "no-read-workqueue" "no-write-workqueue" ];
       #   };
     };
     # bootspec.enable = true;
@@ -96,7 +98,7 @@
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
-      # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
+      # options = [ "noatime" "compress=zstd:1" "subvol=@" "nofail"];
     };
 
     "/boot" = {
@@ -109,7 +111,7 @@
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
-      # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
+      # options = [ "noatime" "compress=zstd:1" "subvol=@" ];
     };
   };
   # 5950x PC
@@ -119,7 +121,7 @@
   #     fsType = "btrfs";
   #     # zstd:1  W: ~510MiB/s
   #     # zstd:3  W: ~330MiB/s
-  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" ];
+  #     # options = [ "noatime" "compress=zstd:1" "subvol=@" ];
   #   };
 
   #   "/boot" = {
@@ -132,7 +134,7 @@
   #     fsType = "btrfs";
   #     # zstd:1  W: ~510MiB/s
   #     # zstd:3  W: ~330MiB/s
-  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
+  #     # options = [ "noatime" "compress=zstd:1" "subvol=@" ];
   #   };
   # };
 
@@ -287,5 +289,5 @@
     virt-manager
   ];
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.05";
 }

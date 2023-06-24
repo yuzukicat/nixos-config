@@ -3,6 +3,7 @@
 runCommandLocal "zsh-comma" {
   plugin = ''
     typeset -g -a comma_paths
+
     ,() {
       setopt local_options err_return pipefail
       if [[ $# = 0 ]]; then
@@ -17,6 +18,7 @@ runCommandLocal "zsh-comma" {
       export PATH
       printf "+%s paths, total %s paths\n" ''${#ps} ''${#comma_paths}
     }
+
     ,,() {
       path=(''${path:|comma_paths})
       comma_paths=()

@@ -150,6 +150,7 @@ in {
       discord
       my.pkgs.librime-lua
       feishu
+      my.pkgs.systemd-run-app
     ]
     ++ lspPackages;
 

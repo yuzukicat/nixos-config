@@ -2,7 +2,7 @@
 {
   programs.taskwarrior = {
     enable = true;
-    colorTheme = "dark-violets-256";
+    colorTheme = "light-256";
 
     # https://taskwarrior.org/docs/urgency.html
     config = {

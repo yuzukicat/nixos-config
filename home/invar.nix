@@ -1,6 +1,8 @@
-{ lib, config, ... }:
-
 {
+  lib,
+  config,
+  ...
+}: {
   programs.home-manager.enable = true;
 
   imports = [
@@ -87,22 +89,22 @@
       source = ./modules/vdirsyncer/config;
       recursive = true;
     };
-     ".config/khal/config" = {
+    ".config/khal/config" = {
       source = ./modules/khal/config;
       recursive = true;
-     };
-     ".authinfo.gpg" = {
-       source = ./modules/authinfo/.authinfo.gpg;
-       recursive = true;
-     };
-     ".mailcap" = {
-       source = ./modules/wanderlust/.mailcap;
-       recursive = true;
-     };
-     ".mailrc" = {
-       source = ./modules/wanderlust/.mailrc;
-       recursive = true;
-     };
+    };
+    ".authinfo.gpg" = {
+      source = ./modules/authinfo/.authinfo.gpg;
+      recursive = true;
+    };
+    ".mailcap" = {
+      source = ./modules/wanderlust/.mailcap;
+      recursive = true;
+    };
+    ".mailrc" = {
+      source = ./modules/wanderlust/.mailrc;
+      recursive = true;
+    };
   };
 
   programs.gpg.homedir = "${config.home.homeDirectory}/storage/personal/gnupg";
@@ -112,10 +114,10 @@
   # Add to home managers dag to make sure the activation fails if emacs can't
   # parse the init files and nuke any temp dirs we don't need/want to stick
   # around if present.
-  home.activation.freshEmacs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.freshEmacs = lib.hm.dag.entryAfter ["writeBoundary"] ''
     printf "home/blacksteel.nix: clean ~/.emacs.d\n" >&2
     $DRY_RUN_CMD rm -rf $VERBOSE_ARG ~/.emacs.d/init.el ~/.emacs.d/init.elc ~/.emacs.d/elpa ~/.emacs.d/eln-cache
   '';
 
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
 }

@@ -7,25 +7,6 @@ src.github = "deb-sig/double-entry-generator"
 fetch.github = "deb-sig/double-entry-generator"
 passthru = { vendorHash = "sha256-Xedva9oGteOnv3rP4Wo3sOHIPyuy2TYwkZV2BAuxY4M=" }
 
-[rawmv]
-src.github_tag = "oxalica/rawmv"
-fetch.github = "oxalica/rawmv"
-passthru = { cargoHash = "sha256-sEpvRgvxcH7qnUZ5S3khXdJucmhZ8tl/tIVfpQxV56Y=" }
-
-[sway-systemd]
-src.github = "alebastr/sway-systemd"
-fetch.github = "alebastr/sway-systemd"
-
-# Workaround: https://github.com/swaywm/swaylock/issues/204
-[sway-unwrapped]
-src.manual = "1.8-rc2"
-fetch.github = "swaywm/sway"
-
-# FIXME: https://github.com/NixOS/nixpkgs/pull/180816
-[swaylock-effects]
-src.github_tag = "jirutka/swaylock-effects"
-fetch.github = "jirutka/swaylock-effects"
-
 [mind-wave]
 src.git = "https://github.com/manateelazycat/mind-wave.git"
 fetch.github = "manateelazycat/mind-wave"

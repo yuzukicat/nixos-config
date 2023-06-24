@@ -53,6 +53,7 @@
 
     desktopManager.plasma5 = {
       enable = true;
+      runUsingSystemd = true;
       # supportDDC = true;
       useQtScaling = true;
       kdeglobals.KDE.SingleClick = false;
@@ -63,6 +64,8 @@
     videoDrivers = ["amdgpu"];
     # videoDrivers = ["modesetting"];
   };
+
+  security.pam.services.sddm.enableKwallet = true;
 
   # HIP
   systemd.tmpfiles.rules = [

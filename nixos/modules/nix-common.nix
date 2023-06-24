@@ -1,5 +1,8 @@
-{ config, inputs, ... }:
 {
+  config,
+  inputs,
+  ...
+}: {
   # Install a proprietary or unfree package FOR nv, vscode
   nixpkgs.config.allowUnfree = true;
   #
@@ -8,8 +11,7 @@
   #   ];
 
   nix = {
-
-    package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
+    # package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
 
     gc = {
       automatic = true;
@@ -18,8 +20,8 @@
     };
 
     settings = {
-      default-flake = "flake:nixpkgs";
-      environment = [ "SSH_AUTH_SOCK" ];
+      # default-flake = "flake:nixpkgs";
+      # environment = ["SSH_AUTH_SOCK"];
       experimental-features = [
         "nix-command"
         "flakes"
@@ -33,12 +35,18 @@
       use-cgroups = true;
 
       # FIXME: https://github.com/NixOS/nix/commit/a642b1030188f7538ef6243cd7fd1404419a6933
-      flake-registry = builtins.toFile "empty-registry.json"
-        (builtins.toJSON { flakes = []; version = 2; });
+      # flake-registry =
+      #   builtins.toFile "empty-registry.json"
+      #   (builtins.toJSON {
+      #     flakes = [];
+      #     version = 2;
+      #   });
+
+      flake-registry = "";
 
       allow-import-from-derivation = false;
       auto-optimise-store = true;
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = ["root" "@wheel"];
 
       connect-timeout = 10;
       download-attempts = 3;
@@ -47,7 +55,10 @@
 
     registry = {
       nixpkgs = {
-        from = { id = "nixpkgs"; type = "indirect"; };
+        from = {
+          id = "nixpkgs";
+          type = "indirect";
+        };
         flake = inputs.nixpkgs;
       };
     };

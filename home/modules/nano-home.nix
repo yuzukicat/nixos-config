@@ -84,6 +84,7 @@ in {
     docker
     discord
     feishu
+    my.pkgs.systemd-run-app
   ]++ lspPackages;
 
   programs.autorandr.enable = true; # Automatically select a display configuration based on connected devices.

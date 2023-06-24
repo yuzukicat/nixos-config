@@ -167,9 +167,9 @@ in {
     enable = true;
     package = pkgs.go_1_20;
     packages = {
-      "github.com/golang/tools/gopls@latest" = my.pkgs.gopls;
+      "github.com/golang/tools/gopls@latest" = pkgs.gopls;
       # "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;
-      "go.googlesource.com/tools@latest"= my.pkgs.gotools;
+      "go.googlesource.com/tools@latest" = my.pkgs.gotools;
       # "github.com/protocolbuffers/protobuf-go@latest"= pkgs.protoc-gen-go;
       # "github.com/grpc/grpc-go@latest" = pkgs.protoc-gen-go-grpc;
       # "github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest" = pkgs.protoc-gen-doc;
@@ -199,27 +199,27 @@ in {
       update_check_interval = 0;
     };
     extraConfig = ''
-background            #F6F2EE
-foreground            #7E3462
-cursor                #3D2B5A
-selection_background  #3E2B5A
-color0                #1e1e1e
-color8                #444b6a
-color1                #f7768e
-color9                #ff7a93
-color2                #69c05c
-color10               #9ece6a
-color3                #ffcc99
-color11               #ffbd49
-color4                #3a8fff
-color12               #66ccff
-color5                #9ea0dd
-color13               #c89bb9
-color6                #0aaeb3
-color14               #56b6c2
-color7                #bfc2da
-color15               #d2d7ff
-selection_foreground  #BAB5BF
+      background            #F6F2EE
+      foreground            #7E3462
+      cursor                #3D2B5A
+      selection_background  #3E2B5A
+      color0                #1e1e1e
+      color8                #444b6a
+      color1                #f7768e
+      color9                #ff7a93
+      color2                #69c05c
+      color10               #9ece6a
+      color3                #ffcc99
+      color11               #ffbd49
+      color4                #3a8fff
+      color12               #66ccff
+      color5                #9ea0dd
+      color13               #c89bb9
+      color6                #0aaeb3
+      color14               #56b6c2
+      color7                #bfc2da
+      color15               #d2d7ff
+      selection_foreground  #BAB5BF
     '';
   };
   # https://github.com/nix-community/home-manager/blob/master/modules/accounts/email.nix
@@ -263,61 +263,61 @@ selection_foreground  #BAB5BF
     enable = true;
     extensions = with pkgs.vscode-extensions;
       [
-      bbenoist.nix
-      ms-vscode.anycode
-      editorconfig.editorconfig
-      esbenp.prettier-vscode
-      dbaeumer.vscode-eslint
-      donjayamanne.githistory
-      mhutchie.git-graph
-      codezombiech.gitignore
-      matklad.rust-analyzer
-      golang.go
-      zxh404.vscode-proto3
-      oderwat.indent-rainbow
-      # _2gua.rainbow-brackets
-      shardulm94.trailing-spaces
-      ms-python.vscode-pylance
-      ms-pyright.pyright
-      ms-python.vscode-pylance
-      njpwerner.autodocstring
-      ms-toolsai.jupyter
-      ms-toolsai.jupyter-keymap
-      ms-toolsai.jupyter-renderers
-      mechatroner.rainbow-csv
-      graphql.vscode-graphql
-      irongeek.vscode-env
-      prisma.prisma
-      cweijan.vscode-database-client2
-      yzhang.markdown-all-in-one
-      bierner.markdown-checkbox
-      bierner.markdown-mermaid
-      davidanson.vscode-markdownlint
-      bradlc.vscode-tailwindcss
-      angular.ng-template
-      gencer.html-slim-scss-css-class-completion
-      jpoissonnier.vscode-styled-components
-      eg2.vscode-npm-script
-      wix.vscode-import-cost
-      firefox-devtools.vscode-firefox-debug
-      jnoortheen.nix-ide
-      kamadorueda.alejandra
-      bungcip.better-toml
-      ms-vscode.cmake-tools
-      timonwong.shellcheck
-      foxundermoon.shell-format
-      elixir-lsp.vscode-elixir-ls
-      gruntfuggly.todo-tree
-      pkief.material-icon-theme
-      catppuccin.catppuccin-vsc
-      bodil.file-browser
-      christian-kohler.path-intellisense
-      alexdima.copy-relative-path
-      rioj7.commandOnAllFiles
-      bierner.emojisense
-      ms-vscode.hexeditor
-      kddejong.vscode-cfn-lint
-      streetsidesoftware.code-spell-checker
+        bbenoist.nix
+        ms-vscode.anycode
+        editorconfig.editorconfig
+        esbenp.prettier-vscode
+        dbaeumer.vscode-eslint
+        donjayamanne.githistory
+        mhutchie.git-graph
+        codezombiech.gitignore
+        matklad.rust-analyzer
+        golang.go
+        zxh404.vscode-proto3
+        oderwat.indent-rainbow
+        # _2gua.rainbow-brackets
+        shardulm94.trailing-spaces
+        ms-python.vscode-pylance
+        ms-pyright.pyright
+        ms-python.vscode-pylance
+        njpwerner.autodocstring
+        ms-toolsai.jupyter
+        ms-toolsai.jupyter-keymap
+        ms-toolsai.jupyter-renderers
+        mechatroner.rainbow-csv
+        graphql.vscode-graphql
+        irongeek.vscode-env
+        prisma.prisma
+        cweijan.vscode-database-client2
+        yzhang.markdown-all-in-one
+        bierner.markdown-checkbox
+        bierner.markdown-mermaid
+        davidanson.vscode-markdownlint
+        bradlc.vscode-tailwindcss
+        angular.ng-template
+        gencer.html-slim-scss-css-class-completion
+        jpoissonnier.vscode-styled-components
+        eg2.vscode-npm-script
+        wix.vscode-import-cost
+        firefox-devtools.vscode-firefox-debug
+        jnoortheen.nix-ide
+        kamadorueda.alejandra
+        bungcip.better-toml
+        ms-vscode.cmake-tools
+        timonwong.shellcheck
+        foxundermoon.shell-format
+        elixir-lsp.vscode-elixir-ls
+        gruntfuggly.todo-tree
+        pkief.material-icon-theme
+        catppuccin.catppuccin-vsc
+        bodil.file-browser
+        christian-kohler.path-intellisense
+        alexdima.copy-relative-path
+        rioj7.commandOnAllFiles
+        bierner.emojisense
+        ms-vscode.hexeditor
+        kddejong.vscode-cfn-lint
+        streetsidesoftware.code-spell-checker
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [];
   };

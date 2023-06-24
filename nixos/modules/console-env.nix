@@ -36,7 +36,7 @@
     file # Determine the type of a file and its data. Doesn't take the file extension into account, and runs a series of tests to discover the type of file data.
     rsync
     dnsutils # dig example.com MX +short; nslookup example.com
-    inputs.rawmv.packages.${pkgs.system}.rawmv # Utilities.
+    # inputs.rawmv.packages.${pkgs.system}.rawmv # Utilities.
     e2fsprogs # For ext234.
     compsize # Filesystems.
     gnupg

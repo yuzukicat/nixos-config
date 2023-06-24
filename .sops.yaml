@@ -1,0 +1,32 @@
+keys:
+  - &yuzuki 18F26315BA5E759C625CA569B9E2C6CCFE325354
+
+creation_rules:
+  - path_regex: secrets/ssh\.yaml$
+    key_groups:
+      - age:
+        pgp:
+          - *yuzuki
+
+  - path_regex: /invar/secret\.yaml$
+    key_groups:
+      - age:
+        pgp:
+          - *yuzuki
+
+  - path_regex: /blacksteel/secret\.yaml$
+    key_groups:
+      - age:
+        pgp:
+          - *yuzuki
+
+  - path_regex: /modules/vdirsyncer/config$
+    key_groups:
+      - age:
+        pgp:
+          - *yuzuki
+  - path_regex: /modules/offlineimap/.offlineimaprc$
+    key_groups:
+      - age:
+        pgp:
+          - *yuzuki

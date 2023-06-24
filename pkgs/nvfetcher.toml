@@ -1,0 +1,67 @@
+[colors]
+src.manual = "94d8b2be62657e96488038b0e547e3009ed87d40"
+fetch.url = "https://gist.githubusercontent.com/lilydjwg/fdeaf79e921c2f413f44b6f613f6ad53/raw/$ver/colors.py"
+
+[double-entry-generator]
+src.github = "deb-sig/double-entry-generator"
+fetch.github = "deb-sig/double-entry-generator"
+passthru = { vendorHash = "sha256-Xedva9oGteOnv3rP4Wo3sOHIPyuy2TYwkZV2BAuxY4M=" }
+
+[rawmv]
+src.github_tag = "oxalica/rawmv"
+fetch.github = "oxalica/rawmv"
+passthru = { cargoHash = "sha256-sEpvRgvxcH7qnUZ5S3khXdJucmhZ8tl/tIVfpQxV56Y=" }
+
+[sway-systemd]
+src.github = "alebastr/sway-systemd"
+fetch.github = "alebastr/sway-systemd"
+
+# Workaround: https://github.com/swaywm/swaylock/issues/204
+[sway-unwrapped]
+src.manual = "1.8-rc2"
+fetch.github = "swaywm/sway"
+
+# FIXME: https://github.com/NixOS/nixpkgs/pull/180816
+[swaylock-effects]
+src.github_tag = "jirutka/swaylock-effects"
+fetch.github = "jirutka/swaylock-effects"
+
+[mind-wave]
+src.git = "https://github.com/manateelazycat/mind-wave.git"
+fetch.github = "manateelazycat/mind-wave"
+
+[lsp-bridge]
+src.git = "https://github.com/manateelazycat/lsp-bridge.git"
+fetch.github = "manateelazycat/lsp-bridge"
+
+[ohmyzsh-theme-passion]
+src.git = "https://github.com/ChesterYue/ohmyzsh-theme-passion.git"
+fetch.github = "ChesterYue/ohmyzsh-theme-passion"
+
+[cmdg]
+src.git = "https://github.com/yuzukicat/cmdg.git"
+fetch.github = "yuzukicat/cmdg"
+passthru = { vendorHash = "sha256-p7p1GdwL+VqP7wHEmYwhc/CYKgMUFt7OYigWNGkJ2n8=" }
+
+[eml2md]
+src.git = "https://github.com/elda27/eml2md.git"
+fetch.github = "elda27/eml2md"
+
+[browsh]
+src.git = "https://github.com/browsh-org/browsh.git"
+fetch.github = "browsh-org/browsh"
+passthru = { vendorHash = "sha256-eCvV3UuM/JtCgMqvwvqWF3bpOmPSos5Pfhu6ETaS58c=" }
+
+[xpi]
+src.manual = "1.8.2"
+fetch.url = "https://github.com/browsh-org/browsh/releases/download/v1.8.2/browsh-1.8.2.xpi"
+
+[gotools]
+src.git = "https://github.com/golang/tools.git"
+fetch.github = "golang/tools"
+passthru = { vendorSha256 = "sha256-W5t1ZLI4zBocAtxfB8zXfxx2asgUXrMi9YOfkWcOxmM=" }
+
+[gopls]
+src.git = "https://github.com/golang/tools.git"
+fetch.github = "golang/tools"
+passthru = { vendorSha256 = "sha256-whsnYLf/VbdNevEVqZMIkoLmqkvom0nZhzCjno9lSX8=" }

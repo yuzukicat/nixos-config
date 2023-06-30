@@ -458,7 +458,9 @@
         };
 
         minimal-image-stable = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs-stable {};
-        minimal-image-unstable = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs {};
+        minimal-image-unstable = mkSystem "minimal-image" "x86_64-linux" inputs.nixpkgs {
+          extraModules = with nixosModules; [home-manager sops emacs-overlay];
+        };
       };
 
       images = {

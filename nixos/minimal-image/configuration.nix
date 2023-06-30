@@ -32,29 +32,10 @@
 
   # Boot.
   boot = {
-    # disable initrd
-    # initrd = {
-      # systemd.enable = true;
-
-      # availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "sd_mod" "sdhci_pci"];
-      # kernelModules = [ "amd_pstate" "nvme" ];
-
-    #   luks.devices."invar-luks" = {
-    #     device = "/dev/disk/by-uuid/aa50ce23-65c4-4b9a-8484-641a06a9d08c";
-    #     allowDiscards = true;
-    #     crypttabExtraOpts = [ "fido2-device=auto" ];
-    #   };
-    # };
-
-    # For MGLRU in Linux 6.1
-    # https://github.com/NixOS/nixpkgs/pull/205269
-    #
-    # NB. Don't upgrate to 6.2 before the BTRFS bug gets fixed.
-    # https://lore.kernel.org/linux-btrfs/CABXGCsNzVxo4iq-tJSGm_kO1UggHXgq6CdcHDL=z5FL4njYXSQ@mail.gmail.com
     kernelPackages = pkgs.linuxPackages_latest;
 
-    # kernelModules = [ "kvm-amd" "amdgpu" ];
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [ "kvm-amd" "amdgpu" ];
+    # kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
     # For amd dual monitor
     kernelParams = [
@@ -62,19 +43,10 @@
       # "video=card0-DP-2:2560x1440@60"
     ];
 
-    # For hibernate-resume.
-    # `sudo btrfs inspect-internal map-swapfile /var/swap/resume --resume-offset`
-    # => 38868224
-    # resumeDevice = "/dev/disk/by-uuid/fbfe849d-2d2f-415f-88d3-65ded870e46b";
-    # kernelParams = [
-    #   "resume_offset=38868224"
-    #   "intel_pstate=passive"
-    # ];
-
     loader = {
       systemd-boot = {
         enable = true;
-        consoleMode = "max"; # Don't clip boot menu.
+        consoleMode = "max";
       };
       efi.canTouchEfiVariables = true;
       timeout = lib.mkForce 1;
@@ -88,62 +60,6 @@
   };
 
   # systemd.packages = [ my.pkgs.keystat ];
-
-  # Use nixos-generate-config --root /mnt then copy and paste
-  # Questions.
-  # Work Station
-  # fileSystems = {
-  #   "/" = {
-  #     device = "/dev/disk/by-uuid/5fe2d576-ca83-41a1-a431-95b8374505ca";
-  #     fsType = "btrfs";
-  #     # zstd:1  W: ~510MiB/s
-  #     # zstd:3  W: ~330MiB/s
-  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
-  #   };
-
-  #   "/boot" = {
-  #     device = "/dev/disk/by-uuid/7B83-4C68";
-  #     fsType = "vfat";
-  #   };
-
-  #   "/home" = {
-  #     device = "/dev/disk/by-uuid/413ae8ad-772e-48f8-b5b0-2468c20c5a66";
-  #     fsType = "btrfs";
-  #     # zstd:1  W: ~510MiB/s
-  #     # zstd:3  W: ~330MiB/s
-  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
-  #   };
-  # };
-  # # 5950x PC
-  # fileSystems = {
-  #   "/" = {
-  #     device = "/dev/disk/by-uuid/9f88fff0-fd52-4ec4-8064-11e87d543ca8";
-  #     fsType = "btrfs";
-  #     # zstd:1  W: ~510MiB/s
-  #     # zstd:3  W: ~330MiB/s
-  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" ];
-  #   };
-
-  #   "/boot" = {
-  #     device = "/dev/disk/by-uuid/1B53-78FB";
-  #     fsType = "vfat";
-  #   };
-
-  #   "/home" = {
-  #     device = "/dev/disk/by-uuid/15e05209-11bd-4fc8-b63b-52a37f25824c";
-  #     fsType = "btrfs";
-  #     # zstd:1  W: ~510MiB/s
-  #     # zstd:3  W: ~330MiB/s
-  #     # options = [ "relatime" "compress=zstd:1" "subvol=@" "nofail"];
-  #   };
-  # };
-
-  # swapDevices = [
-  #   {
-  #     device = "/var/swapfile";
-  #     size = 32 * 1024; # 32G
-  #   }
-  # ];
 
   # Hardware.
   powerManagement.cpuFreqGovernor = "schedutil";
@@ -185,14 +101,14 @@
   # users.groups."transmission".members = [ config.users.users.nixos.name ];
 
   # Services.
-  # AMD Ryzen 5950x
+  # AMD Ryzen 7950x
   systemd.services.nix-daemon.serviceConfig = {
     CPUQuota = "3000%";
     CPUWeight = 50;
 
-    # MemoryMax = "52G";
-    # MemoryHigh = "48G";
-    # MemorySwapMax = "64G";
+    MemoryMax = "52G";
+    MemoryHigh = "48G";
+    MemorySwapMax = "64G";
     IOWeight = 50;
   };
   # Workaround: https://github.com/NixOS/nixpkgs/issues/81138
@@ -283,7 +199,7 @@
   environment.systemPackages = with pkgs; [
     # systemPackages Refered from ../invar/configuration.nix && ../minimal-image
     neofetch
-    # radeontop
+    radeontop
     solaar # Logitech devices control.
     ltunify
     virt-manager
@@ -291,11 +207,11 @@
 
   # Expend the disk size
   system.build.image = import <nixpkgs/nixos/lib/make-disk-image.nix> {
-    diskSize = 1024 * 64;
+    diskSize = 1024 * 128;
     installBootLoader = true;
     partitionTableType = "efi";
     inherit config lib pkgs;
   };
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.05";
 }

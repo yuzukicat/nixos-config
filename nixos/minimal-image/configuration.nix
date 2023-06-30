@@ -65,7 +65,6 @@
   powerManagement.cpuFreqGovernor = "schedutil";
   hardware = {
     enableRedistributableFirmware = true;
-    video.hidpi.enable = true;
     cpu.amd.updateMicrocode = true;
     logitech.wireless.enable = true;
     logitech.wireless.enableGraphical = true; # Solaar.

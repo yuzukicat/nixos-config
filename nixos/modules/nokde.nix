@@ -47,7 +47,7 @@
       # defaultSession = "plasmawayland";
       autoLogin = {
         enable = true;
-        user = "yuzuki";
+        user = "nixos";
       };
     };
 

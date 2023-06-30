@@ -145,7 +145,6 @@ in {
       imagemagick
 
       # non-oss:
-      zoom-us
       obsidian
       discord
       my.pkgs.librime-lua

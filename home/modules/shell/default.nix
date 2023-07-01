@@ -45,7 +45,7 @@
     enableAutosuggestions = true;
     enableCompletion = false; # We do it ourselves.
     enableVteIntegration = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
 
     history = {
       ignoreDups = true;

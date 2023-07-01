@@ -28,11 +28,11 @@
     };
 
     # yuzuki
-    # interfaces = {
-    #   docker0.useDHCP = lib.mkDefault true;
-    #   enp15s0.useDHCP = lib.mkDefault true;
-    #   wlp14s0.useDHCP = lib.mkDefault true;
-    # };
+    interfaces = {
+      docker0.useDHCP = lib.mkDefault true;
+      enp15s0.useDHCP = lib.mkDefault true;
+      wlp14s0.useDHCP = lib.mkDefault true;
+    };
 
     # Work Station
     # interfaces = {
@@ -41,11 +41,11 @@
     # };
 
     # 5950x
-    interfaces = {
-      enp7s0.useDHCP = lib.mkDefault true;
-      wlp6s0.useDHCP = lib.mkDefault true;
-      tailscale0.useDHCP = lib.mkDefault true;
-    };
+    # interfaces = {
+    #   enp7s0.useDHCP = lib.mkDefault true;
+    #   wlp6s0.useDHCP = lib.mkDefault true;
+    #   tailscale0.useDHCP = lib.mkDefault true;
+    # };
   };
 
   systemd.network.wait-online = {

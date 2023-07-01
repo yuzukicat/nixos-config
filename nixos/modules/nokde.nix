@@ -47,7 +47,7 @@
       # defaultSession = "plasmawayland";
       autoLogin = {
         enable = true;
-        user = "nixos";
+        user = "yuzuki";
       };
     };
 
@@ -60,25 +60,25 @@
     };
 
     # To make it work on clevo nh55vr rtx-3070max-q
-    videoDrivers = ["nvidia"];
-    # videoDrivers = ["amdgpu"];
+    # videoDrivers = ["nvidia"];
+    videoDrivers = ["amdgpu"];
     # videoDrivers = ["modesetting"];
   };
 
   security.pam.services.sddm.enableKwallet = true;
 
   # HIP
-  # systemd.tmpfiles.rules = [
-  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
-  #   "L+    /opt/rocm/hipcc   -    -    -     -  ${pkgs.hipcc}"
-  # ];
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+    "L+    /opt/rocm/hipcc   -    -    -     -  ${pkgs.hipcc}"
+  ];
 
-  # # # OpenCL && amdvlk
-  # hardware.opengl.extraPackages = with pkgs; [
-  #   rocm-opencl-icd
-  #   rocm-opencl-runtime
-  #   amdvlk
-  # ];
+  # # OpenCL && amdvlk
+  hardware.opengl.extraPackages = with pkgs; [
+    rocm-opencl-icd
+    rocm-opencl-runtime
+    amdvlk
+  ];
 
   # Vulkan
   hardware.opengl.driSupport = true;

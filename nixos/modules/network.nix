@@ -77,7 +77,7 @@
   services.openssh = {
     enable = true;
     # SSH configration Refered from ../invar/configuration.nix
-    settings.PermitRootLogin = false;
+    # settings.PermitRootLogin = false;
     settings.KbdInteractiveAuthentication = false;
     permitRootLogin = "yes";
     # hostKeys = [

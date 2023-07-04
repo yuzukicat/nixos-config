@@ -37,14 +37,14 @@
       # systemd.enable = true;
 
       availableKernelModules = ["xhci_pci" "ahci" "usbhid" "sd_mod" "sdhci_pci"];
-      kernelModules = [ "nvme" ];
+      kernelModules = [ "nvme" "dm-snapshot" ];
 
-      #   luks.devices."invar-luks" = {
-      #     device = "/dev/disk/by-uuid/aa50ce23-65c4-4b9a-8484-641a06a9d08c";
-      #     allowDiscards = true;
-      # https://blog.cloudflare.com/speeding-up-linux-disk-encryption/
-      # crypttabExtraOpts = [ "fido2-device=auto" "no-read-workqueue" "no-write-workqueue" ];
-      #   };
+      luks.devices."nixos-enc" = {
+        device = "/dev/disk/by-partuuid/1002b6e7-6bff-5146-aef6-3020372bf55c";
+        allowDiscards = true;
+        # https://blog.cloudflare.com/speeding-up-linux-disk-encryption/
+        crypttabExtraOpts = [ "fido2-device=auto" ];
+      };
     };
     # bootspec.enable = true;
     # For MGLRU in Linux 6.1
@@ -117,24 +117,24 @@
   # 5950x PC
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/9f88fff0-fd52-4ec4-8064-11e87d543ca8";
+      device = "/dev/disk/by-uuid/21c6d87f-b252-4c08-aa01-ba7c32465083";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
-      # options = [ "noatime" "compress=zstd:1" "subvol=@" ];
+      options = [ "noatime" "nodiratime" "discard" "compress=zstd:1" "subvol=root" ];
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/1B53-78FB";
+      device = "/dev/disk/by-uuid/972F-275E";
       fsType = "vfat";
     };
 
     "/home" = {
-      device = "/dev/disk/by-uuid/15e05209-11bd-4fc8-b63b-52a37f25824c";
+      device = "/dev/disk/by-uuid/21c6d87f-b252-4c08-aa01-ba7c32465083";
       fsType = "btrfs";
       # zstd:1  W: ~510MiB/s
       # zstd:3  W: ~330MiB/s
-      # options = [ "noatime" "compress=zstd:1" "subvol=@" ];
+      options = [ "subvol=home" ];
     };
   };
 
@@ -189,9 +189,9 @@
     CPUQuota = "3000%";
     CPUWeight = 50;
 
-    # MemoryMax = "52G";
-    # MemoryHigh = "48G";
-    # MemorySwapMax = "64G";
+    MemoryMax = "52G";
+    MemoryHigh = "48G";
+    MemorySwapMax = "64G";
     IOWeight = 50;
   };
   # Workaround: https://github.com/NixOS/nixpkgs/issues/81138
@@ -283,7 +283,7 @@
   environment.systemPackages = with pkgs; [
     # systemPackages Refered from ../invar/configuration.nix && ../minimal-image
     neofetch
-    # radeontop
+    radeontop
     solaar # Logitech devices control.
     ltunify
     virt-manager

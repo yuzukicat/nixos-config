@@ -93,6 +93,7 @@
     fastpbkdf2
     drive
     yubikey-manager
+    xray
   ];
 
   programs.less = {

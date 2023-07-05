@@ -39,13 +39,11 @@
       availableKernelModules = [ "thunderbolt" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
       kernelModules = [ "dm-snapshot" ];
 
-      luks.devices = {
-        crypted = {
+      luks.devices."nixos-enc" = {
           device = "/dev/disk/by-partuuid/4c0e7158-2062-5141-8dae-15e7086a6be0";
-          header = "/dev/disk/by-partuuid/e9cea87e-7ba4-1c4d-bd74-98ea4d5c6d58";
+          # header = "/dev/disk/by-partuuid/e9cea87e-7ba4-1c4d-bd74-98ea4d5c6d58";
           allowDiscards = true; # Used if primary device is a SSD
           preLVM = true;
-        };
       };
     };
     # bootspec.enable = true;

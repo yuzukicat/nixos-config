@@ -36,14 +36,16 @@
     initrd = {
       # systemd.enable = true;
 
-      availableKernelModules = ["xhci_pci" "ahci" "usbhid" "sd_mod" "sdhci_pci"];
-      kernelModules = [ "nvme" "dm-snapshot" ];
+      availableKernelModules = [ "thunderbolt" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
+      kernelModules = [ "dm-snapshot" ];
 
-      luks.devices."nixos-enc" = {
-        device = "/dev/disk/by-partuuid/1002b6e7-6bff-5146-aef6-3020372bf55c";
-        allowDiscards = true;
-        # https://blog.cloudflare.com/speeding-up-linux-disk-encryption/
-        crypttabExtraOpts = [ "fido2-device=auto" ];
+      luks.devices = {
+        crypted = {
+          device = "/dev/disk/by-partuuid/4c0e7158-2062-5141-8dae-15e7086a6be0";
+          header = "/dev/disk/by-partuuid/e9cea87e-7ba4-1c4d-bd74-98ea4d5c6d58";
+          allowDiscards = true; # Used if primary device is a SSD
+          preLVM = true;
+        };
       };
     };
     # bootspec.enable = true;
@@ -115,35 +117,26 @@
   #   };
   # };
   # 5950x PC
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/21c6d87f-b252-4c08-aa01-ba7c32465083";
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/ff4690c7-fe91-4b5f-87b0-c97c2ec12efb";
       fsType = "btrfs";
-      # zstd:1  W: ~510MiB/s
-      # zstd:3  W: ~330MiB/s
-      options = [ "noatime" "nodiratime" "discard" "compress=zstd:1" "subvol=root" ];
+      options = [ "subvol=root" ];
     };
 
-    "/boot" = {
-      device = "/dev/disk/by-uuid/972F-275E";
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/ff4690c7-fe91-4b5f-87b0-c97c2ec12efb";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/38E0-B0D8";
       fsType = "vfat";
     };
 
-    "/home" = {
-      device = "/dev/disk/by-uuid/21c6d87f-b252-4c08-aa01-ba7c32465083";
-      fsType = "btrfs";
-      # zstd:1  W: ~510MiB/s
-      # zstd:3  W: ~330MiB/s
-      options = [ "subvol=home" ];
-    };
-  };
-
-  # swapDevices = [
-  #   {
-  #     device = "/var/swapfile";
-  #     size = 32 * 1024; # 32G
-  #   }
-  # ];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/c5ee32f2-d282-4a5e-b199-a1e3c57910d6"; }
+    ];
 
   # Hardware.
   powerManagement.cpuFreqGovernor = "schedutil";

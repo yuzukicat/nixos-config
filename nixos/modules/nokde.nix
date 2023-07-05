@@ -11,6 +11,7 @@
   with kdeGear;
   with kdeFrameworks; [
     nordic
+    catppuccin-kde
     zafiro-icons
     nordzy-icon-theme
     nordzy-cursor-theme

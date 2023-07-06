@@ -44,6 +44,7 @@
           # header = "/dev/disk/by-partuuid/e9cea87e-7ba4-1c4d-bd74-98ea4d5c6d58";
           allowDiscards = true; # Used if primary device is a SSD
           preLVM = true;
+          crypttabExtraOpts = [ "fido2-device=auto" "no-read-workqueue" "no-write-workqueue" ];
       };
     };
     # bootspec.enable = true;
@@ -62,6 +63,7 @@
       # "video=card0-DP-1:2560x1440@60"
       # "video=card0-DP-2:2560x1440@60"
       # "amd_pstate=passive"
+      "amd_iommu=fullflush"
     ];
 
     # For hibernate-resume.

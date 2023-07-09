@@ -42,7 +42,6 @@
     nodePackages.graphql-language-service-cli
     nodePackages.typescript-language-server
     nodePackages.unified-language-server
-    nodePackages.vscode-langservers-extracted
     nodePackages.yaml-language-server
   ];
 in {

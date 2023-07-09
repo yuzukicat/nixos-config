@@ -28,12 +28,18 @@
 
       luks.devices = {
         crypted = {
-          # device = "/dev/disk/by-partuuid/af13c51c-0e5c-4f5c-ae37-e8566378089c";
-          device = "/dev/disk/by-partuuid/aca61090-0fb1-4ac3-a9e3-c3eeb946a4be";
-          header = "/dev/disk/by-partuuid/97756938-b233-4ae0-a735-026145a03a39";
+          device = "/dev/disk/by-partuuid/178cb2f6-ee6e-443f-9043-ed4158b4f1b5";
+          header = "/dev/disk/by-partuuid/bb58c05e-d8ac-438e-a856-c4a17160557c";
           allowDiscards = true; # Used if primary device is a SSD
           preLVM = true;
         };
+        crypted2 = {
+          device = "/dev/disk/by-partuuid/178cb2f6-ee6e-443f-9043-ed4158b4f1b5";
+          header = "/dev/disk/by-partuuid/bb58c05e-d8ac-438e-a856-c4a17160557c";
+          allowDiscards = true; # Used if primary device is a SSD
+          preLVM = true;
+        };
+
       };
     };
     # For MGLRU in Linux 6.1
@@ -76,32 +82,26 @@
   # Use nixos-generate-config --root /mnt then copy and paste
   # Questions.
   # Work Station
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/1086c957-5997-407f-8c5d-d16612ebc29d";
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/9aed90d8-1089-4cd7-b8e1-2b48496d8c15";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
 
-    "/home" = {
-      device = "/dev/disk/by-uuid/1086c957-5997-407f-8c5d-d16612ebc29d";
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/9aed90d8-1089-4cd7-b8e1-2b48496d8c15";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
-    "/boot" = {
-      device = "/dev/disk/by-uuid/CD35-4E92";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/EBF0-9425";
       fsType = "vfat";
     };
 
-  };
-
-  swapDevices = [
-    {
-      device = "/dev/disk/by-uuid/abe4b923-3d1a-4510-93ce-f6286ff3bc5e";
-      size = 64 * 1024; # 64G
-    }
-  ];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/53c26a36-d61d-4355-a8c9-793cb09bedcc"; }
+    ];
 
   # Hardware.
   powerManagement.cpuFreqGovernor = "schedutil";

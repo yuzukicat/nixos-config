@@ -95,7 +95,6 @@
     yubikey-manager
     xray
     ryzenadj
-    flashrom
   ];
 
   programs.less = {

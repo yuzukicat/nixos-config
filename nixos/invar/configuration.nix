@@ -33,13 +33,6 @@
           allowDiscards = true; # Used if primary device is a SSD
           preLVM = true;
         };
-        crypted2 = {
-          device = "/dev/disk/by-partuuid/178cb2f6-ee6e-443f-9043-ed4158b4f1b5";
-          header = "/dev/disk/by-partuuid/bb58c05e-d8ac-438e-a856-c4a17160557c";
-          allowDiscards = true; # Used if primary device is a SSD
-          preLVM = true;
-        };
-
       };
     };
     # For MGLRU in Linux 6.1

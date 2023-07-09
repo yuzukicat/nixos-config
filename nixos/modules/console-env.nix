@@ -94,6 +94,7 @@
     drive
     yubikey-manager
     xray
+    ryzenadj
   ];
 
   programs.less = {

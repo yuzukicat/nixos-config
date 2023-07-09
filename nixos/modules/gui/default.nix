@@ -6,6 +6,7 @@
     displayManager.startx.enable = true;
     displayManager.defaultSession = "none+dwm";
     displayManager.sessionCommands = ''
+      ryzenadj
       xrandr --output DP-2 --primary --mode 3840x2160 --dpi 300 --brightness 1.0 --pos 0x0 --rotate normal --output HDMI-0 --same-as DP-2 --mode 3840x2160 --brightness 1.0 --rotate normal &
       slstatus &
       feh --bg-fill .background.png &

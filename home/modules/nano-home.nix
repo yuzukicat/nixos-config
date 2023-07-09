@@ -60,6 +60,8 @@ in {
       tealdeer
       man-pages # Manual
 
+      tdesktop
+
       # Dev
       cachix
       patchelf
@@ -103,12 +105,12 @@ in {
       calibre
 
       # non-oss:
-      zoom-us
       my.pkgs.librime-lua
       docker
       discord
       feishu
       my.pkgs.systemd-run-app
+      google-chrome-dev
     ]
     ++ lspPackages;
 

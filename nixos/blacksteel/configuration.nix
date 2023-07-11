@@ -37,7 +37,7 @@
       # systemd.enable = true;
 
       availableKernelModules = [ "thunderbolt" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
-      kernelModules = [ "dm-snapshot" ];
+      kernelModules = [ "dm-snapshot" "amdgpu" ];
 
       luks.devices."nixos-enc" = {
           device = "/dev/disk/by-partuuid/4c0e7158-2062-5141-8dae-15e7086a6be0";
@@ -55,14 +55,16 @@
     # https://lore.kernel.org/linux-btrfs/CABXGCsNzVxo4iq-tJSGm_kO1UggHXgq6CdcHDL=z5FL4njYXSQ@mail.gmail.com
     kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelModules = ["kvm-amd" "amdgpu"];
-    # kernelModules = [ "kvm-amd" ];
+    kernelModules = ["kvm-amd" ];
     extraModulePackages = [];
     # For amd dual monitor
     kernelParams = [
       # "video=card0-DP-1:2560x1440@60"
       # "video=card0-DP-2:2560x1440@60"
       # "amd_pstate=passive"
+      "amd_pstate=active"
+      # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/raphael/igpu.nix
+      "amdgpu.sg_display=0"
       "amd_iommu=fullflush"
     ];
 
@@ -142,7 +144,7 @@
   powerManagement.cpuFreqGovernor = "schedutil";
   hardware = {
     enableRedistributableFirmware = true;
-    cpu.amd.updateMicrocode = true;
+    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     logitech.wireless.enable = true;
     logitech.wireless.enableGraphical = true; # Solaar.
     # To-do: GPU acceleration

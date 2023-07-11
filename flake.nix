@@ -127,7 +127,7 @@
         nixpkgs.overlays = [
           inputs.emacs-overlay.overlay
           (final: prev: {
-            emacs29 = prev.emacsGit.overrideAttrs (old: {
+            emacs29 = prev.emacs-git.overrideAttrs (old: {
               name = "emacs29";
               version = inputs.emacs-upstream.shortRev;
               src = inputs.emacs-upstream;

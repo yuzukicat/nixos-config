@@ -62,8 +62,9 @@
 
     # To make it work on clevo nh55vr rtx-3070max-q
     # videoDrivers = ["nvidia"];
-    videoDrivers = ["amdgpu"];
-    # videoDrivers = ["modesetting"];
+    # videoDrivers = ["amdgpu"];
+    # https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/amd/default.nix
+    videoDrivers = ["modesetting"];
   };
 
   security.pam.services.sddm.enableKwallet = true;
@@ -81,8 +82,15 @@
     amdvlk
   ];
 
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
+
   # Vulkan
-  hardware.opengl.driSupport = true;
+  hardware.opengl = {
+    driSupport = true;
+    driSupport32Bit = true;
+  };
 
   services.colord.enable = true;
 }

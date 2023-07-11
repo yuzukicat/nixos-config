@@ -36,16 +36,15 @@
     initrd = {
       # systemd.enable = true;
 
-      availableKernelModules = [ "thunderbolt" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
-      kernelModules = [ "dm-snapshot" "amdgpu" ];
-      luks.yubikeySupport = true;
+      availableKernelModules = ["thunderbolt" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
+      kernelModules = ["dm-snapshot" "amdgpu"];
 
       luks.devices."nixos-enc" = {
-          device = "/dev/disk/by-partuuid/4c0e7158-2062-5141-8dae-15e7086a6be0";
-          # header = "/dev/disk/by-partuuid/e9cea87e-7ba4-1c4d-bd74-98ea4d5c6d58";
-          allowDiscards = true; # Used if primary device is a SSD
-          preLVM = true;
-          crypttabExtraOpts = [ "fido2-device=auto" "no-read-workqueue" "no-write-workqueue" ];
+        device = "/dev/disk/by-partuuid/4c0e7158-2062-5141-8dae-15e7086a6be0";
+        # header = "/dev/disk/by-partuuid/e9cea87e-7ba4-1c4d-bd74-98ea4d5c6d58";
+        allowDiscards = true; # Used if primary device is a SSD
+        preLVM = true;
+        crypttabExtraOpts = ["fido2-device=auto" "no-read-workqueue" "no-write-workqueue"];
       };
     };
     # bootspec.enable = true;
@@ -56,7 +55,7 @@
     # https://lore.kernel.org/linux-btrfs/CABXGCsNzVxo4iq-tJSGm_kO1UggHXgq6CdcHDL=z5FL4njYXSQ@mail.gmail.com
     kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelModules = ["kvm-amd" ];
+    kernelModules = ["kvm-amd"];
     extraModulePackages = [];
     # For amd dual monitor
     kernelParams = [
@@ -120,26 +119,26 @@
   #   };
   # };
   # 5950x PC
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/ff4690c7-fe91-4b5f-87b0-c97c2ec12efb";
-      fsType = "btrfs";
-      options = [ "subvol=root" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/ff4690c7-fe91-4b5f-87b0-c97c2ec12efb";
+    fsType = "btrfs";
+    options = ["subvol=root"];
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/ff4690c7-fe91-4b5f-87b0-c97c2ec12efb";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/ff4690c7-fe91-4b5f-87b0-c97c2ec12efb";
+    fsType = "btrfs";
+    options = ["subvol=home"];
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/38E0-B0D8";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/38E0-B0D8";
+    fsType = "vfat";
+  };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/c5ee32f2-d282-4a5e-b199-a1e3c57910d6"; }
-    ];
+  swapDevices = [
+    {device = "/dev/disk/by-uuid/c5ee32f2-d282-4a5e-b199-a1e3c57910d6";}
+  ];
 
   # Hardware.
   powerManagement.cpuFreqGovernor = "schedutil";

@@ -275,12 +275,13 @@
     # "ssh/ssh_host_ed25519_key.pub".source = "/var/ssh/ssh_host_ed25519_key.pub";
   };
 
-  environment.etc.crypttab = {
-    enable = true;
-    text = ''
-      cryptroot /dev/nvme0n1p2 - fido2-device=auto
-    '';
-  };
+  # Need an usb sticker to maintaince?
+  # environment.etc.crypttab = {
+  #   enable = true;
+  #   text = ''
+  #     cryptroot /dev/nvme0n1p2 - fido2-device=auto
+  #   '';
+  # };
 
   environment.systemPackages = with pkgs; [
     # systemPackages Refered from ../invar/configuration.nix && ../minimal-image

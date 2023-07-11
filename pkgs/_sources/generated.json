@@ -74,11 +74,11 @@
             "name": null,
             "owner": "deb-sig",
             "repo": "double-entry-generator",
-            "rev": "v2.3.0",
-            "sha256": "sha256-kCyNDLNtsi4qZM8rJwxCGaKvCe4uZUa/RajqiLrmsFM=",
+            "rev": "v2.4.0",
+            "sha256": "sha256-XJsectuh2yO4t3nWi0aoBoNNf4AzxXtTmR/e6wrMzKk=",
             "type": "github"
         },
-        "version": "v2.3.0"
+        "version": "v2.4.0"
     },
     "eml2md": {
         "cargoLocks": null,
@@ -102,11 +102,11 @@
     },
     "gopls": {
         "cargoLocks": null,
-        "date": "2023-06-23",
+        "date": "2023-07-10",
         "extract": null,
         "name": "gopls",
         "passthru": {
-            "vendorSha256": "sha256-whsnYLf/VbdNevEVqZMIkoLmqkvom0nZhzCjno9lSX8="
+            "vendorSha256": "sha256-xSbL2bCPFvuYKnuvwvzw4bvMjIVLZd4vJbi/FacpSCg="
         },
         "pinned": false,
         "src": {
@@ -116,19 +116,19 @@
             "name": null,
             "owner": "golang",
             "repo": "tools",
-            "rev": "fa103593d02f86f400531e4294b9b294d4893901",
-            "sha256": "sha256-1VLU7pg9WElFkNXxyH6+WSeebGLtGdC2eEBLbLHi78w=",
+            "rev": "ec9bc534250242bd1c9995a21bfe037ef0d35c9d",
+            "sha256": "sha256-nw+exKqpGP7Apk3ABpedkeBv776P0zWyQfzt2I1qwhw=",
             "type": "github"
         },
-        "version": "fa103593d02f86f400531e4294b9b294d4893901"
+        "version": "ec9bc534250242bd1c9995a21bfe037ef0d35c9d"
     },
     "gotools": {
         "cargoLocks": null,
-        "date": "2023-06-23",
+        "date": "2023-07-10",
         "extract": null,
         "name": "gotools",
         "passthru": {
-            "vendorSha256": "sha256-01Y7v+ITIx1uzASLDuB/WKmXUijAdjvXQvn30u3BH/Y="
+            "vendorSha256": "sha256-Nbpd4nNYfCTEw1trMXxTVZwSZ5CbUv0hAAi+0eDJLWU="
         },
         "pinned": false,
         "src": {
@@ -138,15 +138,15 @@
             "name": null,
             "owner": "golang",
             "repo": "tools",
-            "rev": "fa103593d02f86f400531e4294b9b294d4893901",
-            "sha256": "sha256-1VLU7pg9WElFkNXxyH6+WSeebGLtGdC2eEBLbLHi78w=",
+            "rev": "ec9bc534250242bd1c9995a21bfe037ef0d35c9d",
+            "sha256": "sha256-nw+exKqpGP7Apk3ABpedkeBv776P0zWyQfzt2I1qwhw=",
             "type": "github"
         },
-        "version": "fa103593d02f86f400531e4294b9b294d4893901"
+        "version": "ec9bc534250242bd1c9995a21bfe037ef0d35c9d"
     },
     "lsp-bridge": {
         "cargoLocks": null,
-        "date": "2023-06-23",
+        "date": "2023-07-11",
         "extract": null,
         "name": "lsp-bridge",
         "passthru": null,
@@ -158,15 +158,15 @@
             "name": null,
             "owner": "manateelazycat",
             "repo": "lsp-bridge",
-            "rev": "af68799b7bc97a0673ead2246a28144aac2db7e0",
-            "sha256": "sha256-MPpIb82DCDqVQNPidnwwLeF0DwoHhWhi2OXIMVHLXjc=",
+            "rev": "f5adc8a090b7daa57f7006805d63a2851e02fa78",
+            "sha256": "sha256-lksblvJMGF5GwkJ7J2BAMYN0gqnhXmu5Jl6CpUc+QwA=",
             "type": "github"
         },
-        "version": "af68799b7bc97a0673ead2246a28144aac2db7e0"
+        "version": "f5adc8a090b7daa57f7006805d63a2851e02fa78"
     },
     "mind-wave": {
         "cargoLocks": null,
-        "date": "2023-05-07",
+        "date": "2023-07-04",
         "extract": null,
         "name": "mind-wave",
         "passthru": null,
@@ -178,11 +178,11 @@
             "name": null,
             "owner": "manateelazycat",
             "repo": "mind-wave",
-            "rev": "5109162b74872091c5090a28389bef8f7020274c",
-            "sha256": "sha256-ZyXrpb0GLWSGnMsVIGL9qALSBCeIWNF0UwkCFgCKnu8=",
+            "rev": "1ae7b7be74fa1f37b18f9031d127a563e2434617",
+            "sha256": "sha256-mmt5Ova2n3/E2Ry5IoKRrRIwWK1jHXU4WgzzGyMNeOM=",
             "type": "github"
         },
-        "version": "5109162b74872091c5090a28389bef8f7020274c"
+        "version": "1ae7b7be74fa1f37b18f9031d127a563e2434617"
     },
     "ohmyzsh-theme-passion": {
         "cargoLocks": null,

@@ -38,6 +38,7 @@
 
       availableKernelModules = [ "thunderbolt" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
       kernelModules = [ "dm-snapshot" "amdgpu" ];
+      luks.yubikeySupport = true;
 
       luks.devices."nixos-enc" = {
           device = "/dev/disk/by-partuuid/4c0e7158-2062-5141-8dae-15e7086a6be0";

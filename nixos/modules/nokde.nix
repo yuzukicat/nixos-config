@@ -45,7 +45,7 @@
 
     displayManager = {
       sddm.enable = true;
-      # defaultSession = "plasmawayland";
+      defaultSession = "plasmawayland";
       autoLogin = {
         enable = true;
         user = "yuzuki";
@@ -69,22 +69,22 @@
 
   security.pam.services.sddm.enableKwallet = true;
 
-  # HIP
-  systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
-    "L+    /opt/rocm/hipcc   -    -    -     -  ${pkgs.hipcc}"
-  ];
+  # # HIP
+  # systemd.tmpfiles.rules = [
+  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+  #   "L+    /opt/rocm/hipcc   -    -    -     -  ${pkgs.hipcc}"
+  # ];
 
   # # OpenCL && amdvlk
-  hardware.opengl.extraPackages = with pkgs; [
-    rocm-opencl-icd
-    rocm-opencl-runtime
-    amdvlk
-  ];
+  # hardware.opengl.extraPackages = with pkgs; [
+  #   rocm-opencl-icd
+  #   rocm-opencl-runtime
+  #   amdvlk
+  # ];
 
-  hardware.opengl.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
-  ];
+  # hardware.opengl.extraPackages32 = with pkgs; [
+  #   driversi686Linux.amdvlk
+  # ];
 
   # Vulkan
   hardware.opengl = {

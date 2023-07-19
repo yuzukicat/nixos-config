@@ -8,7 +8,9 @@
 }:
 
 stdenv.mkDerivation rec {
-  inherit (source) pname version src;
+  inherit (source) pname src;
+
+  version = lib.removePrefix "v" source.version;
 
   # The upstream download script tries to download the models to the
   # directory of the script, which is not writable due to being

@@ -24,7 +24,7 @@
       ../modules/nix-registry.nix
       ../modules/nokde.nix
       ../modules/steam.nix
-      ../modules/virtualisation.nix
+      # ../modules/virtualisation.nix
       ../modules/systemd-unit-protections.nix
       # ../modules/nvdia.nix
     ]
@@ -37,30 +37,30 @@
       # systemd.enable = true;
 
       # 7950x PC
-      # availableKernelModules = ["thunderbolt" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
+      availableKernelModules = ["thunderbolt" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
 
-      # kernelModules = ["dm-snapshot" "amdgpu"];
-
-      # luks.devices."nixos-enc" = {
-      #   device = "/dev/disk/by-partuuid/4c0e7158-2062-5141-8dae-15e7086a6be0";
-      #   # header = "/dev/disk/by-partuuid/e9cea87e-7ba4-1c4d-bd74-98ea4d5c6d58";
-      #   allowDiscards = true; # Used if primary device is a SSD
-      #   preLVM = true;
-      #   crypttabExtraOpts = ["fido2-device=auto" "no-read-workqueue" "no-write-workqueue"];
-      # };
-
-      # workstation
-      availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
-
-      kernelModules = ["dm-snapshot"];
+      kernelModules = ["dm-snapshot" "amdgpu"];
 
       luks.devices."nixos-enc" = {
-        device = "/dev/disk/by-partuuid/779b6b0c-0ca4-44e4-9099-1705975e7b28";
-        header = "/dev/disk/by-partuuid/30546ce1-9ed3-40da-a583-aa7c0d135a23";
+        device = "/dev/disk/by-partuuid/4c0e7158-2062-5141-8dae-15e7086a6be0";
+        # header = "/dev/disk/by-partuuid/e9cea87e-7ba4-1c4d-bd74-98ea4d5c6d58";
         allowDiscards = true; # Used if primary device is a SSD
         preLVM = true;
         crypttabExtraOpts = ["fido2-device=auto" "no-read-workqueue" "no-write-workqueue"];
       };
+
+      # workstation
+      # availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
+
+      # kernelModules = ["dm-snapshot"];
+
+      # luks.devices."nixos-enc" = {
+      #   device = "/dev/disk/by-partuuid/779b6b0c-0ca4-44e4-9099-1705975e7b28";
+      #   header = "/dev/disk/by-partuuid/30546ce1-9ed3-40da-a583-aa7c0d135a23";
+      #   allowDiscards = true; # Used if primary device is a SSD
+      #   preLVM = true;
+      #   crypttabExtraOpts = ["fido2-device=auto" "no-read-workqueue" "no-write-workqueue"];
+      # };
     };
     # bootspec.enable = true;
     # For MGLRU in Linux 6.1
@@ -70,7 +70,7 @@
     # https://lore.kernel.org/linux-btrfs/CABXGCsNzVxo4iq-tJSGm_kO1UggHXgq6CdcHDL=z5FL4njYXSQ@mail.gmail.com
     kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelModules = ["kvm-amd"];
+    kernelModules = [ "kvm-amd" ];
     extraModulePackages = [];
     # For amd dual monitor
     kernelParams = [
@@ -80,7 +80,7 @@
       "amd_pstate=active"
       # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/raphael/igpu.nix
       # "amdgpu.sg_display=0"
-      "amd_iommu=fullflush"
+      # "amd_iommu=fullflush"
     ];
 
     # For hibernate-resume.
@@ -135,48 +135,48 @@
   # };
 
   # 7950x PC
-  # fileSystems."/" = {
-  #   device = "/dev/disk/by-uuid/ff4690c7-fe91-4b5f-87b0-c97c2ec12efb";
-  #   fsType = "btrfs";
-  #   options = ["subvol=root"];
-  # };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/ff4690c7-fe91-4b5f-87b0-c97c2ec12efb";
+    fsType = "btrfs";
+    options = ["subvol=root"];
+  };
 
-  # fileSystems."/home" = {
-  #   device = "/dev/disk/by-uuid/ff4690c7-fe91-4b5f-87b0-c97c2ec12efb";
-  #   fsType = "btrfs";
-  #   options = ["subvol=home"];
-  # };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/ff4690c7-fe91-4b5f-87b0-c97c2ec12efb";
+    fsType = "btrfs";
+    options = ["subvol=home"];
+  };
 
-  # fileSystems."/boot" = {
-  #   device = "/dev/disk/by-uuid/38E0-B0D8";
-  #   fsType = "vfat";
-  # };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/38E0-B0D8";
+    fsType = "vfat";
+  };
 
-  # swapDevices = [
-  #   {device = "/dev/disk/by-uuid/c5ee32f2-d282-4a5e-b199-a1e3c57910d6";}
-  # ];
+  swapDevices = [
+    {device = "/dev/disk/by-uuid/c5ee32f2-d282-4a5e-b199-a1e3c57910d6";}
+  ];
 
   # workstation
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/6304c08b-0b17-4e28-8cf1-38301c01abfc";
-      fsType = "btrfs";
-      options = [ "subvol=root" ];
-    };
+  # fileSystems."/" =
+  #   { device = "/dev/disk/by-uuid/6304c08b-0b17-4e28-8cf1-38301c01abfc";
+  #     fsType = "btrfs";
+  #     options = [ "subvol=root" ];
+  #   };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/6304c08b-0b17-4e28-8cf1-38301c01abfc";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
+  # fileSystems."/home" =
+  #   { device = "/dev/disk/by-uuid/6304c08b-0b17-4e28-8cf1-38301c01abfc";
+  #     fsType = "btrfs";
+  #     options = [ "subvol=home" ];
+  #   };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8380-C0B6";
-      fsType = "vfat";
-    };
+  # fileSystems."/boot" =
+  #   { device = "/dev/disk/by-uuid/8380-C0B6";
+  #     fsType = "vfat";
+  #   };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/a902beb8-b190-4b29-8e73-1aa96d2922ec"; }
-    ];
+  # swapDevices =
+  #   [ { device = "/dev/disk/by-uuid/a902beb8-b190-4b29-8e73-1aa96d2922ec"; }
+  #   ];
 
   # Hardware.
   powerManagement.cpuFreqGovernor = "schedutil";
@@ -324,7 +324,7 @@
   environment.systemPackages = with pkgs; [
     # systemPackages Refered from ../invar/configuration.nix && ../minimal-image
     neofetch
-    # radeontop
+    radeontop
     solaar # Logitech devices control.
     ltunify
     virt-manager

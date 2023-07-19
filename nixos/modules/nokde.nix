@@ -62,29 +62,29 @@
 
     # To make it work on clevo nh55vr rtx-3070max-q
     # videoDrivers = ["nvidia"];
-    # videoDrivers = ["amdgpu"];
+    videoDrivers = ["amdgpu"];
     # https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/amd/default.nix
-    videoDrivers = ["modesetting"];
+    # videoDrivers = ["modesetting"];
   };
 
   security.pam.services.sddm.enableKwallet = true;
 
-  # # HIP
-  # systemd.tmpfiles.rules = [
-  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
-  #   "L+    /opt/rocm/hipcc   -    -    -     -  ${pkgs.hipcc}"
-  # ];
+  # HIP
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+    "L+    /opt/rocm/hipcc   -    -    -     -  ${pkgs.hipcc}"
+  ];
 
-  # # OpenCL && amdvlk
-  # hardware.opengl.extraPackages = with pkgs; [
-  #   rocm-opencl-icd
-  #   rocm-opencl-runtime
-  #   amdvlk
-  # ];
+  # OpenCL && amdvlk
+  hardware.opengl.extraPackages = with pkgs; [
+    rocm-opencl-icd
+    rocm-opencl-runtime
+    amdvlk
+  ];
 
-  # hardware.opengl.extraPackages32 = with pkgs; [
-  #   driversi686Linux.amdvlk
-  # ];
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
 
   # Vulkan
   hardware.opengl = {

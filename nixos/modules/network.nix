@@ -40,11 +40,11 @@
     #   wlp5s0.useDHCP = lib.mkDefault true;
     # };
 
-    # 5950x
+    # 7950x
     interfaces = {
-      enp7s0.useDHCP = lib.mkDefault true;
-      wlp6s0.useDHCP = lib.mkDefault true;
-      tailscale0.useDHCP = lib.mkDefault true;
+      enp9s0.useDHCP = lib.mkDefault true;
+      wlp10s0.useDHCP = lib.mkDefault true;
+      # tailscale0.useDHCP = lib.mkDefault true;
     };
   };
 

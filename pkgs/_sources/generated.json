@@ -204,11 +204,11 @@
         },
         "version": "1d96f9984d581bbf6b64b940599786a9c91e2ad6"
     },
-    "openai-whisper-cpp": {
+    "whisper-cpp": {
         "cargoLocks": null,
         "date": "2023-07-16",
         "extract": null,
-        "name": "openai-whisper-cpp",
+        "name": "whisper-cpp",
         "passthru": null,
         "pinned": false,
         "src": {

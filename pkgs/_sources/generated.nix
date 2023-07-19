@@ -121,8 +121,8 @@
     };
     date = "2023-05-19";
   };
-  openai-whisper-cpp = {
-    pname = "openai-whisper-cpp";
+  whisper-cpp = {
+    pname = "whisper-cpp";
     version = "39984657218588a26a413fff642b77c5d5232e51";
     src = fetchFromGitHub {
       owner = "ggerganov";

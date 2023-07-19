@@ -69,7 +69,8 @@
     dotnet-aspnetcore_8
     dotnetPackages.Nuget
     gyb
-    openai-whisper-cpp
+    my.pkgs.openai-whisper-cpp
+    clblast
     ffmpeg
     my.pkgs.cmdg
     lynx # text mode web browser

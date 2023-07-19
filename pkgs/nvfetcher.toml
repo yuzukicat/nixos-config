@@ -46,3 +46,7 @@ passthru = { vendorSha256 = "sha256-Nbpd4nNYfCTEw1trMXxTVZwSZ5CbUv0hAAi+0eDJLWU=
 src.git = "https://github.com/golang/tools.git"
 fetch.github = "golang/tools"
 passthru = { vendorSha256 = "sha256-xSbL2bCPFvuYKnuvwvzw4bvMjIVLZd4vJbi/FacpSCg=" }
+
+[openai-whisper-cpp]
+src.git = "https://github.com/ggerganov/whisper.cpp.git"
+fetch.github = "ggerganov/whisper.cpp"

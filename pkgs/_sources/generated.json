@@ -102,7 +102,7 @@
     },
     "gopls": {
         "cargoLocks": null,
-        "date": "2023-07-10",
+        "date": "2023-07-18",
         "extract": null,
         "name": "gopls",
         "passthru": {
@@ -116,15 +116,15 @@
             "name": null,
             "owner": "golang",
             "repo": "tools",
-            "rev": "ec9bc534250242bd1c9995a21bfe037ef0d35c9d",
-            "sha256": "sha256-nw+exKqpGP7Apk3ABpedkeBv776P0zWyQfzt2I1qwhw=",
+            "rev": "84f829e2765ff8c96a27cf9e42507d48670c36ee",
+            "sha256": "sha256-QfSp+kDKwymlHqEJkDnyXaIrmbWyTCOEg96IhRfS5II=",
             "type": "github"
         },
-        "version": "ec9bc534250242bd1c9995a21bfe037ef0d35c9d"
+        "version": "84f829e2765ff8c96a27cf9e42507d48670c36ee"
     },
     "gotools": {
         "cargoLocks": null,
-        "date": "2023-07-10",
+        "date": "2023-07-18",
         "extract": null,
         "name": "gotools",
         "passthru": {
@@ -138,15 +138,15 @@
             "name": null,
             "owner": "golang",
             "repo": "tools",
-            "rev": "ec9bc534250242bd1c9995a21bfe037ef0d35c9d",
-            "sha256": "sha256-nw+exKqpGP7Apk3ABpedkeBv776P0zWyQfzt2I1qwhw=",
+            "rev": "84f829e2765ff8c96a27cf9e42507d48670c36ee",
+            "sha256": "sha256-QfSp+kDKwymlHqEJkDnyXaIrmbWyTCOEg96IhRfS5II=",
             "type": "github"
         },
-        "version": "ec9bc534250242bd1c9995a21bfe037ef0d35c9d"
+        "version": "84f829e2765ff8c96a27cf9e42507d48670c36ee"
     },
     "lsp-bridge": {
         "cargoLocks": null,
-        "date": "2023-07-11",
+        "date": "2023-07-19",
         "extract": null,
         "name": "lsp-bridge",
         "passthru": null,
@@ -158,11 +158,11 @@
             "name": null,
             "owner": "manateelazycat",
             "repo": "lsp-bridge",
-            "rev": "f5adc8a090b7daa57f7006805d63a2851e02fa78",
-            "sha256": "sha256-lksblvJMGF5GwkJ7J2BAMYN0gqnhXmu5Jl6CpUc+QwA=",
+            "rev": "4758674e21daef8a277286384457bc7adcd2029a",
+            "sha256": "sha256-1DWHkS9UDQ13svnZ6raMMc5OM5eQJ3pXQEnlLaLINlM=",
             "type": "github"
         },
-        "version": "f5adc8a090b7daa57f7006805d63a2851e02fa78"
+        "version": "4758674e21daef8a277286384457bc7adcd2029a"
     },
     "mind-wave": {
         "cargoLocks": null,
@@ -203,6 +203,26 @@
             "type": "github"
         },
         "version": "1d96f9984d581bbf6b64b940599786a9c91e2ad6"
+    },
+    "openai-whisper-cpp": {
+        "cargoLocks": null,
+        "date": "2023-07-16",
+        "extract": null,
+        "name": "openai-whisper-cpp",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "ggerganov",
+            "repo": "whisper.cpp",
+            "rev": "39984657218588a26a413fff642b77c5d5232e51",
+            "sha256": "sha256-8GW01ITzGLAdSX3r3z02+jdPfoSN4y/IFjhN8906k2o=",
+            "type": "github"
+        },
+        "version": "39984657218588a26a413fff642b77c5d5232e51"
     },
     "xpi": {
         "cargoLocks": null,

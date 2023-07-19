@@ -61,41 +61,41 @@
   };
   gopls = {
     pname = "gopls";
-    version = "ec9bc534250242bd1c9995a21bfe037ef0d35c9d";
+    version = "84f829e2765ff8c96a27cf9e42507d48670c36ee";
     src = fetchFromGitHub {
       owner = "golang";
       repo = "tools";
-      rev = "ec9bc534250242bd1c9995a21bfe037ef0d35c9d";
+      rev = "84f829e2765ff8c96a27cf9e42507d48670c36ee";
       fetchSubmodules = false;
-      sha256 = "sha256-nw+exKqpGP7Apk3ABpedkeBv776P0zWyQfzt2I1qwhw=";
+      sha256 = "sha256-QfSp+kDKwymlHqEJkDnyXaIrmbWyTCOEg96IhRfS5II=";
     };
     vendorSha256 = "sha256-xSbL2bCPFvuYKnuvwvzw4bvMjIVLZd4vJbi/FacpSCg=";
-    date = "2023-07-10";
+    date = "2023-07-18";
   };
   gotools = {
     pname = "gotools";
-    version = "ec9bc534250242bd1c9995a21bfe037ef0d35c9d";
+    version = "84f829e2765ff8c96a27cf9e42507d48670c36ee";
     src = fetchFromGitHub {
       owner = "golang";
       repo = "tools";
-      rev = "ec9bc534250242bd1c9995a21bfe037ef0d35c9d";
+      rev = "84f829e2765ff8c96a27cf9e42507d48670c36ee";
       fetchSubmodules = false;
-      sha256 = "sha256-nw+exKqpGP7Apk3ABpedkeBv776P0zWyQfzt2I1qwhw=";
+      sha256 = "sha256-QfSp+kDKwymlHqEJkDnyXaIrmbWyTCOEg96IhRfS5II=";
     };
     vendorSha256 = "sha256-Nbpd4nNYfCTEw1trMXxTVZwSZ5CbUv0hAAi+0eDJLWU=";
-    date = "2023-07-10";
+    date = "2023-07-18";
   };
   lsp-bridge = {
     pname = "lsp-bridge";
-    version = "f5adc8a090b7daa57f7006805d63a2851e02fa78";
+    version = "4758674e21daef8a277286384457bc7adcd2029a";
     src = fetchFromGitHub {
       owner = "manateelazycat";
       repo = "lsp-bridge";
-      rev = "f5adc8a090b7daa57f7006805d63a2851e02fa78";
+      rev = "4758674e21daef8a277286384457bc7adcd2029a";
       fetchSubmodules = false;
-      sha256 = "sha256-lksblvJMGF5GwkJ7J2BAMYN0gqnhXmu5Jl6CpUc+QwA=";
+      sha256 = "sha256-1DWHkS9UDQ13svnZ6raMMc5OM5eQJ3pXQEnlLaLINlM=";
     };
-    date = "2023-07-11";
+    date = "2023-07-19";
   };
   mind-wave = {
     pname = "mind-wave";
@@ -120,6 +120,18 @@
       sha256 = "sha256-9mxHmMeA/tNO0axc8cQD1MzWsG0GIJc8a57MXKycZf4=";
     };
     date = "2023-05-19";
+  };
+  openai-whisper-cpp = {
+    pname = "openai-whisper-cpp";
+    version = "39984657218588a26a413fff642b77c5d5232e51";
+    src = fetchFromGitHub {
+      owner = "ggerganov";
+      repo = "whisper.cpp";
+      rev = "39984657218588a26a413fff642b77c5d5232e51";
+      fetchSubmodules = false;
+      sha256 = "sha256-8GW01ITzGLAdSX3r3z02+jdPfoSN4y/IFjhN8906k2o=";
+    };
+    date = "2023-07-16";
   };
   xpi = {
     pname = "xpi";

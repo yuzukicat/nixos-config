@@ -1,6 +1,6 @@
 { lib
 , stdenv
-, source
+, fetchFromGitHub
 , SDL2
 , makeWrapper
 , wget
@@ -8,9 +8,16 @@
 }:
 
 stdenv.mkDerivation rec {
-  inherit (source) pname src;
+  
+  pname = "whisper-cpp";
+  version = "1.4.0";
 
-  version = lib.removePrefix "v" source.version;
+  src = fetchFromGitHub {
+    owner = "ggerganov";
+    repo = "whisper.cpp";
+    rev = "refs/tags/v${version}" ;
+    hash = "sha256-176MpooVQrq1dXC62h8Yyyhw6IjCA50tp1J4DQPSePQ=";
+  };
 
   # The upstream download script tries to download the models to the
   # directory of the script, which is not writable due to being

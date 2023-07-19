@@ -5,10 +5,11 @@
 , makeWrapper
 , wget
 , clblast
+, ocl-icd
 }:
 
 stdenv.mkDerivation rec {
-  
+
   pname = "whisper-cpp";
   version = "1.4.0";
 
@@ -26,7 +27,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  buildInputs = [ SDL2 ] ++ [ clblast ];
+  buildInputs = [ SDL2 ] ++ [ clblast ocl-icd ];
 
   # OpenCL GPU support via CLBlast
   env = {

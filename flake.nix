@@ -25,10 +25,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
-    rust-criterion = {
-      description = "Criterion benchmark templates";
-      path = ./templates/rust-criterion;
-    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";

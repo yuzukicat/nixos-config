@@ -352,10 +352,10 @@
                   src = pkgs.fetchFromGitHub {
                     owner = "manateelazycat";
                     repo = "mind-wave";
-                    rev = "1ae7b7be74fa1f37b18f9031d127a563e2434617";
-                    sha256 = "sha256-mmt5Ova2n3/E2Ry5IoKRrRIwWK1jHXU4WgzzGyMNeOM=";
+                    rev = "994618abcd2c6a09af49b486d270ad4fd2d5b4a4";
+                    sha256 = "sha256-IRT+ct8X2W/iS4+aIoibwR0br5FHWBDYCeNP8pGrpJs=";
                   };
-                  commit = "1ae7b7be74fa1f37b18f9031d127a563e2434617";
+                  commit = "994618abcd2c6a09af49b486d270ad4fd2d5b4a4";
                   packageRequires = [
                     pkgs.emacsPackages.markdown-mode
                   ];

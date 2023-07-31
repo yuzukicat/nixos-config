@@ -30,7 +30,7 @@
     lua53Packages.digestif
     cmake-language-server
     kotlin-language-server
-    my.pkgs.gopls
+    pkgs.gopls
     my.pkgs.gotools
     # go-tools
     # protoc-gen-go
@@ -166,7 +166,7 @@ in {
     enable = true;
     package = pkgs.go_1_20;
     packages = {
-      "github.com/golang/tools/gopls@latest" = my.pkgs.gopls;
+      "github.com/golang/tools/gopls@latest" = pkgs.gopls;
       # "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;
       "go.googlesource.com/tools@latest" = my.pkgs.gotools;
       # "github.com/protocolbuffers/protobuf-go@latest"= pkgs.protoc-gen-go;

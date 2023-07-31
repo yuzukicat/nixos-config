@@ -61,53 +61,53 @@
   };
   gopls = {
     pname = "gopls";
-    version = "84f829e2765ff8c96a27cf9e42507d48670c36ee";
+    version = "82861e0385a62eddb77541a9ebb0cc9fd9a53389";
     src = fetchFromGitHub {
       owner = "golang";
       repo = "tools";
-      rev = "84f829e2765ff8c96a27cf9e42507d48670c36ee";
+      rev = "82861e0385a62eddb77541a9ebb0cc9fd9a53389";
       fetchSubmodules = false;
-      sha256 = "sha256-QfSp+kDKwymlHqEJkDnyXaIrmbWyTCOEg96IhRfS5II=";
+      sha256 = "sha256-ghzv4cgXfKFJ+CGOGLdxaAaiVt5gfnXKhTwzHWkgNno=";
     };
     vendorSha256 = "sha256-xSbL2bCPFvuYKnuvwvzw4bvMjIVLZd4vJbi/FacpSCg=";
-    date = "2023-07-18";
+    date = "2023-07-28";
   };
   gotools = {
     pname = "gotools";
-    version = "84f829e2765ff8c96a27cf9e42507d48670c36ee";
+    version = "82861e0385a62eddb77541a9ebb0cc9fd9a53389";
     src = fetchFromGitHub {
       owner = "golang";
       repo = "tools";
-      rev = "84f829e2765ff8c96a27cf9e42507d48670c36ee";
+      rev = "82861e0385a62eddb77541a9ebb0cc9fd9a53389";
       fetchSubmodules = false;
-      sha256 = "sha256-QfSp+kDKwymlHqEJkDnyXaIrmbWyTCOEg96IhRfS5II=";
+      sha256 = "sha256-ghzv4cgXfKFJ+CGOGLdxaAaiVt5gfnXKhTwzHWkgNno=";
     };
     vendorSha256 = "sha256-Nbpd4nNYfCTEw1trMXxTVZwSZ5CbUv0hAAi+0eDJLWU=";
-    date = "2023-07-18";
+    date = "2023-07-28";
   };
   lsp-bridge = {
     pname = "lsp-bridge";
-    version = "4758674e21daef8a277286384457bc7adcd2029a";
+    version = "7b56642135ef7b882f2b514ef88042af0e5a9274";
     src = fetchFromGitHub {
       owner = "manateelazycat";
       repo = "lsp-bridge";
-      rev = "4758674e21daef8a277286384457bc7adcd2029a";
+      rev = "7b56642135ef7b882f2b514ef88042af0e5a9274";
       fetchSubmodules = false;
-      sha256 = "sha256-1DWHkS9UDQ13svnZ6raMMc5OM5eQJ3pXQEnlLaLINlM=";
+      sha256 = "sha256-HzIar35DweTv9L3BpbhLlEAEr17kj7a+b9z8rbwxbYE=";
     };
-    date = "2023-07-19";
+    date = "2023-07-28";
   };
   mind-wave = {
     pname = "mind-wave";
-    version = "1ae7b7be74fa1f37b18f9031d127a563e2434617";
+    version = "994618abcd2c6a09af49b486d270ad4fd2d5b4a4";
     src = fetchFromGitHub {
       owner = "manateelazycat";
       repo = "mind-wave";
-      rev = "1ae7b7be74fa1f37b18f9031d127a563e2434617";
+      rev = "994618abcd2c6a09af49b486d270ad4fd2d5b4a4";
       fetchSubmodules = false;
-      sha256 = "sha256-mmt5Ova2n3/E2Ry5IoKRrRIwWK1jHXU4WgzzGyMNeOM=";
+      sha256 = "sha256-IRT+ct8X2W/iS4+aIoibwR0br5FHWBDYCeNP8pGrpJs=";
     };
-    date = "2023-07-04";
+    date = "2023-07-24";
   };
   ohmyzsh-theme-passion = {
     pname = "ohmyzsh-theme-passion";
@@ -123,15 +123,15 @@
   };
   whisper-cpp = {
     pname = "whisper-cpp";
-    version = "39984657218588a26a413fff642b77c5d5232e51";
+    version = "a792c4079ce61358134da4c9bc589c15a03b04ad";
     src = fetchFromGitHub {
       owner = "ggerganov";
       repo = "whisper.cpp";
-      rev = "39984657218588a26a413fff642b77c5d5232e51";
+      rev = "a792c4079ce61358134da4c9bc589c15a03b04ad";
       fetchSubmodules = false;
-      sha256 = "sha256-8GW01ITzGLAdSX3r3z02+jdPfoSN4y/IFjhN8906k2o=";
+      sha256 = "sha256-3BePMZJ8FAZwqlPeUpG251Mdq+iaJWZvTJsi6eBtcyQ=";
     };
-    date = "2023-07-16";
+    date = "2023-07-26";
   };
   xpi = {
     pname = "xpi";

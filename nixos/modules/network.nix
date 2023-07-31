@@ -79,7 +79,7 @@
     # SSH configration Refered from ../invar/configuration.nix
     # settings.PermitRootLogin = false;
     settings.KbdInteractiveAuthentication = false;
-    permitRootLogin = "yes";
+    settings.permitRootLogin = "yes";
     # hostKeys = [
     #   {
     #     type = "rsa";

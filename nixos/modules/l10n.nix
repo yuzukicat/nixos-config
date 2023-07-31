@@ -4,10 +4,10 @@
 
   # Ref: https://catcat.cc/post/2021-03-07/
   fonts = {
-    enableDefaultFonts = true;
+    enableDefaultPackages = true;
     fontDir.enable = true;
 
-    fonts = with pkgs; [
+    packages = with pkgs; [
       noto-fonts
       noto-fonts-emoji
       fira-code

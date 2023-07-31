@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  my,
   ...
 }: {
   imports = [./l10n.nix];

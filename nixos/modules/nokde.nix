@@ -24,7 +24,7 @@
     gwenview
     okular
     print-manager
-    plasma5Packages.bismuth
+    my.pkgs.bismuth-fix-5-27
   ];
 
   programs = {

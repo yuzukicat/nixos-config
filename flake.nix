@@ -25,6 +25,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    rust-criterion = {
+      description = "Criterion benchmark templates";
+      path = ./templates/rust-criterion;
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,15 +40,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote";
+      url = "github:nix-community/lanzaboote/v0.3.0";
       inputs.flake-compat.follows = "blank";
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rawmv = {
-      url = "github:oxalica/rawmv";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
     meta-sifive = {
       url = "github:sifive/meta-sifive/2021.11.00";
       flake = false;
@@ -435,6 +436,10 @@
   in
     {
       inherit overlays nixosModules;
+
+      lib = import ./lib.nix {
+        inherit (nixpkgs) lib;
+      };
 
       nixosSystems =
         lib.mapAttrs

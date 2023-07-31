@@ -3,7 +3,7 @@
   programs.git = {
     enable = true;
 
-    ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*"]; # vim swap file & emacs
+    ignores = [ "*~" "*.swp" "\\#*\\#" ".\\#*"  ".vim/coc-settings.json" ".vscode" ".envrc"]; # vim swap file & emacs
 
     aliases = {
       br = "branch";

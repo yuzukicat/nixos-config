@@ -41,6 +41,7 @@
     procs # procs zsh
     pv # Monitoring of data being sent through pipe, including copying file
     pwgen # pwgen -c -n -s -v -B
+    ranger # file management
     ripgrep
     rsync
     sdcv
@@ -61,6 +62,7 @@
     poppler # pdf
     poppler_utils
     djvulibre # img
+    gimp
     pandoc
     texlive.combined.scheme-full
   ];

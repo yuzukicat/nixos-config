@@ -219,19 +219,15 @@
     slstatus # slstatus is a status monitor for window managers that use WM_NAME or stdin to fill the status bar
     feh # feh is an X11 image viewer aimed mostly at console users
     gcc
-    glow # Render markdown on the CLI, with pizzazz!
-    gimp
     killall
     my.pkgs.hyfetch
     pamixer # pamixer is like amixer but for pulseaudio. It can control the volume levels of the sinks
     pavucontrol
     alsa-utils
-    arandr
     picom
     ueberzugpp # w3m img
     input-utils
     xbindkeys
-    ranger # file management
     slock
   ];
 

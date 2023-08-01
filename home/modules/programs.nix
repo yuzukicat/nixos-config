@@ -184,43 +184,43 @@ in {
       };
     };
   };
-  programs.kitty = {
-    enable = true;
-    font = {
-      package = pkgs.fira-code;
-      name = "fira-code";
-      # size = 10;
-      size = 12 * config.wayland.dpi / 96;
-    };
-    settings = {
-      scrollback_lines = 10000;
-      enable_audio_bell = false;
-      update_check_interval = 0;
-    };
-    extraConfig = ''
-      background            #F6F2EE
-      foreground            #7E3462
-      cursor                #3D2B5A
-      selection_background  #3E2B5A
-      color0                #1e1e1e
-      color8                #444b6a
-      color1                #f7768e
-      color9                #ff7a93
-      color2                #69c05c
-      color10               #9ece6a
-      color3                #ffcc99
-      color11               #ffbd49
-      color4                #3a8fff
-      color12               #66ccff
-      color5                #9ea0dd
-      color13               #c89bb9
-      color6                #0aaeb3
-      color14               #56b6c2
-      color7                #bfc2da
-      color15               #d2d7ff
-      selection_foreground  #BAB5BF
-    '';
-  };
+  # programs.kitty = {
+  #   enable = true;
+  #   font = {
+  #     package = pkgs.fira-code;
+  #     name = "fira-code";
+  #     # size = 10;
+  #     size = 12 * config.wayland.dpi / 96;
+  #   };
+  #   settings = {
+  #     scrollback_lines = 10000;
+  #     enable_audio_bell = false;
+  #     update_check_interval = 0;
+  #   };
+  #   extraConfig = ''
+  #     background            #F6F2EE
+  #     foreground            #7E3462
+  #     cursor                #3D2B5A
+  #     selection_background  #3E2B5A
+  #     color0                #1e1e1e
+  #     color8                #444b6a
+  #     color1                #f7768e
+  #     color9                #ff7a93
+  #     color2                #69c05c
+  #     color10               #9ece6a
+  #     color3                #ffcc99
+  #     color11               #ffbd49
+  #     color4                #3a8fff
+  #     color12               #66ccff
+  #     color5                #9ea0dd
+  #     color13               #c89bb9
+  #     color6                #0aaeb3
+  #     color14               #56b6c2
+  #     color7                #bfc2da
+  #     color15               #d2d7ff
+  #     selection_foreground  #BAB5BF
+  #   '';
+  # };
   # https://github.com/nix-community/home-manager/blob/master/modules/accounts/email.nix
   accounts.email.accounts.yuzuki = {
     primary = true;

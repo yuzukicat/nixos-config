@@ -25,9 +25,11 @@
     ./modules/user-dirs.nix
     ./modules/xdgify.nix
     ./modules/helix
-    ./modules/shell
+    ./modules/fish.nix
+    ./modules/starship.nix
     ./modules/qutebrowser.nix
     # ./modules/compatibility.nix
+    ./modules/kitty.nix
   ];
 
   lib.homeManagerConfiguration = {

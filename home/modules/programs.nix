@@ -155,7 +155,10 @@ in {
 
   programs.alacritty.settings.font.size = lib.mkForce 10;
   programs.autorandr.enable = true; # Automatically select a display configuration based on connected devices.
-  programs.dircolors.enable = true;
+  programs.dircolors = {
+    enable = true;
+    programs.dircolors.enableFishIntegration = true;
+  };
   # TODO: Finish porting emacs config over future me fix
   programs.emacs = {
     enable = true;

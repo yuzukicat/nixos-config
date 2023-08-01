@@ -203,7 +203,7 @@
     mutableUsers = true;
     users."yuzuki" = {
       isNormalUser = true;
-      shell = pkgs.zsh;
+      shell = pkgs.fish;
       # Allow the graphical user to login without password
       initialHashedPassword = "";
       # password = "yuzuki";

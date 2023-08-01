@@ -4,9 +4,9 @@
 {
   imports = [
     ../modules/bluetooth.nix
-    ../modules/nano-console-env.nix
+    ../modules/nano-console.nix
     ../modules/desktop-server.nix
-    ../modules/gui
+    ../modules/nano-gui
     ../modules/internationalisation.nix
     ../modules/l10n.nix
     ../modules/nano-multitouch.nix
@@ -127,28 +127,23 @@
 
   services.colord.enable = true;
 
-  # Time Zone
   time.timeZone = "Asia/Tokyo";
 
-  # Users.
-  # sops.secrets.passwd.neededForUsers = true;
   users = {
     mutableUsers = true;
     users."yuzuki" = {
       isNormalUser = true;
-      shell = pkgs.zsh;
-      # Allow the graphical user to login without password
+      shell = pkgs.fish;
       initialHashedPassword = "";
-      # password = "yuzuki";
-      # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
       group = config.users.groups.yuzuki.name;
-      extraGroups = [ "wheel" "libvirtd" "wireshark" "video" "docker" "discocss" "networkmanager" "audio" "sound" "input"];
+      extraGroups = [ "wheel" "wireshark" "video" "discocss" "networkmanager" "audio" "sound" "input"];
     };
     groups."yuzuki".gid = 1000;
     # Allow the user to log in as root without a password.
     users.root.initialHashedPassword = "";
   };
+
   home-manager.users."yuzuki" =
     import ../../home/lithium.nix;
 
@@ -174,75 +169,45 @@
   hardware.pulseaudio.extraConfig = "load-module module-switch-on-connect";
 
   services = {
-    # If you have a ssd, don't forget to enable fstrim
+
     fstrim = {
       enable = true;
       interval = "Wed,Sat 02:00";
     };
+
     timesyncd.enable = true;
-    # Avoid Linux locking up in low memory situations using earlyoom
+
     earlyoom = {
       enable = true;
-      # earlyoom configration Refered from ../invar/configuration.nix
       freeMemThreshold = 5;
       freeSwapThreshold = 10;
       enableNotifications = true;
     };
-    # transmission configration Refered from ../invar/configuration.nix
-    # transmission = {
-    #   enable = true;
-    #   home = "/home/transmission";
-    # };
-    btrbk.instances.snapshot = {
-      onCalendar = "*:00,30";
-      settings = {
-        timestamp_format = "long-iso";
-        preserve_day_of_week = "monday";
-        preserve_hour_of_day = "6";
-        snapshot_preserve_min = "6h";
-        volume."/" = {
-          snapshot_dir = ".snapshots";
-          subvolume."home/yuzuki".snapshot_preserve = "48h 7d";
-          subvolume."home/yuzuki/storage".snapshot_preserve = "48h 7d 4w";
-        };
-      };
-    };
+
     fwupd.enable = true;
+
     udisks2.enable = true;
     udisks2.mountOnMedia = true;
+
     unclutter.enable = true;
   };
 
   # Global ssh settings. Also for remote builders.
   programs.ssh = {
     knownHosts = my.ssh.knownHosts;
-    # extraConfig = ''
-    #   Include ${config.sops.secrets.ssh-hosts.path}
-    # '';
   };
-  # sops.secrets.ssh-hosts = {
-  #   sopsFile = ../../secrets/ssh.yaml;
-  #   mode = "0444";
-  # };
 
   programs.wireshark = {
     enable = true;
     package = pkgs.wireshark-qt;
   };
 
-  # environment.etc Refered from ../invar/configuration.nix
   environment.etc = {
     "machine-id".source = "/var/machine-id";
-    # "ssh/ssh_host_rsa_key".source = "/var/ssh/ssh_host_rsa_key";
-    # "ssh/ssh_host_rsa_key.pub".source = "/var/ssh/ssh_host_rsa_key.pub";
-    # "ssh/ssh_host_ed25519_key".source = "/var/ssh/ssh_host_ed25519_key";
-    # "ssh/ssh_host_ed25519_key.pub".source = "/var/ssh/ssh_host_ed25519_key.pub";
   };
 
   environment.systemPackages = with pkgs; [
-    # systemPackages Refered from ../invar/configuration.nix && ../minimal-image
-    neofetch
-    # radeontop
+    radeontop
     solaar # Logitech devices control.
     ltunify
     virt-manager
@@ -274,5 +239,5 @@
   qt.platformTheme = "gtk2";
   qt.style = "gtk2";
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }

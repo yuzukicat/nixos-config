@@ -9,19 +9,34 @@
 
   environment.systemPackages = with pkgs; [
     bc
+    busybox
+    cacert
     compsize # Filesystems
+    cryptsetup
     curl
+    ddgr # duckduckgo
+    discocss
+    discordchatexporter-cli
     dnsutils # dig example.com MX +short; nslookup example.com
     e2fsprogs # For ext234
     exa # exa --long --header --recurse
     fd
+    ffmpeg
     file # Determine the type of a file and its data. Doesn't take the file extension into account, and runs a series of tests to discover the type of file data
     gdu # Ncdu is a disk usage analyzer with an ncurses interface
     git
     gnupg
+    gnutls
+    gyb
+    hip
+    hipcc
+    hip-common
+    home-manager
     jq
+    khal
     libarchive
     lsof
+    lynx # text mode web browser
     pciutils # lspci
     procs # procs zsh
     pv # Monitoring of data being sent through pipe, including copying file
@@ -32,52 +47,22 @@
     sops
     tree-sitter
     usbutils # System info
+    vdirsyncer
+    wget
+    xray
+    you-get
     zstd
 
     my.pkgs.nixos-rebuild-shortcut
-    tmuxPlugins.nord
-
-    wget
-    home-manager
-    hip
-    hip-common
-    hipcc
-    discocss
-    nuget-to-nix
-    discordchatexporter-cli
-    dotnet-sdk_8
-    dotnet-runtime_8
-    dotnet-aspnetcore_8
-    dotnetPackages.Nuget
-    gyb
-    my.pkgs.openai-whisper-cpp
-    clblast
-    ffmpeg
     my.pkgs.cmdg
-    lynx # text mode web browser
-    gmailctl
+    tmuxPlugins.nord
+    texmacs # math edit
     glow
     poppler # pdf
     poppler_utils
     djvulibre # img
     pandoc
     texlive.combined.scheme-full
-    my.pkgs.browsh
-    ddgr # duckduckgo
-    khal
-    vdirsyncer
-    anystyle-cli
-    cacert
-    gnutls
-    busybox
-    texmacs # math edit
-    cryptsetup
-    fastpbkdf2
-    drive
-    yubikey-manager
-    xray
-    ryzenadj
-    you-get
   ];
 
   programs.less = {

@@ -12,7 +12,4 @@
     "d /var/lib/bluetooth 700 root root - -"
   ];
   systemd.targets."bluetooth".after = [ "systemd-tmpfiles-setup.service" ];
-
-  services.udisks2.enable = true;
-
 }

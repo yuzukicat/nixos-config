@@ -285,6 +285,9 @@
       };
     };
     fwupd.enable = true;
+
+    udisks2.enable = true;
+    udisks2.mountOnMedia = true;
   };
 
   # Global ssh settings. Also for remote builders.

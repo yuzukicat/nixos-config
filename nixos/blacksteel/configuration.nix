@@ -34,7 +34,7 @@
   boot = {
     # disable initrd
     initrd = {
-      # systemd.enable = true;
+      systemd.enable = true;
 
       # 7950x PC
       availableKernelModules = ["thunderbolt" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
@@ -44,9 +44,9 @@
       luks.devices."nixos-enc" = {
         device = "/dev/disk/by-partuuid/4c0e7158-2062-5141-8dae-15e7086a6be0";
         # header = "/dev/disk/by-partuuid/e9cea87e-7ba4-1c4d-bd74-98ea4d5c6d58";
-        allowDiscards = true; # Used if primary device is a SSD
+        bypassWorkqueues = true;
         preLVM = true;
-        crypttabExtraOpts = ["fido2-device=auto" "no-read-workqueue" "no-write-workqueue"];
+        crypttabExtraOpts = ["fido2-device=auto" "x-initrd.attach"];
       };
 
       # workstation

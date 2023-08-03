@@ -73,6 +73,7 @@ in {
     protobuf
     runzip
     scc
+    sqlite-interactive
     tealdeer
     trash-cli
     vlc

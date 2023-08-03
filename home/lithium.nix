@@ -15,14 +15,16 @@
     ./modules/lf.nix
     ./modules/mail.nix
     ./modules/mapping.nix
+    ./modules/mime-apps.nix
     ./modules/minimal-programs.nix
     ./modules/qutebrowser.nix
-    ./modules/ranger
     ./modules/rust.nix
     ./modules/starship.nix
-    ./modules/startx.nix
     ./modules/task.nix
     ./modules/tmux.nix
+    ./modules/user-dirs.nix
+    ./modules/wayland-dpi.nix
+    ./modules/xdgify.nix
     ./modules/zathura.nix
   ];
 

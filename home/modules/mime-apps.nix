@@ -5,8 +5,8 @@
       assertion =
         config.programs.firefox.enable &&
         config.programs.feh.enable &&
-        config.programs.alacritty.enable;
-      message = "firefox, feh, and alacrittysy are used in MIME apps";
+        config.programs.kitty.enable;
+      message = "firefox, feh, and kitty are used in MIME apps";
     }
   ];
 
@@ -33,7 +33,7 @@
       "x-scheme-handler/ftp" = "firefox.desktop";
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";
-      "x-scheme-handler/terminal" = "alacritty.desktop";
+      "x-scheme-handler/terminal" = "kitty.desktop";
     };
   };
 }

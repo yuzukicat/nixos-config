@@ -9,6 +9,7 @@
   with libsForQt5;
   with plasma5;
   with kdeGear;
+  with kdeApplications;
   with kdeFrameworks; [
     nordic
     catppuccin-kde
@@ -25,6 +26,17 @@
     okular
     print-manager
     my.pkgs.bismuth-fix-5-27
+    angelfish
+    audiotube
+    calindori
+    kalk
+    kasts
+    kclock
+    keysmith
+    koko
+    krecorder
+    kweather
+    plasma-settings
   ];
 
   programs = {
@@ -50,14 +62,41 @@
         enable = true;
         user = "yuzuki";
       };
+
+      sessionPackages = [ pkgs.libsForQt5.plasma5.plasma-mobile ];
     };
 
     desktopManager.plasma5 = {
       enable = true;
+
+      mobile = {
+        enable = true;
+        installRecommendedSoftware = true;
+      };
+
       runUsingSystemd = true;
       # supportDDC = true;
       useQtScaling = true;
       kdeglobals.KDE.SingleClick = false;
+
+      kdeglobals = {
+        KDE = {
+          # This forces a numeric PIN for the lockscreen, which is the
+          # recommendation from upstream.
+          LookAndFeelPackage ="org.kde.plasma.phone";
+        };
+      };
+
+      kwinrc = {
+        "Wayland" = {
+          "InputMethod[$e]" = "/run/current-system/sw/share/applications/com.github.maliit.keyboard.desktop";
+          "VirtualKeyboardEnabled" = "true";
+        };
+        "org.kde.kdecoration2" = {
+          # No decorations (title bar)
+          NoPlugin = "true";
+        };
+      };
     };
 
     # To make it work on clevo nh55vr rtx-3070max-q
@@ -93,4 +132,12 @@
   };
 
   services.colord.enable = true;
+
+  hardware.sensor.iio.enable = true;
+
+  hardware.joystick.enable = true;
+
+  hardware.xone.enable = true;
+
+  hardware.xpadneo.enable = true;
 }

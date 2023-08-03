@@ -167,7 +167,7 @@ in {
     enable = true;
     package = pkgs.go;
     packages = {
-      "golang.org/x/tools/gopls@latest" = my.pkgs.gopls;
+      "golang.org/x/tools/gopls@latest" = pkgs.gopls;
       "golang.org/x/tools@latest" = my.pkgs.gotools;
       "google.golang.org/protobuf@latest"= pkgs.protoc-gen-go;
       "google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest" = pkgs.protoc-gen-go-grpc;

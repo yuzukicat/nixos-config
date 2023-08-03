@@ -7,20 +7,23 @@
 
   imports = [
     ./modules/direnv.nix
+    ./modules/firefox.nix
+    ./modules/fish.nix
     ./modules/git.nix
     ./modules/gpg.nix
+    ./modules/kitty.nix
     ./modules/lf.nix
+    ./modules/mail.nix
     ./modules/mapping.nix
-    ./modules/minimal-programmes.nix
+    ./modules/minimal-programs.nix
+    ./modules/qutebrowser.nix
+    ./modules/ranger
     ./modules/rust.nix
-    ./modules/tmux.nix
-    ./modules/fish.nix
     ./modules/starship.nix
     ./modules/startx.nix
-    ./modules/user-dirs.nix
-    ./modules/qutebrowser.nix
+    ./modules/task.nix
+    ./modules/tmux.nix
     ./modules/zathura.nix
-    ./modules/ranger
   ];
 
   home.file = let

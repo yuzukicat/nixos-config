@@ -16,13 +16,13 @@
     rust-analyzer
     nil # rnix-lsp
     pyright
-    my.pkgs.gopls
+    pkgs.gopls
     my.pkgs.gotools
-    # protoc-gen-go
-    # protoc-gen-doc
-    # protoc-gen-go-grpc
-    rnix-lsp
+    protoc-gen-go
+    protoc-gen-go-grpc
+    protoc-gen-doc
     sqls
+    rnix-lsp
     nodePackages.bash-language-server
     nodePackages.dockerfile-language-server-nodejs
     nodePackages.eslint
@@ -44,63 +44,56 @@ in {
   with kdeGear;
   with kdeFrameworks;
   [
-      coursera-dl
-      difftastic
-      kolourpaint
-      man-pages
-      obs
-      runzip
-      scc
-      tealdeer
-      vlc
-      xclip
+    bash-completion
+    bashInteractive
+    binutils
+    cachix
+    cling
+    coursera-dl
+    dasel
+    difftastic
+    elixir
+    gcc
+    gdb
+    ghc
+    gh
+    gnumake
+    kolourpaint
+    man-pages
+    nix-output-monitor
+    nix-update
+    nmap
+    nodejs
+    nodePackages.npm-check-updates
+    nodePackages.pnpm
+    obs
+    openssl
+    patchelf
+    pkg-config
+    protobuf
+    runzip
+    scc
+    tealdeer
+    trash-cli
+    vlc
+    xclip
+    yarn
+    myPython
 
-      # Dev
-      cachix
-      patchelf
-      nixpkgs-review
-      nix-update
-      nix-output-monitor # Nix utils
-      gcc
-      ghc
-      myPython # Compiler & interpreters
-      gdb # Debugger
-      sqlite-interactive
-      dasel
-      sqls
-      postgresql # sqlite
-      gnumake
-      yarn
-      binutils
-      bash-completion
-      cling
-      elixir
-      gh
-      nodejs
-      nodePackages.npm-check-updates
-      nodePackages.pnpm
-      openssl
-      protobuf
-      pkg-config
-      bashInteractive
+    calibre
+    gwenview
+    gimp
+    imagemagick
+    xournalpp
+    pdftag
+    ocrmypdf
 
-
-      trash-cli
-      my.pkgs.hyfetch
-
-      calibre
-      gwenview
-      gimp
-      imagemagick
-      xournalpp
-      pdftag
-      ocrmypdf
-
-      discord
-      tdesktop
-      linuxPackages.perf
-      my.pkgs.librime-lua
-      my.pkgs.systemd-run-app
+    discord
+    tdesktop
+    linuxPackages.perf
+    my.pkgs.hyfetch
+    my.pkgs.librime-lua
+    my.pkgs.systemd-run-app
     ]
     ++ lspPackages;
 
@@ -120,14 +113,14 @@ in {
 
   programs.go = {
     enable = true;
-    package = pkgs.go_1_20;
+    package = pkgs.go;
     packages = {
-      "github.com/golang/tools/gopls@latest" = pkgs.gopls;
-      # "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;
-      "go.googlesource.com/tools@latest" = my.pkgs.gotools;
-      # "github.com/protocolbuffers/protobuf-go@latest"= pkgs.protoc-gen-go;
-      # "github.com/grpc/grpc-go@latest" = pkgs.protoc-gen-go-grpc;
-      # "github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest" = pkgs.protoc-gen-doc;
+      "golang.org/x/tools/gopls@latest" = pkgs.gopls;
+      "golang.org/x/tools@latest" = my.pkgs.gotools;
+      "google.golang.org/protobuf@latest"= pkgs.protoc-gen-go;
+      "google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest" = pkgs.protoc-gen-go-grpc;
+      "github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-docc@latest" = pkgs.protoc-gen-doc;
+      "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;
     };
   };
 

@@ -8,17 +8,18 @@
   imports = [
     ./modules/alacritty.nix
     ./modules/direnv.nix
+    ./modules/fish.nix
     ./modules/git.nix
     ./modules/gpg.nix
+    ./modules/kitty.nix
     ./modules/lf.nix
     ./modules/mapping.nix
     ./modules/nano-home.nix
     ./modules/rust.nix
+    ./modules/starship.nix
+    ./modules/startx.nix
     ./modules/task.nix
     ./modules/tmux.nix
-    ./modules/shell
-    ./modules/startx.nix
-    ./modules/user-dirs.nix
     ./modules/qutebrowser.nix
     ./modules/zathura.nix
     ./modules/ranger

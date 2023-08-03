@@ -32,12 +32,11 @@
     kotlin-language-server
     pkgs.gopls
     my.pkgs.gotools
-    # go-tools
-    # protoc-gen-go
-    # protoc-gen-doc
-    # protoc-gen-go-grpc
-    rnix-lsp
+    protoc-gen-go
+    protoc-gen-go-grpc
+    protoc-gen-doc
     sqls
+    rnix-lsp
     nodePackages.bash-language-server
     nodePackages.dockerfile-language-server-nodejs
     nodePackages.eslint
@@ -93,7 +92,6 @@ in {
       gdb # Debugger
       sqlite-interactive
       dasel
-      sqls
       postgresql # sqlite
       cabal-install
       gnumake
@@ -167,14 +165,14 @@ in {
   programs.feh.enable = true;
   programs.go = {
     enable = true;
-    package = pkgs.go_1_20;
+    package = pkgs.go;
     packages = {
-      "github.com/golang/tools/gopls@latest" = pkgs.gopls;
-      # "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;
-      "go.googlesource.com/tools@latest" = my.pkgs.gotools;
-      # "github.com/protocolbuffers/protobuf-go@latest"= pkgs.protoc-gen-go;
-      # "github.com/grpc/grpc-go@latest" = pkgs.protoc-gen-go-grpc;
-      # "github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest" = pkgs.protoc-gen-doc;
+      "golang.org/x/tools/gopls@latest" = my.pkgs.gopls;
+      "golang.org/x/tools@latest" = my.pkgs.gotools;
+      "google.golang.org/protobuf@latest"= pkgs.protoc-gen-go;
+      "google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest" = pkgs.protoc-gen-go-grpc;
+      "github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-docc@latest" = pkgs.protoc-gen-doc;
+      "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;
     };
   };
   programs.hyfetch = {

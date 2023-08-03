@@ -11,7 +11,7 @@
       slstatus &
       feh --bg-fill .background.png &
       picom &
-      ibus-daemon -drxR
+      fcitx5 -d -r &
     '';
     displayManager.lightdm.enable = true;
     displayManager.autoLogin = {

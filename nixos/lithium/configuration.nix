@@ -1,4 +1,4 @@
-1# For the purpose of testing, to install nixos on asus rog ally.
+# For the purpose of testing, to install nixos on asus rog ally.
 { lib, config, pkgs, inputs, my, ... }:
 
 {

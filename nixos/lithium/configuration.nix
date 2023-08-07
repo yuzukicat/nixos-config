@@ -143,6 +143,10 @@
 
   time.timeZone = "Asia/Tokyo";
 
+  programs.fish = {
+    enable = true;
+  };
+
   users = {
     mutableUsers = true;
     users."yuzuki" = {

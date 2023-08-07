@@ -7,7 +7,6 @@
     ../modules/nano-console.nix
     ../modules/cups.nix
     ../modules/desktop-server.nix
-    ../modules/nano-gui
     ../modules/internationalisation.nix
     ../modules/nano-multitouch.nix
     ../modules/network.nix

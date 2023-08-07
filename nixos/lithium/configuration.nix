@@ -105,11 +105,11 @@
     logitech.wireless.enable = true;
     logitech.wireless.enableGraphical = true; # Solaar.
 
-    # hardware.joystick.enable = true;
+    # joystick.enable = true;
 
-    # hardware.xone.enable = true;
+    xone.enable = true;
 
-    hardware.xpadneo.enable = true;
+    # xpadneo.enable = true;
 
     # jovian.steam.enable = true;
 

@@ -451,6 +451,10 @@
           extraModules = with nixosModules; [home-manager sops emacs-overlay];
         };
 
+        lithium = mkSystem "lithium" "x86_64-linux" inputs.nixpkgs {
+          extraModules = with nixosModules; [home-manager sops emacs-overlay];
+        };
+
         unmatched = mkSystem "unmatched" "riscv64-linux" inputs.nixpkgs-unmatched {};
         unmatched-cross = mkSystem "unmatched" "x86_64-linux" inputs.nixpkgs-unmatched {
           extraModules = [

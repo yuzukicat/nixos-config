@@ -58,13 +58,6 @@
       # supportDDC = true;
       useQtScaling = true;
       kdeglobals.KDE.SingleClick = false;
-
-      kwinrc = {
-        "Wayland" = {
-          "InputMethod[$e]" = "/run/current-system/sw/share/applications/com.github.maliit.keyboard.desktop";
-          "VirtualKeyboardEnabled" = "true";
-        };
-      };
     };
 
     # To make it work on clevo nh55vr rtx-3070max-q

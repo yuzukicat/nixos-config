@@ -95,7 +95,6 @@ in {
     my.pkgs.hyfetch
     my.pkgs.librime-lua
     my.pkgs.systemd-run-app
-    onboard
     ]
     ++ lspPackages;
 

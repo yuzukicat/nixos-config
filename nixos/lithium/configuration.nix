@@ -1,4 +1,4 @@
-# For the purpose of testing, to install nixos on asus rog ally.
+1# For the purpose of testing, to install nixos on asus rog ally.
 { lib, config, pkgs, inputs, my, ... }:
 
 {
@@ -24,13 +24,13 @@
 
       systemd.enable = true;
 
-      availableKernelModules = ["thunderbolt" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
+      availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
 
       kernelModules = ["dm-snapshot" "amdgpu"];
 
       luks.devices = {
         crypted = {
-          device = "/dev/disk/by-partuuid/4c0e7158-2062-5141-8dae-15e7086a6be0";
+          device = "/dev/disk/by-partuuid/56eaed9a-bf7c-c34a-9906-2debdf278e3c";
           # header = "/dev/disk/by-partuuid/e9cea87e-7ba4-1c4d-bd74-98ea4d5c6d58";
           allowDiscards = true;
           bypassWorkqueues = true;
@@ -74,24 +74,24 @@
   # Use nixos-generate-config --root /mnt then copy and paste
   # asus rog ally
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/9aed90d8-1089-4cd7-b8e1-2b48496d8c15";
+    { device = "/dev/disk/by-uuid/6ab835e2-375e-4564-bd87-1ef560ad6daf";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/9aed90d8-1089-4cd7-b8e1-2b48496d8c15";
+    { device = "/dev/disk/by-uuid/6ab835e2-375e-4564-bd87-1ef560ad6daf";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/EBF0-9425";
+    { device = "/dev/disk/by-uuid/70A1-4F29";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/53c26a36-d61d-4355-a8c9-793cb09bedcc"; }
+    [ { device = "/dev/disk/by-uuid/9e48241a-8ebc-499d-90ba-4332aecc621d"; }
     ];
 
   # Hardware.
@@ -104,6 +104,16 @@
 
     logitech.wireless.enable = true;
     logitech.wireless.enableGraphical = true; # Solaar.
+
+    # hardware.joystick.enable = true;
+
+    # hardware.xone.enable = true;
+
+    hardware.xpadneo.enable = true;
+
+    # jovian.steam.enable = true;
+
+    # jovian.devices.steamdeck.enable = true;
 
     # # HIP
     # systemd.tmpfiles.rules = [

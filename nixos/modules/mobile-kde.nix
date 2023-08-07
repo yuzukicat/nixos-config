@@ -140,4 +140,8 @@
   hardware.xone.enable = true;
 
   hardware.xpadneo.enable = true;
+
+  jovian.steam.enable = true;
+
+  jovian.devices.steamdeck.enable = true;
 }

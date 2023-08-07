@@ -104,16 +104,6 @@
     logitech.wireless.enable = true;
     logitech.wireless.enableGraphical = true; # Solaar.
 
-    # joystick.enable = true;
-
-    xone.enable = true;
-
-    # xpadneo.enable = true;
-
-    # jovian.steam.enable = true;
-
-    # jovian.devices.steamdeck.enable = true;
-
     # # HIP
     # systemd.tmpfiles.rules = [
     #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
@@ -208,6 +198,8 @@
     udisks2.mountOnMedia = true;
 
     unclutter.enable = true;
+
+    asusd.enable = true;
   };
 
   # Global ssh settings. Also for remote builders.
@@ -229,6 +221,7 @@
     solaar # Logitech devices control.
     ltunify
     virt-manager
+    asusctl
     # aspell
     # arandr
     # bat

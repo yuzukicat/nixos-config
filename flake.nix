@@ -346,6 +346,7 @@
                 epkgs.interaction-log
                 epkgs.json-reformat
                 epkgs.json-snatcher
+                epkgs.auctex
                 (epkgs.melpaBuild rec {
                   pname = "mind-wave";
                   version = "20230324.1348"; # 13:12 UTC

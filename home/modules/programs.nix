@@ -144,10 +144,13 @@ in {
       # non-oss:
       obsidian
       discord
+      zoom-us
       my.pkgs.librime-lua
       feishu
       my.pkgs.systemd-run-app
       linuxPackages.perf
+      isoimagewriter
+      qbittorrent
     ]
     ++ lspPackages;
 

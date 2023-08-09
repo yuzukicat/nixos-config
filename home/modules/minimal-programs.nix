@@ -91,10 +91,13 @@ in {
 
     discord
     tdesktop
+    zoom-us
     linuxPackages.perf
     my.pkgs.hyfetch
     my.pkgs.librime-lua
     my.pkgs.systemd-run-app
+    isoimagewriter
+    qbittorrent
     ]
     ++ lspPackages;
 

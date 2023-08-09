@@ -107,9 +107,11 @@ in {
       my.pkgs.librime-lua
       docker
       discord
-      feishu
+      zoom-us
       my.pkgs.systemd-run-app
       google-chrome-dev
+      isoimagewriter
+      qbittorrent
     ]
     ++ lspPackages;
 

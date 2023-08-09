@@ -28,7 +28,7 @@
     ./modules/fish.nix
     ./modules/starship.nix
     ./modules/qutebrowser.nix
-    # ./modules/compatibility.nix
+    ./modules/compatibility.nix
     ./modules/kitty.nix
   ];
 

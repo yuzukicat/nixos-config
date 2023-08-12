@@ -12,7 +12,7 @@
   #   ];
 
   xdg.portal.enable = true;
-  xdg.portal.extraProtals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   services.flatpak.enable = true;
 
   nix = {

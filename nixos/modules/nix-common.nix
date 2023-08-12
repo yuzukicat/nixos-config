@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  pkgs,
   ...
 }: {
   # Install a proprietary or unfree package FOR nv, vscode
@@ -9,6 +10,10 @@
   # nixpkgs.config.permittedInsecurePackages = with pkgs; [
   #     "qtwebkit-5.212.0-alpha4"
   #   ];
+
+  xdg.portal.enable = true;
+  xdg.portal.extraProtals = [ pkgs.xdg-desktop-portal-gtk ];
+  services.flatpak.enable = true;
 
   nix = {
     # package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;

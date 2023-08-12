@@ -39,7 +39,4 @@
       });
     })
   ];
-
-  xdg.portal.enable = true;
-
 }

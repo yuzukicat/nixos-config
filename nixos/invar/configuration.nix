@@ -28,14 +28,14 @@
 
       luks.devices = {
         crypted = {
-          device = "/dev/disk/by-partuuid/f64a0ec2-6907-41d1-99e5-d48520f80a3e";
-          header = "/dev/disk/by-partuuid/bb58c05e-d8ac-438e-a856-c4a17160557c";
+          device = "/dev/disk/by-partuuid/6f4a96b4-1390-da41-8ea6-642400b4dfdf";
+          # header = "/dev/disk/by-partuuid/bb58c05e-d8ac-438e-a856-c4a17160557c";
           allowDiscards = true; # Used if primary device is a SSD
           preLVM = true;
         };
         crypted2 = {
-          device = "/dev/disk/by-partuuid/61b581fd-a712-4a0f-b016-a4875c178095";
-          header = "/dev/disk/by-partuuid/bb58c05e-d8ac-438e-a856-c4a17160557c";
+          device = "/dev/disk/by-partuuid/caf49c69-6dad-49ea-81b6-04b6675b91f9";
+          # header = "/dev/disk/by-partuuid/bb58c05e-d8ac-438e-a856-c4a17160557c";
           allowDiscards = true; # Used if primary device is a SSD
           preLVM = true;
         };
@@ -83,24 +83,24 @@
   # Questions.
   # Work Station
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/9aed90d8-1089-4cd7-b8e1-2b48496d8c15";
+    { device = "/dev/disk/by-uuid/81168bfa-6973-48fb-bbfc-94d3a17e4231";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/9aed90d8-1089-4cd7-b8e1-2b48496d8c15";
+    { device = "/dev/disk/by-uuid/81168bfa-6973-48fb-bbfc-94d3a17e4231";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/EBF0-9425";
+    { device = "/dev/disk/by-uuid/AF84-4891";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/53c26a36-d61d-4355-a8c9-793cb09bedcc"; }
+    [ { device = "/dev/disk/by-uuid/891953e4-1cc9-4a5d-b0ab-6423aaf216d5"; }
     ];
 
   # Hardware.
@@ -119,13 +119,17 @@
   # Time Zone
   time.timeZone = "Asia/Tokyo";
 
+  programs.fish = {
+    enable = true;
+  };
+
   # Users.
   # sops.secrets.passwd.neededForUsers = true;
   users = {
     mutableUsers = true;
     users."yuzuki" = {
       isNormalUser = true;
-      shell = pkgs.zsh;
+      shell = pkgs.fish;
       # Allow the graphical user to login without password
       initialHashedPassword = "";
       # password = "yuzuki";

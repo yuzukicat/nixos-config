@@ -6,6 +6,7 @@
   programs.home-manager.enable = true;
 
   imports = [
+    ./modules/alacritty.nix
     ./modules/direnv.nix
     ./modules/fish.nix
     ./modules/git.nix

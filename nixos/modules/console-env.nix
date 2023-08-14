@@ -96,6 +96,7 @@
     xray
     ryzenadj
     you-get
+    maim
   ];
 
   programs.less = {

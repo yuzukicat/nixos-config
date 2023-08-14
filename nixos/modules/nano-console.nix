@@ -65,6 +65,7 @@
     gimp
     pandoc
     texlive.combined.scheme-full
+    maim
   ];
 
   programs.less = {

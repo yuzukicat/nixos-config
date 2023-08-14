@@ -59,7 +59,7 @@
     hip
     hip-common
     hipcc
-    azure-cli
+    # azure-cli
     discocss
     nuget-to-nix
     discordchatexporter-cli

@@ -9,8 +9,6 @@
       # enabled = "fcitx5";
       # fcitx5.addons = with pkgs; [ fcitx5-rime ];
       # fcitx5.enableRimeData = true;
-      # enabled = "fcitx5";
-      # fcitx5.addons = with pkgs; [ fcitx5-rime fcitx5-configtool ];
       enabled = "ibus";
       ibus.engines = with pkgs.ibus-engines; [
         typing-booster

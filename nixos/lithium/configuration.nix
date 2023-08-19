@@ -29,8 +29,8 @@
 
       luks.devices = {
         crypted = {
-          device = "/dev/disk/by-partuuid/56eaed9a-bf7c-c34a-9906-2debdf278e3c";
-          # header = "/dev/disk/by-partuuid/e9cea87e-7ba4-1c4d-bd74-98ea4d5c6d58";
+          device = "/dev/disk/by-partuuid/d93ac1c9-d525-482e-97dd-f5e078137e01";
+          header = "/dev/disk/by-partuuid/6f4d3ed5-096d-4aff-beca-5335c3af172b";
           allowDiscards = true;
           bypassWorkqueues = true;
           preLVM = true;
@@ -73,24 +73,24 @@
   # Use nixos-generate-config --root /mnt then copy and paste
   # asus rog ally
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/6ab835e2-375e-4564-bd87-1ef560ad6daf";
+    { device = "/dev/disk/by-uuid/3151ca90-c0f6-4fed-b7fc-05a17b782c36";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/6ab835e2-375e-4564-bd87-1ef560ad6daf";
+    { device = "/dev/disk/by-uuid/3151ca90-c0f6-4fed-b7fc-05a17b782c36";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/70A1-4F29";
+    { device = "/dev/disk/by-uuid/A5E3-9BC6";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/9e48241a-8ebc-499d-90ba-4332aecc621d"; }
+    [ { device = "/dev/disk/by-uuid/c06ebf0d-e6a1-4564-b125-38d6268ba3f7"; }
     ];
 
   # Hardware.

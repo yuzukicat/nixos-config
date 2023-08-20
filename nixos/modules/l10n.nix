@@ -12,6 +12,7 @@
       noto-fonts-emoji
       fira-code
       fira-code-symbols
+      jetbrains-mono
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       twemoji-color-font

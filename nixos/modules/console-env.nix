@@ -68,7 +68,7 @@
     dotnet-aspnetcore_8
     dotnetPackages.Nuget
     gyb
-    my.pkgs.openai-whisper-cpp
+    openai-whisper-cpp
     clblast
     ffmpeg
     my.pkgs.cmdg

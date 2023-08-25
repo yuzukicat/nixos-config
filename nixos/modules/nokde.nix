@@ -82,9 +82,9 @@
     amdvlk
   ];
 
-  hardware.opengl.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
-  ];
+  # hardware.opengl.extraPackages32 = with pkgs; [
+  #   driversi686Linux.amdvlk
+  # ];
 
   # Vulkan
   hardware.opengl = {

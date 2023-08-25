@@ -79,7 +79,7 @@
   hardware.opengl.extraPackages = with pkgs; [
     rocm-opencl-icd
     rocm-opencl-runtime
-    amdvlk
+    # amdvlk
   ];
 
   # hardware.opengl.extraPackages32 = with pkgs; [

@@ -143,7 +143,9 @@ in {
 
       # non-oss:
       obsidian
-      discord
+      (discord.override {
+        withVencord = true;
+      })
       zoom-us
       my.pkgs.librime-lua
       feishu

@@ -112,6 +112,8 @@ in {
       google-chrome-dev
       isoimagewriter
       qbittorrent
+      okular
+      libsForQt5.kdeconnect-kde
     ]
     ++ lspPackages;
 

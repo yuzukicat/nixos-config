@@ -10,6 +10,13 @@
     enable = true;
     # drivers = [ pkgs.samsung-unified-linux-driver ];
     cups-pdf.enable = true;
+    # Whether to run the Avahi daemon, which allows Avahi clients to use Avahi’s service discovery facilities and also allows the local machine to advertise its presence and services (through the mDNS responder implemented by avahi-daemon).
+    avahi.enable = true;
+    avahi.nssmdns = true;
+    # for a WiFi printer
+    avahi.openFirewall = true;
+    # for an USB printer
+    ipp-usb.enable = true;
   };
 
   # hardware.sane = {

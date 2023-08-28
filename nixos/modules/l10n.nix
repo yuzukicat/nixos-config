@@ -13,6 +13,7 @@
       fira-code
       fira-code-symbols
       jetbrains-mono
+      jost
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       twemoji-color-font
@@ -37,7 +38,7 @@
       enable = true;
 
       defaultFonts = {
-        monospace = [ "Iosevka Fixed" "Noto Sans CJK SC" "Font Awesome 6 Free" "Twemoji" "Sarasa Mono SC"];
+        monospace = [ "Iosevka Fixed" "Noto Sans CJK SC" "Font Awesome 6 Free" "Twemoji" "Sarasa Mono SC" "JetBrains Mono"];
         # Prefer CJK-SC-style quotation marks.
         # We cannot select different styles for it based on languages since our locale is en_US.UTF-8.
         # See: https://catcat.cc/post/2021-03-07/#remark42__comment-37ccca1d-cbc6-4c48-a224-18007987cf16

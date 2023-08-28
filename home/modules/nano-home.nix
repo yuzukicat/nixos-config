@@ -250,9 +250,4 @@ in {
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [];
   };
-
-  services.kdeconnet = {
-    enable = true;
-    indicator = true;
-  };
 }

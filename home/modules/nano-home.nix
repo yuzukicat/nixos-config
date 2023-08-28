@@ -113,6 +113,7 @@ in {
       isoimagewriter
       qbittorrent
       okular
+      libsForQt5.kdeconnect-kde
     ]
     ++ lspPackages;
 
@@ -244,5 +245,10 @@ in {
         streetsidesoftware.code-spell-checker
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [];
+  };
+
+  services.kdeconnet = {
+    enable = true;
+    indicator = true;
   };
 }

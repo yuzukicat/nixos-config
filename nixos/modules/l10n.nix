@@ -13,7 +13,6 @@
       fira-code
       fira-code-symbols
       jetbrains-mono
-      jost
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       twemoji-color-font
@@ -30,6 +29,8 @@
       sarasa-gothic
       arphic-ukai arphic-uming
       unfonts-core
+      # nerdfonts
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
       # Use bin to save build time (~11min).
       (iosevka-bin.override { variant = "sgr-iosevka-fixed"; })
     ];

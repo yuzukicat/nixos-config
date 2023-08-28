@@ -143,7 +143,7 @@ in {
 
       # non-oss:
       obsidian
-      (discord.override {
+      (discord-ptb.override {
         withVencord = true;
       })
       zoom-us
@@ -153,6 +153,7 @@ in {
       linuxPackages.perf
       isoimagewriter
       qbittorrent
+      gnuplot
     ]
     ++ lspPackages;
 

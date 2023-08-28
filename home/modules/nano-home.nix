@@ -106,7 +106,9 @@ in {
       # non-oss:
       my.pkgs.librime-lua
       docker
-      discord
+      (discord-ptb.override {
+        withVencord = true;
+      })
       zoom-us
       my.pkgs.systemd-run-app
       google-chrome-dev
@@ -114,6 +116,7 @@ in {
       qbittorrent
       okular
       libsForQt5.kdeconnect-kde
+      gnuplot
     ]
     ++ lspPackages;
 
@@ -172,6 +175,9 @@ in {
     mu = {
       enable = true;
     };
+  };
+  programs.light = {
+    enable = true;
   };
   programs.offlineimap = {
     enable = true;

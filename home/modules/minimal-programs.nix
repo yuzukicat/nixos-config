@@ -92,12 +92,16 @@ in {
     discord
     tdesktop
     zoom-us
+    (discord-ptb.override {
+      withVencord = true;
+    })
     linuxPackages.perf
     my.pkgs.hyfetch
     my.pkgs.librime-lua
     my.pkgs.systemd-run-app
     isoimagewriter
     qbittorrent
+    gnuplot
     ]
     ++ lspPackages;
 

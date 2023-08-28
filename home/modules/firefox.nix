@@ -42,7 +42,7 @@
 
         # Theme.
         "devtools.theme" = "auto";
-        "extensions.activeThemeID" = "efault-theme@mozilla.org";
+        "extensions.activeThemeID" = "default-theme@mozilla.org";
         "browser.display.use_system_colors" = true;
 
         # Let our font-config choose final fonts.

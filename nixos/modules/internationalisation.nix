@@ -4,6 +4,7 @@
     defaultLocale = "en_CA.UTF-8";
     extraLocaleSettings = {
       LC_CTYPE = "ja_JP.UTF-8";
+      LC_TIME = "de_DE.UTF-8";
     };
     inputMethod = {
       # enabled = "fcitx5";

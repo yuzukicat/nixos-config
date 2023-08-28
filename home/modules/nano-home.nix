@@ -177,9 +177,6 @@ in {
       enable = true;
     };
   };
-  programs.light = {
-    enable = true;
-  };
   programs.offlineimap = {
     enable = true;
     extraConfig = {

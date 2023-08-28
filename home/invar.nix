@@ -8,6 +8,7 @@
   imports = [
     ./modules/alacritty.nix
     ./modules/direnv.nix
+    ./modules/firefox.nix
     ./modules/fish.nix
     ./modules/git.nix
     ./modules/gpg.nix

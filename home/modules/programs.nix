@@ -153,6 +153,7 @@ in {
       linuxPackages.perf
       isoimagewriter
       qbittorrent
+      chromium
       gnuplot
     ]
     ++ lspPackages;

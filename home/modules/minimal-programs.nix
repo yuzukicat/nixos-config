@@ -101,6 +101,7 @@ in {
     my.pkgs.systemd-run-app
     isoimagewriter
     qbittorrent
+    chromium
     gnuplot
     ]
     ++ lspPackages;

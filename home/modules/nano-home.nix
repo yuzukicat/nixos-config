@@ -116,6 +116,7 @@ in {
       qbittorrent
       okular
       libsForQt5.kdeconnect-kde
+      chromium
       gnuplot
     ]
     ++ lspPackages;

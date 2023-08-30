@@ -2,7 +2,6 @@
   lib,
   pkgs,
   my,
-  inputs,
   ...
 }: {
   environment.defaultPackages = with pkgs; [nano];
@@ -101,6 +100,8 @@
   programs.iftop.enable = true; # iftop -i wlp6s0
 
   programs.iotop.enable = true;
+
+  programs.kdeconnect.enable = true;
 
   programs.mtr.enable = true; #mtr -4 example.com
 

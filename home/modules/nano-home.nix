@@ -114,10 +114,9 @@ in {
       google-chrome-dev
       isoimagewriter
       qbittorrent
-      okular
-      libsForQt5.kdeconnect-kde
       chromium
       gnuplot
+      okular
     ]
     ++ lspPackages;
 

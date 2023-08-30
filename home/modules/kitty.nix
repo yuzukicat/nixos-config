@@ -7,8 +7,8 @@
     font = {
       package = pkgs.fira-code;
       name = "fira-code";
-      # size = 30;
-      size = 12 * config.wayland.dpi / 96;
+      size = 30;
+      # size = 12 * config.wayland.dpi / 96;
     };
     settings = {
       scrollback_lines = 10000;

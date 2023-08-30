@@ -105,12 +105,6 @@
     logitech.wireless.enable = true;
     logitech.wireless.enableGraphical = true; # Solaar.
 
-    # HIP
-    systemd.tmpfiles.rules = [
-      "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
-      "L+    /opt/rocm/hipcc   -    -    -     -  ${pkgs.hipcc}"
-    ];
-
     opengl= {
       enable = true;
 
@@ -125,6 +119,12 @@
       ];
     };
   };
+
+  # HIP
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+    "L+    /opt/rocm/hipcc   -    -    -     -  ${pkgs.hipcc}"
+  ];
 
   # services.colord.enable = true;
 

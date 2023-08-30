@@ -41,9 +41,16 @@
     # };
 
     # 7950x
+    # interfaces = {
+    #   enp9s0.useDHCP = lib.mkDefault true;
+    #   wlp10s0.useDHCP = lib.mkDefault true;
+    #   # tailscale0.useDHCP = lib.mkDefault true;
+    # };
+
+    # 6800HS
     interfaces = {
       enp9s0.useDHCP = lib.mkDefault true;
-      wlp10s0.useDHCP = lib.mkDefault true;
+      wlp5s0.useDHCP = lib.mkDefault true;
       # tailscale0.useDHCP = lib.mkDefault true;
     };
   };

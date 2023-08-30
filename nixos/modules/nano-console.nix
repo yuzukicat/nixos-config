@@ -101,6 +101,8 @@
 
   programs.iotop.enable = true;
 
+  programs.kclock.enable = true;
+
   programs.kdeconnect.enable = true;
 
   programs.mtr.enable = true; #mtr -4 example.com

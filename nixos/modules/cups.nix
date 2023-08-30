@@ -6,10 +6,17 @@
   #   nssmdns = true;
   # };
 
-  services.printing = {
-    enable = true;
+  services = {
+    printing.enable = true;
     # drivers = [ pkgs.samsung-unified-linux-driver ];
-    cups-pdf.enable = true;
+    printing.cups-pdf.enable = true;
+
+    avahi.enable = true;
+    avahi.nssmdns = true;
+    # for a WiFi printer
+    avahi.openFirewall = true;
+    # for an USB printer
+    ipp-usb.enable = true;
   };
 
   # hardware.sane = {

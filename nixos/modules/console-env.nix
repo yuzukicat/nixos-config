@@ -133,6 +133,7 @@
   programs.mtr.enable = true; #mtr -4 example.com
   programs.tmux.enable = true;
   programs.zsh.enable = true;
+  programs.kclock.enable = true;
 
   # programs.nano.defaultEditor = true;
 

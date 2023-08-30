@@ -52,6 +52,7 @@
       # Try fixing nvme unavailability issue after S3 resume.
       # See: https://wiki.archlinux.org/title/Solid_state_drive/NVMe#Controller_failure_due_to_broken_suspend_support
       "amd_iommu=fullflush"
+      "pcie_aspm.policy=powersupersave"
     ];
 
     loader = {
@@ -94,7 +95,7 @@
     ];
 
   # Hardware.
-  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.cpuFreqGovernor = "powersave";
 
   hardware = {
 
@@ -200,6 +201,12 @@
     unclutter.enable = true;
 
     asusd.enable = true;
+
+    # fixes mic mute button
+    udev.extraHwdb = ''
+      evdev:name:*:dmi:bvn*:bvr*:bd*:svnASUS*:pn*:*
+       KEYBOARD_KEY_ff31007c=f20
+    '';
   };
 
   # Global ssh settings. Also for remote builders.

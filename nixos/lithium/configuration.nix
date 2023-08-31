@@ -95,7 +95,7 @@
     ];
 
   # Hardware.
-  powerManagement.cpuFreqGovernor = "powersave";
+  powerManagement.cpuFreqGovernor = "performance";
 
   hardware = {
 

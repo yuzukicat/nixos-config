@@ -172,7 +172,7 @@ in {
   programs.feh.enable = true;
   programs.go = {
     enable = true;
-    package = pkgs.go;
+    package = pkgs.go_1_21;
     packages = {
       "golang.org/x/tools/gopls@latest" = pkgs.gopls;
       "golang.org/x/tools@latest" = my.pkgs.gotools;

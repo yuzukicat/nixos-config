@@ -6,6 +6,7 @@
   programs.home-manager.enable = true;
 
   imports = [
+    ./modules/compatibility.nix
     ./modules/direnv.nix
     ./modules/firefox.nix
     ./modules/fish.nix

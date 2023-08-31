@@ -105,6 +105,7 @@ in {
     gnuplot
     okular
     xsel
+    supergfxctl
     ]
     ++ lspPackages;
 

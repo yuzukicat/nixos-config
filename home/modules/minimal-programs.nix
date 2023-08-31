@@ -104,6 +104,7 @@ in {
     chromium
     gnuplot
     okular
+    xsel
     ]
     ++ lspPackages;
 

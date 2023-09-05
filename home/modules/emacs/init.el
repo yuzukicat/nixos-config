@@ -702,6 +702,18 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
   (add-hook 'go-mode-hook #'flymake-go-staticcheck-enable)
   (add-hook 'go-mode-hook #'flymake-mode)
   )
+(use-package phps-mode)
+(use-package php-mode)
+(defun my-php-mode-setup ()
+  "My PHP-mode hook."
+  (use-package 'flycheck-phpstan)
+  (flycheck-mode t))
+(add-hook 'php-mode-hook 'my-php-mode-setup)
+(use-package flycheck-phpstan
+  :config
+  (setq-default phpstan-executable 'docker)
+  )
+(setq-default phpstan-executable 'docker)
 (use-package graphql-mode)
 (use-package js2-mode)
 (use-package json-mode)

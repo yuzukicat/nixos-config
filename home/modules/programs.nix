@@ -44,6 +44,8 @@
     nodePackages.typescript-language-server
     nodePackages.unified-language-server
     nodePackages.yaml-language-server
+    nodePackages.intelephense
+    php81Packages.phpstan
   ];
   obs = pkgs.wrapOBS {
     plugins = with pkgs.obs-studio-plugins; [
@@ -155,6 +157,7 @@ in {
       qbittorrent
       chromium
       gnuplot
+      php81
     ]
     ++ lspPackages;
 
@@ -325,6 +328,9 @@ in {
         ms-vscode.hexeditor
         kddejong.vscode-cfn-lint
         streetsidesoftware.code-spell-checker
+        bmewburn.vscode-intelephense-client
+        devsense.phptools-vscode
+        devsense.composer-php-vscode
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [];
   };

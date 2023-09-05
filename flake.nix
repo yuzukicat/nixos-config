@@ -260,6 +260,10 @@
                 epkgs.python-mode
                 epkgs.python-x
                 epkgs.pet
+                epkgs.phps-mode
+                epkgs.php-mode
+                epkgs.ob-php
+                epkgs.flymake-phpstan
                 epkgs.pyinspect
                 epkgs.python-docstring
                 epkgs.numpydoc

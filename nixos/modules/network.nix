@@ -18,7 +18,7 @@
       unmanaged = ["enp15s0"];
     };
 
-    # networking.firewall.allowedTCPPorts = [ ... ];
+    firewall.allowedTCPPorts = [ 80 ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;

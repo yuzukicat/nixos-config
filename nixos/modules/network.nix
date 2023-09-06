@@ -18,6 +18,9 @@
       unmanaged = ["enp15s0"];
     };
 
+    firewall.enable = true;
+    firewall.trustedInterfaces = [ "docker0" ];
+    networking.firewall.allowedTCPPorts = [ 22 80 443 ];
     # firewall.allowedTCPPorts = [ 80 ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
@@ -43,18 +46,19 @@
     # };
 
     # 7950x
-    # interfaces = {
-    #   enp9s0.useDHCP = lib.mkDefault true;
-    #   wlp10s0.useDHCP = lib.mkDefault true;
-    #   # tailscale0.useDHCP = lib.mkDefault true;
-    # };
-
-    # 6800HS
     interfaces = {
-      enp9s0.useDHCP = lib.mkDefault true;
-      wlp5s0.useDHCP = lib.mkDefault true;
+      eno1.useDHCP = lib.mkDefault true;
+      wlp10s0.useDHCP = lib.mkDefault true;
+      # docker0.useDHCP = lib.mkDefault true;
       # tailscale0.useDHCP = lib.mkDefault true;
     };
+
+    # # 6800HS
+    # interfaces = {
+    #   enp9s0.useDHCP = lib.mkDefault true;
+    #   wlp5s0.useDHCP = lib.mkDefault true;
+    #   # tailscale0.useDHCP = lib.mkDefault true;
+    # };
   };
 
   systemd.network.wait-online = {

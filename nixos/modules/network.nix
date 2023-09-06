@@ -20,7 +20,7 @@
 
     firewall.enable = true;
     firewall.trustedInterfaces = [ "docker0" ];
-    networking.firewall.allowedTCPPorts = [ 22 80 443 ];
+    firewall.allowedTCPPorts = [ 22 80 443 ];
     # firewall.allowedTCPPorts = [ 80 ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.

@@ -18,7 +18,7 @@
       unmanaged = ["enp15s0"];
     };
 
-    firewall.allowedTCPPorts = [ 80 ];
+    # firewall.allowedTCPPorts = [ 80 ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
@@ -26,6 +26,8 @@
       logRefusedConnections = false;
       checkReversePath = "loose";
     };
+
+    nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
 
     # yuzuki
     # interfaces = {
@@ -119,4 +121,14 @@
   # };
 
   # services.tailscale.enable = true;
+
+  services.resolved = {
+    enable = true;
+    dnssec = "true";
+    domains = [ "~." ];
+    fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+    extraConfig = ''
+    DNSOverTLS=yes
+  '';
+  };
 }

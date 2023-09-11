@@ -26,7 +26,7 @@
     git
     strace
     pv # Monitoring of data being sent through pipe, including copying file.
-    exa # exa --long --header --recurse
+    eza # exa --long --header --recurse
     fd
     ripgrep
     lsof

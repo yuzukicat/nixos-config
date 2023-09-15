@@ -65,6 +65,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.rust-overlay.follows = "rust-overlay";
     };
+    android-nixpkgs = {
+      url = "github:tadfisher/android-nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Optional.
     # secrets.url = "/home/yuzuki/storage/personal/nixos-config/nixos/blacksteel";
   };

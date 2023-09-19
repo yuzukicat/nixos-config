@@ -82,7 +82,7 @@
       fetchSubmodules = false;
       sha256 = "sha256-8DJ6bYmp7qHlfUbmq4Q6oIBCnln0Xa22JBoyJ0mqYuw=";
     };
-    vendorSha256 = "sha256-vTGyEq65crhius8EzuaBSgUrUc3e7P1X7v76qaYjXus=";
+    vendorSha256 = "sha256-PRVvISICVswI6RpdA1umN72DhAa9aIhzv/kSKk1UWyM=";
     date = "2023-09-18";
   };
   gotools = {
@@ -95,7 +95,7 @@
       fetchSubmodules = false;
       sha256 = "sha256-8DJ6bYmp7qHlfUbmq4Q6oIBCnln0Xa22JBoyJ0mqYuw=";
     };
-    vendorSha256 = "sha256-vTGyEq65crhius8EzuaBSgUrUc3e7P1X7v76qaYjXus=";
+    vendorSha256 = "sha256-PRVvISICVswI6RpdA1umN72DhAa9aIhzv/kSKk1UWyM=";
     date = "2023-09-18";
   };
   lsp-bridge = {

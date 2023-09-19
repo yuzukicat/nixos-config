@@ -40,12 +40,12 @@ fetch.url = "https://github.com/browsh-org/browsh/releases/download/v1.8.2/brows
 [gotools]
 src.git = "https://github.com/golang/tools.git"
 fetch.github = "golang/tools"
-passthru = { vendorSha256 = "sha256-vTGyEq65crhius8EzuaBSgUrUc3e7P1X7v76qaYjXus=" }
+passthru = { vendorSha256 = "sha256-PRVvISICVswI6RpdA1umN72DhAa9aIhzv/kSKk1UWyM=" }
 
 [gopls]
 src.git = "https://github.com/golang/tools.git"
 fetch.github = "golang/tools"
-passthru = { vendorSha256 = "sha256-vTGyEq65crhius8EzuaBSgUrUc3e7P1X7v76qaYjXus=" }
+passthru = { vendorSha256 = "sha256-PRVvISICVswI6RpdA1umN72DhAa9aIhzv/kSKk1UWyM=" }
 
 [whisper-cpp]
 src.git = "https://github.com/ggerganov/whisper.cpp.git"

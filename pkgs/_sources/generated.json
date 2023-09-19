@@ -128,7 +128,7 @@
         "extract": null,
         "name": "gopls",
         "passthru": {
-            "vendorSha256": "sha256-vTGyEq65crhius8EzuaBSgUrUc3e7P1X7v76qaYjXus="
+            "vendorSha256": "sha256-PRVvISICVswI6RpdA1umN72DhAa9aIhzv/kSKk1UWyM="
         },
         "pinned": false,
         "src": {
@@ -150,7 +150,7 @@
         "extract": null,
         "name": "gotools",
         "passthru": {
-            "vendorSha256": "sha256-vTGyEq65crhius8EzuaBSgUrUc3e7P1X7v76qaYjXus="
+            "vendorSha256": "sha256-PRVvISICVswI6RpdA1umN72DhAa9aIhzv/kSKk1UWyM="
         },
         "pinned": false,
         "src": {

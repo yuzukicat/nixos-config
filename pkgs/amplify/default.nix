@@ -10,7 +10,7 @@ buildNpmPackage rec {
   NODE_OPTIONS = "--openssl-legacy-provider";
 
   postPatch = ''
-    cp -r ./package-lock.json ./
+    npm install --legacy-peer-deps
   '';
 
   meta = with lib; {

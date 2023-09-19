@@ -10,7 +10,7 @@ buildNpmPackage rec {
   NODE_OPTIONS = "--openssl-legacy-provider";
 
   postPatch = ''
-    cp -r ./package-lock.json
+    cp -r ./package-lock.json ./
   '';
 
   meta = with lib; {

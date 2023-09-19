@@ -5,7 +5,7 @@ buildNpmPackage rec {
   version = lib.removePrefix "v" source.version;
 
   # The prepack script runs the build script, which we'd rather do in the build phase.
-  npmPackFlags = [ "--ignore-scripts" ];
+  npmPackFlags = [ "--ignore-scripts" "--legacy-peer-deps" ];
 
   NODE_OPTIONS = "--openssl-legacy-provider";
 

@@ -98,6 +98,7 @@
     you-get
     maim
     node2nix
+    my.pkgs.amplify
   ];
 
   programs.less = {

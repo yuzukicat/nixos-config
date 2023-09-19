@@ -97,6 +97,7 @@
     ryzenadj
     you-get
     maim
+    node2nix
   ];
 
   programs.less = {

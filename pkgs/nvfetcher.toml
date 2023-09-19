@@ -50,3 +50,8 @@ passthru = { vendorSha256 = "sha256-vTGyEq65crhius8EzuaBSgUrUc3e7P1X7v76qaYjXus=
 [whisper-cpp]
 src.git = "https://github.com/ggerganov/whisper.cpp.git"
 fetch.github = "ggerganov/whisper.cpp"
+
+[amplify]
+src.git = "https://github.com/aws-amplify/amplify-cli.git"
+fetch.github = "aws-amplify/amplify-cli"
+passthru = { npmDepsHash = "sha256-2yXQgaRBjJnotz45bgx3DZ19aoQDFMxK+8CKyrTA7Qs=" }

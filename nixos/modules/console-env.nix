@@ -98,6 +98,8 @@
     you-get
     maim
     node2nix
+    prefetch-npm-deps
+    my.pkgs.amplify
   ];
 
   programs.less = {

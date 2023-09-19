@@ -9,6 +9,8 @@ buildNpmPackage rec {
 
   NODE_OPTIONS = "--openssl-legacy-provider";
 
+  postPatch = [ ./package-lock.json ];
+
   meta = with lib; {
     description = "The AWS Amplify CLI is a toolchain for simplifying serverless web and mobile development.";
     homepage = "https://github.com/aws-amplify/amplify-cli";

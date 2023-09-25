@@ -5,9 +5,8 @@
     windowManager.dwm.enable = true;
     displayManager.startx.enable = true;
     displayManager.defaultSession = "none+dwm";
-    # --output HDMI-0 --same-as DP-2 --mode 1920x1080 --brightness 1.0 --rotate normal
     displayManager.sessionCommands = ''
-      xrandr --output eDP-1 --primary --mode 2560x1600 --brightness 1.0 --pos 0x0 --rotate normal  --output HDMI-A-1-0 --same-as eDP-1 --mode 3840x2160 --brightness 1.0 --rotate normal &
+      xrandr --output eDP --primary --mode 2560x1600 --dpi 200 --brightness 1.0 --pos 0x0 --rotate normal &
       slstatus &
       feh --bg-fill .background.png &
       picom &
@@ -18,7 +17,8 @@
       enable = true;
       user = "yuzuki";
     };
-    videoDrivers = [ "amdgpu" ];
+    videoDrivers = [ "nvidia" ];
+    dpi = 200;
   };
 
   nixpkgs.overlays = [
@@ -38,7 +38,4 @@
       });
     })
   ];
-
-  xdg.portal.enable = true;
-
 }

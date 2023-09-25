@@ -118,9 +118,6 @@
         rocm-opencl-runtime
       ];
     };
-    amdgpu = {
-      amdvlk.enable = true;
-    };
   };
 
   # HIP

@@ -17,7 +17,7 @@
       enable = true;
       user = "yuzuki";
     };
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "amdgpu" ];
     dpi = 200;
   };
 

@@ -6,7 +6,7 @@
     displayManager.startx.enable = true;
     displayManager.defaultSession = "none+dwm";
     displayManager.sessionCommands = ''
-      xrandr --output eDP --primary --mode 2560x1600 --dpi 200 --brightness 1.0 --pos 0x0 --rotate normal &
+      xrandr --fb 2560x1600 --dpi 200 --output eDP --primary --mode 2560x1600 --brightness 1.0 --pos 0x0 --rotate normal &
       slstatus &
       feh --bg-fill .background.png &
       picom &

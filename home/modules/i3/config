@@ -266,7 +266,7 @@ bar {
 # for_window [all] title_window_icon on
 default_border none
 default_floating_border none
-gaps inner 1
+gaps inner 0
 
 for_window [title="Application Finder"] floating enable resize set 640 480
 for_window [title="Nitrogen"] floating enable resize set 640 480

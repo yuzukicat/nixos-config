@@ -104,6 +104,24 @@
     gnome.gnome-keyring
     polkit_gnome
     pulseaudioFull
+    aspell
+    arandr
+    bat
+    btop # A monitor of resources
+    gcc
+    killall
+    my.pkgs.hyfetch
+    brightnessctl
+    pamixer # pamixer is like amixer but for pulseaudio. It can control the volume levels of the sinks
+    pavucontrol
+    alsa-utils
+    picom
+    ueberzugpp # w3m img
+    input-utils
+    xbindkeys
+    lxappearance
+    zafiro-icons
+    catppuccin-gtk
   ];
 
   programs.less = {

@@ -33,6 +33,7 @@
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       # Use bin to save build time (~11min).
       (iosevka-bin.override { variant = "sgr-iosevka-fixed"; })
+      dejavu_fonts
     ];
 
     fontconfig = {

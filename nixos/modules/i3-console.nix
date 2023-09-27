@@ -122,6 +122,8 @@
     lxappearance
     zafiro-icons
     catppuccin-gtk
+    dunst
+    libsForQt5.okular
   ];
 
   programs.less = {

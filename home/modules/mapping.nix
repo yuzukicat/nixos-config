@@ -35,6 +35,8 @@ in {
     // mkHomeFile ./discocss ".config/discocss"
     // mkHomeFile ./vdirsyncer ".vdirsyncer"
     // mkHomeFile ./khal ".config/khal"
+    // mkHomeFile ./i3 ".config/i3"
+    // mkHomeFile ./i3status ".config/i3status"
     // {
       ".config/ibus/rime/easy_en.custom.yaml".text = ''
         patch:

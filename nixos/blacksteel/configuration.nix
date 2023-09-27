@@ -13,7 +13,8 @@
       # ./vm.nix
 
       ../modules/bluetooth.nix
-      ../modules/console-env.nix
+      # ../modules/console-env.nix
+      ../modules/i3-console.nix
       ../modules/cups.nix
       ../modules/desktop-server.nix
       ../modules/docker.nix
@@ -22,7 +23,8 @@
       ../modules/network.nix
       ../modules/nix-common.nix
       ../modules/nix-registry.nix
-      ../modules/nokde.nix
+      # ../modules/nokde.nix
+      ../modules/i3
       ../modules/steam.nix
       # ../modules/virtualisation.nix
       ../modules/systemd-unit-protections.nix
@@ -250,6 +252,7 @@
     jack.enable = true;
     wireplumber.enable = true;
   };
+  security.polkit.enable = true;
   security.rtkit.enable = true; # Better installed with pipewire.
   sound.enable = false; # pipewire expects this.
   # Might be necessary to solve the conflict with kde-plasma5 audio

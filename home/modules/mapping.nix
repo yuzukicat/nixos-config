@@ -37,6 +37,7 @@ in {
     // mkHomeFile ./khal ".config/khal"
     // mkHomeFile ./i3 ".config/i3"
     // mkHomeFile ./i3status ".config/i3status"
+    // mkHomeFile ./rofi ".config/rofi"
     // {
       ".config/ibus/rime/easy_en.custom.yaml".text = ''
         patch:

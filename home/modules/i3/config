@@ -51,7 +51,7 @@ client.placeholder      #000000            #909090        #FFFFFF        #268BD2
 #
 ##########################
 # Screenshot
-bindsym --release Print exec "flameshot gui"
+bindsym --release Print exec "flameshot screen"
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart

@@ -124,6 +124,7 @@
     catppuccin-gtk
     dunst
     libsForQt5.okular
+    caffeine
   ];
 
   programs.less = {

@@ -72,6 +72,8 @@ exec --no-startup-id dunst
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+exec --no-startup-id caffeine
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
@@ -94,7 +96,7 @@ bindsym $mod+Shift+f exec --no-startup-id "thunar"
 # Open browser
 bindsym $mod+Shift+b exec --no-startup-id "firefox"
 
-bindsym $mod+Control+l exec i3lock -i ~/.lock.jpg
+bindsym $mod+Control+l exec i3lock
 
 # kill focused window
 bindsym $mod+Shift+q kill

@@ -92,7 +92,9 @@ bindsym $mod+Shift+Return exec --no-startup-id "kitty"
 # Open file manager
 bindsym $mod+Shift+f exec --no-startup-id "thunar"
 # Open browser
-bindsym $mod+Shift+b exec --no-startup-id "firefox" 
+bindsym $mod+Shift+b exec --no-startup-id "firefox"
+
+bindsym $mod+Control+l exec i3lock
 
 # kill focused window
 bindsym $mod+Shift+q kill

@@ -30,6 +30,7 @@
     ./modules/qutebrowser.nix
     ./modules/compatibility.nix
     ./modules/kitty.nix
+    ./modules/startx.nix
   ];
 
   lib.homeManagerConfiguration = {

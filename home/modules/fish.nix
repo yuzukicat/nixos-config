@@ -9,7 +9,7 @@
       psdk = "pass show DISCORD_TOKEN";
       gybb = "gyb --action backup --email dawei.jiang@nowhere.co.jp --config-folder /home/yuzuki/storage/work/gmail/ --local-folder /home/yuzuki/storage/work/developers.yuzuki/email-pipeline/ --search \"(from: victor@nowhere.co.jp OR yamadera@nowhere.co.jp) OR (to: victor@nowhere.co.jp OR to: yamadera@nowhere.co.jp) AND (after:2023-05-09)\"";
       dcecp = "discordchatexporter-cli exportdm -t $DISCORD_TOKEN -f HtmlLight -o /home/yuzuki/storage/work/developers.yuzuki/dis-pipeline/";
-      prints = "maim -s -u | xclip -selection clipboard -t image/png -i";
+      prints = "flameshot gui | xclip -selection clipboard -t image/png -i";
     };
 
     shellInit = ''

@@ -95,7 +95,6 @@
     xray
     ryzenadj
     you-get
-    maim
     networkmanagerapplet
     nitrogen
     pasystray
@@ -124,6 +123,7 @@
     catppuccin-gtk
     dunst
     libsForQt5.okular
+    flameshot
   ];
 
   programs.less = {

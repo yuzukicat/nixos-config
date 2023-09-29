@@ -39,6 +39,7 @@ in {
     // mkHomeFile ./i3status ".config/i3status"
     // mkHomeFile ./dunst ".config/dunst"
     // mkHomeFile ./picom ".config/picom"
+    // mkHomeFile ./btop ".config/btop"
     // {
       ".config/ibus/rime/easy_en.custom.yaml".text = ''
         patch:

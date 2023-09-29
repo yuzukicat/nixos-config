@@ -123,6 +123,7 @@
     catppuccin-gtk
     dunst
     libsForQt5.okular
+    libsForQt5.ark
     flameshot
   ];
 

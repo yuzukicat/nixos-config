@@ -5,7 +5,8 @@
 {
   imports = [
     ../modules/bluetooth.nix
-    ../modules/console-env.nix
+    ../modules/nano-console.nix
+    ../modules/cups.nix
     ../modules/desktop-server.nix
     ../modules/gui
     ../modules/internationalisation.nix
@@ -49,8 +50,15 @@
     # https://lore.kernel.org/linux-btrfs/CABXGCsNzVxo4iq-tJSGm_kO1UggHXgq6CdcHDL=z5FL4njYXSQ@mail.gmail.com
     kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [ ];
     extraModulePackages = [ ];
+
+    kernelParams = [
+      "amd_pstate=active"
+      # Try fixing nvme unavailability issue after S3 resume.
+      # See: https://wiki.archlinux.org/title/Solid_state_drive/NVMe#Controller_failure_due_to_broken_suspend_support
+      "amd_iommu=fullflush"
+    ];
 
     # For hibernate-resume.
     # `sudo btrfs inspect-internal map-swapfile /var/swap/resume --resume-offset`
@@ -77,8 +85,6 @@
     };
   };
 
-  systemd.packages = [ my.pkgs.keystat ];
-
   # Use nixos-generate-config --root /mnt then copy and paste
   # Questions.
   # Work Station
@@ -104,7 +110,7 @@
     ];
 
   # Hardware.
-  powerManagement.cpuFreqGovernor = "schedutil";
+  powerManagement.cpuFreqGovernor = "performance";
   hardware = {
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
@@ -136,7 +142,7 @@
       # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
       group = config.users.groups.yuzuki.name;
-      extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" "video" "docker" "discocss" "networkmanager" "audio" "sound" "input"];
+      extraGroups = [ "wheel" "wireshark" "video" "discocss" "networkmanager" "audio" "sound" "input"];
     };
     groups."yuzuki".gid = 1000;
     # Allow the user to log in as root without a password.
@@ -247,8 +253,6 @@
 
   environment.systemPackages = with pkgs; [
     # systemPackages Refered from ../invar/configuration.nix && ../minimal-image
-    neofetch
-    # radeontop
     solaar # Logitech devices control.
     ltunify
     virt-manager
@@ -260,19 +264,16 @@
     slstatus # slstatus is a status monitor for window managers that use WM_NAME or stdin to fill the status bar
     feh # feh is an X11 image viewer aimed mostly at console users
     gcc
-    glow # Render markdown on the CLI, with pizzazz!
-    gimp
     killall
     my.pkgs.hyfetch
+    brightnessctl
     pamixer # pamixer is like amixer but for pulseaudio. It can control the volume levels of the sinks
     pavucontrol
     alsa-utils
-    arandr
     picom
     ueberzugpp # w3m img
     input-utils
     xbindkeys
-    ranger # file management
     slock
   ];
 

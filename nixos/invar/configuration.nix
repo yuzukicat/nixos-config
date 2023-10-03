@@ -119,6 +119,19 @@
     opengl.enable = true;
     # Vulkan
     opengl.driSupport = true;
+    opengl.driSupport32Bit = true;
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      # Use the NVidia open source kernel module (not to be confused with the
+      # independent third-party "nouveau" open source driver).
+      open = true;
+      # Enable the Nvidia settings menu,
+	    # accessible via `nvidia-settings`.
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
   };
   services.colord.enable = true;
 

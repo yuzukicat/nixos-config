@@ -58,7 +58,7 @@
     tree-sitter
     rocmPackages.clr
     hip-common
-    hipcc
+    rocmPackages.hipcc
     # azure-cli
     discocss
     nuget-to-nix

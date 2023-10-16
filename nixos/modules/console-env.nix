@@ -56,7 +56,7 @@
     deno
     sdcv
     tree-sitter
-    hip
+    rocmPackages.clr
     hip-common
     hipcc
     # azure-cli

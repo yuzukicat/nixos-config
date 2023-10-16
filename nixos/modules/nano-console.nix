@@ -27,7 +27,7 @@
     gnupg
     gnutls
     gyb
-    hip
+    rocmPackages.clr
     hipcc
     hip-common
     home-manager

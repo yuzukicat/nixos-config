@@ -27,7 +27,7 @@
     gnupg
     gnutls
     gyb
-    rocmPackages.cl1r
+    rocmPackages.clr
     hipcc
     rocmPackages.hipcc
     home-manager

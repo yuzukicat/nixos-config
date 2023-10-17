@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  inputs,
   ...
 }: {
   programs.home-manager.enable = true;
@@ -26,6 +27,13 @@
     ./modules/zathura.nix
     ./modules/ranger
   ];
+
+  lib.homeManagerConfiguration = {
+    extraModules = [
+      inputs.android-nixpkgs.hmModule
+    ];
+    configuration = import ./modules/android-nixpkgs.nix;
+  };
 
   home.file = let
     home = config.home.homeDirectory;

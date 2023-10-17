@@ -40,18 +40,18 @@
     # };
 
     # Work Station
-    # interfaces = {
-    #   enp4s0.useDHCP = lib.mkDefault true;
-    #   wlp5s0.useDHCP = lib.mkDefault true;
-    # };
+    interfaces = {
+      enp4s0.useDHCP = lib.mkDefault true;
+      wlp5s0.useDHCP = lib.mkDefault true;
+    };
 
     # 7950x
-    interfaces = {
-      eno1.useDHCP = lib.mkDefault true;
-      wlp10s0.useDHCP = lib.mkDefault true;
-      # docker0.useDHCP = lib.mkDefault true;
-      # tailscale0.useDHCP = lib.mkDefault true;
-    };
+    # interfaces = {
+    #   eno1.useDHCP = lib.mkDefault true;
+    #   wlp10s0.useDHCP = lib.mkDefault true;
+    #   # docker0.useDHCP = lib.mkDefault true;
+    #   # tailscale0.useDHCP = lib.mkDefault true;
+    # };
 
     # # 6800HS
     # interfaces = {

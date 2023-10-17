@@ -57,7 +57,7 @@
     sdcv
     tree-sitter
     rocmPackages.clr
-    hip-common
+    rocmPackages.hip-common
     rocmPackages.hipcc
     # azure-cli
     discocss

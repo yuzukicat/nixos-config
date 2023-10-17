@@ -55,9 +55,9 @@
     deno
     sdcv
     tree-sitter
-    hip
-    hip-common
-    hipcc
+    rocmPackages.clr
+    rocmPackages.hip-common
+    rocmPackages.hipcc
     # azure-cli
     discocss
     nuget-to-nix

@@ -27,9 +27,9 @@
     gnupg
     gnutls
     gyb
-    rocmPackages.clr
-    hip-common
-    rocmPackages.hipcc
+    # rocmPackages.clr
+    # rocmPackages.hip-common
+    # rocmPackages.hipcc
     home-manager
     jq
     khal

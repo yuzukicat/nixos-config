@@ -96,7 +96,7 @@ in {
       withVencord = true;
     })
     linuxPackages.perf
-    my.pkgs.hyfetch
+    hyfetch
     my.pkgs.librime-lua
     my.pkgs.systemd-run-app
     isoimagewriter
@@ -137,7 +137,7 @@ in {
   };
 
   programs.hyfetch = {
-    package = my.pkgs.hyfetch;
+    package = pkgs.hyfetch;
     settings = {
       preset = "transgender";
       mode = "rgb";

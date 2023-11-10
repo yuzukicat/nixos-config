@@ -55,7 +55,7 @@ in {
       xsel
       xclip
       trash-cli # CLI-Desktop
-      my.pkgs.hyfetch
+      hyfetch
       tealdeer
       man-pages # Manual
 
@@ -140,7 +140,7 @@ in {
     };
   };
   programs.hyfetch = {
-    package = my.pkgs.hyfetch;
+    package = pkgs.hyfetch;
     settings = {
       preset = "transgender";
       mode = "rgb";

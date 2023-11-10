@@ -718,7 +718,6 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
 (use-package js2-mode)
 (use-package json-mode)
 (use-package kotlin-mode)
-(use-package kotlin-ts-mode)
 (use-package lua-mode)
 (use-package markdown-mode
   :hook (markdown-mode . (lambda ()

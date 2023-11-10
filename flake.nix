@@ -236,7 +236,6 @@
                 epkgs.js2-mode
                 epkgs.json-mode
                 epkgs.kotlin-mode
-                epkgs.kotlin-ts-mode
                 epkgs.lua-mode
                 epkgs.markdown-mode
                 epkgs.markdown-preview-mode

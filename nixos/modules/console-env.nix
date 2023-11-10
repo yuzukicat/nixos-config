@@ -82,7 +82,6 @@
     texlive.combined.scheme-full
     my.pkgs.browsh
     ddgr # duckduckgo
-    khal
     vdirsyncer
     anystyle-cli
     cacert

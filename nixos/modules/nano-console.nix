@@ -32,7 +32,6 @@
     # rocmPackages.hipcc
     home-manager
     jq
-    khal
     libarchive
     lsof
     lynx # text mode web browser

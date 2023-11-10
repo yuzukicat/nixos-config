@@ -118,7 +118,7 @@ in {
       # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
       # system:
       trash-cli
-      my.pkgs.hyfetch
+      hyfetch
 
       # internet:
       android-studio
@@ -183,16 +183,6 @@ in {
       "google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest" = pkgs.protoc-gen-go-grpc;
       "github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-docc@latest" = pkgs.protoc-gen-doc;
       "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;
-    };
-  };
-  programs.hyfetch = {
-    package = my.pkgs.hyfetch;
-    settings = {
-      preset = "transgender";
-      mode = "rgb";
-      color_align = {
-        mode = "horizontal";
-      };
     };
   };
   # programs.kitty = {

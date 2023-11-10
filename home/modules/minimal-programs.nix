@@ -96,7 +96,6 @@ in {
       withVencord = true;
     })
     linuxPackages.perf
-    hyfetch
     my.pkgs.librime-lua
     my.pkgs.systemd-run-app
     isoimagewriter
@@ -106,6 +105,7 @@ in {
     okular
     xsel
     supergfxctl
+    hyfetch
     ]
     ++ lspPackages;
 
@@ -133,17 +133,6 @@ in {
       "google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest" = pkgs.protoc-gen-go-grpc;
       "github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-docc@latest" = pkgs.protoc-gen-doc;
       "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;
-    };
-  };
-
-  programs.hyfetch = {
-    package = pkgs.hyfetch;
-    settings = {
-      preset = "transgender";
-      mode = "rgb";
-      color_align = {
-        mode = "horizontal";
-      };
     };
   };
 

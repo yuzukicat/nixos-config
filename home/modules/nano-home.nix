@@ -55,7 +55,6 @@ in {
       xsel
       xclip
       trash-cli # CLI-Desktop
-      hyfetch
       tealdeer
       man-pages # Manual
 
@@ -117,6 +116,7 @@ in {
       chromium
       gnuplot
       okular
+      hyfetch
     ]
     ++ lspPackages;
 
@@ -137,16 +137,6 @@ in {
       # "github.com/protocolbuffers/protobuf-go@latest"= pkgs.protoc-gen-go;
       # "github.com/grpc/grpc-go@latest" = pkgs.protoc-gen-go-grpc;
       # "github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest" = pkgs.protoc-gen-doc;
-    };
-  };
-  programs.hyfetch = {
-    package = pkgs.hyfetch;
-    settings = {
-      preset = "transgender";
-      mode = "rgb";
-      color_align = {
-        mode = "horizontal";
-      };
     };
   };
 

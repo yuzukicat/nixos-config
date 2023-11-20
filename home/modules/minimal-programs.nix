@@ -95,6 +95,7 @@ in {
     (discord-ptb.override {
       withVencord = true;
     })
+    teams
     linuxPackages.perf
     my.pkgs.librime-lua
     my.pkgs.systemd-run-app

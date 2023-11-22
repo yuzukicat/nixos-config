@@ -122,8 +122,8 @@
 
   # HIP
   systemd.tmpfiles.rules = [
-    # "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
-    "L+    /opt/rocm/hipcc   -    -    -     -  ${pkgs.hipcc}"
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+    "L+    /opt/rocm/hipcc   -    -    -     -  ${pkgs.rocmPackages.hipcc}"
   ];
 
   # services.colord.enable = true;

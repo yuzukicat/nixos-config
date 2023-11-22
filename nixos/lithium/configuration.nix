@@ -238,7 +238,6 @@
     feh # feh is an X11 image viewer aimed mostly at console users
     gcc
     killall
-    my.pkgs.hyfetch
     brightnessctl
     pamixer # pamixer is like amixer but for pulseaudio. It can control the volume levels of the sinks
     pavucontrol

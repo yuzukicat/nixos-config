@@ -95,7 +95,7 @@
     ];
 
   # Hardware.
-  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.cpuFreqGovernor = "powersave";
 
   hardware = {
 
@@ -122,7 +122,7 @@
 
   # HIP
   systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+    # "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
     "L+    /opt/rocm/hipcc   -    -    -     -  ${pkgs.hipcc}"
   ];
 

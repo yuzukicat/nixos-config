@@ -11,6 +11,7 @@
       pyyaml
       requests
       toml
+      diagrams
     ]);
   lspPackages = with pkgs; [
     rust-analyzer

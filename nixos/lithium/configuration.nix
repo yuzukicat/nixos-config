@@ -74,19 +74,19 @@
   # Use nixos-generate-config --root /mnt then copy and paste
   # asus rog ally
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748-c80089d";
+    { device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748c80089d";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748-c80089d";
+    { device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748c80089d";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748-c80089d";
+    { device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748c80089d";
       fsType = "btrfs";
       options = [ "subvol=nix" ];
     };

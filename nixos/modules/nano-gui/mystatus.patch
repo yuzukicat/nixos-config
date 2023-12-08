@@ -57,9 +57,9 @@ index d805331..956b4f6 100644
 +	{ cpu_perc, " CPU %s%%  ", NULL	},
 +	{ ram_perc, "RAM %s%%  ", NULL  },
 +	{ disk_free, "%sB  ", "/"},
-+	{ wifi_essid,"%s ", "wlp5s0"},
++	{ wifi_essid,"%s ", "wlp1s0"},
 +//	{ run_command, "Vol%s ", "awk -F\"[][]\"'/Left:/{ print $2}}' <(amixer sget Master)" },
-+	{ run_command, "VOL %s%% ", "pamixer --sink 63 --get-volume" },
++	{ run_command, "VOL %s%% ", "pamixer --sink 57 --get-volume" },
 +	{ datetime, "%s ", "%a %b %d %R" },
 +	{ battery_perc, "%s%%", "BAT0"}
  };

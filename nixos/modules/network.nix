@@ -40,10 +40,10 @@
     # };
 
     # Work Station
-    interfaces = {
-      enp4s0.useDHCP = lib.mkDefault true;
-      wlp5s0.useDHCP = lib.mkDefault true;
-    };
+    # interfaces = {
+    #   enp4s0.useDHCP = lib.mkDefault true;
+    #   wlp5s0.useDHCP = lib.mkDefault true;
+    # };
 
     # 7950x
     # interfaces = {
@@ -53,12 +53,12 @@
     #   # tailscale0.useDHCP = lib.mkDefault true;
     # };
 
-    # # 6800HS
-    # interfaces = {
-    #   enp9s0.useDHCP = lib.mkDefault true;
-    #   wlp5s0.useDHCP = lib.mkDefault true;
-    #   # tailscale0.useDHCP = lib.mkDefault true;
-    # };
+    # 7640u
+    interfaces = {
+      # enp9s0.useDHCP = lib.mkDefault true;
+      wlp1s0.useDHCP = lib.mkDefault true;
+      # tailscale0.useDHCP = lib.mkDefault true;
+    };
   };
 
   systemd.network.wait-online = {

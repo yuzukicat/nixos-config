@@ -23,18 +23,18 @@
 
       systemd.enable = true;
 
-      availableKernelModules = ["xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
+      availableKernelModules = ["xhci_pci" "nvme" "thunderbolt" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
 
       kernelModules = ["dm-snapshot" "amdgpu"];
 
       luks.devices = {
         crypted = {
-          device = "/dev/disk/by-partuuid/d93ac1c9-d525-482e-97dd-f5e078137e01";
-          header = "/dev/disk/by-partuuid/6f4d3ed5-096d-4aff-beca-5335c3af172b";
+          device = "/dev/disk/by-partuuid/1219fe2c-2607-4875-a1e5-6df76d1bbeb7";
+          header = "/dev/disk/by-partuuid/abd4ad50-bf21-4d49-84a3-881c095991df";
           allowDiscards = true;
           bypassWorkqueues = true;
           preLVM = true;
-          crypttabExtraOpts = ["fido2-device=auto" "x-initrd.attach"];
+          # crypttabExtraOpts = ["fido2-device=auto" "x-initrd.attach"];
         };
       };
     };
@@ -52,7 +52,7 @@
       # Try fixing nvme unavailability issue after S3 resume.
       # See: https://wiki.archlinux.org/title/Solid_state_drive/NVMe#Controller_failure_due_to_broken_suspend_support
       "amd_iommu=fullflush"
-      "pcie_aspm.policy=powersupersave"
+      # "pcie_aspm.policy=powersupersave"
     ];
 
     loader = {
@@ -74,24 +74,30 @@
   # Use nixos-generate-config --root /mnt then copy and paste
   # asus rog ally
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/3151ca90-c0f6-4fed-b7fc-05a17b782c36";
+    { device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748-c80089d";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/3151ca90-c0f6-4fed-b7fc-05a17b782c36";
+    { device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748-c80089d";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748-c80089d";
+      fsType = "btrfs";
+      options = [ "subvol=nix " ];
+    };
+
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/A5E3-9BC6";
+    { device = "/dev/disk/by-uuid/6FA6-B2BC";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/c06ebf0d-e6a1-4564-b125-38d6268ba3f7"; }
+    [ { device = "/dev/disk/by-uuid/dcc87f03-898c-47ee-af27-7b9c3f9c3558"; }
     ];
 
   # Hardware.
@@ -200,13 +206,13 @@
 
     unclutter.enable = true;
 
-    asusd.enable = true;
+    # asusd.enable = true;
 
-    # fixes mic mute button
-    udev.extraHwdb = ''
-      evdev:name:*:dmi:bvn*:bvr*:bd*:svnASUS*:pn*:*
-       KEYBOARD_KEY_ff31007c=f20
-    '';
+    # # fixes mic mute button
+    # udev.extraHwdb = ''
+    #   evdev:name:*:dmi:bvn*:bvr*:bd*:svnASUS*:pn*:*
+    #    KEYBOARD_KEY_ff31007c=f20
+    # '';
   };
 
   # Global ssh settings. Also for remote builders.
@@ -228,7 +234,7 @@
     solaar # Logitech devices control.
     ltunify
     virt-manager
-    asusctl
+    # asusctl
     aspell
     arandr
     bat

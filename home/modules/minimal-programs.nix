@@ -106,7 +106,7 @@ in {
     gnuplot
     okular
     xsel
-    supergfxctl
+    # supergfxctl
     hyfetch
     ]
     ++ lspPackages;

@@ -10,16 +10,12 @@ writeShellApplication {
     exec /run/current-system/systemd/bin/systemd-run \
       --user \
       --scope \
-      --unit="$unit" \
+      --unit="app-$name-$(printf %04x $RANDOM)" \
       --slice=app \
       --same-dir \
       --collect \
       --property PartOf=graphical-session.target \
       --property After=graphical-session.target \
-      -- \
-      /run/current-system/systemd/bin/systemd-cat \
-      --identifier="$unit" \
-      -- \
-      "$@"
+      -- "$@"
   '';
 }

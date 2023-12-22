@@ -44,70 +44,70 @@ in {
   with plasma5;
   with kdeGear;
   with kdeFrameworks;
-  [
-    bash-completion
-    bashInteractive
-    binutils
-    cachix
-    cling
-    coursera-dl
-    dasel
-    difftastic
-    elixir
-    gcc
-    gdb
-    ghc
-    gh
-    gnumake
-    kolourpaint
-    man-pages
-    nix-output-monitor
-    nix-update
-    nmap
-    nodejs
-    nodePackages.npm-check-updates
-    nodePackages.pnpm
-    obs
-    openssl
-    patchelf
-    pkg-config
-    protobuf
-    runzip
-    scc
-    sqlite-interactive
-    tealdeer
-    trash-cli
-    vlc
-    xclip
-    yarn
-    myPython
+    [
+      bash-completion
+      bashInteractive
+      binutils
+      cachix
+      cling
+      coursera-dl
+      dasel
+      difftastic
+      elixir
+      gcc
+      gdb
+      ghc
+      gh
+      gnumake
+      kolourpaint
+      man-pages
+      nix-output-monitor
+      nix-update
+      nmap
+      nodejs
+      nodePackages.npm-check-updates
+      nodePackages.pnpm
+      obs
+      openssl
+      patchelf
+      pkg-config
+      protobuf
+      runzip
+      scc
+      sqlite-interactive
+      tealdeer
+      trash-cli
+      vlc
+      xclip
+      yarn
+      myPython
 
-    calibre
-    gwenview
-    gimp
-    imagemagick
-    xournalpp
-    pdftag
-    ocrmypdf
+      calibre
+      gwenview
+      gimp
+      imagemagick
+      xournalpp
+      pdftag
+      ocrmypdf
 
-    discord
-    tdesktop
-    zoom-us
-    (discord-ptb.override {
-      withVencord = true;
-    })
-    teams-for-linux
-    linuxPackages.perf
-    my.pkgs.librime-lua
-    my.pkgs.systemd-run-app
-    isoimagewriter
-    qbittorrent
-    chromium
-    gnuplot
-    okular
-    xsel
-    # supergfxctl
-    hyfetch
+      discord
+      tdesktop
+      zoom-us
+      (discord-ptb.override {
+        withVencord = true;
+      })
+      teams-for-linux
+      linuxPackages.perf
+      my.pkgs.librime-lua
+      my.pkgs.systemd-run-app
+      isoimagewriter
+      qbittorrent
+      chromium
+      gnuplot
+      okular
+      xsel
+      # supergfxctl
+      hyfetch
     ]
     ++ lspPackages;
 
@@ -118,10 +118,10 @@ in {
     enableFishIntegration = true;
   };
 
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacsWithConfig;
-  };
+  # programs.emacs = {
+  #   enable = true;
+  #   package = pkgs.emacsWithConfig;
+  # };
 
   programs.feh.enable = true;
 
@@ -131,7 +131,7 @@ in {
     packages = {
       "golang.org/x/tools/gopls@latest" = pkgs.gopls;
       "golang.org/x/tools@latest" = my.pkgs.gotools;
-      "google.golang.org/protobuf@latest"= pkgs.protoc-gen-go;
+      "google.golang.org/protobuf@latest" = pkgs.protoc-gen-go;
       "google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest" = pkgs.protoc-gen-go-grpc;
       "github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-docc@latest" = pkgs.protoc-gen-doc;
       "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;

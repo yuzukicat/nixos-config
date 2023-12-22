@@ -460,7 +460,7 @@
         };
 
         lithium = mkSystem "lithium" "x86_64-linux" inputs.nixpkgs {
-          extraModules = with nixosModules; [home-manager sops emacs-overlay];
+          extraModules = with nixosModules; [home-manager sops];
         };
 
         unmatched = mkSystem "unmatched" "riscv64-linux" inputs.nixpkgs-unmatched {};

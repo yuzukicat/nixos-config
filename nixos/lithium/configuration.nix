@@ -1,26 +1,31 @@
 # For the purpose of testing, to install nixos on asus rog ally.
-{ lib, config, pkgs, inputs, my, ... }:
-
 {
-  imports = [
-    ../modules/bluetooth.nix
-    ../modules/nano-console.nix
-    ../modules/cups.nix
-    ../modules/desktop-server.nix
-    ../modules/nano-gui
-    ../modules/internationalisation.nix
-    ../modules/l10n.nix
-    ../modules/multitouch.nix
-    ../modules/network.nix
-    ../modules/nix-common.nix
-    ../modules/nix-registry.nix
-    ../modules/systemd-unit-protections.nix
-  ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.invar);
+  lib,
+  config,
+  pkgs,
+  inputs,
+  my,
+  ...
+}: {
+  imports =
+    [
+      ../modules/bluetooth.nix
+      ../modules/nano-console.nix
+      ../modules/cups.nix
+      ../modules/desktop-server.nix
+      ../modules/nano-gui
+      ../modules/internationalisation.nix
+      ../modules/l10n.nix
+      ../modules/multitouch.nix
+      ../modules/network.nix
+      ../modules/nix-common.nix
+      ../modules/nix-registry.nix
+      ../modules/systemd-unit-protections.nix
+    ]
+    ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.invar);
 
   boot = {
-
     initrd = {
-
       systemd.enable = true;
 
       availableKernelModules = ["xhci_pci" "nvme" "thunderbolt" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
@@ -39,11 +44,14 @@
       };
     };
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages =
+      # It's currently 6.7-rc5.
+      assert pkgs.linuxPackages_testing.kernelOlder "6.8";
+        pkgs.linuxPackages_testing;
 
-    kernelModules = [ ];
+    kernelModules = [];
 
-    extraModulePackages = [ ];
+    extraModulePackages = [];
 
     kernelParams = [
       "amd_pstate=active"
@@ -73,45 +81,44 @@
 
   # Use nixos-generate-config --root /mnt then copy and paste
   # asus rog ally
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748c80089d";
-      fsType = "btrfs";
-      options = [ "subvol=root" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748c80089d";
+    fsType = "btrfs";
+    options = ["subvol=root"];
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748c80089d";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748c80089d";
+    fsType = "btrfs";
+    options = ["subvol=home"];
+  };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748c80089d";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ];
-    };
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/80416034-f229-4caf-b898-be748c80089d";
+    fsType = "btrfs";
+    options = ["subvol=nix"];
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/6FA6-B2BC";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/6FA6-B2BC";
+    fsType = "vfat";
+  };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/dcc87f03-898c-47ee-af27-7b9c3f9c3558"; }
-    ];
+  swapDevices = [
+    {device = "/dev/disk/by-uuid/dcc87f03-898c-47ee-af27-7b9c3f9c3558";}
+  ];
 
   # Hardware.
   powerManagement.cpuFreqGovernor = "powersave";
 
   hardware = {
-
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     logitech.wireless.enable = true;
     logitech.wireless.enableGraphical = true; # Solaar.
 
-    opengl= {
+    opengl = {
       enable = true;
 
       # Vulkan
@@ -148,7 +155,7 @@
       initialHashedPassword = "";
       uid = 1000;
       group = config.users.groups.yuzuki.name;
-      extraGroups = [ "wheel" "wireshark" "video" "discocss" "networkmanager" "audio" "sound" "input"];
+      extraGroups = ["wheel" "wireshark" "video" "discocss" "networkmanager" "audio" "sound" "input"];
     };
     groups."yuzuki".gid = 1000;
     # Allow the user to log in as root without a password.
@@ -184,7 +191,6 @@
   hardware.pulseaudio.extraConfig = "load-module module-switch-on-connect";
 
   services = {
-
     fstrim = {
       enable = true;
       interval = "Wed,Sat 02:00";

@@ -18,7 +18,7 @@
     discordchatexporter-cli
     dnsutils # dig example.com MX +short; nslookup example.com
     e2fsprogs # For ext234
-    eza # exa --long --header --recurse
+    tree # exa --long --header --recurse
     fd
     ffmpeg
     file # Determine the type of a file and its data. Doesn't take the file extension into account, and runs a series of tests to discover the type of file data

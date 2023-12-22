@@ -12,11 +12,18 @@
   #   ];
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.config.common.default = "*";
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
   services.flatpak.enable = true;
 
   nix = {
     # package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
+
+    # !! Warning: 2.19 currently fails to build this config !!
+    # See: https://github.com/nix-community/home-manager/issues/4692
+    package = assert builtins.compareVersions pkgs.nix.version "2.19" < 0; pkgs.nix;
+
+    channel.enable = false;
 
     gc = {
       automatic = true;
@@ -56,6 +63,9 @@
       connect-timeout = 10;
       download-attempts = 3;
       stalled-download-timeout = 10;
+
+      # Workaround: https://github.com/NixOS/nixpkgs/pull/273170
+      nix-path = "nixpkgs=${inputs.nixpkgs}";
     };
 
     registry = {

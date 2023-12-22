@@ -98,6 +98,7 @@ in {
       })
       teams-for-linux
       linuxPackages.perf
+      hyperfine
       my.pkgs.librime-lua
       my.pkgs.systemd-run-app
       isoimagewriter

@@ -125,7 +125,6 @@
     libsForQt5.okular
     libsForQt5.ark
     flameshot
-    my.pkgs.ryzen-smu
   ];
 
   programs.less = {

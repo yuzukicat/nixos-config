@@ -21,6 +21,7 @@
       ../modules/nix-common.nix
       ../modules/nix-registry.nix
       ../modules/systemd-unit-protections.nix
+      ../modules/ryzen-smu.nix
     ]
     ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.invar);
 
@@ -49,9 +50,9 @@
       assert pkgs.linuxPackages_testing.kernelOlder "6.8";
         pkgs.linuxPackages_testing;
 
-    kernelModules = [ "ryzen_smu" ];
+    kernelModules = [];
 
-    extraModulePackages = [ my.pkgs.ryzen-smu ];
+    extraModulePackages = [];
 
     kernelParams = [
       "amd_pstate=active"
@@ -114,6 +115,7 @@
   hardware = {
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    cpu.amd.ryzen-smu.enable = true;
 
     logitech.wireless.enable = true;
     logitech.wireless.enableGraphical = true; # Solaar.

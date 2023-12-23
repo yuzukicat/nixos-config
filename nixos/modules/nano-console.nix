@@ -65,6 +65,7 @@
     texlive.combined.scheme-full
     flameshot
     ryzenadj
+    my.pkgs.ryzen-smu
   ];
 
   programs.less = {

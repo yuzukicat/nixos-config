@@ -49,9 +49,9 @@
       assert pkgs.linuxPackages_testing.kernelOlder "6.8";
         pkgs.linuxPackages_testing;
 
-    kernelModules = [];
+    kernelModules = [ "ryzen_smu" ];
 
-    extraModulePackages = with pkgs; [ ryzen-smu ];
+    extraModulePackages = [ my.pkgs.ryzen-smu ];
 
     kernelParams = [
       "amd_pstate=active"

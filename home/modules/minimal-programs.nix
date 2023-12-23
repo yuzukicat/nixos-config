@@ -119,10 +119,10 @@ in {
     enableFishIntegration = true;
   };
 
-  # programs.emacs = {
-  #   enable = true;
-  #   package = pkgs.emacsWithConfig;
-  # };
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacsWithConfig;
+  };
 
   programs.feh.enable = true;
 

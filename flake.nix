@@ -128,8 +128,8 @@
         nixpkgs.overlays = [
           inputs.emacs-overlay.overlay
           (final: prev: {
-            emacs29 = prev.emacs-git.overrideAttrs (old: {
-              name = "emacs29";
+            emacs30 = prev.emacs-git.overrideAttrs (old: {
+              name = "emacs30";
               version = inputs.emacs-upstream.shortRev;
               src = inputs.emacs-upstream;
             });
@@ -460,7 +460,7 @@
         };
 
         lithium = mkSystem "lithium" "x86_64-linux" inputs.nixpkgs {
-          extraModules = with nixosModules; [home-manager sops];
+          extraModules = with nixosModules; [home-manager sops emacs-overlay];
         };
 
         unmatched = mkSystem "unmatched" "riscv64-linux" inputs.nixpkgs-unmatched {};

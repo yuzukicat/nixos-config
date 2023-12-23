@@ -154,7 +154,7 @@
                 readRecursively ./home/modules/emacs;
               # config = ./home/modules/emacs/init.el;
               alwaysEnsure = true;
-              package = final.emacs29;
+              package = final.emacs30;
               # Force these two even though they're outside of the org config.
               extraEmacsPackages = epkgs: [
                 epkgs.use-package

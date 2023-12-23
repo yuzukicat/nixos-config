@@ -1325,8 +1325,9 @@ It decodes current entity to call internal or external method as
   (osm-copyright t)     ;; Display the copyright information
   :init
   ;; Load Org link support
-  (with-eval-after-load 'org
-    (require 'osm-ol)))
+  ;; (with-eval-after-load 'org
+  ;;   (require 'osm-ol))
+  )
 (use-package ox-qmd
   :after (org)
   )
@@ -1647,10 +1648,10 @@ It decodes current entity to call internal or external method as
 ;;   (setq treesit-auto-install 'prompt)
 ;;   (global-treesit-auto-mode))
 
-(use-package mind-wave
-  :config
-  (diminish 'mind-wave-mode " 💭")
-  )
+;; (use-package mind-wave
+;;   :config
+;;   (diminish 'mind-wave-mode " 💭")
+;;   )
 
 (provide 'init)
 ;;; init.el ends here

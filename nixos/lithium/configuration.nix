@@ -51,7 +51,7 @@
 
     kernelModules = [];
 
-    extraModulePackages = [];
+    extraModulePackages = with pkgs; [ ryzen-smu ];
 
     kernelParams = [
       "amd_pstate=active"
@@ -219,6 +219,13 @@
     #   evdev:name:*:dmi:bvn*:bvr*:bd*:svnASUS*:pn*:*
     #    KEYBOARD_KEY_ff31007c=f20
     # '';
+
+    # fix suspend problem: https://www.reddit.com/r/gpdwin/comments/16veksm/win_max_2_2023_linux_experience_suspend_problems/
+    udev.extraRules = ''
+      ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x1022" ATTR{device}=="0x14ee" ATTR{power/wakeup}="disabled"
+      SUBSYSTEM=="power_supply", KERNEL=="ADP1", ATTR{online}=="1", RUN+="${pkgs.ryzenadj}/bin/ryzenadj --stapm-limit=28000 --fast-limit=35000 --slow-limit=32000"
+      SUBSYSTEM=="power_supply", KERNEL=="ADP1", ATTR{online}=="0", RUN+="${pkgs.ryzenadj}/bin/ryzenadj --stapm-limit=22000 --fast-limit=24000 --slow-limit=22000"
+    '';
   };
 
   # Global ssh settings. Also for remote builders.

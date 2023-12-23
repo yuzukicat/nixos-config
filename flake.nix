@@ -354,47 +354,47 @@
                 epkgs.json-reformat
                 epkgs.json-snatcher
                 epkgs.auctex
-                (epkgs.melpaBuild rec {
-                  pname = "mind-wave";
-                  version = "20230324.1348"; # 13:12 UTC
-                  src = pkgs.fetchFromGitHub {
-                    owner = "manateelazycat";
-                    repo = "mind-wave";
-                    rev = "994618abcd2c6a09af49b486d270ad4fd2d5b4a4";
-                    sha256 = "sha256-IRT+ct8X2W/iS4+aIoibwR0br5FHWBDYCeNP8pGrpJs=";
-                  };
-                  commit = "994618abcd2c6a09af49b486d270ad4fd2d5b4a4";
-                  packageRequires = [
-                    pkgs.emacsPackages.markdown-mode
-                  ];
-                  buildInputs = [
-                    (pkgs.python3.withPackages (ps:
-                      with ps; [
-                        openai
-                        epc
-                        sexpdata
-                        six
-                      ]))
-                  ];
-                  recipe = pkgs.writeText "recipe" ''
-                    (mind-wave
-                      :repo "manateelazycat/mind-wave"
-                      :fetcher github
-                      :files
-                      ("mind-wave.el"
-                      "mind-wave-epc.el"
-                      "mind_wave.py"
-                      "utils.py"))
-                  '';
-                  doCheck = true;
-                  passthru.updateScript = pkgs.unstableGitUpdater {};
-                  meta = with lib; {
-                    description = " Emacs AI plugin based on ChatGPT API ";
-                    homepage = "https://github.com/manateelazycat/mind-wave";
-                    license = licenses.gpl3Only;
-                    maintainers = with maintainers; [yuzukicat];
-                  };
-                })
+                # (epkgs.melpaBuild rec {
+                #   pname = "mind-wave";
+                #   version = "20230324.1348"; # 13:12 UTC
+                #   src = pkgs.fetchFromGitHub {
+                #     owner = "manateelazycat";
+                #     repo = "mind-wave";
+                #     rev = "994618abcd2c6a09af49b486d270ad4fd2d5b4a4";
+                #     sha256 = "sha256-IRT+ct8X2W/iS4+aIoibwR0br5FHWBDYCeNP8pGrpJs=";
+                #   };
+                #   commit = "994618abcd2c6a09af49b486d270ad4fd2d5b4a4";
+                #   packageRequires = [
+                #     pkgs.emacsPackages.markdown-mode
+                #   ];
+                #   buildInputs = [
+                #     (pkgs.python3.withPackages (ps:
+                #       with ps; [
+                #         openai
+                #         epc
+                #         sexpdata
+                #         six
+                #       ]))
+                #   ];
+                #   recipe = pkgs.writeText "recipe" ''
+                #     (mind-wave
+                #       :repo "manateelazycat/mind-wave"
+                #       :fetcher github
+                #       :files
+                #       ("mind-wave.el"
+                #       "mind-wave-epc.el"
+                #       "mind_wave.py"
+                #       "utils.py"))
+                #   '';
+                #   doCheck = true;
+                #   passthru.updateScript = pkgs.unstableGitUpdater {};
+                #   meta = with lib; {
+                #     description = " Emacs AI plugin based on ChatGPT API ";
+                #     homepage = "https://github.com/manateelazycat/mind-wave";
+                #     license = licenses.gpl3Only;
+                #     maintainers = with maintainers; [yuzukicat];
+                #   };
+                # })
               ];
               override = epkgs:
                 epkgs

@@ -95,7 +95,7 @@
     xray
     ryzenadj
     you-get
-    maim
+    flameshot
   ];
 
   programs.less = {

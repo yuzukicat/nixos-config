@@ -63,7 +63,8 @@
     gimp
     pandoc
     texlive.combined.scheme-full
-    maim
+    flameshot
+    ryzenadj
   ];
 
   programs.less = {

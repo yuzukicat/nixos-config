@@ -21,7 +21,7 @@
       ../modules/nix-common.nix
       ../modules/nix-registry.nix
       ../modules/systemd-unit-protections.nix
-      ../modules/ryzen-smu.nix
+      # ../modules/ryzen-smu.nix
     ]
     ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.invar);
 

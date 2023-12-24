@@ -109,7 +109,6 @@
     btop # A monitor of resources
     gcc
     killall
-    my.pkgs.hyfetch
     brightnessctl
     pamixer # pamixer is like amixer but for pulseaudio. It can control the volume levels of the sinks
     pavucontrol
@@ -179,53 +178,4 @@
   #   startWithUserSession = true;
   # };
   systemd.services."autovt@tty1".enable = false;
-
-  systemd.timers."dis-pipeline" = {
-    wantedBy = ["timers.target"];
-    timerConfig = {
-      OnBootSec = "5m";
-      OnUnitActiveSec = "5m";
-      Unit = "dis-pipeline.service";
-    };
-  };
-
-  systemd.services."dis-pipeline" = {
-    path = [
-      pkgs.dotnet-runtime_8
-      pkgs.discordchatexporter-cli
-      pkgs.gyb
-    ];
-    script = ''
-      DISCORD_TOKEN=
-      # sops exec-env secret.yaml
-      ${pkgs.bash}/bin/bash discordchatexporter-cli exportdm -t $DISCORD_TOKEN -f HtmlLight -o /home/yuzuki/storage/personal/developers.yuzuki/dis-pipeline/ --after $(date +"%Y-%m-%d" -d "1")
-      ${pkgs.bash}/bin/bash discordchatexporter-cli export -c 990609254656393237 981066064446246963 1108580536546504855 -t $DISCORD_TOKEN -f HtmlLight -o /home/yuzuki/storage/personal/developers.yuzuki/dis-pipeline/ --after $(date +"%Y-%m-%d" -d "1")
-      # gyb --action create-project --email dawei.jiang@nowhere.co.jp --config-folder /home/yuzuki/storage/personal/gmail/
-      ${pkgs.bash}/bin/bash gyb --action backup --email dawei.jiang@nowhere.co.jp --config-folder /home/yuzuki/storage/personal/gmail/ --local-folder /home/yuzuki/storage/personal/developers.yuzuki/email-pipeline/ --search "(from: victor@nowhere.co.jp OR yamadera@nowhere.co.jp) OR (to: victor@nowhere.co.jp OR to: yamadera@nowhere.co.jp) AND (after:2023-05-09)"
-      # rename .eml .mht **/*.eml
-      # whisper-cpp-download-ggml-model large
-    '';
-    serviceConfig = {
-      Type = "oneshot";
-      User = "yuzuki";
-    };
-    startAt = "*-*-* 17:30:00";
-  };
-
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart =
-          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
-  };
 }

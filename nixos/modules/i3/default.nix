@@ -37,7 +37,7 @@
 
     videoDrivers = ["modesetting"];
 
-    dpi = 500;
+    dpi = 300;
   };
 
   services.gvfs.enable = true;

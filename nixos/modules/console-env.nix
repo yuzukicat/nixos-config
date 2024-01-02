@@ -96,6 +96,8 @@
     ryzenadj
     you-get
     flameshot
+    amdgpu_top
+    lact
   ];
 
   programs.less = {

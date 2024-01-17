@@ -12,7 +12,7 @@
 
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/f2942f3385f1b35cc8a1abb03a45e29c9cb4d3c8";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rust-overlay = {

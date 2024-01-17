@@ -124,6 +124,8 @@
     libsForQt5.okular
     libsForQt5.ark
     flameshot
+    amdgpu_top
+    lact
   ];
 
   programs.less = {

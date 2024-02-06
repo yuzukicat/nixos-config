@@ -38,6 +38,8 @@
     videoDrivers = ["modesetting"];
 
     dpi = 300;
+
+    xkb.layout = "us";
   };
 
   services.gvfs.enable = true;

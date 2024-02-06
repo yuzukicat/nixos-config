@@ -90,12 +90,8 @@ in {
       pdftag
       ocrmypdf
 
-      discord
       tdesktop
       zoom-us
-      (discord-ptb.override {
-        withVencord = true;
-      })
       teams-for-linux
       linuxPackages.perf
       hyperfine
@@ -107,8 +103,8 @@ in {
       gnuplot
       okular
       xsel
-      # supergfxctl
       hyfetch
+      lyx
     ]
     ++ lspPackages;
 

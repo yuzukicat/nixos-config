@@ -12,7 +12,7 @@
 
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
-      url = "github:nix-community/home-manager/f2942f3385f1b35cc8a1abb03a45e29c9cb4d3c8";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rust-overlay = {
@@ -47,7 +47,7 @@
       flake = false;
     };
     emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
+      url = "github:nix-community/emacs-overlay/7e2ecc3654c3daa74a1f72826cac9b8fd13a7f06";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };

@@ -44,10 +44,15 @@
       };
     };
 
-    kernelPackages =
-      # It's currently 6.7-rc5.
-      assert pkgs.linuxPackages_testing.kernelOlder "6.8";
-        pkgs.linuxPackages_testing;
+    kernelPackages = pkgs.linuxPackages_latest;
+
+    kernelPatches = [
+      {
+        name = "enable-zone-device";
+        patch = null;
+        extraStructuredConfig.BLK_DEV_ZONED = lib.kernel.yes;
+      }
+    ];
 
     kernelModules = [];
 
@@ -141,7 +146,7 @@
 
   # services.colord.enable = true;
 
-  time.timeZone = "Asia/Tokyo";
+  time.timeZone = "Asia/Bangkok";
 
   programs.fish = {
     enable = true;
@@ -211,6 +216,14 @@
     udisks2.mountOnMedia = true;
 
     unclutter.enable = true;
+
+    btrfs.autoScrub = {
+      enable = true;
+      fileSystems = [ "/" ];
+      interval = "monthly";
+    };
+
+    udev.packages = [ my.pkgs.ublk-allow-unprivileged ];
 
     # asusd.enable = true;
 

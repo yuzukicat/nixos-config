@@ -20,6 +20,7 @@
     };
     videoDrivers = [ "nvidia" ];
     dpi = 300;
+    xkb.layout = "us";
   };
 
   nixpkgs.overlays = [

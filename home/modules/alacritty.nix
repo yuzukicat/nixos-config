@@ -3,10 +3,10 @@
   programs.alacritty = {
     enable = true;
 
-    # https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+    # https://alacritty.org/config-alacritty.html
     settings = {
       import = [
-        "${pkgs.vimPlugins.nightfox-nvim}/extra/dayfox/nightfox_alacritty.yml"
+        "${pkgs.vimPlugins.nightfox-nvim}/extra/nightfox/alacritty.toml"
       ];
 
       window.padding = { x = 4; y = 0; };

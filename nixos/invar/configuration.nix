@@ -50,6 +50,14 @@
     # https://lore.kernel.org/linux-btrfs/CABXGCsNzVxo4iq-tJSGm_kO1UggHXgq6CdcHDL=z5FL4njYXSQ@mail.gmail.com
     kernelPackages = pkgs.linuxPackages_latest;
 
+    kernelPatches = [
+      {
+        name = "enable-zone-device";
+        patch = null;
+        extraStructuredConfig.BLK_DEV_ZONED = lib.kernel.yes;
+      }
+    ];
+
     kernelModules = [ ];
     extraModulePackages = [ ];
 
@@ -136,7 +144,7 @@
   services.colord.enable = true;
 
   # Time Zone
-  time.timeZone = "Asia/Tokyo";
+  time.timeZone = "Asia/Bangkok";
 
   programs.fish = {
     enable = true;
@@ -236,6 +244,12 @@
     udisks2.enable = true;
     udisks2.mountOnMedia = true;
     unclutter.enable = true;
+    btrfs.autoScrub = {
+      enable = true;
+      fileSystems = [ "/" ];
+      interval = "monthly";
+    };
+    udev.packages = [ my.pkgs.ublk-allow-unprivileged ];
   };
 
   # Global ssh settings. Also for remote builders.

@@ -66,9 +66,9 @@ in {
       bubblewrap
       difftastic # Random stuff
       xsel
-      wl-clipboard # CLI-Desktop
+      # wl-clipboard
       beancount
-      my.pkgs.double-entry-generator # Accounting
+      my.pkgs.double-entry-generator
       tealdeer
       man-pages # Manual
 
@@ -76,10 +76,10 @@ in {
       kolourpaint
       libreoffice
       mpv # Files
-      electrum
-      electron-cash # Cryptocurrency
+      # electrum
+      # electron-cash
       tdesktop # Messaging
-      wf-recorder
+      # wf-recorder
       obs # Recording
 
       # Dev
@@ -123,7 +123,7 @@ in {
       # internet:
       android-studio
       aria
-      element-desktop
+      # element-desktop
       vlc
       /*
       syncplay
@@ -144,13 +144,14 @@ in {
       imagemagick
 
       # non-oss:
-      obsidian
-      (discord-ptb.override {
-        withVencord = true;
-      })
+      # obsidian
+      # (discord-ptb.override {
+      #   withVencord = true;
+      # })
       zoom-us
+      teams-for-linux
       my.pkgs.librime-lua
-      feishu
+      # feishu
       my.pkgs.systemd-run-app
       linuxPackages.perf
       hyperfine
@@ -158,7 +159,8 @@ in {
       qbittorrent
       chromium
       gnuplot
-      php81
+      php83
+      lyx
     ]
     ++ lspPackages;
 

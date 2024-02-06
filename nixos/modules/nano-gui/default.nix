@@ -18,6 +18,7 @@
     };
     videoDrivers = [ "modesetting" ];
     dpi = 200;
+    xkb.layout = "us";
   };
 
   nixpkgs.overlays = [

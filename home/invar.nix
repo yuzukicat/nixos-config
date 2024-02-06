@@ -7,7 +7,7 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ./modules/compatibility.nix
+    # ./modules/compatibility.nix
     ./modules/direnv.nix
     ./modules/firefox.nix
     ./modules/fish.nix
@@ -18,7 +18,7 @@
     ./modules/mail.nix
     ./modules/mapping.nix
     ./modules/minimal-programs.nix
-    ./modules/qutebrowser.nix
+    # ./modules/qutebrowser.nix
     ./modules/rust.nix
     ./modules/starship.nix
     ./modules/startx.nix

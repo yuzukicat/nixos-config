@@ -49,14 +49,14 @@ in {
       bashInteractive
       binutils
       cachix
-      cling
+      # cling
       coursera-dl
       dasel
       difftastic
       elixir
       gcc
-      gdb
-      ghc
+      # gdb
+      # ghc
       gh
       gnumake
       kolourpaint
@@ -99,7 +99,7 @@ in {
       my.pkgs.systemd-run-app
       isoimagewriter
       qbittorrent
-      chromium
+      # chromium
       gnuplot
       okular
       xsel

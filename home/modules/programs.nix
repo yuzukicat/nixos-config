@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  myPython = pkgs.python311.withPackages (ps:
+  myPython = pkgs.python313Full.withPackages (ps:
     with ps; [
       # aiohttp
       numpy

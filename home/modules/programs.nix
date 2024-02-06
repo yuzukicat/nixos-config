@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  myPython = pkgs.python313Full.withPackages (ps:
+  myPython = pkgs.python311Full.withPackages (ps:
     with ps; [
       # aiohttp
       numpy
@@ -13,12 +13,6 @@
       pyyaml
       requests
       toml
-      # Required for lsp-bridge
-      openai
-      epc
-      orjson
-      sexpdata
-      six
     ]);
   lspPackages = with pkgs; [
     rust-analyzer

@@ -48,10 +48,7 @@
     #
     # NB. Don't upgrate to 6.2 before the BTRFS bug gets fixed.
     # https://lore.kernel.org/linux-btrfs/CABXGCsNzVxo4iq-tJSGm_kO1UggHXgq6CdcHDL=z5FL4njYXSQ@mail.gmail.com
-    kernelPackages =
-      # It's currently 6.7-rc5.
-      assert pkgs.linuxPackages_testing.kernelOlder "6.8";
-        pkgs.linuxPackages_testing;
+    kernelPackages = pkgs.linuxPackages_6_6;
 
     kernelPatches = [
       {

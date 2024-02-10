@@ -31,9 +31,9 @@
 
       # extraPackages = [ pkgs.podman-compose ];
 
-      networkSocket = {
-        enable = true;
-      };
+      # networkSocket = {
+      #   enable = true;
+      # };
     };
   };
   # users.extraGroups.docker.members = [ "yuzuki" ];

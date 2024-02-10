@@ -1414,7 +1414,7 @@ It decodes current entity to call internal or external method as
   :config
   (add-hook 'sql-mode-hook 'lsp)
   )
-(use-package syntactic-close)
+;; (use-package syntactic-close)
 (use-package lsp-tailwindcss
   :init
   (setq lsp-tailwindcss-add-on-mode t))

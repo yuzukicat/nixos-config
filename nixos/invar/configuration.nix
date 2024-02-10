@@ -16,6 +16,7 @@
     ../modules/nix-common.nix
     ../modules/nix-registry.nix
     ../modules/systemd-unit-protections.nix
+    ../modules/docker.nix
     ../modules/steam.nix
   ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.invar);
 

@@ -2,19 +2,19 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # nix-prefetch-docker
-    # docker-compose
-    # docker-client
-    # docker
+    nix-prefetch-docker
+    docker-compose
+    docker-client
+    docker
     podman
     podman-compose
   ];
-  # virtualisation.docker.enable = true;
-  # virtualisation.docker.storageDriver = "btrfs";
-  # virtualisation.docker.rootless = {
-  #   enable = true;
-  #   setSocketVariable = true;
-  # };
+  virtualisation.docker.enable = true;
+  virtualisation.docker.storageDriver = "btrfs";
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
   virtualisation = {
     podman = {
       enable = true;
@@ -28,9 +28,14 @@
       dockerSocket = {
         enable = true;
       };
+
+      # extraPackages = [ pkgs.podman-compose ];
+
+      networkSocket = {
+        enable = true;
+      };
     };
   };
   # users.extraGroups.docker.members = [ "yuzuki" ];
   users.extraGroups.podman.members = [ "yuzuki" ];
-  users.extraGroups.podman-compose.members = [ "yuzuki" ];
 }

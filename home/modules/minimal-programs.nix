@@ -105,6 +105,8 @@ in {
       xsel
       hyfetch
       lyx
+      nodePackages.prisma
+      prisma-engines
     ]
     ++ lspPackages;
 

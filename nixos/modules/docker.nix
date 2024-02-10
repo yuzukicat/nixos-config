@@ -1,12 +1,14 @@
 { pkgs, ... }:
 
 {
-  # environment.systemPackages = with pkgs; [
-  #   nix-prefetch-docker
-  #   docker-compose
-  #   docker-client
-  #   docker
-  # ];
+  environment.systemPackages = with pkgs; [
+    # nix-prefetch-docker
+    # docker-compose
+    # docker-client
+    # docker
+    podman
+    podman-compose
+  ];
   # virtualisation.docker.enable = true;
   # virtualisation.docker.storageDriver = "btrfs";
   # virtualisation.docker.rootless = {
@@ -28,6 +30,7 @@
       };
     };
   };
-  users.extraGroups.docker.members = [ "yuzuki" ];
+  # users.extraGroups.docker.members = [ "yuzuki" ];
   users.extraGroups.podman.members = [ "yuzuki" ];
+  users.extraGroups.podman-compose.members = [ "yuzuki" ];
 }

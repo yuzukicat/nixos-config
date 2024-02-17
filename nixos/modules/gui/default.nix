@@ -18,7 +18,7 @@
       enable = true;
       user = "yuzuki";
     };
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "modesetting" ];
     dpi = 300;
     xkb.layout = "us";
   };

@@ -146,7 +146,7 @@
 
   # services.colord.enable = true;
 
-  time.timeZone = "Asia/Bangkok";
+  time.timeZone = "Asia/Tokyo";
 
   programs.fish = {
     enable = true;

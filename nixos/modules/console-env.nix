@@ -67,7 +67,7 @@
     dotnet-runtime_8
     dotnet-aspnetcore_8
     dotnetPackages.Nuget
-    gyb
+    # gyb
     openai-whisper-cpp
     clblast
     ffmpeg
@@ -166,7 +166,7 @@
     path = [
       pkgs.dotnet-runtime_8
       pkgs.discordchatexporter-cli
-      pkgs.gyb
+      # pkgs.gyb
     ];
     script = ''
       DISCORD_TOKEN=
@@ -174,7 +174,7 @@
       ${pkgs.bash}/bin/bash discordchatexporter-cli exportdm -t $DISCORD_TOKEN -f HtmlLight -o /home/yuzuki/storage/personal/developers.yuzuki/dis-pipeline/ --after $(date +"%Y-%m-%d" -d "1")
       ${pkgs.bash}/bin/bash discordchatexporter-cli export -c 990609254656393237 981066064446246963 1108580536546504855 -t $DISCORD_TOKEN -f HtmlLight -o /home/yuzuki/storage/personal/developers.yuzuki/dis-pipeline/ --after $(date +"%Y-%m-%d" -d "1")
       # gyb --action create-project --email dawei.jiang@nowhere.co.jp --config-folder /home/yuzuki/storage/personal/gmail/
-      ${pkgs.bash}/bin/bash gyb --action backup --email dawei.jiang@nowhere.co.jp --config-folder /home/yuzuki/storage/personal/gmail/ --local-folder /home/yuzuki/storage/personal/developers.yuzuki/email-pipeline/ --search "(from: victor@nowhere.co.jp OR yamadera@nowhere.co.jp) OR (to: victor@nowhere.co.jp OR to: yamadera@nowhere.co.jp) AND (after:2023-05-09)"
+      # ${pkgs.bash}/bin/bash gyb --action backup --email dawei.jiang@nowhere.co.jp --config-folder /home/yuzuki/storage/personal/gmail/ --local-folder /home/yuzuki/storage/personal/developers.yuzuki/email-pipeline/ --search "(from: victor@nowhere.co.jp OR yamadera@nowhere.co.jp) OR (to: victor@nowhere.co.jp OR to: yamadera@nowhere.co.jp) AND (after:2023-05-09)"
       # rename .eml .mht **/*.eml
       # whisper-cpp-download-ggml-model large
     '';

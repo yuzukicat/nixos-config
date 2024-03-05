@@ -44,7 +44,14 @@
       };
     };
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
+
+    kernelPackages =
+      # WAIT: 6.8 with BTRFS fixes.
+      lib.warnIf
+        (pkgs.linuxPackages_latest.kernel.kernelAtLeast "6.8")
+        "latest kernel is 6.8 now, no need for testing one"
+        pkgs.linuxPackages_testing;
 
     kernelPatches = [
       {

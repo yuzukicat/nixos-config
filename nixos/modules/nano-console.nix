@@ -26,7 +26,7 @@
     git
     gnupg
     gnutls
-    gyb
+    # gyb
     # rocmPackages.clr
     # rocmPackages.hip-common
     # rocmPackages.hipcc

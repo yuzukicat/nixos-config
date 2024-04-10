@@ -6,12 +6,19 @@
   myPython = pkgs.python313Full.withPackages (ps:
     with ps; [
       # aiohttp
-      numpy
-      pylint
-      pyyaml
-      requests
-      toml
-      diagrams
+      # numpy
+      # pylint
+      # pyyaml
+      # requests
+      # toml
+      # diagrams
+      python-lsp-server
+      pylsp-mypy
+      pyls-isort
+      python-lsp-black
+      pyls-memestra
+      pylsp-rope
+      python-lsp-ruff
     ]);
   lspPackages = with pkgs; [
     rust-analyzer
@@ -194,8 +201,9 @@ in {
         # _2gua.rainbow-brackets
         shardulm94.trailing-spaces
         ms-python.vscode-pylance
-        ms-pyright.pyright
-        ms-python.vscode-pylance
+        ms-python.python
+        ms-python.isort
+        ms-python.black-formatter
         njpwerner.autodocstring
         ms-toolsai.jupyter
         ms-toolsai.jupyter-keymap
@@ -218,7 +226,8 @@ in {
         firefox-devtools.vscode-firefox-debug
         jnoortheen.nix-ide
         kamadorueda.alejandra
-        bungcip.better-toml
+        tamasfe.even-better-toml
+        zainchen.json
         ms-vscode.cmake-tools
         timonwong.shellcheck
         foxundermoon.shell-format

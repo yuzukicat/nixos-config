@@ -100,7 +100,7 @@ in {
 
       tdesktop
       zoom-us
-      teams-for-linux
+      # teams-for-linux
       linuxPackages.perf
       hyperfine
       my.pkgs.librime-lua

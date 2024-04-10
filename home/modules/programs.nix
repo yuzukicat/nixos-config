@@ -150,7 +150,7 @@ in {
       #   withVencord = true;
       # })
       zoom-us
-      teams-for-linux
+      # teams-for-linux
       my.pkgs.librime-lua
       # feishu
       my.pkgs.systemd-run-app

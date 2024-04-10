@@ -30,7 +30,6 @@
     protoc-gen-go-grpc
     protoc-gen-doc
     sqls
-    rnix-lsp
     nodePackages.bash-language-server
     nodePackages.dockerfile-language-server-nodejs
     nodePackages.eslint

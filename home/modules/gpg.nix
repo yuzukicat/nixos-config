@@ -19,7 +19,7 @@
     enableScDaemon = true;
     enableSshSupport = true;
 
-    pinentryFlavor =
+    pinentryPackage =
       if config.wayland.windowManager.sway.enable
         then "gtk2"
         else "qt";

@@ -4,7 +4,7 @@
   my,
   ...
 }: let
-  myPython = pkgs.python310Full.withPackages (ps:
+  myPython = pkgs.python31Full.withPackages (ps:
     with ps; [
       # aiohttp
       # numpy
@@ -15,7 +15,7 @@
       python-lsp-server
       pylsp-mypy
       pyls-isort
-      python-lsp-black
+      # python-lsp-black
       pyls-memestra
       pylsp-rope
       python-lsp-ruff

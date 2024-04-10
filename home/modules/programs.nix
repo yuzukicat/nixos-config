@@ -8,7 +8,7 @@
   myPython = pkgs.python313Full.withPackages (ps:
     with ps; [
       # aiohttp
-      numpy
+      # numpy
       pylint
       pyyaml
       requests

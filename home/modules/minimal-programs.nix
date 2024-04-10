@@ -3,7 +3,7 @@
   my,
   ...
 }: let
-  myPython = pkgs.python313Full.withPackages (ps:
+  myPython = pkgs.python312Full.withPackages (ps:
     with ps; [
       # aiohttp
       # numpy
@@ -30,6 +30,7 @@
     protoc-gen-go-grpc
     protoc-gen-doc
     sqls
+    oapi-codegen
     nodePackages.bash-language-server
     nodePackages.dockerfile-language-server-nodejs
     nodePackages.eslint
@@ -73,6 +74,7 @@ in {
       nodejs
       nodePackages.npm-check-updates
       nodePackages.pnpm
+      # nosql-workbench
       obs
       openssl
       patchelf
@@ -113,6 +115,7 @@ in {
       lyx
       nodePackages.prisma
       prisma-engines
+      cyberchef
     ]
     ++ lspPackages;
 
@@ -140,6 +143,7 @@ in {
       "google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest" = pkgs.protoc-gen-go-grpc;
       "github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-docc@latest" = pkgs.protoc-gen-doc;
       "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;
+      "github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest" = pkgs.oapi-codegen;
     };
   };
 

@@ -2,17 +2,23 @@
   lib,
   pkgs,
   my,
-  config,
   ...
 }: let
-  myPython = pkgs.python313Full.withPackages (ps:
+  myPython = pkgs.python312Full.withPackages (ps:
     with ps; [
       # aiohttp
       # numpy
-      pylint
-      pyyaml
-      requests
-      toml
+      # pylint
+      # pyyaml
+      # requests
+      # toml
+      python-lsp-server
+      pylsp-mypy
+      pyls-isort
+      python-lsp-black
+      pyls-memestra
+      pylsp-rope
+      python-lsp-ruff
     ]);
   lspPackages = with pkgs; [
     rust-analyzer
@@ -30,6 +36,7 @@
     protoc-gen-go-grpc
     protoc-gen-doc
     sqls
+    oapi-codegen
     nodePackages.bash-language-server
     nodePackages.dockerfile-language-server-nodejs
     nodePackages.eslint
@@ -88,6 +95,7 @@ in {
       sqlite-interactive
       dasel
       postgresql # sqlite
+      # nosql-workbench
       cabal-install
       gnumake
       yarn
@@ -154,6 +162,7 @@ in {
       gnuplot
       php83
       lyx
+      cyberchef
     ]
     ++ lspPackages;
 
@@ -179,6 +188,7 @@ in {
       "google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest" = pkgs.protoc-gen-go-grpc;
       "github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-docc@latest" = pkgs.protoc-gen-doc;
       "github.com/lighttiger2505/sqls@latest" = pkgs.sqls;
+      "github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest" = pkgs.oapi-codegen;
     };
   };
   # programs.kitty = {
@@ -274,8 +284,9 @@ in {
         # _2gua.rainbow-brackets
         shardulm94.trailing-spaces
         ms-python.vscode-pylance
-        ms-pyright.pyright
-        ms-python.vscode-pylance
+        ms-python.python
+        ms-python.isort
+        ms-python.black-formatter
         njpwerner.autodocstring
         ms-toolsai.jupyter
         ms-toolsai.jupyter-keymap
@@ -298,7 +309,8 @@ in {
         firefox-devtools.vscode-firefox-debug
         jnoortheen.nix-ide
         kamadorueda.alejandra
-        bungcip.better-toml
+        tamasfe.even-better-toml
+        zainchen.json
         ms-vscode.cmake-tools
         timonwong.shellcheck
         foxundermoon.shell-format

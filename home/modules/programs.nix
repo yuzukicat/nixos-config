@@ -25,7 +25,7 @@
     cmake-language-server
     kotlin-language-server
     pkgs.gopls
-    my.pkgs.gotools
+    pkgs.gotools
     protoc-gen-go
     protoc-gen-go-grpc
     protoc-gen-doc
@@ -174,7 +174,7 @@ in {
     package = pkgs.go_1_21;
     packages = {
       "golang.org/x/tools/gopls@latest" = pkgs.gopls;
-      "golang.org/x/tools@latest" = my.pkgs.gotools;
+      "golang.org/x/tools@latest" = pkgs.gotools;
       "google.golang.org/protobuf@latest" = pkgs.protoc-gen-go;
       "google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest" = pkgs.protoc-gen-go-grpc;
       "github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-docc@latest" = pkgs.protoc-gen-doc;

@@ -47,32 +47,16 @@
     # kernelPackages = pkgs.linuxPackages_latest;
 
     kernelPackages =
-      # WAIT: 6.8 with BTRFS fixes.
-      lib.warnIf
-        (pkgs.linuxPackages_latest.kernel.kernelAtLeast "6.8")
-        "latest kernel is 6.8 now, no need for testing one"
+      # WAIT https://github.com/torvalds/linux/commit/a8b70c7f8600bc77d03c0b032c0662259b9e615e
+      lib.warnIf (pkgs.linuxPackages_latest.kernelAtLeast "6.9") "stable kernel >= 6.9 now"
         pkgs.linuxPackages_testing;
-
-    kernelPatches = [
-      {
-        name = "enable-zone-device";
-        patch = null;
-        extraStructuredConfig.BLK_DEV_ZONED = lib.kernel.yes;
-      }
-    ];
 
     kernelModules = [];
 
     extraModulePackages = [];
 
     kernelParams = [
-      "amd_pstate=active"
-      # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/raphael/igpu.nix
       "amdgpu.sg_display=0"
-      # Try fixing nvme unavailability issue after S3 resume.
-      # See: https://wiki.archlinux.org/title/Solid_state_drive/NVMe#Controller_failure_due_to_broken_suspend_support
-      "amd_iommu=fullflush"
-      # "pcie_aspm.policy=powersupersave"
     ];
 
     loader = {
@@ -85,7 +69,7 @@
     };
 
     kernel.sysctl = {
-      # Refer to vm.nix
+      "net.ipv4.ip_forward" = 1;
       "kernel.sysrq" = "1";
       "net.ipv4.tcp_congestion_control" = "bbr";
     };
@@ -178,7 +162,7 @@
     import ../../home/lithium.nix;
 
   # AMD Ryzen 7840U
-  nix.settings.cores = 14;
+  nix.settings.cores = 12;
   systemd.services.nix-daemon.serviceConfig = {
     CPUWeight = 30;
     IOWeight = 30;
@@ -217,7 +201,7 @@
       enableNotifications = true;
     };
 
-    fwupd.enable = true;
+    # fwupd.enable = true;
 
     udisks2.enable = true;
     udisks2.mountOnMedia = true;

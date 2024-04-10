@@ -1,5 +1,5 @@
-# Forked from github.com/yuzukilica/nixos-config
-# For the purpose of testing, to install nixos on clevo nh55vr workstation.
+# Forked from github.com/oxalica/nixos-config
+# For the purpose of testing, to install nixos on 7950x desktop.
 {
   lib,
   config,
@@ -34,11 +34,9 @@
 
   # Boot.
   boot = {
-    # disable initrd
     initrd = {
       systemd.enable = true;
 
-      # 7950x PC
       availableKernelModules = ["thunderbolt" "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
 
       kernelModules = ["dm-snapshot" "amdgpu"];
@@ -51,11 +49,6 @@
         crypttabExtraOpts = ["fido2-device=auto" "x-initrd.attach"];
       };
 
-      # workstation
-      # availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" "sdhci_pci"];
-
-      # kernelModules = ["dm-snapshot"];
-
       # luks.devices."nixos-enc" = {
       #   device = "/dev/disk/by-partuuid/779b6b0c-0ca4-44e4-9099-1705975e7b28";
       #   header = "/dev/disk/by-partuuid/30546ce1-9ed3-40da-a583-aa7c0d135a23";
@@ -65,47 +58,19 @@
       # };
     };
     # bootspec.enable = true;
-    # For MGLRU in Linux 6.1
-    # https://github.com/NixOS/nixpkgs/pull/205269
-    #
-    # NB. Don't upgrate to 6.2 before the BTRFS bug gets fixed.
-    # https://lore.kernel.org/linux-btrfs/CABXGCsNzVxo4iq-tJSGm_kO1UggHXgq6CdcHDL=z5FL4njYXSQ@mail.gmail.com
-    kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelPatches = [
-      {
-        name = "enable-zone-device";
-        patch = null;
-        extraStructuredConfig.BLK_DEV_ZONED = lib.kernel.yes;
-      }
-    ];
+    kernelPackages =
+      # WAIT https://github.com/torvalds/linux/commit/a8b70c7f8600bc77d03c0b032c0662259b9e615e
+      lib.warnIf (pkgs.linuxPackages_latest.kernelAtLeast "6.9") "stable kernel >= 6.9 now"
+        pkgs.linuxPackages_testing;
 
     kernelModules = ["kvm-amd"];
     extraModulePackages = [];
-    # For amd dual monitor
     kernelParams = [
-      # "video=card0-DP-1:2560x1440@60"
-      # "video=card0-DP-2:2560x1440@60"
-      # "amd_pstate=passive"
-      "amd_pstate=active"
-      # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/raphael/igpu.nix
-      # "amdgpu.sg_display=0"
-      # Try fixing nvme unavailability issue after S3 resume.
-      # See: https://wiki.archlinux.org/title/Solid_state_drive/NVMe#Controller_failure_due_to_broken_suspend_support
-      "amd_iommu=fullflush"
       # Auto reset on amdgpu failure.
       # See: https://unix.stackexchange.com/questions/352226/how-to-restart-a-failed-amdgpu-kernel-module
       "amdgpu.gpu_recovery=1"
     ];
-
-    # For hibernate-resume.
-    # `sudo btrfs inspect-internal map-swapfile /var/swap/resume --resume-offset`
-    # => 38868224
-    # resumeDevice = "/dev/disk/by-uuid/fbfe849d-2d2f-415f-88d3-65ded870e46b";
-    # kernelParams = [
-    #   "resume_offset=38868224"
-    #   "intel_pstate=passive"
-    # ];
 
     loader = {
       systemd-boot = {
@@ -117,37 +82,14 @@
     };
 
     kernel.sysctl = {
+      "net.ipv4.ip_forward" = 1;
       # Refer to vm.nix
       "kernel.sysrq" = "1";
       "net.ipv4.tcp_congestion_control" = "bbr";
     };
   };
 
-  systemd.packages = [my.pkgs.keystat];
-
-  # Yuzucat
-  # fileSystems = {
-  #   "/" = {
-  #     device = "/dev/disk/by-uuid/f4209ec3-f651-4017-8732-9a201b7b48ba";
-  #     fsType = "btrfs";
-  #     # zstd:1  W: ~510MiB/s
-  #     # zstd:3  W: ~330MiB/s
-  #     # options = [ "noatime" "compress=zstd:1" "subvol=@" "nofail"];
-  #   };
-
-  #   "/boot" = {
-  #     device = "/dev/disk/by-uuid/0D59-C632";
-  #     fsType = "vfat";
-  #   };
-
-  #   "/home" = {
-  #     device = "/dev/disk/by-uuid/c91e8302-9950-4d9c-afd2-5a340c1c86de";
-  #     fsType = "btrfs";
-  #     # zstd:1  W: ~510MiB/s
-  #     # zstd:3  W: ~330MiB/s
-  #     # options = [ "noatime" "compress=zstd:1" "subvol=@" ];
-  #   };
-  # };
+  # systemd.packages = [my.pkgs.keystat];
 
   # 7950x PC
   fileSystems."/" = {
@@ -170,28 +112,6 @@
   swapDevices = [
     {device = "/dev/disk/by-uuid/c5ee32f2-d282-4a5e-b199-a1e3c57910d6";}
   ];
-
-  # workstation
-  # fileSystems."/" =
-  #   { device = "/dev/disk/by-uuid/6304c08b-0b17-4e28-8cf1-38301c01abfc";
-  #     fsType = "btrfs";
-  #     options = [ "subvol=root" ];
-  #   };
-
-  # fileSystems."/home" =
-  #   { device = "/dev/disk/by-uuid/6304c08b-0b17-4e28-8cf1-38301c01abfc";
-  #     fsType = "btrfs";
-  #     options = [ "subvol=home" ];
-  #   };
-
-  # fileSystems."/boot" =
-  #   { device = "/dev/disk/by-uuid/8380-C0B6";
-  #     fsType = "vfat";
-  #   };
-
-  # swapDevices =
-  #   [ { device = "/dev/disk/by-uuid/a902beb8-b190-4b29-8e73-1aa96d2922ec"; }
-  #   ];
 
   # Hardware.
   powerManagement.cpuFreqGovernor = "performance";
@@ -236,7 +156,7 @@
   # users.groups."transmission".members = [ config.users.users.yuzuki.name ];
 
   # Services.
-  # AMD Ryzen 5950x
+  # AMD Ryzen 7950x
   systemd.services.nix-daemon.serviceConfig = {
     CPUQuota = "3000%";
     CPUWeight = 50;
@@ -246,8 +166,7 @@
     MemorySwapMax = "64G";
     IOWeight = 50;
   };
-  # Workaround: https://github.com/NixOS/nixpkgs/issues/81138
-  systemd.services.keystat.wantedBy = ["multi-user.target"];
+
   systemd.services.timer.wantedBy = ["multi-user.target"];
 
   # Moved to services code block
@@ -283,11 +202,6 @@
       freeSwapThreshold = 10;
       enableNotifications = true;
     };
-    # transmission configration Refered from ../invar/configuration.nix
-    # transmission = {
-    #   enable = true;
-    #   home = "/home/transmission";
-    # };
     btrbk.instances.snapshot = {
       onCalendar = "*:00,30";
       settings = {
@@ -302,7 +216,7 @@
         };
       };
     };
-    fwupd.enable = true;
+    # fwupd.enable = true;
 
     udisks2.enable = true;
     udisks2.mountOnMedia = true;
@@ -335,6 +249,7 @@
     enable = true;
     package = pkgs.wireshark-qt;
   };
+  users.groups."wireshark".members = [ config.users.users.oxa.name ];
 
   # environment.etc Refered from ../invar/configuration.nix
   environment.etc = {

@@ -66,7 +66,7 @@
     dotnet-runtime_8
     dotnet-aspnetcore_8
     dotnetPackages.Nuget
-    gyb
+    # gyb
     openai-whisper-cpp
     clblast
     ffmpeg

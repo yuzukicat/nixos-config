@@ -32,33 +32,20 @@
 
     nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
 
-    # yuzuki
-    # interfaces = {
-    #   docker0.useDHCP = lib.mkDefault true;
-    #   enp15s0.useDHCP = lib.mkDefault true;
-    #   wlp14s0.useDHCP = lib.mkDefault true;
-    # };
-
-    # Work Station
-    # interfaces = {
-    #   enp4s0.useDHCP = lib.mkDefault true;
-    #   wlp5s0.useDHCP = lib.mkDefault true;
-    # };
-
     # 7950x
-    # interfaces = {
-    #   eno1.useDHCP = lib.mkDefault true;
-    #   wlp10s0.useDHCP = lib.mkDefault true;
-    #   # docker0.useDHCP = lib.mkDefault true;
-    #   # tailscale0.useDHCP = lib.mkDefault true;
-    # };
-
-    # 7640u
     interfaces = {
-      # enp9s0.useDHCP = lib.mkDefault true;
-      wlp1s0.useDHCP = lib.mkDefault true;
+      eno1.useDHCP = lib.mkDefault true;
+      wlp7s0.useDHCP = lib.mkDefault true;
+      # docker0.useDHCP = lib.mkDefault true;
       # tailscale0.useDHCP = lib.mkDefault true;
     };
+
+    # 7640u
+    # interfaces = {
+    #   # enp9s0.useDHCP = lib.mkDefault true;
+    #   wlp1s0.useDHCP = lib.mkDefault true;
+    #   # tailscale0.useDHCP = lib.mkDefault true;
+    # };
   };
 
   systemd.network.wait-online = {

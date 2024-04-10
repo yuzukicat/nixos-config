@@ -52,7 +52,7 @@
       };
     };
 
-    desktopManager.plasma5 = {
+    desktopManager.plasma6 = {
       enable = true;
       runUsingSystemd = true;
       # supportDDC = true;

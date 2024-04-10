@@ -21,8 +21,8 @@
 
     pinentryPackage =
       if config.wayland.windowManager.sway.enable
-        then "gtk2"
-        else "qt";
+        then pkgs.pinentry-gtk2
+        else pkgs.pinentry-qt;
     defaultCacheTtl = 600; # Default
     maxCacheTtl = 1800; # Default
     extraConfig = ''

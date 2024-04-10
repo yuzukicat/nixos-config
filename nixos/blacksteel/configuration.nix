@@ -249,7 +249,7 @@
     enable = true;
     package = pkgs.wireshark-qt;
   };
-  users.groups."wireshark".members = [ config.users.users.oxa.name ];
+  users.groups."wireshark".members = [ config.users.users.yuzuki.name ];
 
   # environment.etc Refered from ../invar/configuration.nix
   environment.etc = {

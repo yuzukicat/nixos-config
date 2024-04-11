@@ -23,7 +23,7 @@ set $mod Mod4
 ##########################
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:JetBrains Mono 14
+font pango:JetBrains Mono 1
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -243,6 +243,41 @@ exec_always --no-startup-id nitrogen --restore
 
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+set $rosewater #dc8a78
+set $flamingo #dd7878
+set $pink #ea76cb
+set $mauve #8839ef
+set $red #d20f39
+set $maroon #e64553
+set $peach #fe640b
+set $yellow #df8e1d
+set $green #40a02b
+set $teal #179299
+set $sky #04a5e5
+set $sapphire #209fb5
+set $blue #1e66f5
+set $lavender #7287fd
+set $text #4c4f69
+set $subtext1 #5c5f77
+set $subtext0 #6c6f85
+set $overlay2 #7c7f93
+set $overlay1 #8c8fa1
+set $overlay0 #9ca0b0
+set $surface2 #acb0be
+set $surface1 #bcc0cc
+set $surface0 #ccd0da
+set $base #eff1f5
+set $mantle #e6e9ef
+set $crust #dce0e8
+
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -251,15 +286,24 @@ bar {
         font pango:DejaVu Sans Mono 10
         separator_symbol " "
         colors {
-                background #222333
-                statusline #ffffff
-                separator #ffffff
+                # background #222333
+                # statusline #ffffff
+                # separator #ffffff
 
-                focused_workspace  #4c7899 #2B5489 #ffffff
-                active_workspace   #333333 #5f676a #ffffff
-                inactive_workspace #192331 #111111 #888888
-                urgent_workspace   #D32F2F #900000 #ffffff
-                binding_mode       #D32F2F #900000 #ffffff
+                # focused_workspace  #4c7899 #2B5489 #ffffff
+                # active_workspace   #333333 #5f676a #ffffff
+                # inactive_workspace #192331 #111111 #888888
+                # urgent_workspace   #D32F2F #900000 #ffffff
+                # binding_mode       #D32F2F #900000 #ffffff
+		background         $base
+		statusline         $text
+		focused_statusline $text
+		focused_separator  $base
+		focused_workspace  $base $base $green
+		active_workspace   $base $base $blue
+		inactive_workspace $base $base $surface1
+		urgent_workspace   $base $base $surface1
+		binding_mode       $base $base $surface1
         }
         padding 3px 0
         tray_output primary

@@ -71,7 +71,7 @@ element {
 }
 
 element-icon {
-    size: 50px;
+    size: 100px;
 }
 
 element selected {

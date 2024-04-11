@@ -7,7 +7,7 @@
       LC_TIME = "de_DE.UTF-8";
     };
     inputMethod = {
-      enabled = "fcitx5-with-addons";
+      enabled = "fcitx5";
       fcitx5.addons = with pkgs; [
         fcitx5-rime
         fcitx5-anthy

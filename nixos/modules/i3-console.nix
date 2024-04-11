@@ -123,7 +123,7 @@
       accents = ["green"]; # You can specify multiple accents here to output multiple themes
       size = "compact";
       tweaks = ["rimless" "normal"]; # You can also specify multiple tweaks here
-      variant = "normal";
+      variant = "latte";
     })
     dunst
     libsForQt5.okular

@@ -40,6 +40,8 @@ in {
     // mkHomeFile ./dunst ".config/dunst"
     // mkHomeFile ./picom ".config/picom"
     // mkHomeFile ./btop ".config/btop"
+    // mkHomeFile ./rofi/config.rasi ".config/rofi"
+    // mkHomeFile ./rofi/rofi ".local/share"
     // {
       ".config/ibus/rime/easy_en.custom.yaml".text = ''
         patch:

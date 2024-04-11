@@ -37,7 +37,7 @@
 
     videoDrivers = ["modesetting"];
 
-    dpi = 300;
+    dpi = 400;
 
     xkb.layout = "us";
   };

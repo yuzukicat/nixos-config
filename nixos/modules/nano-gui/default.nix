@@ -1,10 +1,12 @@
+{inputs, ...}:
+
 {
   services.xserver = {
     enable = true;
     autorun = true;
     windowManager.dwm.enable = true;
+    windowManager.dwm.package = inputs.nixpkgs-dwm-url.legacyPackages.dwm;
     displayManager.startx.enable = true;
-    displayManager.defaultSession = "none+dwm";
     displayManager.sessionCommands = ''
       slstatus &
       feh --bg-fill .background.png &
@@ -12,13 +14,16 @@
       ibus-daemon -drxR
     '';
     displayManager.lightdm.enable = true;
-    displayManager.autoLogin = {
-      enable = true;
-      user = "yuzuki";
-    };
     videoDrivers = [ "modesetting" ];
     dpi = 200;
     xkb.layout = "us";
+  };
+
+  services.displayManager.defaultSession = "none+dwm";
+
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "yuzuki";
   };
 
   nixpkgs.overlays = [

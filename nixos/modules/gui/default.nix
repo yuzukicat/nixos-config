@@ -4,7 +4,6 @@
     autorun = true;
     windowManager.dwm.enable = true;
     displayManager.startx.enable = true;
-    displayManager.defaultSession = "none+dwm";
     displayManager.sessionCommands = ''
       ryzenadj &
       xrandr --output DP-2 --primary --mode 3840x2160 --dpi 300 --brightness 1.0 --pos 0x0 --rotate normal --output HDMI-0 --same-as DP-2 --mode 3840x2160 --brightness 1.0 --rotate normal &
@@ -14,13 +13,16 @@
       ibus-daemon -drxR
     '';
     displayManager.lightdm.enable = true;
-    displayManager.autoLogin = {
-      enable = true;
-      user = "yuzuki";
-    };
     videoDrivers = [ "modesetting" ];
     dpi = 300;
     xkb.layout = "us";
+  };
+
+  services.displayManager.defaultSession = "none+dwm";
+
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "yuzuki";
   };
 
   nixpkgs.overlays = [

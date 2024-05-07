@@ -6,6 +6,7 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unmatched.url = "github:oxalica/nixpkgs/test/unmatched";
     nixpkgs-sddm-0-20-0.url = "github:NixOS/nixpkgs/pull/239389/head";
+    nixpkgs-dwm-url = "github:NixOS/nixpkgs/pull/41974d5/head";
 
     # Placeholder.
     blank.follows = "nixpkgs";

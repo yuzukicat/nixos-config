@@ -109,6 +109,7 @@
             inherit inputs my;
             super = config;
           };
+          backupFileExtension = "backup";
         };
       };
 

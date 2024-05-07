@@ -28,11 +28,6 @@
 
     displayManager = {
       lightdm.enable = true;
-      defaultSession = "xfce+i3";
-      autoLogin = {
-        enable = true;
-        user = "yuzuki";
-      };
     };
 
     videoDrivers = ["modesetting"];
@@ -40,6 +35,13 @@
     dpi = 200;
 
     xkb.layout = "us";
+  };
+
+  services.displayManager.defaultSession = "xfce+i3";
+
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "yuzuki";
   };
 
   services.gvfs.enable = true;

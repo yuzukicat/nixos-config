@@ -82,12 +82,6 @@
     inherit (nixpkgs) lib;
 
     overlays = {
-      # FIXME: https://github.com/NixOS/nixpkgs/issues/229358
-      sddm = final: prev: {
-        libsForQt5 = prev.libsForQt5.overrideScope' (final_: prev_: {
-          inherit (inputs.nixpkgs-sddm-0-20-0.legacyPackages.${final.stdenv.system}.libsForQt5) sddm;
-        });
-      };
     };
 
     nixosModules = {

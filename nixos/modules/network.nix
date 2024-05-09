@@ -20,7 +20,7 @@
 
     firewall.enable = true;
     firewall.trustedInterfaces = [ "docker0" ];
-    firewall.allowedTCPPorts = [ 22 80 443 ];
+    firewall.allowedTCPPorts = [ 22 80 443 67 53 ];
     # firewall.allowedTCPPorts = [ 80 ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
@@ -33,19 +33,19 @@
     nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
 
     # 7950x
-    interfaces = {
-      eno1.useDHCP = lib.mkDefault true;
-      wlp7s0.useDHCP = lib.mkDefault true;
+    # interfaces = {
+    #   eno1.useDHCP = lib.mkDefault true;
+    #   wlp7s0.useDHCP = lib.mkDefault true;
       # docker0.useDHCP = lib.mkDefault true;
       # tailscale0.useDHCP = lib.mkDefault true;
-    };
+    # };
 
     # 7640u
-    # interfaces = {
-    #   # enp9s0.useDHCP = lib.mkDefault true;
-    #   wlp1s0.useDHCP = lib.mkDefault true;
-    #   # tailscale0.useDHCP = lib.mkDefault true;
-    # };
+    interfaces = {
+      # enp9s0.useDHCP = lib.mkDefault true;
+      wlp1s0.useDHCP = lib.mkDefault true;
+      # tailscale0.useDHCP = lib.mkDefault true;
+    };
   };
 
   systemd.network.wait-online = {

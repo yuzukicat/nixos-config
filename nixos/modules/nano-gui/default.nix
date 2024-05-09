@@ -5,7 +5,6 @@
     enable = true;
     autorun = true;
     windowManager.dwm.enable = true;
-    windowManager.dwm.package = inputs.nixpkgs-dwm-url.legacyPackages.dwm;
     displayManager.startx.enable = true;
     displayManager.sessionCommands = ''
       slstatus &
@@ -15,7 +14,7 @@
     '';
     displayManager.lightdm.enable = true;
     videoDrivers = [ "modesetting" ];
-    dpi = 200;
+    dpi = 240;
     xkb.layout = "us";
   };
 

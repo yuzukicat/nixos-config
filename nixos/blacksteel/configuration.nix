@@ -268,6 +268,20 @@
   #   '';
   # };
 
+  # systemd.tmpfiles.rules = {
+  #   "/var/lib/waydroid/waydroid.cfg" = {
+  #     type = "f";
+  #     mode = "0775";
+  #     user = "waydroid";
+  #     group = "waydroid";
+  #     age = "";
+  #     argument = "
+  #          ro.hardware.gralloc=default
+  #          ro.hardware.egl=swiftshader
+  #     ";
+  #   };
+  # };
+
   environment.systemPackages = with pkgs; [
     # systemPackages Refered from ../invar/configuration.nix && ../minimal-image
     neofetch

@@ -65,6 +65,7 @@
     texlive.combined.scheme-full
     flameshot
     ryzenadj
+    weston
   ];
 
   programs.less = {

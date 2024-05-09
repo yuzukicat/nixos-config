@@ -66,6 +66,7 @@
     flameshot
     ryzenadj
     weston
+    lzip
   ];
 
   programs.less = {

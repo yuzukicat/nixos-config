@@ -1,21 +1,22 @@
-From 65c0a38ac6c1bab86c9c1a7c234132631c9153d2 Mon Sep 17 00:00:00 2001
-From: yuzukicat <yuzuki.cat@kamisu66.com>
+From 789908d6b34139dde00d8c75c80ac2202f123078 Mon Sep 17 00:00:00 2001
+From: p9334 <Daii.Kyo@nikon.com>
 Date: Wed, 8 May 2024 15:23:46 +0900
 Subject: [PATCH] patch dwm6.5
 
+fix Mod4Mask, Kitty
 ---
- config.def.h => config.h |  28 ++++-----
+ config.def.h => config.h |  30 ++++-----
  drw.c                    | 104 ++++++++++++++-----------------
  drw.h                    |   1 -
  dwm.c                    | 128 ++++++++++++++++++++-------------------
- 4 files changed, 127 insertions(+), 134 deletions(-)
- rename config.def.h => config.h (88%)
+ 4 files changed, 128 insertions(+), 135 deletions(-)
+ rename config.def.h => config.h (87%)
 
 diff --git a/config.def.h b/config.h
-similarity index 88%
+similarity index 87%
 rename from config.def.h
 rename to config.h
-index 9efa774..a73fcaf 100644
+index 9efa774..4ee8f84 100644
 --- a/config.def.h
 +++ b/config.h
 @@ -1,17 +1,17 @@
@@ -55,12 +56,21 @@ index 9efa774..a73fcaf 100644
  static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
  
  static const Layout layouts[] = {
+@@ -45,7 +45,7 @@ static const Layout layouts[] = {
+ };
+ 
+ /* key definitions */
+-#define MODKEY Mod1Mask
++#define MODKEY Mod4Mask
+ #define TAGKEYS(KEY,TAG) \
+ 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+ 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 @@ -58,9 +58,9 @@ static const Layout layouts[] = {
  /* commands */
  static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
  static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 -static const char *termcmd[]  = { "st", NULL };
-+static const char *termcmd[]  = { "alacritty", NULL };
++static const char *termcmd[]  = { "kitty", NULL };
  
 -static const Key keys[] = {
 +static Key keys[] = {

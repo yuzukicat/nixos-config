@@ -7,7 +7,7 @@
     font = {
       package = pkgs.fira-code;
       name = "fira-code";
-      size = 20;
+      size = 30;
       # size = 12 * config.wayland.dpi / 96;
     };
     settings = {

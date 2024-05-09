@@ -20,6 +20,7 @@
       ../modules/network.nix
       ../modules/nix-common.nix
       ../modules/nix-registry.nix
+      ../modules/steam.nix
       ../modules/systemd-unit-protections.nix
     ]
     ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.invar);

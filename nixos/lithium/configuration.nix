@@ -154,7 +154,7 @@
       initialHashedPassword = "";
       uid = 1000;
       group = config.users.groups.yuzuki.name;
-      extraGroups = ["wheel" "wireshark" "video" "discocss" "networkmanager" "audio" "sound" "input"];
+      extraGroups = ["wheel" "wireshark" "video" "discocss" "networkmanager" "audio" "sound" "input" "docker"];
     };
     groups."yuzuki".gid = 1000;
     # Allow the user to log in as root without a password.

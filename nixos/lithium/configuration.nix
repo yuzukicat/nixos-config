@@ -13,6 +13,7 @@
       ../modules/nano-console.nix
       ../modules/cups.nix
       ../modules/desktop-server.nix
+      ../modules/docker.nix
       ../modules/nano-gui
       ../modules/internationalisation.nix
       ../modules/l10n.nix

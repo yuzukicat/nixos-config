@@ -26,7 +26,7 @@
       # ../modules/nokde.nix
       ../modules/i3
       ../modules/steam.nix
-      # ../modules/virtualisation.nix
+      ../modules/virtualisation.nix
       ../modules/systemd-unit-protections.nix
       # ../modules/nvdia.nix
     ]

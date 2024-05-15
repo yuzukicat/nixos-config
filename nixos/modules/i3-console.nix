@@ -131,6 +131,8 @@
     flameshot
     amdgpu_top
     lact
+    weston
+    lzip
   ];
 
   programs.less = {

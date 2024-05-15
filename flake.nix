@@ -109,6 +109,7 @@
             inherit inputs my;
             super = config;
           };
+          # rm -rf /home/yuzuki/.mozilla/firefox/main.profile/search.json.mozlz4
           backupFileExtension = "backup";
         };
       };

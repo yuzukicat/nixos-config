@@ -10,7 +10,7 @@
 }: {
   imports =
     [
-      # ./vm.nix
+      ./vm.nix
 
       ../modules/bluetooth.nix
       # ../modules/console-env.nix
@@ -62,7 +62,7 @@
     kernelPackages =
       # WAIT https://github.com/torvalds/linux/commit/a8b70c7f8600bc77d03c0b032c0662259b9e615e
       lib.warnIf (pkgs.linuxPackages_latest.kernelAtLeast "6.9") "stable kernel >= 6.9 now"
-        pkgs.linuxPackages_testing;
+      pkgs.linuxPackages_testing;
 
     kernelModules = ["kvm-amd"];
     extraModulePackages = [];
@@ -222,10 +222,10 @@
     udisks2.mountOnMedia = true;
     btrfs.autoScrub = {
       enable = true;
-      fileSystems = [ "/" ];
+      fileSystems = ["/"];
       interval = "monthly";
     };
-    udev.packages = [ my.pkgs.ublk-allow-unprivileged ];
+    udev.packages = [my.pkgs.ublk-allow-unprivileged];
   };
 
   # Global ssh settings. Also for remote builders.
@@ -249,7 +249,7 @@
     enable = true;
     package = pkgs.wireshark-qt;
   };
-  users.groups."wireshark".members = [ config.users.users.yuzuki.name ];
+  users.groups."wireshark".members = [config.users.users.yuzuki.name];
 
   # environment.etc Refered from ../invar/configuration.nix
   environment.etc = {

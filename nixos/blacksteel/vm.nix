@@ -4,7 +4,7 @@
     onBoot = "ignore";
     qemu.package = pkgs.qemu_kvm;
   };
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+  # boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   # KVMGT implements Intel ® GVT-g for KVM, with >80% of native 3D performance
   # virtualisation.kvmgt = {
   #   enable = true;

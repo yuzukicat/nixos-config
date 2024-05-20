@@ -133,6 +133,7 @@
     lact
     weston
     lzip
+    git-repo
   ];
 
   programs.less = {

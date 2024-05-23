@@ -7,20 +7,20 @@
       LC_TIME = "de_DE.UTF-8";
     };
     inputMethod = {
-      # enabled = "fcitx5";
-      # fcitx5.addons = with pkgs; [
-      #   fcitx5-rime
-      #   fcitx5-anthy
-      #   fcitx5-gtk
-      #   fcitx5-material-color
-      # ];
-      enabled = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [
-        typing-booster
-        anthy
-        rime
-        uniemoji
+      enabled = "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-rime
+        fcitx5-anthy
+        fcitx5-gtk
+        fcitx5-material-color
       ];
+      # enabled = "ibus";
+      # ibus.engines = with pkgs.ibus-engines; [
+      #   typing-booster
+      #   anthy
+      #   rime
+      #   uniemoji
+      # ];
     };
   };
 

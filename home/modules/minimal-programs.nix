@@ -107,7 +107,7 @@ in {
       my.pkgs.systemd-run-app
       isoimagewriter
       qbittorrent
-      # chromium
+      chromium
       gnuplot
       okular
       xsel

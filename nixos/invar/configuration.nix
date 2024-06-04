@@ -53,29 +53,14 @@
     # kernelPackages = pkgs.linuxPackages_latest;
 
     kernelPackages =
-      # WAIT: 6.8 with BTRFS fixes.
-      lib.warnIf
-        (pkgs.linuxPackages_latest.kernel.kernelAtLeast "6.8")
-        "latest kernel is 6.8 now, no need for testing one"
-        pkgs.linuxPackages_testing;
-
-    kernelPatches = [
-      {
-        name = "enable-zone-device";
-        patch = null;
-        extraStructuredConfig.BLK_DEV_ZONED = lib.kernel.yes;
-      }
-    ];
+      # WAIT https://github.com/torvalds/linux/commit/a8b70c7f8600bc77d03c0b032c0662259b9e615e
+      lib.warnIf (pkgs.linuxPackages_latest.kernelAtLeast "6.10") "stable kernel >= 6.10 now"
+      pkgs.linuxPackages_testing;
 
     kernelModules = [ ];
     extraModulePackages = [ ];
 
-    kernelParams = [
-      "amd_pstate=active"
-      # Try fixing nvme unavailability issue after S3 resume.
-      # See: https://wiki.archlinux.org/title/Solid_state_drive/NVMe#Controller_failure_due_to_broken_suspend_support
-      "amd_iommu=fullflush"
-    ];
+    kernelParams = [ ];
 
     # For hibernate-resume.
     # `sudo btrfs inspect-internal map-swapfile /var/swap/resume --resume-offset`

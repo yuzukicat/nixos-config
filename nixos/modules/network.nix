@@ -15,7 +15,7 @@
       enable = true;
       wifi.macAddress = "random";
       ethernet.macAddress = "random";
-      unmanaged = ["eno1"];
+      unmanaged = ["enp4s0"];
     };
 
     firewall.enable = true;
@@ -40,10 +40,10 @@
       # tailscale0.useDHCP = lib.mkDefault true;
     # };
 
-    # 7640u
+    # 5700x
     interfaces = {
-      # enp9s0.useDHCP = lib.mkDefault true;
-      wlp1s0.useDHCP = lib.mkDefault true;
+      enp4s0.useDHCP = lib.mkDefault true;
+      wlp5s0.useDHCP = lib.mkDefault true;
       # tailscale0.useDHCP = lib.mkDefault true;
     };
   };

@@ -8,7 +8,8 @@
       package = pkgs.fira-code;
       name = "fira-code";
       # size = 16;
-      size = 30;
+      # size = 30;
+      size = 36; #clevo
       # size = 12 * config.wayland.dpi / 96;
     };
     settings = {

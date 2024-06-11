@@ -214,7 +214,7 @@ in {
         bradlc.vscode-tailwindcss
         angular.ng-template
         gencer.html-slim-scss-css-class-completion
-        jpoissonnier.vscode-styled-components
+        styled-components.vscode-styled-components
         eg2.vscode-npm-script
         wix.vscode-import-cost
         firefox-devtools.vscode-firefox-debug

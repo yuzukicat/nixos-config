@@ -231,7 +231,7 @@ in {
         bodil.file-browser
         christian-kohler.path-intellisense
         alexdima.copy-relative-path
-        rioj7.commandOnAllFiles
+        rioj7.commandonallfiles
         bierner.emojisense
         ms-vscode.hexeditor
         kddejong.vscode-cfn-lint

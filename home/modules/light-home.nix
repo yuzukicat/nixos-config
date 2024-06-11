@@ -2,96 +2,94 @@
   pkgs,
   my,
   ...
-}:
-{
-  home.packages = with pkgs;
-    [
-      # Console
-      runzip
-      scc
-      bubblewrap
-      difftastic # Random stuff
-      xsel
-      xclip
-      trash-cli # CLI-Desktop
-      my.pkgs.hyfetch
-      tealdeer
-      man-pages # Manual
+}: {
+  home.packages = with pkgs; [
+    # Console
+    runzip
+    scc
+    bubblewrap
+    difftastic # Random stuff
+    xsel
+    xclip
+    trash-cli # CLI-Desktop
+    my.pkgs.hyfetch
+    tealdeer
+    man-pages # Manual
 
-      # Dev
-      cachix
-      patchelf
-      nix-update
-      nix-output-monitor # Nix utils
-      gcc
-      ghc
-      gdb # Debugger
-      sqlite-interactive
-      sqls
-      postgresql # sqlite
-      cabal-install
-      gnumake
-      yarn
-      binutils
-      bash-completion
-      cling
-      elixir
-      gh
-      nodejs
-      nodePackages.npm-check-updates
-      nodePackages.prisma
-      nodePackages.pnpm
-      prisma-engines
-      openssl
-      protobuf
-      pkg-config
-      bashInteractive
-      coursera-dl
+    # Dev
+    cachix
+    patchelf
+    nix-update
+    nix-output-monitor # Nix utils
+    gcc
+    ghc
+    gdb # Debugger
+    sqlite-interactive
+    sqls
+    postgresql # sqlite
+    cabal-install
+    gnumake
+    yarn
+    binutils
+    bash-completion
+    cling
+    elixir
+    gh
+    nodejs
+    nodePackages.npm-check-updates
+    nodePackages.prisma
+    nodePackages.pnpm
+    prisma-engines
+    openssl
+    protobuf
+    pkg-config
+    bashInteractive
+    coursera-dl
 
-      libreoffice
+    libreoffice
 
-      # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
-      # Internet
-      aria
+    # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
+    # Internet
+    aria
 
-      # autorandr direnv feh gpg lf nix-direnv qutebrowser password-store taskwarrior zathura iftop htop iotop mtr tmux
+    # autorandr direnv feh gpg lf nix-direnv qutebrowser password-store taskwarrior zathura iftop htop iotop mtr tmux
 
-      # Work:
-      calibre
+    # Work:
+    calibre
 
-      # non-oss:
-      zoom-us
-      my.pkgs.librime-lua
-      docker
-      discord
-      feishu
-      my.pkgs.systemd-run-app
-      rust-analyzer
-      nil # rnix-lsp
-      pyright
-      haskell-language-server
-      solargraph
-      clang-tools
-      lua53Packages.digestif
-      cmake-language-server
-      kotlin-language-server
-      gopls
-      my.pkgs.gotools
-      # go-tools
-      # protoc-gen-go
-      # protoc-gen-doc
-      # protoc-gen-go-grpc
-      rnix-lsp
-      sqls
-      nodePackages.bash-language-server
-      nodePackages.dockerfile-language-server-nodejs
-      nodePackages.eslint
-      nodePackages.graphql-language-service-cli
-      nodePackages.typescript-language-server
-      nodePackages.unified-language-server
-      nodePackages.vscode-langservers-extracted
-      nodePackages.yaml-language-server
-    ];
+    # non-oss:
+    zoom-us
+    my.pkgs.librime-lua
+    docker
+    discord
+    feishu
+    my.pkgs.systemd-run-app
+    rust-analyzer
+    nil # rnix-lsp
+    pyright
+    haskell-language-server
+    solargraph
+    clang-tools
+    lua53Packages.digestif
+    cmake-language-server
+    kotlin-language-server
+    gopls
+    my.pkgs.gotools
+    # go-tools
+    # protoc-gen-go
+    # protoc-gen-doc
+    # protoc-gen-go-grpc
+    rnix-lsp
+    sqls
+    nodePackages.bash-language-server
+    nodePackages.dockerfile-language-server-nodejs
+    nodePackages.eslint
+    nodePackages.graphql-language-service-cli
+    nodePackages.typescript-language-server
+    nodePackages.unified-language-server
+    nodePackages.vscode-langservers-extracted
+    nodePackages.yaml-language-server
+  ];
 
   programs.autorandr.enable = true; # Automatically select a display configuration based on connected devices.
   programs.dircolors.enable = true;
@@ -249,7 +247,7 @@
         bodil.file-browser
         christian-kohler.path-intellisense
         alexdima.copy-relative-path
-        rioj7.commandOnAllFiles
+        rioj7.commandonallfiles
         bierner.emojisense
         ms-vscode.hexeditor
         kddejong.vscode-cfn-lint

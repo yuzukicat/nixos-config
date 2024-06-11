@@ -277,7 +277,7 @@ in {
         donjayamanne.githistory
         mhutchie.git-graph
         codezombiech.gitignore
-        matklad.rust-analyzer
+        rust-lang.rust-analyzer
         golang.go
         zxh404.vscode-proto3
         oderwat.indent-rainbow

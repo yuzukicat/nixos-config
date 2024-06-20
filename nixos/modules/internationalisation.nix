@@ -14,14 +14,14 @@
         fcitx5-gtk
         fcitx5-material-color
       ];
-    #   enabled = "ibus";
-    #   ibus.engines = with pkgs.ibus-engines; [
-    #     typing-booster
-    #     anthy
-    #     rime
-    #     uniemoji
-    #   ];
-    # };
+      #   enabled = "ibus";
+      #   ibus.engines = with pkgs.ibus-engines; [
+      #     typing-booster
+      #     anthy
+      #     rime
+      #     uniemoji
+      #   ];
+    };
   };
 
   services.xserver.desktopManager.runXdgAutostartIfNone = true;

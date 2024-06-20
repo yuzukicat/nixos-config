@@ -1,15 +1,16 @@
-{ pkgs
-, config
-, ...
+{
+  pkgs,
+  config,
+  ...
 }: {
   programs.kitty = {
     enable = true;
     font = {
       package = pkgs.fira-code;
       name = "fira-code";
-      # size = 16;
+      size = 16; #7950x 2K
       # size = 30;
-      size = 36; #clevo
+      # size = 36; #clevo
       # size = 12 * config.wayland.dpi / 96;
     };
     settings = {

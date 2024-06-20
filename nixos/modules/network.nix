@@ -15,12 +15,13 @@
       enable = true;
       wifi.macAddress = "random";
       ethernet.macAddress = "random";
-      unmanaged = ["enp4s0"];
+      unmanaged = ["eno1"];
+      # unmanaged = ["enp4s0"];
     };
 
     firewall.enable = true;
-    firewall.trustedInterfaces = [ "docker0" ];
-    firewall.allowedTCPPorts = [ 22 80 443 67 53 ];
+    firewall.trustedInterfaces = ["docker0"];
+    firewall.allowedTCPPorts = [22 80 443 67 53];
     # firewall.allowedTCPPorts = [ 80 ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
@@ -30,22 +31,22 @@
       checkReversePath = "loose";
     };
 
-    nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+    nameservers = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
 
     # 7950x
-    # interfaces = {
-    #   eno1.useDHCP = lib.mkDefault true;
-    #   wlp10s0.useDHCP = lib.mkDefault true;
-      # docker0.useDHCP = lib.mkDefault true;
-      # tailscale0.useDHCP = lib.mkDefault true;
-    # };
-
-    # 5700x
     interfaces = {
-      enp4s0.useDHCP = lib.mkDefault true;
-      wlp5s0.useDHCP = lib.mkDefault true;
+      eno1.useDHCP = lib.mkDefault true;
+      wlp10s0.useDHCP = lib.mkDefault true;
+      docker0.useDHCP = lib.mkDefault true;
       # tailscale0.useDHCP = lib.mkDefault true;
     };
+
+    # 5700x
+    # interfaces = {
+    #   enp4s0.useDHCP = lib.mkDefault true;
+    #   wlp5s0.useDHCP = lib.mkDefault true;
+    # tailscale0.useDHCP = lib.mkDefault true;
+    # };
   };
 
   systemd.network.wait-online = {
@@ -116,10 +117,10 @@
   services.resolved = {
     enable = true;
     dnssec = "true";
-    domains = [ "~." ];
-    fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+    domains = ["~."];
+    fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
     extraConfig = ''
-    DNSOverTLS=yes
-  '';
+      DNSOverTLS=yes
+    '';
   };
 }

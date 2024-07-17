@@ -29,6 +29,7 @@
       ../modules/virtualisation.nix
       ../modules/systemd-unit-protections.nix
       # ../modules/nvdia.nix
+      ../modules/nix-keep-flake-inputs.nix
     ]
     ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.blacksteel);
 
@@ -181,13 +182,14 @@
   };
   security.polkit.enable = true;
   security.rtkit.enable = true; # Better installed with pipewire.
-  sound.enable = false; # pipewire expects this.
+  # sound.enable = false; # pipewire expects this.
   # Might be necessary to solve the conflict with kde-plasma5 audio
   hardware.pulseaudio.enable = lib.mkForce false;
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
   hardware.pulseaudio.extraConfig = "load-module module-switch-on-connect";
 
   services = {
+    dbus.implementation = "broker";
     # If you have a ssd, don't forget to enable fstrim
     fstrim = {
       enable = true;
@@ -291,5 +293,5 @@
     virt-manager
   ];
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.05";
 }

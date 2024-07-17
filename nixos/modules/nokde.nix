@@ -1,6 +1,6 @@
 {
   pkgs,
-  my,
+  # my,
   ...
 }: {
   imports = [./l10n.nix];
@@ -24,7 +24,7 @@
     gwenview
     okular
     print-manager
-    my.pkgs.bismuth-fix-5-27
+    # my.pkgs.bismuth-fix-5-27
   ];
 
   programs = {
@@ -35,37 +35,44 @@
 
   nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
 
-  services.xserver = {
+  # services.xserver = {
+  #   enable = true;
+  #   layout = "us";
+  #   upscaleDefaultCursor = false;
+  #   # Configure keymap in X11.
+  #   # xkbVariant = "altgr-intl"; # included xkbOption "eurosign:5"
+  #   # xkbOptions = "caps:none"; # xkeyboard-config(7)
+
+  #   displayManager = {
+  #     sddm.enable = true;
+  #     # defaultSession = "plasmawayland";
+  #     autoLogin = {
+  #       enable = true;
+  #       user = "yuzuki";
+  #     };
+  #   };
+
+  #   desktopManager.plasma6 = {
+  #     enable = true;
+  #     runUsingSystemd = true;
+  #     # supportDDC = true;
+  #     useQtScaling = true;
+  #     kdeglobals.KDE.SingleClick = false;
+  #   };
+
+  services.desktopManager.plasma6.enable = true;
+
+  services.displayManager.sddm = {
     enable = true;
-    layout = "us";
-    upscaleDefaultCursor = false;
-    # Configure keymap in X11.
-    # xkbVariant = "altgr-intl"; # included xkbOption "eurosign:5"
-    # xkbOptions = "caps:none"; # xkeyboard-config(7)
-
-    displayManager = {
-      sddm.enable = true;
-      # defaultSession = "plasmawayland";
-      autoLogin = {
-        enable = true;
-        user = "yuzuki";
-      };
-    };
-
-    desktopManager.plasma6 = {
-      enable = true;
-      runUsingSystemd = true;
-      # supportDDC = true;
-      useQtScaling = true;
-      kdeglobals.KDE.SingleClick = false;
-    };
-
-    # To make it work on clevo nh55vr rtx-3070max-q
-    # videoDrivers = ["nvidia"];
-    videoDrivers = ["amdgpu"];
-    # https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/amd/default.nix
-    # videoDrivers = ["modesetting"];
+    wayland.enable = true;
   };
+
+  # To make it work on clevo nh55vr rtx-3070max-q
+  # videoDrivers = ["nvidia"];
+  # videoDrivers = ["amdgpu"];
+  # https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/amd/default.nix
+  # videoDrivers = ["modesetting"];
+  # };
 
   security.pam.services.sddm.enableKwallet = true;
 
@@ -87,10 +94,10 @@
   # ];
 
   # Vulkan
-  hardware.opengl = {
-    driSupport = true;
-    driSupport32Bit = true;
-  };
+  # hardware.opengl = {
+  #   driSupport = true;
+  #   driSupport32Bit = true;
+  # };
 
   services.colord.enable = true;
 }

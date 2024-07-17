@@ -1,5 +1,9 @@
-{ config, pkgs, my, ... }:
 {
+  config,
+  pkgs,
+  my,
+  ...
+}: {
   programs.gpg = {
     enable = true;
     settings = {
@@ -21,18 +25,20 @@
 
     pinentryPackage =
       if config.wayland.windowManager.sway.enable
-        then pkgs.pinentry-gtk2
-        else pkgs.pinentry-qt;
+      then pkgs.pinentry-gtk2
+      else pkgs.pinentry-qt;
     defaultCacheTtl = 600; # Default
     maxCacheTtl = 1800; # Default
     extraConfig = ''
-  allow-emacs-pinentry
-  allow-loopback-pinentry
+      allow-emacs-pinentry
+      allow-loopback-pinentry
     '';
   };
 
   programs.password-store = {
     enable = true;
-    package = pkgs.pass.withExtensions (ps: [ ps.pass-otp ]);
+    package = pkgs.pass.withExtensions (ps: [ps.pass-otp ps.pass-import]);
   };
+
+  home.packages = [pkgs.qtpass];
 }

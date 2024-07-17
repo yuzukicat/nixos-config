@@ -128,7 +128,7 @@
   # around if present.
   home.activation.freshEmacs = lib.hm.dag.entryAfter ["writeBoundary"] ''
     printf "home/blacksteel.nix: clean ~/.emacs.d\n" >&2
-    $DRY_RUN_CMD rm -rf $VERBOSE_ARG ~/.emacs.d/init.el ~/.emacs.d/init.elc ~/.emacs.d/elpa ~/.emacs.d/eln-cache
+    run rm -rf $VERBOSE_ARG ~/.emacs.d/init.el ~/.emacs.d/init.elc ~/.emacs.d/elpa ~/.emacs.d/eln-cache
   '';
 
   # home.activation.freshWine = lib.hm.dag.entryAfter ["writeBoundary"] ''
@@ -136,5 +136,5 @@
   #   export WINEPREFIX=$HOME/.wine-battlenet
   # '';
 
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.05";
 }

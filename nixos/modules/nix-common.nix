@@ -2,6 +2,7 @@
   config,
   inputs,
   pkgs,
+  lib,
   ...
 }: {
   # Install a proprietary or unfree package FOR nv, vscode
@@ -19,9 +20,9 @@
   nix = {
     # package = inputs.nix-dram.packages.${config.nixpkgs.system}.nix-dram;
 
-    # !! Warning: 2.19 currently fails to build this config !!
-    # See: https://github.com/nix-community/home-manager/issues/4692
-    package = assert builtins.compareVersions pkgs.nix.version "2.19" < 0; pkgs.nix;
+    # Ensure this is >= 2.22.1 with the following fix included, or it failes to eval.
+    # https://github.com/NixOS/nix/pull/10456
+    package = lib.mkDefault pkgs.nixVersions.latest;
 
     channel.enable = false;
 
@@ -29,6 +30,7 @@
       automatic = true;
       dates = "Wed,Sat 01:00";
       options = "--delete-older-than 8d";
+      persistent = false;
     };
 
     settings = {
@@ -37,7 +39,7 @@
       experimental-features = [
         "nix-command"
         "flakes"
-        "repl-flake"
+        # "repl-flake"
         "ca-derivations"
         "auto-allocate-uids"
         "cgroups"

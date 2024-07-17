@@ -1,6 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
   inherit (inputs.self.lib) toTOML;
 
   cargoConfig = {
@@ -28,9 +32,9 @@ let
     export PATH="${pkgs.llvmPackages_latest.bintools}/bin''${PATH:+:}$PATH"
     exec ${lib.getExe pkgs.gcc} -fuse-ld=lld -Wl,--no-rosegment "$@"
   '';
-
 in {
-  home.packages = with pkgs; with inputs.rust-overlay.packages.${pkgs.system}; [
+  home.packages = with pkgs;
+  with inputs.rust-overlay.packages.${pkgs.system}; [
     (lib.hiPrio rust-nightly.availableComponents.rustfmt)
     (rust.override {
       extensions = [
@@ -58,20 +62,25 @@ in {
   # Setup cargo directories.
   # https://doc.rust-lang.org/cargo/commands/cargo.html?highlight=cargo_home#files
   home.sessionVariables."CARGO_HOME" = "${pkgs.runCommandLocal "cargo-home" {
-    cargoConfig = toTOML cargoConfig;
-    cargoAudit = toTOML cargoAudit;
-  } ''
-    mkdir -p $out
-    ln -st $out "${config.xdg.cacheHome}"/cargo/{registry,git}
-    ln -st $out "${config.xdg.configHome}"/cargo/credentials.toml
-    echo -n "$cargoConfig" >$out/config.toml
-    echo -n "$cargoAudit" >$out/audit.toml
-  ''}";
+      cargoConfig = toTOML cargoConfig;
+      cargoAudit = toTOML cargoAudit;
+    } ''
+      mkdir -p $out
+      ln -st $out "${config.xdg.cacheHome}"/cargo/{registry,git,.global-cache,.package-cache,.package-cache-mutate}
+      ln -st $out "${config.xdg.configHome}"/cargo/credentials.toml
+      echo -n "$cargoConfig" >$out/config.toml
+      echo -n "$cargoAudit" >$out/audit.toml
+    ''}";
 
-  home.activation.setupCargoDirectories = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    $DRY_RUN_CMD mkdir -p "${config.xdg.configHome}"/cargo "${config.xdg.cacheHome}"/cargo/{registry,git}
+  home.activation.setupCargoDirectories = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    run mkdir -p "${config.xdg.configHome}"/cargo "${config.xdg.cacheHome}"/cargo/{registry,git}
     if [[ ! -e "${config.xdg.configHome}"/cargo/credentials.toml ]]; then
-      $DRY_RUN_CMD touch -a "${config.xdg.configHome}"/cargo/credentials.toml
+      run touch -a "${config.xdg.configHome}"/cargo/credentials.toml
     fi
+    for f in .global-cache .package-cache .package-cache-mutate; do
+      if [[ ! -e "${config.xdg.cacheHome}"/cargo/"$f" ]]; then
+        run touch -a "${config.xdg.cacheHome}"/cargo/"$f"
+      fi
+    done
   '';
 }

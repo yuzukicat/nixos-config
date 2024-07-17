@@ -68,10 +68,10 @@
   # ];
 
   # Vulkan
-  hardware.opengl = {
-    driSupport = true;
-    driSupport32Bit = true;
-  };
+  # hardware.opengl = {
+  #   driSupport = true;
+  #   driSupport32Bit = true;
+  # };
 
   services.colord.enable = true;
 }

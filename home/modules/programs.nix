@@ -78,6 +78,7 @@ in {
       mpv # Files
       # electrum
       # electron-cash
+      # monero-gui
       tdesktop # Messaging
       # wf-recorder
       obs # Recording

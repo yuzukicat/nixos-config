@@ -1,21 +1,29 @@
-{ lib, config, pkgs, modulesPath, inputs, my, ... }:
-
 {
-  imports = [
-    (modulesPath + "/installer/cd-dvd/installation-cd-graphical-plasma5.nix")
-    ../modules/bluetooth.nix
-    ../modules/console-env.nix
-    ../modules/cups.nix
-    ../modules/desktop-server.nix
-    ../modules/docker.nix
-    ../modules/internationalisation.nix
-    ../modules/multitouch.nix
-    ../modules/network.nix
-    ../modules/nix-common.nix
-    ../modules/nix-registry.nix
-    ../modules/nokde.nix
-    ../modules/steam.nix
-  ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.blacksteel);
+  lib,
+  config,
+  pkgs,
+  modulesPath,
+  inputs,
+  my,
+  ...
+}: {
+  imports =
+    [
+      (modulesPath + "/installer/cd-dvd/installation-cd-graphical-plasma5.nix")
+      ../modules/bluetooth.nix
+      ../modules/console-env.nix
+      ../modules/cups.nix
+      ../modules/desktop-server.nix
+      ../modules/docker.nix
+      ../modules/internationalisation.nix
+      ../modules/multitouch.nix
+      ../modules/network.nix
+      ../modules/nix-common.nix
+      ../modules/nix-registry.nix
+      ../modules/nokde.nix
+      ../modules/steam.nix
+    ]
+    ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.blacksteel);
 
   isoImage = {
     isoBaseName = "nixoxa";
@@ -34,9 +42,9 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
 
-    kernelModules = [ "kvm-amd" "amdgpu" ];
+    kernelModules = ["kvm-amd" "amdgpu"];
     # kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
+    extraModulePackages = [];
     # For amd dual monitor
     kernelParams = [
       # "video=card0-DP-1:2560x1440@60"
@@ -88,7 +96,7 @@
       # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
       group = config.users.groups.nixos.name;
-      extraGroups = [ "wheel" "kvm" "adbusers" "libvirtd" "wireshark" "video" ];
+      extraGroups = ["wheel" "kvm" "adbusers" "libvirtd" "wireshark" "video"];
     };
     groups."nixos".gid = 1000;
     # Allow the user to log in as root without a password.
@@ -179,7 +187,7 @@
   programs.adb.enable = true;
   # adbusers usergroup Refered from ../invar/configuration.nix
   # Question: Can it fix the bus error info on boot??
-  users.groups."adbusers".members = [ config.users.users.nixos.name ];
+  users.groups."adbusers".members = [config.users.users.nixos.name];
 
   # programs.wireshark = {
   #   enable = true;
@@ -212,5 +220,5 @@
     inherit config lib pkgs;
   };
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.05";
 }

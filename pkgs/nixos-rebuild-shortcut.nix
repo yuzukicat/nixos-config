@@ -1,4 +1,12 @@
-{ lib, stdenv, runCommand, runtimeShell, hostname, coreutils, ... }:
+{
+  lib,
+  stdenv,
+  runCommand,
+  runtimeShell,
+  hostname,
+  coreutils,
+  ...
+}:
 runCommand "nixos-rebuild-shortcut" {
   preferLocalBuild = true;
   allowSubstitutes = false;
@@ -6,7 +14,7 @@ runCommand "nixos-rebuild-shortcut" {
   # bash
   text = ''
     #!${runtimeShell}
-    export PATH="${lib.makeBinPath [ hostname coreutils ]}''${PATH:+:}$PATH"
+    export PATH="${lib.makeBinPath [hostname coreutils]}''${PATH:+:}$PATH"
 
     localname="$(hostname)"
     name="$localname"
@@ -23,7 +31,7 @@ runCommand "nixos-rebuild-shortcut" {
     # Simple local build.
     if [[ "$action" == build && "$name" == "$localname" ]]; then
       set -x
-      exec nix build .#nixosSystems."$name" "$@"
+      exec nom build .#nixosSystems."$name" "$@"
     fi
 
     if [[ "$action" =~ (boot|switch|test) && "$name" == "$localname" && "$(id -u)" != 0 ]]; then

@@ -35,6 +35,7 @@
     libarchive
     lsof
     lynx # text mode web browser
+    moreutils
     pciutils # lspci
     procs # procs zsh
     pv # Monitoring of data being sent through pipe, including copying file

@@ -24,6 +24,7 @@
       ../modules/steam.nix
       ../modules/systemd-unit-protections.nix
       ../modules/virtualisation.nix
+      ../modules/nix-keep-flake-inputs.nix
     ]
     ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.invar);
 
@@ -50,7 +51,7 @@
     # kernelPackages = pkgs.linuxPackages_latest;
 
     kernelPackages =
-        pkgs.linuxPackages_zen;
+      pkgs.linuxPackages_zen;
 
     kernelModules = [];
 
@@ -213,11 +214,11 @@
 
     btrfs.autoScrub = {
       enable = true;
-      fileSystems = [ "/" ];
+      fileSystems = ["/"];
       interval = "monthly";
     };
 
-    udev.packages = [ my.pkgs.ublk-allow-unprivileged ];
+    udev.packages = [my.pkgs.ublk-allow-unprivileged];
 
     # asusd.enable = true;
 
@@ -279,5 +280,5 @@
   qt.platformTheme = "gtk2";
   qt.style = "gtk2";
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }

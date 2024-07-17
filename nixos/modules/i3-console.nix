@@ -21,6 +21,7 @@
     smartmontools
     pciutils # lspci
     usbutils # System info.
+    moreutils
     curl
     git
     strace

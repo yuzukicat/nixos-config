@@ -1,24 +1,32 @@
 # Forked from github.com/yuzukilica/nixos-config
 # For the purpose of testing, to install nixos on clevo nh55vr workstation.
-{ lib, config, pkgs, inputs, my, ... }:
-
 {
-  imports = [
-    ../modules/bluetooth.nix
-    ../modules/nano-console.nix
-    ../modules/cups.nix
-    ../modules/desktop-server.nix
-    ../modules/gui
-    ../modules/internationalisation.nix
-    ../modules/l10n.nix
-    ../modules/multitouch.nix
-    ../modules/network.nix
-    ../modules/nix-common.nix
-    ../modules/nix-registry.nix
-    ../modules/systemd-unit-protections.nix
-    ../modules/docker.nix
-    ../modules/steam.nix
-  ] ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.invar);
+  lib,
+  config,
+  pkgs,
+  inputs,
+  my,
+  ...
+}: {
+  imports =
+    [
+      ../modules/bluetooth.nix
+      ../modules/nano-console.nix
+      ../modules/cups.nix
+      ../modules/desktop-server.nix
+      ../modules/gui
+      ../modules/internationalisation.nix
+      ../modules/l10n.nix
+      ../modules/multitouch.nix
+      ../modules/network.nix
+      ../modules/nix-common.nix
+      ../modules/nix-registry.nix
+      ../modules/systemd-unit-protections.nix
+      ../modules/docker.nix
+      ../modules/steam.nix
+      ../modules/nix-keep-flake-inputs.nix
+    ]
+    ++ lib.optional (inputs ? secrets) (inputs.secrets.nixosModules.invar);
 
   # Boot.
   boot = {
@@ -26,8 +34,8 @@
     initrd = {
       # systemd.enable = true;
 
-      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "uas" "sd_mod" "sdhci_pci" ];
-      kernelModules = [ "dm-snapshot" ];
+      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "uas" "sd_mod" "sdhci_pci"];
+      kernelModules = ["dm-snapshot"];
 
       luks.devices = {
         crypted = {
@@ -42,7 +50,6 @@
           allowDiscards = true; # Used if primary device is a SSD
           preLVM = true;
         };
-
       };
     };
     # For MGLRU in Linux 6.1
@@ -57,10 +64,10 @@
       lib.warnIf (pkgs.linuxPackages_latest.kernelAtLeast "6.10") "stable kernel >= 6.10 now"
       pkgs.linuxPackages_testing;
 
-    kernelModules = [ ];
-    extraModulePackages = [ ];
+    kernelModules = [];
+    extraModulePackages = [];
 
-    kernelParams = [ ];
+    kernelParams = [];
 
     # For hibernate-resume.
     # `sudo btrfs inspect-internal map-swapfile /var/swap/resume --resume-offset`
@@ -90,26 +97,26 @@
   # Use nixos-generate-config --root /mnt then copy and paste
   # Questions.
   # Work Station
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/81168bfa-6973-48fb-bbfc-94d3a17e4231";
-      fsType = "btrfs";
-      options = [ "subvol=root" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/81168bfa-6973-48fb-bbfc-94d3a17e4231";
+    fsType = "btrfs";
+    options = ["subvol=root"];
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/81168bfa-6973-48fb-bbfc-94d3a17e4231";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/81168bfa-6973-48fb-bbfc-94d3a17e4231";
+    fsType = "btrfs";
+    options = ["subvol=home"];
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/AF84-4891";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/AF84-4891";
+    fsType = "vfat";
+  };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/891953e4-1cc9-4a5d-b0ab-6423aaf216d5"; }
-    ];
+  swapDevices = [
+    {device = "/dev/disk/by-uuid/891953e4-1cc9-4a5d-b0ab-6423aaf216d5";}
+  ];
 
   # Hardware.
   powerManagement.cpuFreqGovernor = "performance";
@@ -130,7 +137,7 @@
       # independent third-party "nouveau" open source driver).
       open = true;
       # Enable the Nvidia settings menu,
-	    # accessible via `nvidia-settings`.
+      # accessible via `nvidia-settings`.
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
@@ -157,7 +164,7 @@
       # passwordFile = config.sops.secrets.passwd.path;
       uid = 1000;
       group = config.users.groups.yuzuki.name;
-      extraGroups = [ "wheel" "wireshark" "video" "discocss" "networkmanager" "audio" "sound" "input"];
+      extraGroups = ["wheel" "wireshark" "video" "discocss" "networkmanager" "audio" "sound" "input"];
     };
     groups."yuzuki".gid = 1000;
     # Allow the user to log in as root without a password.
@@ -180,7 +187,7 @@
     IOWeight = 50;
   };
   # Workaround: https://github.com/NixOS/nixpkgs/issues/81138
-  systemd.services.keystat.wantedBy = [ "multi-user.target" ];
+  systemd.services.keystat.wantedBy = ["multi-user.target"];
 
   # Moved to services code block
   # KDE pulls in pipewire via xdg-desktop-portal anyways.
@@ -240,10 +247,10 @@
     unclutter.enable = true;
     btrfs.autoScrub = {
       enable = true;
-      fileSystems = [ "/" ];
+      fileSystems = ["/"];
       interval = "monthly";
     };
-    udev.packages = [ my.pkgs.ublk-allow-unprivileged ];
+    udev.packages = [my.pkgs.ublk-allow-unprivileged];
   };
 
   # Global ssh settings. Also for remote builders.
@@ -301,5 +308,5 @@
   qt.platformTheme = "gtk2";
   qt.style = "gtk2";
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.05";
 }

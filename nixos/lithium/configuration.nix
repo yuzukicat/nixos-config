@@ -271,7 +271,7 @@
     alsa-utils
     picom
     ueberzugpp # w3m img
-    input-utils
+    # input-utils
     xbindkeys
     slock
   ];

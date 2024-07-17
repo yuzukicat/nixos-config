@@ -115,8 +115,8 @@
     pavucontrol
     alsa-utils
     picom
-    ueberzugpp # w3m img
-    input-utils
+    # ueberzugpp # w3m img
+    # input-utils
     xbindkeys
     lxappearance
     zafiro-icons

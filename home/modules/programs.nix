@@ -115,7 +115,7 @@ in {
       protobuf
       pkg-config
       bashInteractive
-      coursera-dl
+      # coursera-dl
 
       # Configuration from https://github.com/sauricat/flakes.git/home/home.nix
       # system:

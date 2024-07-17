@@ -89,7 +89,7 @@ in {
       protobuf
       pkg-config
       bashInteractive
-      coursera-dl
+      # coursera-dl
 
       libreoffice
 

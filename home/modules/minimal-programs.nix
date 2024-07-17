@@ -57,7 +57,7 @@ in {
       binutils
       cachix
       # cling
-      coursera-dl
+      # coursera-dl
       dasel
       difftastic
       elixir
